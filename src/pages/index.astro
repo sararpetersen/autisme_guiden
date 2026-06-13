@@ -18,14 +18,14 @@ const quickNavCards = [
     description: 'Design­principper og vejledninger til neurodivergent-venlige digitale oplevelser.',
     icon: '♿',
     href: '/tilgaengelighed',
-    color: 'teal' as const,
+    color: 'teal-dark' as const,
   },
   {
     title: 'Ressourcer',
     description: 'Et bibliotek med guides, artikler og værktøjer til autistiske personer og pårørende.',
     icon: '📚',
     href: '/ressourcer',
-    color: 'secondary' as const,
+    color: 'accent' as const,
   },
   {
     title: 'Uddannelse',
@@ -41,6 +41,7 @@ const featuredResources = [
     title: 'Introduktion til Autismespektret',
     description: 'En grundlæggende guide til at forstå, hvad autisme er, og hvordan spektret ser ud i praksis.',
     category: 'Grundviden',
+    categoryColor: 'var(--color-primary)',
     icon: '🧩',
     href: '/hvad-er-autisme',
     tags: ['Autisme', 'Grundviden', 'Spektret'],
@@ -50,6 +51,7 @@ const featuredResources = [
     title: 'Sansebehandling og Autisme',
     description: 'Lær om sensorisk overbelastning og hvordan man skaber rolige, autisme-venlige miljøer.',
     category: 'Sensorik',
+    categoryColor: 'var(--color-primary)',
     icon: '🌊',
     href: '/ressourcer',
     tags: ['Sensorik', 'Miljø'],
@@ -58,6 +60,7 @@ const featuredResources = [
     title: 'Kommunikationsstrategier',
     description: 'Praktiske strategier til at kommunikere tydeligt og inkluderende med autistiske personer.',
     category: 'Kommunikation',
+    categoryColor: 'var(--color-primary)',
     icon: '💬',
     href: '/ressourcer',
     tags: ['Kommunikation', 'Strategier'],
@@ -66,7 +69,7 @@ const featuredResources = [
     title: 'Klasseværelset for Alle',
     description: 'Vejledning til lærere om tilpasning og inklusion i folkeskolen og gymnasiet.',
     category: 'Uddannelse',
-    categoryColor: 'var(--color-secondary)',
+    categoryColor: 'var(--color-accent)',
     icon: '🏫',
     href: '/uddannelse',
     tags: ['Lærere', 'Inklusion'],
@@ -96,41 +99,63 @@ const stats = [
   />
 
   <!-- Stats bar -->
-  <section class="py-10 border-y" style="border-color: var(--color-border); background: var(--color-surface);" aria-label="Nøgletal">
+  <section
+    class="py-10 border-y"
+    style="border-color: var(--color-border); background: var(--color-surface);"
+    aria-label="Nøgletal"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <dl class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {stats.map(({ value, label }) => (
           <div class="text-center">
-            <dt class="text-2xl sm:text-3xl font-bold mb-1" style="color: var(--color-primary);">{value}</dt>
-            <dd class="text-sm" style="color: var(--color-text-muted);">{label}</dd>
+            <dt
+              class="text-2xl sm:text-3xl font-bold mb-1"
+              style="font-family: var(--font-display); color: var(--color-primary); letter-spacing: 0.04em;"
+            >
+              {value}
+            </dt>
+            <dd class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">{label}</dd>
           </div>
         ))}
       </dl>
     </div>
   </section>
 
-  <!-- Mission statement -->
+  <!-- Mission -->
   <section class="section" aria-labelledby="mission-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
-        <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: var(--color-primary);">Vores mission</p>
-        <h2 id="mission-heading" class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-6" style="color: var(--color-text);">
+        <p
+          class="text-xs font-bold uppercase tracking-widest mb-4"
+          style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
+        >
+          Vores mission
+        </p>
+        <h2
+          id="mission-heading"
+          class="font-bold tracking-wide leading-tight mb-6 text-3xl sm:text-4xl"
+          style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+        >
           Information der møder dig, hvor du er
         </h2>
-        <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text-muted);">
+        <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text-muted); font-family: var(--font-body);">
           Vi tror på, at alle fortjener adgang til præcis, fordomsfri og letforståelig information om autisme. AutismeGuiden er skabt med tilgængelighed i centrum — for autistiske brugere, pårørende og fagfolk.
         </p>
-        <div class="highlight-box text-left rounded-xl">
+        <blockquote class="highlight-box text-left rounded-xl">
           <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
             <strong>"Autisme er ikke noget, man har — det er en del af, hvem man er. Vores platform respekterer neurodiversitet og fremhæver styrker."</strong>
           </p>
-        </div>
+        </blockquote>
       </div>
     </div>
   </section>
 
-  <!-- Quick navigation cards -->
-  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="nav-cards-heading">
+  <!-- Quick nav cards -->
+  <section
+    class="section"
+    style="background: var(--color-surface-2);"
+    aria-labelledby="nav-cards-heading"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="Find det du søger"
@@ -165,8 +190,8 @@ const stats = [
         />
         <a
           href="/ressourcer"
-          class="flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3"
-          style="color: var(--color-primary);"
+          class="flex-shrink-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all hover:gap-3"
+          style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.08em;"
           aria-label="Se alle ressourcer"
         >
           Se alle ressourcer
@@ -183,43 +208,52 @@ const stats = [
     </div>
   </section>
 
-  <!-- Design principles teaser -->
+  <!-- CTA band — dark teal brand strip -->
   <section
     class="section"
-    style="background: var(--color-primary); background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);"
+    style="background: var(--color-primary-dark);"
     aria-labelledby="design-teaser-heading"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center text-white">
-        <p class="text-sm font-semibold uppercase tracking-widest mb-4 opacity-80">Design med omtanke</p>
-        <h2 id="design-teaser-heading" class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="text-xs font-bold uppercase tracking-widest mb-4 opacity-70"
+          style="color: var(--color-teal-200); font-family: var(--font-body); letter-spacing: 0.12em;"
+        >
+          Design med omtanke
+        </p>
+        <h2
+          id="design-teaser-heading"
+          class="font-bold tracking-wide leading-tight mb-6 text-3xl sm:text-4xl"
+          style="font-family: var(--font-display); color: var(--color-teal-100); letter-spacing: 0.04em;"
+        >
           Bygget til neurodivergente brugere
         </h2>
-        <p class="text-lg leading-relaxed mb-8 opacity-90">
+        <p class="text-lg leading-relaxed mb-8" style="color: var(--color-teal-200); opacity: 0.9; font-family: var(--font-body);">
           Denne hjemmeside er designet efter WCAG 2.2-standarderne med mørkt tema, justerbar skriftstørrelse og reduceret bevægelse — fordi alle fortjener en god oplevelse.
         </p>
         <div class="flex flex-wrap gap-3 justify-center">
           <a
             href="/tilgaengelighed"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 active:scale-[0.98]"
-            style="background: white; color: var(--color-primary);"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98]"
+            style="background: var(--color-accent); color: white; font-family: var(--font-body); letter-spacing: 0.06em;"
           >
-            Læs om vores design­principper
+            Læs om design­principper
           </a>
           <button
             id="open-toolbar-hero"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-80 border-2 border-white border-opacity-50"
-            style="color: white; background: rgba(255,255,255,0.1);"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-80 border-2"
+            style="color: var(--color-teal-200); border-color: var(--color-teal-600); background: transparent; font-family: var(--font-body); letter-spacing: 0.06em;"
             aria-label="Åbn tilgængeligheds­indstillinger"
           >
-            Prøv tilgængeligheds­funktioner
+            Tilgængeligheds­funktioner
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Target audiences -->
+  <!-- Audiences -->
   <section class="section" aria-labelledby="audiences-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
@@ -247,35 +281,44 @@ const stats = [
             >
               {icon}
             </div>
-            <h3 class="font-semibold text-base mb-2" style="color: var(--color-text);">{title}</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+            <h3
+              class="font-bold text-base mb-2"
+              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.03em;"
+            >
+              {title}
+            </h3>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">{desc}</p>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA section -->
+  <!-- Final CTA -->
   <section class="section" style="background: var(--color-surface-2);" aria-labelledby="cta-heading">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 id="cta-heading" class="text-3xl sm:text-4xl font-bold tracking-tight mb-4" style="color: var(--color-text);">
+      <h2
+        id="cta-heading"
+        class="font-bold tracking-wide mb-4 text-3xl sm:text-4xl"
+        style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+      >
         Har du spørgsmål?
       </h2>
-      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-muted);">
+      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-muted); font-family: var(--font-body);">
         Vi er her for at hjælpe. Kontakt os, eller browse vores samlede ressourcebibliotek.
       </p>
       <div class="flex flex-wrap gap-3 justify-center">
         <a
           href="/om-os#kontakt"
-          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
-          style="background: var(--color-primary); color: white;"
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98]"
+          style="background: var(--color-primary); color: white; font-family: var(--font-body); letter-spacing: 0.06em;"
         >
           Kontakt os
         </a>
         <a
           href="/ressourcer"
-          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base transition-all hover:opacity-80 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
-          style="background: var(--color-surface); color: var(--color-text); border: 2px solid var(--color-border);"
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98]"
+          style="background: var(--color-surface); color: var(--color-primary-dark); border: 2px solid var(--color-border-strong); font-family: var(--font-body); letter-spacing: 0.06em;"
         >
           Ressourcebibliotek
         </a>
@@ -294,6 +337,7 @@ const stats = [
       toolbar.setAttribute('aria-hidden', 'false');
       backdrop.classList.remove('hidden');
       document.getElementById('toolbar-close')?.focus();
+      document.body.style.overflow = 'hidden';
     }
   });
 </script>

@@ -21,30 +21,33 @@ const {
   featured = false,
 } = Astro.props;
 
-const categoryBg = categoryColor === 'var(--color-primary)'
-  ? 'var(--color-primary-50)'
-  : categoryColor === 'var(--color-secondary)'
-    ? 'var(--color-secondary-50)'
-    : 'var(--color-surface-2)';
+// Derive a soft background for the category badge
+const catBgMap: Record<string, string> = {
+  'var(--color-primary)':     'var(--color-primary-50)',
+  'var(--color-secondary)':   'var(--color-accent-50)',
+  'var(--color-accent)':      'var(--color-accent-50)',
+  'var(--color-accent-teal)': 'var(--color-teal-100)',
+};
+const categoryBg = catBgMap[categoryColor] ?? 'var(--color-surface-2)';
 ---
 
 <article
-  class={`card card-interactive flex flex-col h-full ${featured ? 'ring-2' : ''}`}
-  style={featured ? `ring-color: var(--color-primary);` : ''}
+  class={`card card-interactive flex flex-col h-full ${featured ? 'ring-2 ring-offset-1' : ''}`}
+  style={featured ? 'ring-color: var(--color-accent);' : ''}
 >
   <div class="p-5 flex flex-col h-full">
-    <!-- Category badge + icon -->
-    <div class="flex items-start justify-between mb-4">
+    <!-- Top row: category badge + featured badge -->
+    <div class="flex items-start justify-between gap-2 mb-4">
       <span
-        class="tag text-xs font-semibold"
+        class="tag text-xs"
         style={`background: ${categoryBg}; color: ${categoryColor};`}
       >
         {category}
       </span>
       {featured && (
         <span
-          class="tag text-xs font-medium"
-          style="background: var(--color-accent-amber); color: white; opacity: 0.9;"
+          class="tag text-xs"
+          style="background: var(--color-accent); color: white;"
           aria-label="Fremhævet ressource"
         >
           ★ Fremhævet
@@ -62,7 +65,10 @@ const categoryBg = categoryColor === 'var(--color-primary)'
     </div>
 
     <!-- Title -->
-    <h3 class="font-semibold text-base leading-snug mb-2" style="color: var(--color-text);">
+    <h3
+      class="font-bold text-base leading-snug mb-2"
+      style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.03em;"
+    >
       {href ? (
         <a
           href={href}
@@ -75,7 +81,7 @@ const categoryBg = categoryColor === 'var(--color-primary)'
     </h3>
 
     <!-- Description -->
-    <p class="text-sm leading-relaxed flex-1 mb-4" style="color: var(--color-text-muted);">
+    <p class="text-sm leading-relaxed flex-1 mb-4" style="color: var(--color-text-muted); font-family: var(--font-body);">
       {description}
     </p>
 
@@ -85,7 +91,7 @@ const categoryBg = categoryColor === 'var(--color-primary)'
         {tags.map((tag) => (
           <span
             class="tag text-xs"
-            style="background: var(--color-surface-2); color: var(--color-text-muted);"
+            style="background: var(--color-surface-2); color: var(--color-text-subtle); border: 1px solid var(--color-border);"
           >
             {tag}
           </span>
@@ -97,12 +103,12 @@ const categoryBg = categoryColor === 'var(--color-primary)'
     {href && (
       <a
         href={href}
-        class="inline-flex items-center gap-1.5 text-sm font-semibold transition-all hover:gap-2.5 mt-auto"
-        style="color: var(--color-primary);"
+        class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-all hover:gap-2.5 mt-auto"
+        style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.06em;"
         aria-label={`Læs mere om ${title}`}
       >
         Læs mere
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </a>

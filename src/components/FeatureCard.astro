@@ -4,61 +4,63 @@ interface Props {
   description: string;
   icon: string;
   href?: string;
-  color?: 'primary' | 'secondary' | 'teal' | 'amber';
+  color?: 'primary' | 'accent' | 'teal-dark' | 'amber';
 }
 
 const { title, description, icon, href, color = 'primary' } = Astro.props;
 
 const colorMap = {
   primary: {
-    bg: 'var(--color-primary-50)',
-    icon: 'var(--color-primary)',
-    text: 'var(--color-primary)',
+    iconBg:   'var(--color-primary-50)',
+    iconText: 'var(--color-primary)',
+    link:     'var(--color-primary)',
   },
-  secondary: {
-    bg: 'var(--color-secondary-50)',
-    icon: 'var(--color-secondary)',
-    text: 'var(--color-secondary-dark)',
+  accent: {
+    iconBg:   'var(--color-accent-50)',
+    iconText: 'var(--color-accent-dark)',
+    link:     'var(--color-accent-dark)',
   },
-  teal: {
-    bg: '#CCFBF1',
-    icon: '#0D9488',
-    text: '#0F766E',
+  'teal-dark': {
+    iconBg:   'var(--color-teal-100)',
+    iconText: 'var(--color-teal-800)',
+    link:     'var(--color-teal-700)',
   },
   amber: {
-    bg: '#FEF3C7',
-    icon: '#D97706',
-    text: '#B45309',
+    iconBg:   'var(--color-amber-100)',
+    iconText: 'var(--color-amber-600)',
+    link:     'var(--color-amber-600)',
   },
 };
 
-const colors = colorMap[color];
+const c = colorMap[color];
 ---
 
 <article class="card card-interactive group h-full">
   <div class="p-6 flex flex-col h-full">
-    <!-- Icon container -->
     <div
       class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-2xl transition-transform group-hover:scale-110 flex-shrink-0"
-      style={`background: ${colors.bg};`}
+      style={`background: ${c.iconBg};`}
       aria-hidden="true"
     >
       {icon}
     </div>
 
-    <h3 class="font-semibold text-lg mb-2 leading-snug" style="color: var(--color-text);">
+    <h3
+      class="font-bold text-lg mb-2 leading-snug"
+      style={`font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.03em;`}
+    >
       {title}
     </h3>
 
-    <p class="text-sm leading-relaxed flex-1" style="color: var(--color-text-muted);">
+    <p class="text-sm leading-relaxed flex-1" style="color: var(--color-text-muted); font-family: var(--font-body);">
       {description}
     </p>
 
     {href && (
       <a
         href={href}
-        class="inline-flex items-center gap-1.5 text-sm font-semibold mt-4 transition-all hover:gap-2.5"
-        style={`color: ${colors.text};`}
+        class="inline-flex items-center gap-1.5 text-sm font-bold mt-4 transition-all hover:gap-2.5 uppercase tracking-wide"
+        style={`color: ${c.link}; font-family: var(--font-body); letter-spacing: 0.06em;`}
         aria-label={`Gå til ${title}`}
       >
         Udforsk

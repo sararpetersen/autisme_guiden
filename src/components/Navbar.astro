@@ -13,42 +13,101 @@ const currentPath = Astro.url.pathname;
 
 <header role="banner">
   <nav
+    id="navbar"
     class="fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300"
     style="background: var(--color-surface); border-color: var(--color-border);"
     aria-label="Primær navigation"
-    id="navbar"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 lg:h-18">
+      <div class="flex items-center justify-between h-16 lg:h-[4.5rem]">
 
-        <!-- Logo -->
+        <!-- ─── Logo ─── -->
         <a
           href="/"
-          class="flex items-center gap-3 group"
+          class="flex items-center gap-3 group flex-shrink-0"
           aria-label="AutismeGuiden – Gå til forsiden"
         >
-          <div
-            class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105"
-            style="background: var(--color-primary);"
+          <!-- Compass + puzzle mark — teal & amber brand colors -->
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
+            class="transition-transform duration-200 group-hover:scale-105"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L3 7v10l9 5 9-5V7L12 2z" fill="white" opacity="0.9"/>
-              <path d="M12 7a3 3 0 100 6 3 3 0 000-6z" fill="white"/>
-            </svg>
-          </div>
+            <!-- Outer compass spike — top (dark teal) -->
+            <polygon points="20,1 23,14 17,14" fill="#17464A"/>
+            <!-- Outer compass spike — bottom (dark teal) -->
+            <polygon points="20,39 17,26 23,26" fill="#17464A"/>
+            <!-- Outer compass spike — left (teal-700) -->
+            <polygon points="1,20 14,17 14,23" fill="#156B70"/>
+            <!-- Outer compass spike — right (teal-700) -->
+            <polygon points="39,20 26,23 26,17" fill="#156B70"/>
+
+            <!-- Background circle -->
+            <circle cx="20" cy="20" r="12" fill="#F7FCFB"/>
+
+            <!-- Top-left puzzle piece (dark teal) -->
+            <path
+              d="M8 20 L8 10 Q8 8 10 8 L20 8 L20 12
+                 Q20 14 18 14 Q16 14 16 16 Q16 18 18 18 Q20 18 20 20
+                 L8 20 Z"
+              fill="#1B898E"
+            />
+            <!-- Top-left puzzle nub right -->
+            <circle cx="20" cy="15" r="2.2" fill="#1B898E"/>
+
+            <!-- Top-right puzzle piece (medium teal) -->
+            <path
+              d="M20 8 L30 8 Q32 8 32 10 L32 20 L28 20
+                 Q26 20 26 18 Q26 16 24 16 Q22 16 22 18 Q22 20 20 20
+                 L20 8 Z"
+              fill="#37CBCA"
+            />
+            <!-- Top-right nub bottom -->
+            <circle cx="25" cy="20" r="2.2" fill="#37CBCA"/>
+
+            <!-- Bottom-right puzzle piece (amber) -->
+            <path
+              d="M32 20 L32 30 Q32 32 30 32 L20 32 L20 28
+                 Q20 26 22 26 Q24 26 24 24 Q24 22 22 22 Q20 22 20 20
+                 L32 20 Z"
+              fill="#F6A010"
+            />
+            <!-- Bottom-right nub left -->
+            <circle cx="20" cy="25" r="2.2" fill="#F6A010"/>
+
+            <!-- Bottom-left puzzle piece (amber-light) -->
+            <path
+              d="M8 20 L20 20 L20 22 Q20 24 18 24 Q16 24 16 26 Q16 28 18 28 Q20 28 20 32
+                 L10 32 Q8 32 8 30 L8 20 Z"
+              fill="#F8BC29"
+            />
+            <!-- Bottom-left nub top -->
+            <circle cx="15" cy="20" r="2.2" fill="#F8BC29"/>
+          </svg>
+
+          <!-- Wordmark — Josefin Sans bold, brand teal -->
           <div class="flex flex-col leading-none">
-            <span class="font-bold text-base tracking-tight" style="color: var(--color-primary);">
-              AutismeGuiden
+            <span
+              class="font-bold text-lg tracking-widest uppercase"
+              style="font-family: var(--font-display); color: var(--color-primary-dark); letter-spacing: 0.08em;"
+            >
+              Autisme
             </span>
-            <span class="text-xs hidden sm:block" style="color: var(--color-text-muted);">
-              Din guide til autisme
+            <span
+              class="font-bold text-lg tracking-widest uppercase"
+              style="font-family: var(--font-display); color: var(--color-primary); letter-spacing: 0.08em;"
+            >
+              Guiden
             </span>
           </div>
         </a>
 
-        <!-- Desktop nav links -->
-        <div class="hidden lg:flex items-center gap-1" role="list">
+        <!-- ─── Desktop nav links ─── -->
+        <div class="hidden lg:flex items-center gap-0.5" role="list">
           {navLinks.map(({ href, label }) => {
             const isActive = href === '/'
               ? currentPath === '/'
@@ -56,14 +115,11 @@ const currentPath = Astro.url.pathname;
             return (
               <a
                 href={href}
-                class={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+                class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150"
+                style={
                   isActive
-                    ? 'font-semibold'
-                    : 'hover:opacity-80'
-                }`}
-                style={isActive
-                  ? 'background: var(--color-primary-50); color: var(--color-primary);'
-                  : 'color: var(--color-text-muted);'
+                    ? 'background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);'
+                    : 'color: var(--color-text-muted); font-family: var(--font-body);'
                 }
                 aria-current={isActive ? 'page' : undefined}
                 role="listitem"
@@ -74,13 +130,13 @@ const currentPath = Astro.url.pathname;
           })}
         </div>
 
-        <!-- Right side -->
+        <!-- ─── Right controls ─── -->
         <div class="flex items-center gap-2">
-          <!-- Dark mode toggle (desktop) -->
+          <!-- Dark mode toggle -->
           <button
             id="theme-toggle"
             class="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg transition-all hover:opacity-80"
-            style="color: var(--color-text-muted); background: var(--color-surface-2);"
+            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
             aria-label="Skift tema"
             title="Skift mellem lyst og mørkt tema"
           >
@@ -97,20 +153,20 @@ const currentPath = Astro.url.pathname;
           <button
             id="menu-toggle"
             class="lg:hidden flex flex-col items-center justify-center w-9 h-9 rounded-lg gap-1.5 transition-all"
-            style="color: var(--color-text); background: var(--color-surface-2);"
+            style="color: var(--color-text); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
             aria-label="Åbn menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
           >
-            <span class="block w-5 h-0.5 transition-all duration-300" style="background: currentColor;" id="bar1"></span>
-            <span class="block w-5 h-0.5 transition-all duration-300" style="background: currentColor;" id="bar2"></span>
-            <span class="block w-4 h-0.5 transition-all duration-300" style="background: currentColor;" id="bar3"></span>
+            <span class="block w-5 h-0.5" style="background: currentColor;" id="bar1"></span>
+            <span class="block w-5 h-0.5" style="background: currentColor;" id="bar2"></span>
+            <span class="block w-4 h-0.5" style="background: currentColor;" id="bar3"></span>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Mobile menu -->
+    <!-- ─── Mobile menu ─── -->
     <div
       id="mobile-menu"
       class="lg:hidden hidden border-t"
@@ -125,12 +181,11 @@ const currentPath = Astro.url.pathname;
           return (
             <a
               href={href}
-              class={`flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                isActive ? 'font-semibold' : ''
-              }`}
-              style={isActive
-                ? 'background: var(--color-primary-50); color: var(--color-primary);'
-                : 'color: var(--color-text-muted);'
+              class="flex items-center px-3 py-2.5 rounded-lg text-sm font-semibold transition-all"
+              style={
+                isActive
+                  ? 'background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);'
+                  : 'color: var(--color-text-muted); font-family: var(--font-body);'
               }
               aria-current={isActive ? 'page' : undefined}
             >
@@ -138,13 +193,13 @@ const currentPath = Astro.url.pathname;
             </a>
           );
         })}
-        <!-- Mobile dark mode toggle -->
+
+        <!-- Mobile dark mode -->
         <div class="pt-2 border-t" style="border-color: var(--color-border);">
           <button
             id="theme-toggle-mobile"
-            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium w-full transition-all hover:opacity-80"
-            style="color: var(--color-text-muted);"
-            aria-label="Skift tema"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold w-full transition-all hover:opacity-80"
+            style="color: var(--color-text-muted); font-family: var(--font-body);"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
@@ -157,38 +212,31 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <!-- Spacer for fixed navbar -->
-  <div class="h-16 lg:h-18" aria-hidden="true"></div>
+  <div class="h-16 lg:h-[4.5rem]" aria-hidden="true"></div>
 </header>
 
 <script>
-  // Mobile menu toggle
+  // Mobile menu
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-
   menuToggle?.addEventListener('click', () => {
-    const isOpen = mobileMenu?.classList.contains('hidden') === false;
+    const isOpen = !mobileMenu?.classList.contains('hidden');
     mobileMenu?.classList.toggle('hidden');
     menuToggle.setAttribute('aria-expanded', String(!isOpen));
     menuToggle.setAttribute('aria-label', isOpen ? 'Åbn menu' : 'Luk menu');
   });
 
-  // Theme toggle
+  // Theme
   function updateThemeIcons() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const iconSun = document.getElementById('icon-sun');
-    const iconMoon = document.getElementById('icon-moon');
+    document.getElementById('icon-sun')?.classList.toggle('hidden', !isDark);
+    document.getElementById('icon-moon')?.classList.toggle('hidden', isDark);
     const mobileLabel = document.getElementById('theme-label-mobile');
-
-    iconSun?.classList.toggle('hidden', !isDark);
-    iconMoon?.classList.toggle('hidden', isDark);
-    if (mobileLabel) {
-      mobileLabel.textContent = isDark ? 'Skift til lyst tema' : 'Skift til mørkt tema';
-    }
+    if (mobileLabel) mobileLabel.textContent = isDark ? 'Skift til lyst tema' : 'Skift til mørkt tema';
   }
 
   function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') ?? 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('ag-theme', next);
     updateThemeIcons();
@@ -196,16 +244,11 @@ const currentPath = Astro.url.pathname;
 
   document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
   document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-
   updateThemeIcons();
 
-  // Navbar scroll shadow
+  // Scroll shadow
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      navbar?.classList.add('shadow-sm');
-    } else {
-      navbar?.classList.remove('shadow-sm');
-    }
+    navbar?.classList.toggle('shadow-sm', window.scrollY > 10);
   }, { passive: true });
 </script>

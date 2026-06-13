@@ -14,10 +14,7 @@ const { items, id = 'faq' } = Astro.props;
 
 <div class="space-y-2" role="list" aria-label="Ofte stillede spørgsmål" id={id}>
   {items.map((item, i) => (
-    <div
-      class="card overflow-hidden"
-      role="listitem"
-    >
+    <div class="card overflow-hidden" role="listitem">
       <button
         class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left transition-all hover:opacity-80 focus-visible:ring-inset"
         style="color: var(--color-text);"
@@ -25,11 +22,14 @@ const { items, id = 'faq' } = Astro.props;
         aria-controls={`faq-answer-${id}-${i}`}
         id={`faq-btn-${id}-${i}`}
       >
-        <span class="font-semibold text-sm sm:text-base pr-2">
+        <span
+          class="font-bold text-sm sm:text-base pr-2"
+          style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.03em;"
+        >
           {item.question}
         </span>
         <span
-          class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200"
+          class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200"
           style="background: var(--color-primary-50);"
           aria-hidden="true"
         >
@@ -72,16 +72,9 @@ const { items, id = 'faq' } = Astro.props;
       const content = document.getElementById(controlsId);
       const chevron = btn.querySelector('.faq-chevron') as HTMLElement | null;
       const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-
       btn.setAttribute('aria-expanded', String(!isExpanded));
-
-      if (content) {
-        content.classList.toggle('open', !isExpanded);
-      }
-
-      if (chevron) {
-        chevron.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
-      }
+      content?.classList.toggle('open', !isExpanded);
+      if (chevron) chevron.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
     });
   });
 </script>
