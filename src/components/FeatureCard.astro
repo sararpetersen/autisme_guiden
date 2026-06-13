@@ -1,0 +1,71 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  href?: string;
+  color?: 'primary' | 'secondary' | 'teal' | 'amber';
+}
+
+const { title, description, icon, href, color = 'primary' } = Astro.props;
+
+const colorMap = {
+  primary: {
+    bg: 'var(--color-primary-50)',
+    icon: 'var(--color-primary)',
+    text: 'var(--color-primary)',
+  },
+  secondary: {
+    bg: 'var(--color-secondary-50)',
+    icon: 'var(--color-secondary)',
+    text: 'var(--color-secondary-dark)',
+  },
+  teal: {
+    bg: '#CCFBF1',
+    icon: '#0D9488',
+    text: '#0F766E',
+  },
+  amber: {
+    bg: '#FEF3C7',
+    icon: '#D97706',
+    text: '#B45309',
+  },
+};
+
+const colors = colorMap[color];
+---
+
+<article class="card card-interactive group h-full">
+  <div class="p-6 flex flex-col h-full">
+    <!-- Icon container -->
+    <div
+      class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-2xl transition-transform group-hover:scale-110 flex-shrink-0"
+      style={`background: ${colors.bg};`}
+      aria-hidden="true"
+    >
+      {icon}
+    </div>
+
+    <h3 class="font-semibold text-lg mb-2 leading-snug" style="color: var(--color-text);">
+      {title}
+    </h3>
+
+    <p class="text-sm leading-relaxed flex-1" style="color: var(--color-text-muted);">
+      {description}
+    </p>
+
+    {href && (
+      <a
+        href={href}
+        class="inline-flex items-center gap-1.5 text-sm font-semibold mt-4 transition-all hover:gap-2.5"
+        style={`color: ${colors.text};`}
+        aria-label={`Gå til ${title}`}
+      >
+        Udforsk
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    )}
+  </div>
+</article>

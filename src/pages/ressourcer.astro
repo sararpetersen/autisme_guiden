@@ -1,0 +1,317 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import SearchBar from '../components/SearchBar.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const categories = [
+  { id: 'alle', label: 'Alle ressourcer' },
+  { id: 'grundviden', label: 'Grundviden' },
+  { id: 'familie', label: 'Familie & Pårørende' },
+  { id: 'sensorik', label: 'Sensorik' },
+  { id: 'kommunikation', label: 'Kommunikation' },
+  { id: 'unge', label: 'Unge & Voksne' },
+  { id: 'sundhed', label: 'Sundhed' },
+  { id: 'rettigheder', label: 'Rettigheder' },
+];
+
+const resources = [
+  {
+    title: 'Introduktion til Autismespektret',
+    description: 'En grundlæggende og tilgængelig guide til, hvad autisme er, og hvordan spektret manifesterer sig i hverdagen.',
+    category: 'Grundviden',
+    icon: '🧩',
+    href: '/hvad-er-autisme',
+    tags: ['Autisme', 'Grundviden', 'Begyndere'],
+    featured: true,
+    categoryId: 'grundviden',
+  },
+  {
+    title: 'Sansebehandling og Sensorisk Overbelastning',
+    description: 'Forstå hyper- og hypo-sensitivitet, og lær strategier til at håndtere og forebygge sensorisk overbelastning.',
+    category: 'Sensorik',
+    categoryColor: 'var(--color-accent-teal)',
+    icon: '🌊',
+    href: '#',
+    tags: ['Sensorik', 'Overbelastning', 'Strategier'],
+    categoryId: 'sensorik',
+  },
+  {
+    title: 'At fortælle om sin diagnose',
+    description: 'En guide til hvornår, hvordan og til hvem man kan vælge at fortælle om sin autisme­diagnose — i skole, arbejde og privat.',
+    category: 'Unge & Voksne',
+    categoryColor: 'var(--color-secondary)',
+    icon: '🗣️',
+    href: '#',
+    tags: ['Diagnose', 'Disclosure', 'Unge'],
+    categoryId: 'unge',
+  },
+  {
+    title: 'AAC: Alternativ og Augmentativ Kommunikation',
+    description: 'Introduktion til kommunikationshjælpemidler for ikke-talende og minimalt talende autistiske personer.',
+    category: 'Kommunikation',
+    icon: '💬',
+    href: '#',
+    tags: ['AAC', 'Kommunikation', 'Hjælpemidler'],
+    categoryId: 'kommunikation',
+  },
+  {
+    title: 'Støtte til forældre og søskende',
+    description: 'Praktisk vejledning til pårørende: Hvordan støtter man bedst et familiemedlem med autisme uden at tabe sig selv?',
+    category: 'Familie & Pårørende',
+    categoryColor: 'var(--color-accent-amber)',
+    icon: '👨‍👩‍👧',
+    href: '#',
+    tags: ['Familie', 'Pårørende', 'Støtte'],
+    categoryId: 'familie',
+  },
+  {
+    title: 'Autisme og Angst',
+    description: 'Sammenhængen mellem autisme og angst, og evidensbaserede strategier til at håndtere angst i hverdagen.',
+    category: 'Sundhed',
+    categoryColor: '#8B5CF6',
+    icon: '🧠',
+    href: '#',
+    tags: ['Angst', 'Mental sundhed', 'Strategier'],
+    categoryId: 'sundhed',
+  },
+  {
+    title: 'Dine Rettigheder i Danmark',
+    description: 'Oversigt over rettigheder for autistiske borgere i Danmark — i skolen, på arbejdspladsen og i sundhedssystemet.',
+    category: 'Rettigheder',
+    categoryColor: '#DC2626',
+    icon: '⚖️',
+    href: '#',
+    tags: ['Rettigheder', 'Lovgivning', 'Danmark'],
+    categoryId: 'rettigheder',
+  },
+  {
+    title: 'Masking og Udbrændthed',
+    description: 'Hvad er autistisk masking, hvad koster det, og hvad kan du gøre for at beskytte din energi og trivsel?',
+    category: 'Unge & Voksne',
+    categoryColor: 'var(--color-secondary)',
+    icon: '🎭',
+    href: '#',
+    tags: ['Masking', 'Udbrændthed', 'Trivsel'],
+    categoryId: 'unge',
+  },
+  {
+    title: 'Meltdowns og Shutdowns',
+    description: 'En nøgtern gennemgang af, hvad meltdowns og shutdowns er, og hvad omgivelserne kan gøre i situationen.',
+    category: 'Grundviden',
+    icon: '⚡',
+    href: '#',
+    tags: ['Meltdown', 'Shutdown', 'Krise'],
+    categoryId: 'grundviden',
+  },
+  {
+    title: 'Søvn og Autisme',
+    description: 'Mange autistiske oplever søvnproblemer. Lær om årsagerne og evidensbaserede søvnhygiejne­strategier.',
+    category: 'Sundhed',
+    categoryColor: '#8B5CF6',
+    icon: '😴',
+    href: '#',
+    tags: ['Søvn', 'Sundhed', 'Hvile'],
+    categoryId: 'sundhed',
+  },
+  {
+    title: 'Autisme og Kærlighed og Relationer',
+    description: 'Autistiske har dybe og meningsfulde relationer — men de kan se anderledes ud. En guide til kærlighed og venskaber.',
+    category: 'Unge & Voksne',
+    categoryColor: 'var(--color-secondary)',
+    icon: '💙',
+    href: '#',
+    tags: ['Relationer', 'Venskab', 'Kærlighed'],
+    categoryId: 'unge',
+  },
+  {
+    title: 'Kommunikation med fagpersoner',
+    description: 'Strategier til at kommunikere effektivt med læger, psykologer og socialrådgivere som autistisk person eller pårørende.',
+    category: 'Kommunikation',
+    icon: '🤝',
+    href: '#',
+    tags: ['Fagpersoner', 'Kommunikation', 'System'],
+    categoryId: 'kommunikation',
+  },
+];
+---
+
+<Layout
+  title="Ressourcer – AutismeGuiden"
+  description="Et bibliotek med guides, artikler og værktøjer om autisme til autistiske personer, pårørende, lærere og fagfolk."
+>
+  <Hero
+    badge="Ressourcebibliotek"
+    title="Guides, artikler og værktøjer"
+    description="Et voksende bibliotek med pålidelige, letforståelige ressourcer om autisme. Brug søgning og filtre til at finde det, du leder efter."
+    size="medium"
+  />
+
+  <!-- Search and filters -->
+  <section
+    class="py-8 border-b sticky top-16 z-30"
+    style="background: var(--color-surface); border-color: var(--color-border);"
+    aria-label="Søg og filtrer ressourcer"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row gap-4 items-start md:items-center">
+        <SearchBar placeholder="Søg i ressourcer..." id="resources-search" class="w-full md:max-w-sm" />
+
+        <!-- Category filters -->
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Kategorier">
+          {categories.map(({ id, label }) => (
+            <button
+              class="category-filter tag text-xs font-semibold transition-all hover:opacity-80 cursor-pointer"
+              data-category={id}
+              aria-pressed={id === 'alle' ? 'true' : 'false'}
+              style={id === 'alle'
+                ? 'background: var(--color-primary); color: white; padding: 0.375rem 0.875rem;'
+                : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1px solid var(--color-border); padding: 0.375rem 0.875rem;'}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources grid -->
+  <section class="section" aria-labelledby="resources-list-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <h2 id="resources-list-heading" class="text-lg font-semibold" style="color: var(--color-text);">
+          <span id="resource-count">{resources.length}</span> ressourcer
+        </h2>
+        <p class="text-sm" style="color: var(--color-text-muted);">
+          Sorteret efter relevans
+        </p>
+      </div>
+
+      <div
+        id="resources-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6"
+        aria-live="polite"
+        aria-label="Ressourceliste"
+      >
+        {resources.map((resource) => (
+          <div class="resource-item" data-category={resource.categoryId} data-title={resource.title.toLowerCase()}>
+            <ResourceCard {...resource} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty state -->
+      <div id="no-results" class="hidden py-16 text-center" aria-live="polite">
+        <div
+          class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4"
+          style="background: var(--color-surface-2);"
+          aria-hidden="true"
+        >
+          🔍
+        </div>
+        <h3 class="font-semibold text-lg mb-2" style="color: var(--color-text);">Ingen resultater fundet</h3>
+        <p class="text-sm" style="color: var(--color-text-muted);">Prøv en anden søgning eller et andet filter.</p>
+        <button
+          id="reset-search"
+          class="mt-4 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:opacity-80"
+          style="background: var(--color-primary); color: white;"
+        >
+          Nulstil søgning
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter/contribute CTA -->
+  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="contribute-heading">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div
+        class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"
+        style="background: var(--color-primary-50);"
+        aria-hidden="true"
+      >
+        💡
+      </div>
+      <h2 id="contribute-heading" class="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style="color: var(--color-text);">
+        Mangler du en ressource?
+      </h2>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--color-text-muted);">
+        Vi opdaterer løbende vores bibliotek. Har du forslag til ressourcer, eller vil du bidrage med indhold? Kontakt os.
+      </p>
+      <a
+        href="/om-os#kontakt"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
+        style="background: var(--color-primary); color: white;"
+      >
+        Foreslå en ressource
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Filter logic
+  const filterBtns = document.querySelectorAll('.category-filter');
+  const resourceItems = document.querySelectorAll('.resource-item') as NodeListOf<HTMLElement>;
+  const searchInput = document.getElementById('resources-search') as HTMLInputElement;
+  const noResults = document.getElementById('no-results');
+  const resourceCount = document.getElementById('resource-count');
+  const resetBtn = document.getElementById('reset-search');
+
+  let activeCategory = 'alle';
+  let searchQuery = '';
+
+  function filterResources() {
+    let visible = 0;
+
+    resourceItems.forEach((item) => {
+      const category = item.dataset.category ?? '';
+      const title = item.dataset.title ?? '';
+      const matchesCategory = activeCategory === 'alle' || category === activeCategory;
+      const matchesSearch = searchQuery === '' || title.includes(searchQuery.toLowerCase());
+      const show = matchesCategory && matchesSearch;
+
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (resourceCount) resourceCount.textContent = String(visible);
+    noResults?.classList.toggle('hidden', visible > 0);
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCategory = (btn as HTMLElement).dataset.category ?? 'alle';
+
+      filterBtns.forEach((b) => {
+        const isActive = (b as HTMLElement).dataset.category === activeCategory;
+        b.setAttribute('aria-pressed', String(isActive));
+        (b as HTMLElement).style.background = isActive ? 'var(--color-primary)' : 'var(--color-surface-2)';
+        (b as HTMLElement).style.color = isActive ? 'white' : 'var(--color-text-muted)';
+        (b as HTMLElement).style.borderColor = isActive ? 'transparent' : 'var(--color-border)';
+      });
+
+      filterResources();
+    });
+  });
+
+  searchInput?.addEventListener('input', () => {
+    searchQuery = searchInput.value;
+    filterResources();
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    searchQuery = '';
+    activeCategory = 'alle';
+    filterBtns.forEach((b) => {
+      const isAll = (b as HTMLElement).dataset.category === 'alle';
+      b.setAttribute('aria-pressed', String(isAll));
+      (b as HTMLElement).style.background = isAll ? 'var(--color-primary)' : 'var(--color-surface-2)';
+      (b as HTMLElement).style.color = isAll ? 'white' : 'var(--color-text-muted)';
+    });
+    filterResources();
+  });
+</script>

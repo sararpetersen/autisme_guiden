@@ -1,0 +1,317 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const accommodations = [
+  {
+    category: 'Fysisk miljø',
+    color: 'var(--color-primary)',
+    bg: 'var(--color-primary-50)',
+    items: [
+      'Reduceret lydniveau — dæmpende materialer, høreværn til rådighed',
+      'Adgang til rolige pauser­rum uden sensorisk stimulation',
+      'Fleksibel siddeplads — mulighed for at sidde ved siden af udgangen',
+      'Dæmpet, jævnt lys frem for flimrende lysstofrør',
+      'Visuelt ryddeligt klasseværelse — minimal distraktion',
+    ],
+  },
+  {
+    category: 'Struktur og rutiner',
+    color: 'var(--color-secondary)',
+    bg: 'var(--color-secondary-50)',
+    items: [
+      'Tydelig dagplan — delt med eleven om morgenen eller aftenen før',
+      'Forhåndsvarsling af ændringer med så god tid som muligt',
+      'Klare overgange mellem aktiviteter med visuelt ur eller timer',
+      'Faste rutiner for start og slut på timen',
+      'Brug af visuelle støttesystemer (piktogrammer, tjeklister)',
+    ],
+  },
+  {
+    category: 'Kommunikation og undervisning',
+    color: 'var(--color-accent-teal)',
+    bg: '#CCFBF1',
+    items: [
+      'Direkte, præcist sprog — undgå sarkasme og metaforer',
+      'Giv instrukser ét trin ad gangen — skriv dem ned',
+      'Vis, hvad du forventer — eksempler og modeller',
+      'Giv tilstrækkelig behandlingstid (wait time) efter spørgsmål',
+      'Brug elevens interesseområder som indgang til undervisning',
+    ],
+  },
+  {
+    category: 'Prøver og vurdering',
+    color: 'var(--color-accent-amber)',
+    bg: '#FEF3C7',
+    items: [
+      'Forlænget prøvetid hvor relevant',
+      'Separat lokale til prøver uden forstyrrelser',
+      'Mundtlige alternativer til skriftlige afleveringer',
+      'Evaluering ud fra læringsmål — ikke adfærd eller deltagelse',
+      'Hyppig, konkret og handlings­orienteret feedback',
+    ],
+  },
+];
+
+const educationResources = [
+  {
+    title: 'Inklusion i Folkeskolen',
+    description: 'En praktisk guide til at skabe et inkluderende læringsmiljø i folkeskolen med fokus på autistiske elever.',
+    category: 'Folkeskole',
+    categoryColor: 'var(--color-primary)',
+    icon: '🏫',
+    tags: ['Inklusion', 'Folkeskole', 'Guide'],
+  },
+  {
+    title: 'Individuel Uddannelsesplan (IUP)',
+    description: 'Hvad er en IUP, hvem har ret til det, og hvordan udformes en god plan for autistiske elever?',
+    category: 'Rettigheder',
+    categoryColor: '#DC2626',
+    icon: '📋',
+    tags: ['IUP', 'Rettigheder', 'Plan'],
+  },
+  {
+    title: 'Samarbejde med Forældre',
+    description: 'Vejledning til lærere om at opbygge et produktivt samarbejde med forældre til autistiske elever.',
+    category: 'Samarbejde',
+    categoryColor: 'var(--color-secondary)',
+    icon: '🤝',
+    tags: ['Forældre', 'Samarbejde', 'Dialog'],
+  },
+  {
+    title: 'Kriser i Klasseværelset',
+    description: 'Hvad gør du, hvis en elev har en meltdown? Konkrete protokoller og strategier til krisehåndtering.',
+    category: 'Krisehåndtering',
+    categoryColor: 'var(--color-accent-amber)',
+    icon: '🚨',
+    tags: ['Meltdown', 'Krise', 'Protokol'],
+  },
+  {
+    title: 'Digitale Undervisningsværktøjer',
+    description: 'Apps og digitale løsninger der understøtter autistiske elevers læring og kommunikation.',
+    category: 'Teknologi',
+    categoryColor: 'var(--color-accent-teal)',
+    icon: '💻',
+    tags: ['Apps', 'Teknologi', 'AAC'],
+  },
+  {
+    title: 'Gymnasiet og Videregående Uddannelse',
+    description: 'Autistiske i gymnasiet og på universiteter — rettigheder, støttemuligheder og råd til studerende og undervisere.',
+    category: 'Videregående',
+    categoryColor: '#8B5CF6',
+    icon: '🎓',
+    tags: ['Gymnasium', 'Universitet', 'Støtte'],
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Hvad er min pligt som lærer over for autistiske elever?',
+    answer: 'Som lærer i Danmark er du forpligtet til at understøtte inklusion og give alle elever ligelig mulighed for at deltage i undervisningen. Det inkluderer at tilpasse undervisnings­metoder og miljø efter elevernes individuelle behov. Folkeskoleloven og serviceloven sikrer autistiske børns ret til støtte og tilpasning.',
+  },
+  {
+    question: 'Hvad er forskellen på en meltdown og en tantrum?',
+    answer: 'En tantrum er en bevidst adfærd for at opnå noget. En meltdown er en ufrivillig reaktion på overbelastning — eleven er ikke i kontrol. Under en meltdown: giv plads, undgå direkte konfrontation, reducer sansestimuli, tal roligt og lavmælt. Eleven har ikke valgt denne reaktion og kan typisk ikke stoppe den ved viljestyrke.',
+  },
+  {
+    question: 'Hvad gør jeg, hvis jeg mistænker, at en elev er autistisk?',
+    answer: 'Tal med skolens PPR (Pædagogisk Psykologisk Rådgivning) og involver forældrene. Undgå at stille diagnosen selv. Fokuser i mellemtiden på at skabe et støttende miljø for eleven — mange af de tilpasninger der hjælper autistiske elever, gavner alle elever.',
+  },
+  {
+    question: 'Hvordan håndterer jeg overgange (skift i aktivitet)?',
+    answer: 'Brug tydelige varsler: "Om 5 minutter skifter vi aktivitet." Et visuelt ur (f.eks. Time Timer) hjælper mange. Beskriv, hvad den næste aktivitet indebærer. Undgå bratte afbrydelser. Giv evt. eleven en overgangsobjekt eller fast rutine at udføre ved skift.',
+  },
+  {
+    question: 'Hvad er "demand avoidance" (PDA)?',
+    answer: 'Pathological Demand Avoidance (PDA) er en profil inden for autismespektret, der er karakteriseret ved en ekstrem undgåelse af hverdagskrav — drevet af angst snarere end trods. Elever med PDA har brug for en samarbejdende, lavt kravs­baseret tilgang frem for klassiske belønnings/konsekvens-systemer.',
+  },
+];
+
+const strategies = [
+  { icon: '📅', title: 'Visuelle skemaer', desc: 'Brug billeder, piktogrammer og tydelige dagsskemaer. Synlighed reducerer angst for det ukendte.' },
+  { icon: '🎯', title: 'Klare forventninger', desc: 'Hvad forventer du præcist? Skriv det ned. Vis eksempler. Vage instrukser skaber forvirring og angst.' },
+  { icon: '⏱️', title: 'Bearbejdningstid', desc: 'Giv 10-20 sekunder efter du har stillet et spørgsmål. Tving ikke svar. Lad tankerne sætte sig.' },
+  { icon: '🤫', title: 'Rolige korrektioner', desc: 'Korriger diskret og privat. Aldrig foran klassen. Undgå sarkasme og offentlig eksponering.' },
+  { icon: '💪', title: 'Styrkebaseret tilgang', desc: 'Find og byg på elevens interesser og styrker. Autistiske elever har ofte dybe ekspertiser.' },
+  { icon: '🔔', title: 'Konsistent håndhævelse', desc: 'Regler gælder ens for alle, altid. Uforudsigelighed er angst­provokerende.' },
+];
+---
+
+<Layout
+  title="Uddannelse – AutismeGuiden"
+  description="Ressourcer, vejledninger og bedste praksis for lærere og pædagoger om inklusion af autistiske elever."
+>
+  <Hero
+    badge="For lærere og pædagoger"
+    title="Uddannelse og inklusion"
+    description="Praktisk vejledning, tilpasnings­strategier og ressourcer til lærere, pædagoger og uddannelses­institutioner der arbejder med autistiske elever."
+    primaryCTA={{ label: 'Tilpasningsstrategier', href: '#tilpasninger' }}
+    secondaryCTA={{ label: 'Bedste praksis', href: '#strategier' }}
+    size="medium"
+  />
+
+  <!-- Intro -->
+  <section class="section" aria-labelledby="intro-edu-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-primary);">Inkluderende uddannelse</p>
+          <h2 id="intro-edu-heading" class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-6" style="color: var(--color-text);">
+            Et klasseværelse der virker for alle
+          </h2>
+          <div class="space-y-4 prose-reading" style="color: var(--color-text-muted);">
+            <p>
+              Inklusion er ikke én størrelse der passer alle. Det handler om at skabe et læringsmiljø, der imødekommer forskellighed — og autistiske elever er forskellige, ligesom alle andre elever.
+            </p>
+            <p>
+              De tilpasninger der hjælper autistiske elever, har en tendens til at gavne <em>alle</em> elever: Klarhed, forudsigelighed, reduceret sensorisk støj og direkte kommunikation er godt for alle.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          {[
+            { value: '~1-2%', label: 'af alle skoleelever er autistiske' },
+            { value: '40%', label: 'af autistiske har oplevet mobning i skolen' },
+            { value: '70%', label: 'af autistiske unge rapporterer skolevægring' },
+            { value: '3x', label: 'højere trivsel med målrettet støtte' },
+          ].map(({ value, label }) => (
+            <div class="card p-4 text-center">
+              <p class="text-2xl font-bold mb-1" style="color: var(--color-primary);">{value}</p>
+              <p class="text-xs leading-snug" style="color: var(--color-text-muted);">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best practices / strategies -->
+  <section id="strategier" class="section" style="background: var(--color-surface-2);" aria-labelledby="strategies-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Bedste praksis"
+        title="6 strategier der virker"
+        description="Evidensbaserede tilgange til at støtte autistiske elever i klasseværelset."
+        id="strategies-heading"
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {strategies.map(({ icon, title, desc }, i) => (
+          <div class="card p-6 flex gap-4 items-start">
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+              style="background: var(--color-primary-50);"
+              aria-hidden="true"
+            >
+              {icon}
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold" style="color: var(--color-primary);">#{i + 1}</span>
+                <h3 class="font-semibold text-sm" style="color: var(--color-text);">{title}</h3>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Classroom accommodations -->
+  <section id="tilpasninger" class="section" aria-labelledby="accomm-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Klasseværelsets tilpasninger"
+        title="Konkrete justeringer der gør en forskel"
+        description="Tilpasninger opdelt efter kategori. Implementer de der er relevante for din elev og dit klasserum."
+        id="accomm-heading"
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {accommodations.map(({ category, color, bg, items }) => (
+          <article class="card p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-3 h-3 rounded-full flex-shrink-0"
+                style={`background: ${color};`}
+                aria-hidden="true"
+              ></div>
+              <h3 class="font-bold text-base" style="color: var(--color-text);">{category}</h3>
+            </div>
+            <ul class="space-y-2.5" role="list">
+              {items.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style={`color: ${color};`} aria-hidden="true">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <!-- Key reminder -->
+      <div class="mt-8 highlight-box rounded-xl">
+        <p class="text-sm font-semibold mb-1" style="color: var(--color-primary);">Vigtig huskeregel</p>
+        <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
+          Tilpasninger er ikke "at give nogen en fordel" — det er at sikre, at alle elever har <strong>ligelig adgang til læring</strong>. En elev i kørestol behøver en rampe; en autistisk elev behøver forudsigelighed og lavt sensorisk input.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources for educators -->
+  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="edu-resources-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Materialer til undervisere"
+        title="Guides og ressourcer"
+        description="Vores udvalg af materialer specielt til lærere, pædagoger og uddannelses­institutioner."
+        id="edu-resources-heading"
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {educationResources.map((resource) => (
+          <ResourceCard {...resource} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="edu-faq-heading">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="FAQ"
+        title="Spørgsmål fra lærere"
+        description="De mest stillede spørgsmål fra lærere og pædagoger om at arbejde med autistiske elever."
+        id="edu-faq-heading"
+      />
+      <FAQAccordion items={faqItems} id="edu-faq" />
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background: var(--color-surface-2);" aria-label="Kom i kontakt">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style="color: var(--color-text);">
+        Har du brug for rådgivning?
+      </h2>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--color-text-muted);">
+        Stil os et spørgsmål, eller udforsk vores fulde ressourcebibliotek for mere viden om autisme og inklusion.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/om-os#kontakt" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style="background: var(--color-primary); color: white;">
+          Kontakt os
+        </a>
+        <a href="/ressourcer" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-80" style="background: var(--color-surface); color: var(--color-text); border: 2px solid var(--color-border);">
+          Ressourcebibliotek
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

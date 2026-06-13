@@ -1,0 +1,117 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+  badge?: string;
+  size?: 'large' | 'medium' | 'small';
+  centered?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  primaryCTA,
+  secondaryCTA,
+  badge,
+  size = 'large',
+  centered = true,
+} = Astro.props;
+
+const paddingClasses = {
+  large: 'py-20 md:py-28 lg:py-36',
+  medium: 'py-14 md:py-20',
+  small: 'py-10 md:py-14',
+};
+---
+
+<section
+  class={`relative overflow-hidden ${paddingClasses[size]}`}
+  style="background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-background) 50%, var(--color-secondary-50) 100%);"
+  aria-labelledby="hero-heading"
+>
+  <!-- Subtle background decoration -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div
+      class="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-30 blur-3xl"
+      style="background: var(--color-primary-light);"
+    ></div>
+    <div
+      class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full opacity-20 blur-3xl"
+      style="background: var(--color-secondary-light);"
+    ></div>
+  </div>
+
+  <div class={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${centered ? 'text-center' : ''}`}>
+    <div class={`max-w-4xl ${centered ? 'mx-auto' : ''}`}>
+
+      {badge && (
+        <div class={`mb-6 ${centered ? 'flex justify-center' : ''}`}>
+          <span
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium"
+            style="background: var(--color-primary-100); color: var(--color-primary-dark);"
+          >
+            <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background: var(--color-primary);" aria-hidden="true"></span>
+            {badge}
+          </span>
+        </div>
+      )}
+
+      {subtitle && (
+        <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-primary);">
+          {subtitle}
+        </p>
+      )}
+
+      <h1
+        id="hero-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance mb-6"
+        style="color: var(--color-text);"
+      >
+        {title}
+      </h1>
+
+      {description && (
+        <p
+          class={`text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl ${centered ? 'mx-auto' : ''}`}
+          style="color: var(--color-text-muted);"
+        >
+          {description}
+        </p>
+      )}
+
+      <slot name="extra" />
+
+      {(primaryCTA || secondaryCTA) && (
+        <div class={`flex flex-wrap gap-3 ${centered ? 'justify-center' : ''}`}>
+          {primaryCTA && (
+            <a
+              href={primaryCTA.href}
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
+              style="background: var(--color-primary); color: white;"
+            >
+              {primaryCTA.label}
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          )}
+          {secondaryCTA && (
+            <a
+              href={secondaryCTA.href}
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base transition-all hover:opacity-80 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
+              style="background: var(--color-surface); color: var(--color-text); border: 2px solid var(--color-border);"
+            >
+              {secondaryCTA.label}
+            </a>
+          )}
+        </div>
+      )}
+
+      <slot />
+    </div>
+  </div>
+</section>

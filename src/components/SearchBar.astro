@@ -1,0 +1,77 @@
+---
+interface Props {
+  placeholder?: string;
+  id?: string;
+  class?: string;
+}
+
+const {
+  placeholder = 'Søg efter ressourcer...',
+  id = 'search',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`relative ${className}`} role="search">
+  <label for={id} class="sr-only">{placeholder}</label>
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" aria-hidden="true">
+      <svg
+        class="w-5 h-5"
+        style="color: var(--color-text-subtle);"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+    </div>
+    <input
+      type="search"
+      id={id}
+      name="q"
+      class="w-full pl-11 pr-12 py-3.5 text-sm font-medium rounded-xl transition-all"
+      style="background: var(--color-surface); border: 1.5px solid var(--color-border); color: var(--color-text);"
+      placeholder={placeholder}
+      autocomplete="off"
+      aria-label={placeholder}
+    />
+    <button
+      type="button"
+      id={`${id}-clear`}
+      class="absolute inset-y-0 right-0 pr-4 flex items-center opacity-0 transition-opacity focus-visible:opacity-100"
+      aria-label="Ryd søgning"
+      tabindex="-1"
+    >
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--color-text-subtle);" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  const inputs = document.querySelectorAll('input[type="search"]');
+  inputs.forEach((input) => {
+    const id = input.id;
+    const clearBtn = document.getElementById(`${id}-clear`);
+
+    input.addEventListener('input', () => {
+      const hasValue = (input as HTMLInputElement).value.length > 0;
+      if (clearBtn) {
+        clearBtn.style.opacity = hasValue ? '1' : '0';
+        clearBtn.tabIndex = hasValue ? 0 : -1;
+      }
+    });
+
+    clearBtn?.addEventListener('click', () => {
+      (input as HTMLInputElement).value = '';
+      clearBtn.style.opacity = '0';
+      clearBtn.tabIndex = -1;
+      input.dispatchEvent(new Event('input'));
+      (input as HTMLElement).focus();
+    });
+  });
+</script>

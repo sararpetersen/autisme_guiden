@@ -1,0 +1,393 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const values = [
+  {
+    icon: '🧩',
+    title: 'Neurodiversitet er en styrke',
+    desc: 'Vi anerkender og fejrer neurologisk mangfoldighed. Autisme er en naturlig del af menneskelig variation — ikke en fejl der skal rettes.',
+  },
+  {
+    icon: '🔍',
+    title: 'Evidensbaseret indhold',
+    desc: 'Alt vores indhold er baseret på aktuel forskning, ekspertudtalelser og erfaringer fra autistiske personer og deres familier.',
+  },
+  {
+    icon: '🤝',
+    title: 'Inkluderende perspektiv',
+    desc: 'Vi skriver med og for autistiske mennesker, pårørende, lærere og fagfolk — aldrig kun om autistiske.',
+  },
+  {
+    icon: '🌍',
+    title: 'Gratis og åben adgang',
+    desc: 'Information om autisme skal være gratis og tilgængelig for alle. Ingen betalingsmure, ingen registreringer.',
+  },
+  {
+    icon: '♿',
+    title: 'Tilgængelighed først',
+    desc: 'Vi designer med tilgængelighed som fundament, ikke som eftertanke. WCAG 2.2 er minimumsstandarden.',
+  },
+  {
+    icon: '💙',
+    title: 'Respekt og værdighed',
+    desc: 'Vi bruger identitetspersonorienteret og neutrosprog (autistisk person, ikke "person med autisme"), medmindre brugeren foretrækker andet.',
+  },
+];
+
+const team = [
+  {
+    name: 'Platform­team',
+    role: 'Design & Udvikling',
+    desc: 'Ansvarlige for det tekniske fundament, tilgængelighed og brugeroplevelse.',
+    icon: '💻',
+  },
+  {
+    name: 'Indholdsredaktion',
+    role: 'Forskning & Redaktion',
+    desc: 'Sikrer at alt indhold er evidensbaseret, præcist og fordomsfrit.',
+    icon: '✍️',
+  },
+  {
+    name: 'Fagligt netværk',
+    role: 'Psykologer, lærere, fagfolk',
+    desc: 'Eksternt panel der kvalitetssikrer vores indhold og vejledninger.',
+    icon: '🏥',
+  },
+  {
+    name: 'Autistiske stemmer',
+    role: 'Lived experience',
+    desc: 'Autistiske medforfattere og rådgivere der sikrer platformens autenticitet.',
+    icon: '🧩',
+  },
+];
+---
+
+<Layout
+  title="Om Os – AutismeGuiden"
+  description="Lær om AutismeGuiden, vores mission, værdier og teamet bag platformen."
+>
+  <Hero
+    badge="Om projektet"
+    title="En platform skabt med omsorg"
+    description="AutismeGuiden er en dansk, non-kommerciel platform dedikeret til at gøre information om autisme mere tilgængelig, fordomsfri og brugbar for alle."
+    secondaryCTA={{ label: 'Kontakt os', href: '#kontakt' }}
+    size="medium"
+  />
+
+  <!-- Mission -->
+  <section class="section" aria-labelledby="mission-section-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-primary);">Vores formål</p>
+          <h2 id="mission-section-heading" class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-6" style="color: var(--color-text);">
+            Information der møder dig, som du er
+          </h2>
+          <div class="space-y-4 prose-reading" style="color: var(--color-text-muted);">
+            <p>
+              AutismeGuiden opstod ud af en simpel erkendelse: At information om autisme på dansk er spredt, svær at finde og ofte skrevet ud fra et klinisk, ikke-autistisk perspektiv.
+            </p>
+            <p>
+              Vi ønskede at skabe noget andet — en platform der sætter autistiske mennesker i centrum, bruger fordomsfrit sprog og prioriterer tilgængelighed frem for alt.
+            </p>
+            <p>
+              Vi tror på, at god information kan ændre liv. Ikke ved at "kurere" autisme — for det er der intet at kurere — men ved at hjælpe autistiske mennesker med at forstå sig selv bedre, og hjælpe deres omgivelser med at støtte dem bedre.
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <blockquote
+            class="p-6 rounded-2xl border-l-4"
+            style="background: var(--color-primary-50); border-color: var(--color-primary);"
+          >
+            <p class="text-lg font-semibold leading-snug mb-4" style="color: var(--color-text);">
+              "Autisme er ikke noget, man har — det er en del af, hvem man er."
+            </p>
+            <footer class="text-sm" style="color: var(--color-primary);">— AutismeGuidens fundament</footer>
+          </blockquote>
+
+          <div class="card p-5">
+            <h3 class="font-semibold text-base mb-3" style="color: var(--color-text);">Vores principper</h3>
+            <ul class="space-y-2.5" role="list">
+              {[
+                'Neurodiversitet er ikke en fejl — det er mangfoldighed',
+                'Autistiske stemmer er centrale, ikke perifere',
+                'Intet om os, uden os',
+                'Tilgængelighed er en grundrettighed',
+                'Gratis information er demokratisk information',
+              ].map((p) => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: var(--color-secondary);" aria-hidden="true">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section id="vaerdier" class="section" style="background: var(--color-surface-2);" aria-labelledby="values-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Vores værdier"
+        title="Hvad vi tror på"
+        description="Seks kerneværdier der guider alt, vi gør på AutismeGuiden."
+        id="values-heading"
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {values.map(({ icon, title, desc }) => (
+          <article class="card p-6">
+            <div
+              class="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl mb-4"
+              style="background: var(--color-primary-50);"
+              aria-hidden="true"
+            >
+              {icon}
+            </div>
+            <h3 class="font-semibold text-base mb-2" style="color: var(--color-text);">{title}</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section" aria-labelledby="team-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Teamet"
+        title="Bag platformen"
+        description="AutismeGuiden drives af et tværfagligt team med passion for tilgængelighed og neurodiversitet."
+        id="team-heading"
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {team.map(({ name, role, desc, icon }) => (
+          <div class="card p-6 text-center">
+            <div
+              class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"
+              style="background: var(--color-primary-50);"
+              aria-hidden="true"
+            >
+              {icon}
+            </div>
+            <h3 class="font-semibold text-base mb-1" style="color: var(--color-text);">{name}</h3>
+            <p class="text-xs font-semibold uppercase tracking-wide mb-3" style="color: var(--color-primary);">{role}</p>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessibility statement -->
+  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="access-statement-heading">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Tilgængeligheds­erklæring"
+        title="Vores forpligtelse til tilgængelighed"
+        description="Vi stræber efter at overholde WCAG 2.2 niveau AA. Her er vores status og kendte begrænsninger."
+        id="access-statement-heading"
+      />
+      <div class="card p-6 space-y-4">
+        {[
+          { label: 'Tastaturnavigation', status: 'Opfyldt', ok: true },
+          { label: 'Skærmlæser­kompatibilitet', status: 'Opfyldt', ok: true },
+          { label: 'Farvekontrast (AA)', status: 'Opfyldt', ok: true },
+          { label: 'Reduceret bevægelse', status: 'Opfyldt', ok: true },
+          { label: 'Mørkt tema', status: 'Opfyldt', ok: true },
+          { label: 'Justerbar skriftstørrelse', status: 'Opfyldt', ok: true },
+          { label: 'Videotekster', status: 'Ikke relevant (ingen video)', ok: true },
+          { label: 'WCAG 2.2 AAA', status: 'Delvist opfyldt', ok: false },
+        ].map(({ label, status, ok }) => (
+          <div class="flex items-center justify-between py-2.5 border-b last:border-0" style="border-color: var(--color-border);">
+            <span class="text-sm font-medium" style="color: var(--color-text);">{label}</span>
+            <span
+              class="tag text-xs font-semibold"
+              style={ok
+                ? 'background: var(--color-secondary-50); color: var(--color-secondary-dark);'
+                : 'background: #FEF3C7; color: #B45309;'}
+            >
+              {status}
+            </span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 text-sm" style="color: var(--color-text-muted);">
+        Sidst opdateret: {new Date().toLocaleDateString('da-DK', { year: 'numeric', month: 'long' })}. Opdages der tilgængeligheds­problemer, hører vi gerne fra dig.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact form -->
+  <section id="kontakt" class="section" aria-labelledby="contact-heading">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Kontakt"
+        title="Skriv til os"
+        description="Vi svarer inden for 3-5 hverdage. For tidsfølsomme henvendelser, angiv det i emnet."
+        id="contact-heading"
+      />
+
+      <div class="card p-6 sm:p-8">
+        <form
+          id="contact-form"
+          class="space-y-5"
+          aria-label="Kontaktformular"
+          novalidate
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
+                Navn <span aria-hidden="true" class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full px-4 py-3 text-sm"
+                placeholder="Dit navn"
+                required
+                autocomplete="name"
+                aria-required="true"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
+                E-mail <span aria-hidden="true" class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full px-4 py-3 text-sm"
+                placeholder="din@email.dk"
+                required
+                autocomplete="email"
+                aria-required="true"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="subject" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
+              Emne
+            </label>
+            <select id="subject" name="subject" class="w-full px-4 py-3 text-sm">
+              <option value="">Vælg et emne...</option>
+              <option value="spørgsmål">Generelt spørgsmål</option>
+              <option value="ressource">Foreslå en ressource</option>
+              <option value="fejl">Rapporter en fejl</option>
+              <option value="tilgængelighed">Tilgængeligheds­problem</option>
+              <option value="samarbejde">Samarbejde</option>
+              <option value="andet">Andet</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
+              Besked <span aria-hidden="true" class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={6}
+              class="w-full px-4 py-3 text-sm resize-y"
+              placeholder="Skriv din besked her..."
+              required
+              aria-required="true"
+            ></textarea>
+          </div>
+
+          <!-- Privacy note -->
+          <div class="flex items-start gap-3 p-4 rounded-xl" style="background: var(--color-surface-2);">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--color-primary);" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <p class="text-xs leading-relaxed" style="color: var(--color-text-muted);">
+              Dine oplysninger bruges udelukkende til at besvare din henvendelse og slettes efter 30 dage. Vi deler aldrig dine data med tredjepart.
+            </p>
+          </div>
+
+          <!-- Success message (hidden by default) -->
+          <div
+            id="form-success"
+            class="hidden p-4 rounded-xl"
+            style="background: var(--color-secondary-50); border: 1px solid var(--color-secondary-light);"
+            role="alert"
+            aria-live="polite"
+          >
+            <p class="text-sm font-semibold" style="color: var(--color-secondary-dark);">
+              ✓ Tak for din besked! Vi vender tilbage inden for 3-5 hverdage.
+            </p>
+          </div>
+
+          <!-- Error message (hidden by default) -->
+          <div
+            id="form-error"
+            class="hidden p-4 rounded-xl"
+            style="background: #FFF1F2; border: 1px solid #FECDD3;"
+            role="alert"
+            aria-live="polite"
+          >
+            <p class="text-sm font-semibold text-red-600">
+              Udfyld venligst alle påkrævede felter korrekt.
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3.5 px-6 rounded-xl font-semibold text-sm transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2 disabled:opacity-50"
+            style="background: var(--color-primary); color: white;"
+            id="submit-btn"
+          >
+            Send besked
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg?.classList.add('hidden');
+
+    const name = (document.getElementById('name') as HTMLInputElement)?.value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
+    const message = (document.getElementById('message') as HTMLTextAreaElement)?.value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name || !email || !message || !emailRegex.test(email)) {
+      errorMsg?.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sender...';
+
+    // Simulate submission (replace with real endpoint)
+    await new Promise((r) => setTimeout(r, 1200));
+
+    form.reset();
+    successMsg?.classList.remove('hidden');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send besked';
+    successMsg?.focus();
+  });
+</script>

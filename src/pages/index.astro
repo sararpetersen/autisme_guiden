@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const quickNavCards = [
+  {
+    title: 'Hvad er Autisme?',
+    description: 'Forstå autismespektret med klare forklaringer, myter og fakta om autisme.',
+    icon: '🧩',
+    href: '/hvad-er-autisme',
+    color: 'primary' as const,
+  },
+  {
+    title: 'Tilgængelighed',
+    description: 'Design­principper og vejledninger til neurodivergent-venlige digitale oplevelser.',
+    icon: '♿',
+    href: '/tilgaengelighed',
+    color: 'teal' as const,
+  },
+  {
+    title: 'Ressourcer',
+    description: 'Et bibliotek med guides, artikler og værktøjer til autistiske personer og pårørende.',
+    icon: '📚',
+    href: '/ressourcer',
+    color: 'secondary' as const,
+  },
+  {
+    title: 'Uddannelse',
+    description: 'Materiale og vejledninger til lærere og pædagoger om inklusion i klasseværelset.',
+    icon: '🏫',
+    href: '/uddannelse',
+    color: 'amber' as const,
+  },
+];
+
+const featuredResources = [
+  {
+    title: 'Introduktion til Autismespektret',
+    description: 'En grundlæggende guide til at forstå, hvad autisme er, og hvordan spektret ser ud i praksis.',
+    category: 'Grundviden',
+    icon: '🧩',
+    href: '/hvad-er-autisme',
+    tags: ['Autisme', 'Grundviden', 'Spektret'],
+    featured: true,
+  },
+  {
+    title: 'Sansebehandling og Autisme',
+    description: 'Lær om sensorisk overbelastning og hvordan man skaber rolige, autisme-venlige miljøer.',
+    category: 'Sensorik',
+    icon: '🌊',
+    href: '/ressourcer',
+    tags: ['Sensorik', 'Miljø'],
+  },
+  {
+    title: 'Kommunikationsstrategier',
+    description: 'Praktiske strategier til at kommunikere tydeligt og inkluderende med autistiske personer.',
+    category: 'Kommunikation',
+    icon: '💬',
+    href: '/ressourcer',
+    tags: ['Kommunikation', 'Strategier'],
+  },
+  {
+    title: 'Klasseværelset for Alle',
+    description: 'Vejledning til lærere om tilpasning og inklusion i folkeskolen og gymnasiet.',
+    category: 'Uddannelse',
+    categoryColor: 'var(--color-secondary)',
+    icon: '🏫',
+    href: '/uddannelse',
+    tags: ['Lærere', 'Inklusion'],
+  },
+];
+
+const stats = [
+  { value: '1 ud af 60', label: 'børn i Danmark er autistiske' },
+  { value: '700.000+', label: 'danskere er neurodivergente' },
+  { value: 'WCAG 2.2', label: 'tilgængeligheds­standard' },
+  { value: 'Gratis', label: 'åben og fri information' },
+];
+---
+
+<Layout
+  title="AutismeGuiden – Din digitale guide til autisme"
+  description="AutismeGuiden er en gratis, tilgængelig platform med information om autisme for autistiske personer, pårørende, lærere og fagfolk."
+>
+
+  <!-- Hero -->
+  <Hero
+    badge="Gratis og tilgængelig for alle"
+    title="Din guide til autisme"
+    description="AutismeGuiden giver klar, pålidelig og neurodivergent-venlig information om autisme — til autistiske personer, pårørende, lærere og fagfolk."
+    primaryCTA={{ label: 'Udforsk guiden', href: '/hvad-er-autisme' }}
+    secondaryCTA={{ label: 'Se ressourcer', href: '/ressourcer' }}
+  />
+
+  <!-- Stats bar -->
+  <section class="py-10 border-y" style="border-color: var(--color-border); background: var(--color-surface);" aria-label="Nøgletal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <dl class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {stats.map(({ value, label }) => (
+          <div class="text-center">
+            <dt class="text-2xl sm:text-3xl font-bold mb-1" style="color: var(--color-primary);">{value}</dt>
+            <dd class="text-sm" style="color: var(--color-text-muted);">{label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Mission statement -->
+  <section class="section" aria-labelledby="mission-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color: var(--color-primary);">Vores mission</p>
+        <h2 id="mission-heading" class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-6" style="color: var(--color-text);">
+          Information der møder dig, hvor du er
+        </h2>
+        <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text-muted);">
+          Vi tror på, at alle fortjener adgang til præcis, fordomsfri og letforståelig information om autisme. AutismeGuiden er skabt med tilgængelighed i centrum — for autistiske brugere, pårørende og fagfolk.
+        </p>
+        <div class="highlight-box text-left rounded-xl">
+          <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
+            <strong>"Autisme er ikke noget, man har — det er en del af, hvem man er. Vores platform respekterer neurodiversitet og fremhæver styrker."</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick navigation cards -->
+  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="nav-cards-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Find det du søger"
+        title="Hvad kan vi hjælpe dig med?"
+        description="AutismeGuiden er opdelt i fire hovedområder, så du hurtigt finder den information, du har brug for."
+        id="nav-cards-heading"
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        {quickNavCards.map((card) => (
+          <FeatureCard
+            title={card.title}
+            description={card.description}
+            icon={card.icon}
+            href={card.href}
+            color={card.color}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured resources -->
+  <section class="section" aria-labelledby="resources-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <SectionHeader
+          eyebrow="Populære ressourcer"
+          title="Udvalgte guides og artikler"
+          description="Start her — vores mest besøgte indhold om autisme."
+          centered={false}
+          id="resources-heading"
+        />
+        <a
+          href="/ressourcer"
+          class="flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3"
+          style="color: var(--color-primary);"
+          aria-label="Se alle ressourcer"
+        >
+          Se alle ressourcer
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        {featuredResources.map((resource) => (
+          <ResourceCard {...resource} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Design principles teaser -->
+  <section
+    class="section"
+    style="background: var(--color-primary); background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);"
+    aria-labelledby="design-teaser-heading"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center text-white">
+        <p class="text-sm font-semibold uppercase tracking-widest mb-4 opacity-80">Design med omtanke</p>
+        <h2 id="design-teaser-heading" class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-6">
+          Bygget til neurodivergente brugere
+        </h2>
+        <p class="text-lg leading-relaxed mb-8 opacity-90">
+          Denne hjemmeside er designet efter WCAG 2.2-standarderne med mørkt tema, justerbar skriftstørrelse og reduceret bevægelse — fordi alle fortjener en god oplevelse.
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a
+            href="/tilgaengelighed"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 active:scale-[0.98]"
+            style="background: white; color: var(--color-primary);"
+          >
+            Læs om vores design­principper
+          </a>
+          <button
+            id="open-toolbar-hero"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-80 border-2 border-white border-opacity-50"
+            style="color: white; background: rgba(255,255,255,0.1);"
+            aria-label="Åbn tilgængeligheds­indstillinger"
+          >
+            Prøv tilgængeligheds­funktioner
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target audiences -->
+  <section class="section" aria-labelledby="audiences-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="For alle"
+        title="Guiden er for dig"
+        description="Uanset hvem du er, har vi indhold der passer til dig."
+        id="audiences-heading"
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { icon: '🧩', title: 'Autistiske personer', desc: 'Information om dine rettigheder, ressourcer og støtte.', href: '/ressourcer' },
+          { icon: '👨‍👩‍👧', title: 'Pårørende', desc: 'Forstå og støt dine nærmeste på den bedste måde.', href: '/hvad-er-autisme' },
+          { icon: '🏫', title: 'Lærere', desc: 'Skab et inkluderende læringsmiljø for alle elever.', href: '/uddannelse' },
+          { icon: '🏥', title: 'Fagfolk', desc: 'Faglig viden, vejledninger og evidensbaserede ressourcer.', href: '/ressourcer' },
+        ].map(({ icon, title, desc, href }) => (
+          <a
+            href={href}
+            class="card card-interactive flex flex-col items-center text-center p-6 group"
+            aria-label={`${title} – ${desc}`}
+          >
+            <div
+              class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-4 transition-transform group-hover:scale-110"
+              style="background: var(--color-primary-50);"
+              aria-hidden="true"
+            >
+              {icon}
+            </div>
+            <h3 class="font-semibold text-base mb-2" style="color: var(--color-text);">{title}</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA section -->
+  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="cta-heading">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 id="cta-heading" class="text-3xl sm:text-4xl font-bold tracking-tight mb-4" style="color: var(--color-text);">
+        Har du spørgsmål?
+      </h2>
+      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-muted);">
+        Vi er her for at hjælpe. Kontakt os, eller browse vores samlede ressourcebibliotek.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a
+          href="/om-os#kontakt"
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
+          style="background: var(--color-primary); color: white;"
+        >
+          Kontakt os
+        </a>
+        <a
+          href="/ressourcer"
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base transition-all hover:opacity-80 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
+          style="background: var(--color-surface); color: var(--color-text); border: 2px solid var(--color-border);"
+        >
+          Ressourcebibliotek
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.getElementById('open-toolbar-hero')?.addEventListener('click', () => {
+    const toolbar = document.getElementById('accessibility-toolbar');
+    const backdrop = document.getElementById('toolbar-backdrop');
+    if (toolbar && backdrop) {
+      toolbar.classList.remove('translate-x-full');
+      toolbar.classList.add('translate-x-0');
+      toolbar.setAttribute('aria-hidden', 'false');
+      backdrop.classList.remove('hidden');
+      document.getElementById('toolbar-close')?.focus();
+    }
+  });
+</script>

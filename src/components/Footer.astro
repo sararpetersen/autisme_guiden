@@ -1,0 +1,169 @@
+---
+const footerLinks = {
+  guide: [
+    { href: '/hvad-er-autisme', label: 'Hvad er Autisme?' },
+    { href: '/tilgaengelighed', label: 'Tilgængelighed' },
+    { href: '/ressourcer', label: 'Ressourcer' },
+    { href: '/uddannelse', label: 'Uddannelse' },
+  ],
+  support: [
+    { href: '/om-os', label: 'Om Os' },
+    { href: '/om-os#kontakt', label: 'Kontakt' },
+    { href: '/om-os#vaerdier', label: 'Vores Værdier' },
+  ],
+  accessibility: [
+    { href: '/tilgaengelighed', label: 'Tilgængeligheds­erklæring' },
+    { href: '/tilgaengelighed#wcag', label: 'WCAG 2.2' },
+    { href: '/tilgaengelighed#design', label: 'Design­principper' },
+  ],
+};
+---
+
+<footer
+  role="contentinfo"
+  style="background: var(--color-surface); border-color: var(--color-border);"
+  class="border-t mt-20"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Main footer content -->
+    <div class="py-12 lg:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+
+      <!-- Brand column -->
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-3 mb-4 group" aria-label="AutismeGuiden forsiden">
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style="background: var(--color-primary);"
+            aria-hidden="true"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L3 7v10l9 5 9-5V7L12 2z" fill="white" opacity="0.9"/>
+              <path d="M12 7a3 3 0 100 6 3 3 0 000-6z" fill="white"/>
+            </svg>
+          </div>
+          <span class="font-bold text-lg" style="color: var(--color-primary);">AutismeGuiden</span>
+        </a>
+        <p class="text-sm leading-relaxed mb-6" style="color: var(--color-text-muted);">
+          En åben, tilgængelig platform med information om autisme for alle — autistiske personer, pårørende, fagfolk og lærere.
+        </p>
+        <!-- Social / trust badges -->
+        <div class="flex items-center gap-2">
+          <span
+            class="tag text-xs font-medium"
+            style="background: var(--color-primary-50); color: var(--color-primary);"
+          >
+            WCAG 2.2
+          </span>
+          <span
+            class="tag text-xs font-medium"
+            style="background: var(--color-secondary-50); color: var(--color-secondary-dark);"
+          >
+            Gratis
+          </span>
+        </div>
+      </div>
+
+      <!-- Guide links -->
+      <div>
+        <h3 class="font-semibold text-sm uppercase tracking-wider mb-4" style="color: var(--color-text-subtle);">
+          Guiden
+        </h3>
+        <ul class="space-y-2.5" role="list">
+          {footerLinks.guide.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2"
+                style="color: var(--color-text-muted);"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Support links -->
+      <div>
+        <h3 class="font-semibold text-sm uppercase tracking-wider mb-4" style="color: var(--color-text-subtle);">
+          Om platformen
+        </h3>
+        <ul class="space-y-2.5" role="list">
+          {footerLinks.support.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2"
+                style="color: var(--color-text-muted);"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Accessibility links -->
+      <div>
+        <h3 class="font-semibold text-sm uppercase tracking-wider mb-4" style="color: var(--color-text-subtle);">
+          Tilgængelighed
+        </h3>
+        <ul class="space-y-2.5" role="list">
+          {footerLinks.accessibility.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2"
+                style="color: var(--color-text-muted);"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Accessibility toolbar shortcut -->
+        <div class="mt-6 p-3 rounded-lg" style="background: var(--color-surface-2); border: 1px solid var(--color-border);">
+          <button
+            id="open-toolbar-footer"
+            class="flex items-center gap-2 text-xs font-medium w-full transition-all hover:opacity-80"
+            style="color: var(--color-primary);"
+            aria-label="Åbn tilgængeligheds­værktøjer"
+          >
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4M12 16h.01"/>
+            </svg>
+            Tilgængeligheds­værktøjer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div
+      class="py-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3"
+      style="border-color: var(--color-border);"
+    >
+      <p class="text-xs" style="color: var(--color-text-subtle);">
+        &copy; {new Date().getFullYear()} AutismeGuiden. Indhold udgivet under åben licens.
+      </p>
+      <p class="text-xs" style="color: var(--color-text-subtle);">
+        Bygget med tilgængelighed i fokus &middot; Dansk
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('open-toolbar-footer')?.addEventListener('click', () => {
+    const toolbar = document.getElementById('accessibility-toolbar');
+    if (toolbar) {
+      toolbar.classList.remove('translate-x-full');
+      toolbar.classList.add('translate-x-0');
+      toolbar.setAttribute('aria-hidden', 'false');
+      document.getElementById('toolbar-close')?.focus();
+    }
+  });
+</script>
