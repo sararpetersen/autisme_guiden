@@ -32,41 +32,14 @@ const values = [
   {
     icon: '💙',
     title: 'Respekt og værdighed',
-    desc: 'Vi bruger identitetspersonorienteret og neutrosprog (autistisk person, ikke "person med autisme"), medmindre brugeren foretrækker andet.',
-  },
-];
-
-const team = [
-  {
-    name: 'Platform­team',
-    role: 'Design & Udvikling',
-    desc: 'Ansvarlige for det tekniske fundament, tilgængelighed og brugeroplevelse.',
-    icon: '💻',
-  },
-  {
-    name: 'Indholdsredaktion',
-    role: 'Forskning & Redaktion',
-    desc: 'Sikrer at alt indhold er evidensbaseret, præcist og fordomsfrit.',
-    icon: '✍️',
-  },
-  {
-    name: 'Fagligt netværk',
-    role: 'Psykologer, lærere, fagfolk',
-    desc: 'Eksternt panel der kvalitetssikrer vores indhold og vejledninger.',
-    icon: '🏥',
-  },
-  {
-    name: 'Autistiske stemmer',
-    role: 'Lived experience',
-    desc: 'Autistiske medforfattere og rådgivere der sikrer platformens autenticitet.',
-    icon: '🧩',
+    desc: 'Vi bruger identitetsforankret sprog og respekterer, at autistiske selv definerer, hvordan de ønsker at blive omtalt.',
   },
 ];
 ---
 
 <Layout
   title="Om Os – AutismeGuiden"
-  description="Lær om AutismeGuiden, vores mission, værdier og teamet bag platformen."
+  description="Lær om AutismeGuiden, idéen bag platformen, problemstillingen og Sara Petersen, grundlæggeren af konceptet."
 >
   <Hero
     badge="Om projektet"
@@ -76,13 +49,159 @@ const team = [
     size="medium"
   />
 
+  <!-- Founder personal story -->
+  <section
+    class="section"
+    style="background: var(--color-surface-2);"
+    aria-labelledby="founder-heading"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+        <!-- Left: identity card -->
+        <div class="lg:sticky lg:top-28">
+          <p
+            class="text-xs font-bold uppercase tracking-widest mb-4"
+            style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
+          >
+            Grundlæggeren
+          </p>
+          <div class="card p-6 sm:p-8">
+            <!-- Avatar placeholder with brand colors -->
+            <div
+              class="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl mb-5"
+              style="background: var(--color-primary-50);"
+              aria-hidden="true"
+            >
+              🧩
+            </div>
+
+            <h2
+              id="founder-heading"
+              class="font-bold text-2xl mb-1"
+              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+            >
+              Sara Petersen
+            </h2>
+            <p
+              class="text-sm font-semibold mb-4"
+              style="color: var(--color-primary); font-family: var(--font-body);"
+            >
+              Grundlægger &amp; konceptudvikler
+            </p>
+
+            <div class="space-y-2 mb-6">
+              {[
+                'Multimediedesign-studerende',
+                'Sendiagnosticeret autistisk',
+                'Passion for inkluderende design',
+                'WCAG &amp; tilgængeligheds­fortaler',
+              ].map((item) => (
+                <div class="flex items-center gap-2.5">
+                  <div
+                    class="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style="background: var(--color-accent);"
+                    aria-hidden="true"
+                  ></div>
+                  <span class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);" set:html={item}></span>
+                </div>
+              ))}
+            </div>
+
+            <div
+              class="p-4 rounded-xl"
+              style="background: var(--color-primary-50); border-left: 3px solid var(--color-primary);"
+            >
+              <p class="text-xs leading-relaxed font-reading" style="color: var(--color-text);">
+                "God design handler ikke kun om æstetik — det handler om at fjerne barrierer og sikre, at alle er med."
+              </p>
+              <p class="text-xs mt-2 font-semibold" style="color: var(--color-primary); font-family: var(--font-body);">— Sara Petersen</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: story sections -->
+        <div class="space-y-10">
+
+          <!-- Baggrund -->
+          <div>
+            <h3
+              class="font-bold text-xl mb-4"
+              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+            >
+              Baggrund
+            </h3>
+            <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
+              <p>
+                Jeg har altid elsket at være kreativ. Lige fra en tidlig alder har jeg nydt at tegne, male og lave ting med hænderne — alt, der handler om kreativitet. Jeg vidste dybt inden i mig, at jeg en dag ville gøre det til en karriere.
+              </p>
+              <p>
+                Da jeg blev ældre, begyndte jeg dog også at interessere mig for teknologi. Ønsket om en karriere, der kombinerede begge passioner, var svær at finde. Denne indre konflikt holdt mig søgende — indtil jeg opdagede Multimediedesign og endelig fandt det svar, jeg ledte efter.
+              </p>
+            </div>
+          </div>
+
+          <hr style="border-color: var(--color-border);" />
+
+          <!-- Inspiration -->
+          <div>
+            <h3
+              class="font-bold text-xl mb-4"
+              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+            >
+              Inspiration
+            </h3>
+            <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
+              <p>
+                Som én der er sendiagnosticeret med autisme og nyligt diagnosticeret med ADD, ved jeg, hvordan det føles at navigere i en verden, der ikke altid er tilgængelig for alle. Denne personlige erfaring har formet mit syn på, hvad digital design kan og bør gøre.
+              </p>
+              <p>
+                Jeg er inspireret af mulighederne i inkluderende design — at skabe rum, hvor alle kan trives. Uanset om det handler om gennemtænkte farvevalg, tydelig navigation eller semantisk HTML, finder jeg mening i at løse tilgængelighedsudfordringer og se, hvordan små designbeslutninger kan have stor betydning for rigtige mennesker.
+              </p>
+            </div>
+          </div>
+
+          <hr style="border-color: var(--color-border);" />
+
+          <!-- Mål -->
+          <div>
+            <h3
+              class="font-bold text-xl mb-4"
+              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+            >
+              Mål
+            </h3>
+            <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
+              <p>
+                Mit mål er at skabe digitale oplevelser, der er tilgængelige og inkluderende for alle. Jeg tror på, at godt design ikke kun handler om æstetik — det handler om at fjerne barrierer og sikre, at alle brugere er med.
+              </p>
+              <p>
+                Gennem mit arbejde bestræber jeg mig på at kombinere kreativitet med formål, altid med tilgængelighed og brugeroplevelse i fokus. Jeg ønsker at bruge min passion for inkluderende design til at gøre en reel forskel i, hvordan mennesker interagerer med digitale produkter.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Mission -->
   <section class="section" aria-labelledby="mission-section-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-primary);">Vores formål</p>
-          <h2 id="mission-section-heading" class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-6" style="color: var(--color-text);">
+          <p
+            class="text-xs font-bold uppercase tracking-widest mb-3"
+            style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
+          >
+            Vores formål
+          </p>
+          <h2
+            id="mission-section-heading"
+            class="font-bold text-3xl sm:text-4xl tracking-wide leading-tight mb-6"
+            style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+          >
             Information der møder dig, som du er
           </h2>
           <div class="space-y-4 prose-reading" style="color: var(--color-text-muted);">
@@ -93,24 +212,24 @@ const team = [
               Vi ønskede at skabe noget andet — en platform der sætter autistiske mennesker i centrum, bruger fordomsfrit sprog og prioriterer tilgængelighed frem for alt.
             </p>
             <p>
-              Vi tror på, at god information kan ændre liv. Ikke ved at "kurere" autisme — for det er der intet at kurere — men ved at hjælpe autistiske mennesker med at forstå sig selv bedre, og hjælpe deres omgivelser med at støtte dem bedre.
+              Vi tror på, at god information kan ændre liv — ikke ved at "kurere" autisme, men ved at hjælpe autistiske mennesker med at forstå sig selv bedre, og hjælpe deres omgivelser med at støtte dem bedre.
             </p>
           </div>
         </div>
 
         <div class="space-y-4">
           <blockquote
-            class="p-6 rounded-2xl border-l-4"
-            style="background: var(--color-primary-50); border-color: var(--color-primary);"
+            class="p-6 rounded-2xl"
+            style="background: var(--color-primary-50); border-left: 4px solid var(--color-primary);"
           >
-            <p class="text-lg font-semibold leading-snug mb-4" style="color: var(--color-text);">
+            <p class="text-lg font-semibold leading-snug mb-4" style="color: var(--color-text); font-family: var(--font-display);">
               "Autisme er ikke noget, man har — det er en del af, hvem man er."
             </p>
-            <footer class="text-sm" style="color: var(--color-primary);">— AutismeGuidens fundament</footer>
+            <footer class="text-sm font-bold" style="color: var(--color-primary); font-family: var(--font-body);">— AutismeGuidens fundament</footer>
           </blockquote>
 
           <div class="card p-5">
-            <h3 class="font-semibold text-base mb-3" style="color: var(--color-text);">Vores principper</h3>
+            <h3 class="font-bold text-base mb-3" style="font-family: var(--font-display); color: var(--color-text);">Vores principper</h3>
             <ul class="space-y-2.5" role="list">
               {[
                 'Neurodiversitet er ikke en fejl — det er mangfoldighed',
@@ -120,10 +239,10 @@ const team = [
                 'Gratis information er demokratisk information',
               ].map((p) => (
                 <li class="flex items-start gap-2.5">
-                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: var(--color-secondary);" aria-hidden="true">
+                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: var(--color-primary);" aria-hidden="true">
                     <path d="M20 6L9 17l-5-5"/>
                   </svg>
-                  <span class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{p}</span>
+                  <span class="text-sm leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">{p}</span>
                 </li>
               ))}
             </ul>
@@ -152,44 +271,16 @@ const team = [
             >
               {icon}
             </div>
-            <h3 class="font-semibold text-base mb-2" style="color: var(--color-text);">{title}</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+            <h3 class="font-bold text-base mb-2" style="font-family: var(--font-display); color: var(--color-text);">{title}</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">{desc}</p>
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Team -->
-  <section class="section" aria-labelledby="team-heading">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeader
-        eyebrow="Teamet"
-        title="Bag platformen"
-        description="AutismeGuiden drives af et tværfagligt team med passion for tilgængelighed og neurodiversitet."
-        id="team-heading"
-      />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {team.map(({ name, role, desc, icon }) => (
-          <div class="card p-6 text-center">
-            <div
-              class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"
-              style="background: var(--color-primary-50);"
-              aria-hidden="true"
-            >
-              {icon}
-            </div>
-            <h3 class="font-semibold text-base mb-1" style="color: var(--color-text);">{name}</h3>
-            <p class="text-xs font-semibold uppercase tracking-wide mb-3" style="color: var(--color-primary);">{role}</p>
-            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Accessibility statement -->
-  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="access-statement-heading">
+  <section class="section" aria-labelledby="access-statement-heading">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="Tilgængeligheds­erklæring"
@@ -197,7 +288,7 @@ const team = [
         description="Vi stræber efter at overholde WCAG 2.2 niveau AA. Her er vores status og kendte begrænsninger."
         id="access-statement-heading"
       />
-      <div class="card p-6 space-y-4">
+      <div class="card p-6 space-y-1">
         {[
           { label: 'Tastaturnavigation', status: 'Opfyldt', ok: true },
           { label: 'Skærmlæser­kompatibilitet', status: 'Opfyldt', ok: true },
@@ -209,78 +300,53 @@ const team = [
           { label: 'WCAG 2.2 AAA', status: 'Delvist opfyldt', ok: false },
         ].map(({ label, status, ok }) => (
           <div class="flex items-center justify-between py-2.5 border-b last:border-0" style="border-color: var(--color-border);">
-            <span class="text-sm font-medium" style="color: var(--color-text);">{label}</span>
+            <span class="text-sm font-medium" style="color: var(--color-text); font-family: var(--font-body);">{label}</span>
             <span
-              class="tag text-xs font-semibold"
+              class="tag text-xs"
               style={ok
-                ? 'background: var(--color-secondary-50); color: var(--color-secondary-dark);'
-                : 'background: #FEF3C7; color: #B45309;'}
+                ? 'background: var(--color-primary-50); color: var(--color-primary);'
+                : 'background: var(--color-accent-50); color: var(--color-accent-dark);'}
             >
               {status}
             </span>
           </div>
         ))}
       </div>
-      <p class="mt-4 text-sm" style="color: var(--color-text-muted);">
+      <p class="mt-4 text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">
         Sidst opdateret: {new Date().toLocaleDateString('da-DK', { year: 'numeric', month: 'long' })}. Opdages der tilgængeligheds­problemer, hører vi gerne fra dig.
       </p>
     </div>
   </section>
 
   <!-- Contact form -->
-  <section id="kontakt" class="section" aria-labelledby="contact-heading">
+  <section id="kontakt" class="section" style="background: var(--color-surface-2);" aria-labelledby="contact-heading">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="Kontakt"
         title="Skriv til os"
-        description="Vi svarer inden for 3-5 hverdage. For tidsfølsomme henvendelser, angiv det i emnet."
+        description="Vi svarer inden for 3–5 hverdage. For tidsfølsomme henvendelser, angiv det i emnet."
         id="contact-heading"
       />
 
       <div class="card p-6 sm:p-8">
-        <form
-          id="contact-form"
-          class="space-y-5"
-          aria-label="Kontaktformular"
-          novalidate
-        >
+        <form id="contact-form" class="space-y-5" aria-label="Kontaktformular" novalidate>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="name" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
-                Navn <span aria-hidden="true" class="text-red-500">*</span>
+              <label for="name" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">
+                Navn <span aria-hidden="true" style="color: #E05A5A;">*</span>
               </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                class="w-full px-4 py-3 text-sm"
-                placeholder="Dit navn"
-                required
-                autocomplete="name"
-                aria-required="true"
-              />
+              <input type="text" id="name" name="name" class="w-full px-4 py-3 text-sm" placeholder="Dit navn" required autocomplete="name" aria-required="true" />
             </div>
             <div>
-              <label for="email" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
-                E-mail <span aria-hidden="true" class="text-red-500">*</span>
+              <label for="email" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">
+                E-mail <span aria-hidden="true" style="color: #E05A5A;">*</span>
               </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="w-full px-4 py-3 text-sm"
-                placeholder="din@email.dk"
-                required
-                autocomplete="email"
-                aria-required="true"
-              />
+              <input type="email" id="email" name="email" class="w-full px-4 py-3 text-sm" placeholder="din@email.dk" required autocomplete="email" aria-required="true" />
             </div>
           </div>
 
           <div>
-            <label for="subject" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
-              Emne
-            </label>
+            <label for="subject" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">Emne</label>
             <select id="subject" name="subject" class="w-full px-4 py-3 text-sm">
               <option value="">Vælg et emne...</option>
               <option value="spørgsmål">Generelt spørgsmål</option>
@@ -293,61 +359,38 @@ const team = [
           </div>
 
           <div>
-            <label for="message" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text);">
-              Besked <span aria-hidden="true" class="text-red-500">*</span>
+            <label for="message" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">
+              Besked <span aria-hidden="true" style="color: #E05A5A;">*</span>
             </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={6}
-              class="w-full px-4 py-3 text-sm resize-y"
-              placeholder="Skriv din besked her..."
-              required
-              aria-required="true"
-            ></textarea>
+            <textarea id="message" name="message" rows={6} class="w-full px-4 py-3 text-sm resize-y" placeholder="Skriv din besked her..." required aria-required="true"></textarea>
           </div>
 
-          <!-- Privacy note -->
           <div class="flex items-start gap-3 p-4 rounded-xl" style="background: var(--color-surface-2);">
             <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--color-primary);" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
-            <p class="text-xs leading-relaxed" style="color: var(--color-text-muted);">
+            <p class="text-xs leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">
               Dine oplysninger bruges udelukkende til at besvare din henvendelse og slettes efter 30 dage. Vi deler aldrig dine data med tredjepart.
             </p>
           </div>
 
-          <!-- Success message (hidden by default) -->
-          <div
-            id="form-success"
-            class="hidden p-4 rounded-xl"
-            style="background: var(--color-secondary-50); border: 1px solid var(--color-secondary-light);"
-            role="alert"
-            aria-live="polite"
-          >
-            <p class="text-sm font-semibold" style="color: var(--color-secondary-dark);">
-              ✓ Tak for din besked! Vi vender tilbage inden for 3-5 hverdage.
+          <div id="form-success" class="hidden p-4 rounded-xl" style="background: var(--color-primary-50); border: 1px solid var(--color-primary-100);" role="alert" aria-live="polite">
+            <p class="text-sm font-semibold" style="color: var(--color-primary-dark); font-family: var(--font-body);">
+              ✓ Tak for din besked! Vi vender tilbage inden for 3–5 hverdage.
             </p>
           </div>
 
-          <!-- Error message (hidden by default) -->
-          <div
-            id="form-error"
-            class="hidden p-4 rounded-xl"
-            style="background: #FFF1F2; border: 1px solid #FECDD3;"
-            role="alert"
-            aria-live="polite"
-          >
-            <p class="text-sm font-semibold text-red-600">
+          <div id="form-error" class="hidden p-4 rounded-xl" style="background: #FFF4F4; border: 1px solid #FECDD3;" role="alert" aria-live="polite">
+            <p class="text-sm font-semibold" style="color: #B91C1C; font-family: var(--font-body);">
               Udfyld venligst alle påkrævede felter korrekt.
             </p>
           </div>
 
           <button
             type="submit"
-            class="w-full py-3.5 px-6 rounded-xl font-semibold text-sm transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2 disabled:opacity-50"
-            style="background: var(--color-primary); color: white;"
             id="submit-btn"
+            class="w-full py-3.5 px-6 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2 disabled:opacity-50"
+            style="background: var(--color-primary); color: white; font-family: var(--font-body); letter-spacing: 0.06em;"
           >
             Send besked
           </button>
@@ -367,13 +410,12 @@ const team = [
     e.preventDefault();
     errorMsg?.classList.add('hidden');
 
-    const name = (document.getElementById('name') as HTMLInputElement)?.value.trim();
-    const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
+    const name    = (document.getElementById('name')    as HTMLInputElement)?.value.trim();
+    const email   = (document.getElementById('email')   as HTMLInputElement)?.value.trim();
     const message = (document.getElementById('message') as HTMLTextAreaElement)?.value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!name || !email || !message || !emailRegex.test(email)) {
+    if (!name || !email || !message || !emailOk) {
       errorMsg?.classList.remove('hidden');
       return;
     }
@@ -381,7 +423,6 @@ const team = [
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sender...';
 
-    // Simulate submission (replace with real endpoint)
     await new Promise((r) => setTimeout(r, 1200));
 
     form.reset();
