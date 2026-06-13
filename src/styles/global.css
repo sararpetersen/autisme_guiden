@@ -3,9 +3,6 @@
 /* =============================================
    FONTS
    ============================================= */
-@import "@fontsource/josefin-sans/400.css";
-@import "@fontsource/josefin-sans/600.css";
-@import "@fontsource/josefin-sans/700.css";
 @import "@fontsource/lato/400.css";
 @import "@fontsource/lato/700.css";
 @import "@fontsource/atkinson-hyperlegible/400.css";
@@ -18,126 +15,134 @@
    ============================================= */
 @theme {
   /* --- Teal brand palette --- */
-  --color-teal-50:  #F7FCFB;
-  --color-teal-100: #CFFBF4;
-  --color-teal-200: #9FF0EC;
-  --color-teal-300: #37CBCA;
-  --color-teal-400: #1CBCBF;
-  --color-teal-500: #1EABAE;
-  --color-teal-600: #1B898E;
-  --color-teal-700: #156B70;
+  --color-teal-50: #f7fcfb;
+  --color-teal-100: #cffbf4;
+  --color-teal-200: #9ff0ec;
+  --color-teal-300: #37cbca;
+  --color-teal-400: #1cbcbf;
+  --color-teal-500: #1eabae;
+  --color-teal-600: #1b898e;
+  --color-teal-700: #156b70;
   --color-teal-800: #165459;
-  --color-teal-900: #17464A;
-  --color-teal-950: #07272C;
+  --color-teal-900: #17464a;
+  --color-teal-950: #07272c;
 
   /* --- Amber / orange accent palette --- */
-  --color-amber-50:  #FFF8EB;
-  --color-amber-100: #FDEAC8;
-  --color-amber-200: #FBD244;
-  --color-amber-300: #F8BC29;
-  --color-amber-400: #F6A010;
-  --color-amber-500: #E08808;
-  --color-amber-600: #C46E06;
-  --color-amber-700: #9C5405;
-  --color-amber-800: #7A3F04;
-  --color-amber-900: #5C2E03;
+  --color-amber-50: #fff8eb;
+  --color-amber-100: #fdeac8;
+  --color-amber-200: #fbd244;
+  --color-amber-300: #f8bc29;
+  --color-amber-400: #f6a010;
+  --color-amber-500: #e08808;
+  --color-amber-600: #c46e06;
+  --color-amber-700: #9c5405;
+  --color-amber-800: #7a3f04;
+  --color-amber-900: #5c2e03;
 
   /* --- Neutral gray palette --- */
-  --color-gray-50:  #F8F8F8;
-  --color-gray-100: #EFEFEF;
-  --color-gray-200: #DCDCDC;
-  --color-gray-300: #BCBDBC;
+  --color-gray-50: #f8f8f8;
+  --color-gray-100: #efefef;
+  --color-gray-200: #dcdcdc;
+  --color-gray-300: #bcbdbc;
   --color-gray-400: #999999;
-  --color-gray-500: #7C7C7C;
+  --color-gray-500: #7c7c7c;
   --color-gray-600: #656565;
   --color-gray-700: #464848;
   --color-gray-800: #303030;
   --color-gray-900: #292929;
 
   /* --- Semantic color roles --- */
-  --color-primary:       #1EABAE;   /* teal-500 */
-  --color-primary-dark:  #17464A;   /* teal-900 */
-  --color-primary-deep:  #07272C;   /* teal-950 */
-  --color-primary-mid:   #156B70;   /* teal-700 */
-  --color-primary-light: #37CBCA;   /* teal-300 */
-  --color-primary-pale:  #9FF0EC;   /* teal-200 */
-  --color-primary-50:    #F7FCFB;   /* teal-50  */
-  --color-primary-100:   #CFFBF4;   /* teal-100 */
+  --color-primary: #1eabae; /* teal-500 */
+  --color-primary-dark: #17464a; /* teal-900 */
+  --color-primary-deep: #07272c; /* teal-950 */
+  --color-primary-mid: #156b70; /* teal-700 */
+  --color-primary-light: #37cbca; /* teal-300 */
+  --color-primary-pale: #9ff0ec; /* teal-200 */
+  --color-primary-50: #f7fcfb; /* teal-50  */
+  --color-primary-100: #cffbf4; /* teal-100 */
 
-  --color-accent:        #F6A010;   /* amber-400 */
-  --color-accent-dark:   #C46E06;   /* amber-600 */
-  --color-accent-light:  #F8BC29;   /* amber-300 */
-  --color-accent-50:     #FFF8EB;   /* amber-50  */
-  --color-accent-100:    #FDEAC8;   /* amber-100 */
+  --color-accent: #f6a010; /* amber-400 */
+  --color-accent-dark: #c46e06; /* amber-600 */
+  --color-accent-light: #f8bc29; /* amber-300 */
+  --color-accent-50: #fff8eb; /* amber-50  */
+  --color-accent-100: #fdeac8; /* amber-100 */
 
   /* Keep secondary alias pointing to accent for backwards compatibility */
-  --color-secondary:       #F6A010;
-  --color-secondary-dark:  #C46E06;
-  --color-secondary-light: #F8BC29;
-  --color-secondary-50:    #FFF8EB;
+  --color-secondary: #f6a010;
+  --color-secondary-dark: #c46e06;
+  --color-secondary-light: #f8bc29;
+  --color-secondary-50: #fff8eb;
 
-  --color-background: #F7FCFB;    /* teal-50 — warm, very light teal wash */
-  --color-surface:    #FFFFFF;
-  --color-surface-2:  #F0FAFA;    /* gentle teal-tinted surface */
+  --color-background: #f7fcfb; /* teal-50 — warm, very light teal wash */
+  --color-surface: #ffffff;
+  --color-surface-2: #f0fafa; /* gentle teal-tinted surface */
 
-  --color-text:        #07272C;   /* teal-950 — near-black with teal undertone */
-  --color-text-muted:  #17464A;   /* teal-900 */
-  --color-text-subtle: #1B898E;   /* teal-600 */
+  --color-text: #07272c; /* teal-950 — near-black with teal undertone */
+  --color-text-muted: #17464a; /* teal-900 */
+  --color-text-subtle: #1b898e; /* teal-600 */
 
-  --color-border:       #CFFBF4;  /* teal-100 */
-  --color-border-strong:#9FF0EC;  /* teal-200 */
+  --color-border: #cffbf4; /* teal-100 */
+  --color-border-strong: #9ff0ec; /* teal-200 */
 
   /* --- Typography --- */
   --font-display: "Josefin Sans", system-ui, sans-serif;
-  --font-body:    "Lato", system-ui, sans-serif;
+  --font-body: "Lato", system-ui, sans-serif;
   --font-reading: "Atkinson Hyperlegible", "Lato", system-ui, sans-serif;
-  --font-sans:    "Lato", system-ui, sans-serif;
+  --font-sans: "Lato", system-ui, sans-serif;
 
   /* --- Shape --- */
-  --radius-sm:  0.5rem;
-  --radius-md:  0.75rem;
-  --radius-lg:  1rem;
-  --radius-xl:  1.5rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
 
   /* --- Shadows --- */
-  --shadow-card:       0 1px 3px 0 rgb(7 39 44 / 0.06), 0 1px 2px -1px rgb(7 39 44 / 0.04);
-  --shadow-card-hover: 0 6px 20px 0 rgb(7 39 44 / 0.10), 0 2px 8px -2px rgb(7 39 44 / 0.07);
-  --shadow-elevated:   0 10px 40px 0 rgb(7 39 44 / 0.12), 0 4px 12px -4px rgb(7 39 44 / 0.08);
+  --shadow-card: 0 1px 3px 0 rgb(7 39 44 / 0.06), 0 1px 2px -1px rgb(7 39 44 / 0.04);
+  --shadow-card-hover: 0 6px 20px 0 rgb(7 39 44 / 0.1), 0 2px 8px -2px rgb(7 39 44 / 0.07);
+  --shadow-elevated: 0 10px 40px 0 rgb(7 39 44 / 0.12), 0 4px 12px -4px rgb(7 39 44 / 0.08);
 }
 
 /* =============================================
    DARK MODE OVERRIDES
    ============================================= */
 html[data-theme="dark"] {
-  --color-background: #07272C;
-  --color-surface:    #0F3A40;
-  --color-surface-2:  #17464A;
-  --color-text:       #CFFBF4;
-  --color-text-muted: #9FF0EC;
-  --color-text-subtle:#37CBCA;
-  --color-border:     #1B898E;
-  --color-border-strong: #156B70;
-  --color-primary-50:  #0F3A40;
-  --color-primary-100: #17464A;
-  --color-accent-50:   #3A1F00;
-  --color-accent-100:  #5C2E03;
-  --color-secondary-50:  #3A1F00;
-  --color-surface-2:   #17464A;
+  --color-background: #07272c;
+  --color-surface: #0f3a40;
+  --color-surface-2: #17464a;
+  --color-text: #cffbf4;
+  --color-text-muted: #9ff0ec;
+  --color-text-subtle: #37cbca;
+  --color-border: #1b898e;
+  --color-border-strong: #156b70;
+  --color-primary-50: #0f3a40;
+  --color-primary-100: #17464a;
+  --color-accent-50: #3a1f00;
+  --color-accent-100: #5c2e03;
+  --color-secondary-50: #3a1f00;
+  --color-surface-2: #17464a;
 }
 
 /* =============================================
    BASE STYLES
    ============================================= */
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
 }
 
-html[data-font-size="large"]  { font-size: 18px; }
-html[data-font-size="xlarge"] { font-size: 20px; }
+html[data-font-size="large"] {
+  font-size: 18px;
+}
+html[data-font-size="xlarge"] {
+  font-size: 20px;
+}
 
 body {
   font-family: var(--font-body);
@@ -166,14 +171,23 @@ html[data-reduced-motion="true"] *::after {
 /* =============================================
    TYPOGRAPHY — Josefin Sans headings
    ============================================= */
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .font-display {
   font-family: var(--font-display);
   letter-spacing: 0.02em;
 }
 
-.font-body    { font-family: var(--font-body); }
-.font-reading { font-family: var(--font-reading); }
+.font-body {
+  font-family: var(--font-body);
+}
+.font-reading {
+  font-family: var(--font-reading);
+}
 
 /* =============================================
    FOCUS & NAVIGATION
@@ -198,13 +212,22 @@ h1, h2, h3, h4, h5, h6,
   text-decoration: none;
   transition: top 0.2s ease;
 }
-.skip-link:focus { top: 0; }
+.skip-link:focus {
+  top: 0;
+}
 
 /* =============================================
    TRANSITIONS
    ============================================= */
-body, .card, nav, footer, [style*="--color"] {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+body,
+.card,
+nav,
+footer,
+[style*="--color"] {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* =============================================
@@ -215,7 +238,10 @@ body, .card, nav, footer, [style*="--color"] {
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .card:hover {
@@ -236,18 +262,17 @@ body, .card, nav, footer, [style*="--color"] {
 }
 
 @media (min-width: 768px) {
-  .section { padding-top: 6rem; padding-bottom: 6rem; }
+  .section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
 
 /* =============================================
    HERO GRADIENT — uses brand teal wash
    ============================================= */
 .bg-hero-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--color-teal-50) 0%,
-    var(--color-amber-50) 100%
-  );
+  background: linear-gradient(135deg, var(--color-teal-50) 0%, var(--color-amber-50) 100%);
 }
 
 /* =============================================
@@ -268,16 +293,22 @@ body, .card, nav, footer, [style*="--color"] {
 /* =============================================
    FORM ELEMENTS
    ============================================= */
-input, textarea, select {
+input,
+textarea,
+select {
   background: var(--color-surface);
   border: 1.5px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   color: var(--color-text);
   font-family: var(--font-body);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgb(30 171 174 / 0.18);
@@ -290,18 +321,25 @@ input:focus, textarea:focus, select:focus {
   font-family: var(--font-reading);
   line-height: 1.8;
 }
-.prose-reading p { margin-bottom: 1.25em; }
+.prose-reading p {
+  margin-bottom: 1.25em;
+}
 
 /* =============================================
    ACCORDION ANIMATION
    ============================================= */
 .accordion-content {
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
   max-height: 0;
   opacity: 0;
 }
-.accordion-content.open { max-height: 600px; opacity: 1; }
+.accordion-content.open {
+  max-height: 600px;
+  opacity: 1;
+}
 
 /* =============================================
    CALLOUT / HIGHLIGHT BOXES
@@ -315,16 +353,20 @@ input:focus, textarea:focus, select:focus {
 
 /* Myth / Fact boxes — use brand teal and amber */
 .myth-box {
-  border-left: 4px solid #E05A5A;
-  background: #FFF4F4;
+  border-left: 4px solid #e05a5a;
+  background: #fff4f4;
 }
 .fact-box {
   border-left: 4px solid var(--color-primary);
   background: var(--color-primary-50);
 }
 
-html[data-theme="dark"] .myth-box { background: #2D1010; }
-html[data-theme="dark"] .fact-box  { background: var(--color-primary-100); }
+html[data-theme="dark"] .myth-box {
+  background: #2d1010;
+}
+html[data-theme="dark"] .fact-box {
+  background: var(--color-primary-100);
+}
 
 /* =============================================
    ACCESSIBILITY TOOLBAR
@@ -338,13 +380,19 @@ html[data-theme="dark"] .fact-box  { background: var(--color-primary-100); }
 /* =============================================
    CUSTOM SCROLLBAR
    ============================================= */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--color-surface-2); }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-2);
+}
 ::-webkit-scrollbar-thumb {
   background: var(--color-border-strong);
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-primary-light); }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
 
 /* =============================================
    BUTTON — Brand button styles
@@ -356,7 +404,9 @@ html[data-theme="dark"] .fact-box  { background: var(--color-primary-100); }
   font-weight: 700;
   letter-spacing: 0.04em;
 }
-.btn-primary:hover { background: var(--color-primary-mid); }
+.btn-primary:hover {
+  background: var(--color-primary-mid);
+}
 
 .btn-accent {
   background: var(--color-accent);
@@ -365,7 +415,11 @@ html[data-theme="dark"] .fact-box  { background: var(--color-primary-100); }
   font-weight: 700;
   letter-spacing: 0.04em;
 }
-.btn-accent:hover { background: var(--color-accent-dark); }
+.btn-accent:hover {
+  background: var(--color-accent-dark);
+}
 
 /* Text balance */
-.text-balance { text-wrap: balance; }
+.text-balance {
+  text-wrap: balance;
+}

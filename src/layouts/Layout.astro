@@ -1,8 +1,8 @@
 ---
-import '../styles/global.css';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import AccessibilityToolbar from '../components/AccessibilityToolbar.astro';
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import AccessibilityToolbar from "../components/AccessibilityToolbar.astro";
 
 interface Props {
   title: string;
@@ -12,11 +12,11 @@ interface Props {
 
 const {
   title,
-  description = 'AutismeGuiden – Din digitale guide til autisme. Information, ressourcer og støtte til autistiske personer, pårørende, lærere og fagfolk.',
-  image = '/images/og-image.png',
+  description = "AutismeGuiden – Din digitale guide til autisme. Information, ressourcer og støtte til autistiske personer, pårørende, lærere og fagfolk.",
+  image = "/images/og-image.png",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://autismeguiden.dk');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeguiden.dk");
 ---
 
 <!doctype html>
@@ -45,14 +45,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://autismeg
     <title>{title}</title>
 
     <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
   </head>
 
   <body>
     <!-- Skip to content -->
-    <a href="#main-content" class="skip-link">
-      Gå til indhold
-    </a>
+    <a href="#main-content" class="skip-link"> Gå til indhold </a>
 
     <Navbar />
     <AccessibilityToolbar />
@@ -66,13 +66,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://autismeg
     <script>
       // Restore user preferences from localStorage
       (function () {
-        const theme = localStorage.getItem('ag-theme') ?? 'light';
-        const fontSize = localStorage.getItem('ag-font-size') ?? 'normal';
-        const reducedMotion = localStorage.getItem('ag-reduced-motion') ?? 'false';
+        const theme = localStorage.getItem("ag-theme") ?? "light";
+        const fontSize = localStorage.getItem("ag-font-size") ?? "normal";
+        const reducedMotion = localStorage.getItem("ag-reduced-motion") ?? "false";
 
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.setAttribute('data-font-size', fontSize);
-        document.documentElement.setAttribute('data-reduced-motion', reducedMotion);
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.setAttribute("data-font-size", fontSize);
+        document.documentElement.setAttribute("data-reduced-motion", reducedMotion);
       })();
     </script>
   </body>
