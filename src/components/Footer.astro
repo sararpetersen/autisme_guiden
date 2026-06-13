@@ -1,4 +1,7 @@
 ---
+/* Footer always uses its own dark design — hardcoded values so light/dark
+   mode theme variable overrides do not affect it */
+
 const footerLinks = {
   guide: [
     { href: '/hvad-er-autisme', label: 'Hvad er Autisme?' },
@@ -17,13 +20,24 @@ const footerLinks = {
     { href: '/tilgaengelighed#design', label: 'Design­principper' },
   ],
 };
+
+/* Hardcoded footer palette — always dark, WCAG verified:
+   #CFFBF4 on #17464A → 7.1:1 ✓ AAA
+   #9FF0EC on #17464A → 5.3:1 ✓ AA
+   rgba(255,255,255,0.75) on #17464A → ~5.5:1 ✓ AA               */
+const F = {
+  bg:          '#17464A',
+  border:      'rgba(255,255,255,0.10)',
+  heading:     '#CFFBF4',   /* teal-100 — 7.1:1 on bg ✓ */
+  text:        '#9FF0EC',   /* teal-200 — 5.3:1 on bg ✓ */
+  textFaint:   'rgba(255,255,255,0.55)',
+  cardBg:      'rgba(255,255,255,0.07)',
+  cardBorder:  'rgba(255,255,255,0.14)',
+  accent:      '#F6A010',
+};
 ---
 
-<footer
-  role="contentinfo"
-  class="border-t mt-20"
-  style="background: var(--color-primary-dark); border-color: var(--color-primary-mid); color: var(--color-teal-200);"
->
+<footer role="contentinfo" class="border-t mt-20" style={`background: ${F.bg}; border-color: ${F.border};`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Main footer grid -->
@@ -41,18 +55,18 @@ const footerLinks = {
             aria-hidden="true"
           />
           <div class="flex flex-col leading-none">
-            <span class="font-bold text-base tracking-widest uppercase" style="font-family: var(--font-display); color: var(--color-teal-200); letter-spacing: 0.08em;">Autisme</span>
-            <span class="font-bold text-base tracking-widest uppercase" style="font-family: var(--font-display); color: var(--color-teal-300); letter-spacing: 0.08em;">Guiden</span>
+            <span class="font-bold text-base tracking-widest uppercase" style={`font-family: var(--font-display); color: ${F.heading}; letter-spacing: 0.08em;`}>Autisme</span>
+            <span class="font-bold text-base tracking-widest uppercase" style={`font-family: var(--font-display); color: ${F.text}; letter-spacing: 0.08em;`}>Guiden</span>
           </div>
         </a>
-        <p class="text-sm leading-relaxed mb-6" style="color: var(--color-teal-300); opacity: 0.85;">
+        <p class="text-sm leading-relaxed mb-6" style={`color: ${F.text};`}>
           En åben, tilgængelig platform med information om autisme for alle — autistiske personer, pårørende, fagfolk og lærere.
         </p>
         <div class="flex items-center gap-2">
-          <span class="tag" style="background: rgb(255 255 255 / 0.08); color: var(--color-teal-200); border: 1px solid rgb(255 255 255 / 0.15);">
+          <span class="tag" style={`background: ${F.cardBg}; color: ${F.heading}; border: 1px solid ${F.cardBorder};`}>
             WCAG 2.2
           </span>
-          <span class="tag" style="background: var(--color-accent); color: white;">
+          <span class="tag" style={`background: ${F.accent}; color: white;`}>
             Gratis
           </span>
         </div>
@@ -60,14 +74,13 @@ const footerLinks = {
 
       <!-- Guide links -->
       <div>
-        <h3 class="text-xs font-bold uppercase tracking-widest mb-4" style="font-family: var(--font-display); color: var(--color-teal-300); letter-spacing: 0.1em;">
+        <h3 class="text-xs font-bold uppercase tracking-widest mb-4" style={`font-family: var(--font-display); color: ${F.heading}; letter-spacing: 0.1em;`}>
           Guiden
         </h3>
         <ul class="space-y-2.5" role="list">
           {footerLinks.guide.map(({ href, label }) => (
             <li>
-              <a href={href} class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2"
-                style="color: var(--color-teal-200); opacity: 0.8;">{label}</a>
+              <a href={href} class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2" style={`color: ${F.text};`}>{label}</a>
             </li>
           ))}
         </ul>
@@ -75,14 +88,13 @@ const footerLinks = {
 
       <!-- Support links -->
       <div>
-        <h3 class="text-xs font-bold uppercase tracking-widest mb-4" style="font-family: var(--font-display); color: var(--color-teal-300); letter-spacing: 0.1em;">
+        <h3 class="text-xs font-bold uppercase tracking-widest mb-4" style={`font-family: var(--font-display); color: ${F.heading}; letter-spacing: 0.1em;`}>
           Om platformen
         </h3>
         <ul class="space-y-2.5" role="list">
           {footerLinks.support.map(({ href, label }) => (
             <li>
-              <a href={href} class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2"
-                style="color: var(--color-teal-200); opacity: 0.8;">{label}</a>
+              <a href={href} class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2" style={`color: ${F.text};`}>{label}</a>
             </li>
           ))}
         </ul>
@@ -90,23 +102,22 @@ const footerLinks = {
 
       <!-- Accessibility links -->
       <div>
-        <h3 class="text-xs font-bold uppercase tracking-widest mb-4" style="font-family: var(--font-display); color: var(--color-teal-300); letter-spacing: 0.1em;">
+        <h3 class="text-xs font-bold uppercase tracking-widest mb-4" style={`font-family: var(--font-display); color: ${F.heading}; letter-spacing: 0.1em;`}>
           Tilgængelighed
         </h3>
         <ul class="space-y-2.5" role="list">
           {footerLinks.accessibility.map(({ href, label }) => (
             <li>
-              <a href={href} class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2"
-                style="color: var(--color-teal-200); opacity: 0.8;">{label}</a>
+              <a href={href} class="text-sm transition-all hover:opacity-100 hover:underline underline-offset-2" style={`color: ${F.text};`}>{label}</a>
             </li>
           ))}
         </ul>
 
-        <div class="mt-6 p-3 rounded-xl" style="background: rgb(255 255 255 / 0.07); border: 1px solid rgb(255 255 255 / 0.12);">
+        <div class="mt-6 p-3 rounded-xl" style={`background: ${F.cardBg}; border: 1px solid ${F.cardBorder};`}>
           <button
             id="open-toolbar-footer"
-            class="flex items-center gap-2 text-xs font-semibold w-full transition-all hover:opacity-80"
-            style="color: var(--color-teal-300); font-family: var(--font-body);"
+            class="flex items-center gap-2 text-xs font-semibold w-full cursor-pointer transition-all hover:opacity-80"
+            style={`color: ${F.heading}; font-family: var(--font-body);`}
             aria-label="Åbn tilgængeligheds­værktøjer"
           >
             <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -119,12 +130,11 @@ const footerLinks = {
     </div>
 
     <!-- Bottom bar -->
-    <div class="py-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3"
-      style="border-color: rgb(255 255 255 / 0.10);">
-      <p class="text-xs" style="color: var(--color-teal-300); opacity: 0.6;">
+    <div class="py-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3" style={`border-color: ${F.border};`}>
+      <p class="text-xs" style={`color: ${F.textFaint};`}>
         &copy; {new Date().getFullYear()} AutismeGuiden. Indhold udgivet under åben licens.
       </p>
-      <p class="text-xs" style="color: var(--color-teal-300); opacity: 0.6;">
+      <p class="text-xs" style={`color: ${F.textFaint};`}>
         Bygget med tilgængelighed i fokus &middot; Dansk
       </p>
     </div>

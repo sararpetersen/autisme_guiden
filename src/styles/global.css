@@ -129,9 +129,9 @@ html[data-theme="dark"] {
   --color-border:        #2E4A50;
   --color-border-strong: #5A8088;  /* 3.8:1 on surface — passes UI contrast */
 
-  /* Primary interactive teal */
+  /* Primary interactive teal — primary-dark intentionally NOT overridden
+     so it stays #17464A and keeps footer/blockquote backgrounds dark */
   --color-primary:       #2A9EA1;
-  --color-primary-dark:  #6BBDBF;
   --color-primary-light: #3AACAE;
   --color-primary-50:    #1A2D31;
   --color-primary-100:   #1E3A40;
@@ -226,6 +226,19 @@ h6,
 }
 .font-reading {
   font-family: var(--font-reading);
+}
+
+/* =============================================
+   CURSOR
+   ============================================= */
+button,
+[role="button"],
+[role="tab"],
+[role="switch"],
+label[for],
+summary,
+select {
+  cursor: pointer;
 }
 
 /* =============================================
