@@ -1,61 +1,60 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import SectionHeader from '../components/SectionHeader.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 
 const values = [
   {
-    icon: '🧩',
-    title: 'Neurodiversitet er en styrke',
-    desc: 'Vi anerkender og fejrer neurologisk mangfoldighed. Autisme er en naturlig del af menneskelig variation — ikke en fejl der skal rettes.',
+    icon: "🧩",
+    title: "Neurodiversitet er en styrke",
+    desc: "Vi anerkender og fejrer neurologisk mangfoldighed. Autisme er en naturlig del af menneskelig variation — ikke en fejl der skal rettes.",
   },
   {
-    icon: '🔍',
-    title: 'Evidensbaseret indhold',
-    desc: 'Alt vores indhold er baseret på aktuel forskning, ekspertudtalelser og erfaringer fra autistiske personer og deres familier.',
+    icon: "🔍",
+    title: "Evidensbaseret indhold",
+    desc: "Alt vores indhold er baseret på aktuel forskning, ekspertudtalelser og erfaringer fra autistiske personer og deres familier.",
   },
   {
-    icon: '🤝',
-    title: 'Inkluderende perspektiv',
-    desc: 'Vi skriver med og for autistiske mennesker, pårørende, lærere og fagfolk — aldrig kun om autistiske.',
+    icon: "🤝",
+    title: "Inkluderende perspektiv",
+    desc: "Vi skriver med og for autistiske mennesker, pårørende, lærere og fagfolk — aldrig kun om autistiske.",
   },
   {
-    icon: '🌍',
-    title: 'Gratis og åben adgang',
-    desc: 'Information om autisme skal være gratis og tilgængelig for alle. Ingen betalingsmure, ingen registreringer.',
+    icon: "🌍",
+    title: "Gratis og åben adgang",
+    desc: "Information om autisme skal være gratis og tilgængelig for alle. Ingen betalingsmure, ingen registreringer.",
   },
   {
-    icon: '♿',
-    title: 'Tilgængelighed først',
-    desc: 'Vi designer med tilgængelighed som fundament, ikke som eftertanke. WCAG 2.2 er minimumsstandarden.',
+    icon: "♿",
+    title: "Tilgængelighed først",
+    desc: "Vi designer med tilgængelighed som fundament, ikke som eftertanke. WCAG 2.2 er minimumsstandarden.",
   },
   {
-    icon: '💙',
-    title: 'Respekt og værdighed',
-    desc: 'Vi bruger identitetsforankret sprog og respekterer, at autistiske selv definerer, hvordan de ønsker at blive omtalt.',
+    icon: "💙",
+    title: "Respekt og værdighed",
+    desc: "Vi bruger identitetsforankret sprog og respekterer, at autistiske selv definerer, hvordan de ønsker at blive omtalt.",
   },
 ];
 ---
 
-<Layout
-  title="Om Os – AutismeGuiden"
-  description="Lær om AutismeGuiden, vores mission, værdier og Sara Petersen, der grundlagde platformen."
->
+<Layout title="Om Os – AutismeGuiden" description="Lær om AutismeGuiden, vores mission, værdier og Sara Petersen, der grundlagde platformen.">
   <Hero
     badge="Om projektet"
     title="En platform skabt med omsorg"
     description="AutismeGuiden er en dansk, non-kommerciel platform dedikeret til at gøre information om autisme mere tilgængelig, fordomsfri og brugbar for alle."
-    secondaryCTA={{ label: 'Kontakt os', href: '#kontakt' }}
+    secondaryCTA={{ label: "Kontakt os", href: "#kontakt" }}
     size="medium"
   />
-
 
   <!-- Mission -->
   <section class="section" aria-labelledby="mission-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div>
-          <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;">
+          <p
+            class="text-xs font-bold uppercase tracking-widest mb-3"
+            style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
+          >
             Vores formål
           </p>
           <h2
@@ -67,22 +66,23 @@ const values = [
           </h2>
           <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
             <p>
-              Der findes meget information om autisme på internettet — men det kan være svært at navigere i, og der er meget fejlinformation imellem. AutismeGuiden er skabt for at gøre det lettere.
+              Der findes meget information om autisme på internettet — men det kan være svært at navigere i, og der er meget fejlinformation imellem.
+              AutismeGuiden er skabt for at gøre det lettere.
             </p>
             <p>
-              Vi ønskede at skabe en platform der sætter autistiske mennesker i centrum, bruger fordomsfrit sprog og prioriterer tilgængelighed frem for alt andet — fordi alle fortjener information der er let at forstå og nem at finde.
+              Jeg ønskede at skabe en platform der sætter autistiske mennesker i centrum, bruger fordomsfrit sprog og prioriterer tilgængelighed frem
+              for alt andet — fordi alle fortjener information der er let at forstå og nem at finde.
             </p>
             <p>
-              Platformen er grundlagt af <strong>Sara Ringkow Petersen</strong>, færdiguddannet i Multimediedesign fra KEA og nu studerende på Digital Concept Development på Sjællands Erhvervsakademi. Som sendiagnosticeret autistisk ønskede hun at kombinere sin passion for inkluderende design med et reelt behov.
+              Platformen er grundlagt af <strong>Sara Ringkow Petersen</strong>, der er uddannet multimediedesigner fra KEA og lige p.t. læser Digital
+              Konceptudvikling på Zealand i Køge. Som én med sendiagnosticeret autisme og ADD, ønskede hun at kombinere sin passion for inkluderende
+              design med et reelt behov.
             </p>
           </div>
         </div>
 
         <div class="space-y-4">
-          <blockquote
-            class="p-6 rounded-2xl"
-            style="background: var(--color-primary-50); border-left: 4px solid var(--color-primary);"
-          >
+          <blockquote class="p-6 rounded-2xl" style="background: var(--color-primary-50); border-left: 4px solid var(--color-primary);">
             <p class="text-lg font-semibold leading-snug mb-4" style="color: var(--color-text); font-family: var(--font-display);">
               "Godt design handler ikke kun om æstetik — det handler om at fjerne barrierer og sikre, at alle er med."
             </p>
@@ -92,20 +92,32 @@ const values = [
           <div class="card p-5">
             <h3 class="font-bold text-base mb-3" style="font-family: var(--font-display); color: var(--color-text);">Vores principper</h3>
             <ul class="space-y-2.5" role="list">
-              {[
-                'Neurodiversitet er ikke en fejl — det er mangfoldighed',
-                'Autistiske stemmer er centrale, ikke perifere',
-                'Intet om os, uden os',
-                'Tilgængelighed er en grundrettighed',
-                'Gratis information er demokratisk information',
-              ].map((p) => (
-                <li class="flex items-start gap-2.5">
-                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: var(--color-primary);" aria-hidden="true">
-                    <path d="M20 6L9 17l-5-5"/>
-                  </svg>
-                  <span class="text-sm leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">{p}</span>
-                </li>
-              ))}
+              {
+                [
+                  "Neurodiversitet er ikke en fejl — det er mangfoldighed",
+                  "Autistiske stemmer er centrale, ikke perifere",
+                  "Intet om os, uden os",
+                  "Tilgængelighed er en grundrettighed",
+                  "Gratis information er demokratisk information",
+                ].map((p) => (
+                  <li class="flex items-start gap-2.5">
+                    <svg
+                      class="w-4 h-4 mt-0.5 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      style="color: var(--color-primary);"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                    <span class="text-sm leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">
+                      {p}
+                    </span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
@@ -123,15 +135,25 @@ const values = [
         id="values-heading"
       />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {values.map(({ icon, title, desc }) => (
-          <article class="card p-6">
-            <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl mb-4" style="background: var(--color-primary-50);" aria-hidden="true">
-              {icon}
-            </div>
-            <h3 class="font-bold text-base mb-2" style="font-family: var(--font-display); color: var(--color-text);">{title}</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">{desc}</p>
-          </article>
-        ))}
+        {
+          values.map(({ icon, title, desc }) => (
+            <article class="card p-6">
+              <div
+                class="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl mb-4"
+                style="background: var(--color-primary-50);"
+                aria-hidden="true"
+              >
+                {icon}
+              </div>
+              <h3 class="font-bold text-base mb-2" style="font-family: var(--font-display); color: var(--color-text);">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">
+                {desc}
+              </p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -146,31 +168,38 @@ const values = [
         id="access-statement-heading"
       />
       <div class="card p-6">
-        {[
-          { label: 'Tastaturnavigation',         status: 'Opfyldt',                    ok: true },
-          { label: 'Skærmlæser­kompatibilitet',  status: 'Opfyldt',                    ok: true },
-          { label: 'Farvekontrast (AA)',          status: 'Opfyldt',                    ok: true },
-          { label: 'Reduceret bevægelse',         status: 'Opfyldt',                    ok: true },
-          { label: 'Mørkt tema',                  status: 'Opfyldt',                    ok: true },
-          { label: 'Justerbar skriftstørrelse',   status: 'Opfyldt',                    ok: true },
-          { label: 'Videotekster',                status: 'Ikke relevant (ingen video)', ok: true },
-          { label: 'WCAG 2.2 AAA',               status: 'Delvist opfyldt',            ok: false },
-        ].map(({ label, status, ok }) => (
-          <div class="flex items-center justify-between py-2.5 border-b last:border-0" style="border-color: var(--color-border);">
-            <span class="text-sm font-medium" style="color: var(--color-text); font-family: var(--font-body);">{label}</span>
-            <span
-              class="tag text-xs"
-              style={ok
-                ? 'background: var(--color-primary-50); color: var(--color-primary);'
-                : 'background: var(--color-accent-50); color: var(--color-accent-dark);'}
-            >
-              {status}
-            </span>
-          </div>
-        ))}
+        {
+          [
+            { label: "Tastaturnavigation", status: "Opfyldt", ok: true },
+            { label: "Skærmlæser­kompatibilitet", status: "Opfyldt", ok: true },
+            { label: "Farvekontrast (AA)", status: "Opfyldt", ok: true },
+            { label: "Reduceret bevægelse", status: "Opfyldt", ok: true },
+            { label: "Mørkt tema", status: "Opfyldt", ok: true },
+            { label: "Justerbar skriftstørrelse", status: "Opfyldt", ok: true },
+            { label: "Videotekster", status: "Ikke relevant (ingen video)", ok: true },
+            { label: "WCAG 2.2 AAA", status: "Delvist opfyldt", ok: false },
+          ].map(({ label, status, ok }) => (
+            <div class="flex items-center justify-between py-2.5 border-b last:border-0" style="border-color: var(--color-border);">
+              <span class="text-sm font-medium" style="color: var(--color-text); font-family: var(--font-body);">
+                {label}
+              </span>
+              <span
+                class="tag text-xs"
+                style={
+                  ok
+                    ? "background: var(--color-primary-50); color: var(--color-primary);"
+                    : "background: var(--color-accent-50); color: var(--color-accent-dark);"
+                }
+              >
+                {status}
+              </span>
+            </div>
+          ))
+        }
       </div>
       <p class="mt-4 text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">
-        Sidst opdateret: {new Date().toLocaleDateString('da-DK', { year: 'numeric', month: 'long' })}. Opdages der tilgængeligheds­problemer, hører vi gerne fra dig.
+        Sidst opdateret: {new Date().toLocaleDateString("da-DK", { year: "numeric", month: "long" })}. Opdages der tilgængeligheds­problemer, hører vi
+        gerne fra dig.
       </p>
     </div>
   </section>
@@ -191,18 +220,38 @@ const values = [
               <label for="name" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">
                 Navn <span aria-hidden="true" style="color: #E05A5A;">*</span>
               </label>
-              <input type="text" id="name" name="name" class="w-full px-4 py-3 text-sm" placeholder="Dit navn" required autocomplete="name" aria-required="true" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full px-4 py-3 text-sm"
+                placeholder="Dit navn"
+                required
+                autocomplete="name"
+                aria-required="true"
+              />
             </div>
             <div>
               <label for="email" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">
                 E-mail <span aria-hidden="true" style="color: #E05A5A;">*</span>
               </label>
-              <input type="email" id="email" name="email" class="w-full px-4 py-3 text-sm" placeholder="din@email.dk" required autocomplete="email" aria-required="true" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full px-4 py-3 text-sm"
+                placeholder="din@email.dk"
+                required
+                autocomplete="email"
+                aria-required="true"
+              />
             </div>
           </div>
 
           <div>
-            <label for="subject" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">Emne</label>
+            <label for="subject" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);"
+              >Emne</label
+            >
             <select id="subject" name="subject" class="w-full px-4 py-3 text-sm">
               <option value="">Vælg et emne...</option>
               <option value="spørgsmål">Generelt spørgsmål</option>
@@ -218,28 +267,47 @@ const values = [
             <label for="message" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);">
               Besked <span aria-hidden="true" style="color: #E05A5A;">*</span>
             </label>
-            <textarea id="message" name="message" rows={6} class="w-full px-4 py-3 text-sm resize-y" placeholder="Skriv din besked her..." required aria-required="true"></textarea>
+            <textarea
+              id="message"
+              name="message"
+              rows={6}
+              class="w-full px-4 py-3 text-sm resize-y"
+              placeholder="Skriv din besked her..."
+              required
+              aria-required="true"></textarea>
           </div>
 
           <div class="flex items-start gap-3 p-4 rounded-xl" style="background: var(--color-surface-2);">
-            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--color-primary);" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <svg
+              class="w-4 h-4 mt-0.5 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              style="color: var(--color-primary);"
+              aria-hidden="true"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
             </svg>
             <p class="text-xs leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">
               Dine oplysninger bruges udelukkende til at besvare din henvendelse og slettes efter 30 dage. Vi deler aldrig dine data med tredjepart.
             </p>
           </div>
 
-          <div id="form-success" class="hidden p-4 rounded-xl" style="background: var(--color-primary-50); border: 1px solid var(--color-primary-100);" role="alert" aria-live="polite">
+          <div
+            id="form-success"
+            class="hidden p-4 rounded-xl"
+            style="background: var(--color-primary-50); border: 1px solid var(--color-primary-100);"
+            role="alert"
+            aria-live="polite"
+          >
             <p class="text-sm font-semibold" style="color: var(--color-primary-dark); font-family: var(--font-body);">
               ✓ Tak for din besked! Vi vender tilbage inden for 3–5 hverdage.
             </p>
           </div>
 
           <div id="form-error" class="hidden p-4 rounded-xl" style="background: #FFF4F4; border: 1px solid #FECDD3;" role="alert" aria-live="polite">
-            <p class="text-sm font-semibold" style="color: #B91C1C; font-family: var(--font-body);">
-              Udfyld venligst alle påkrævede felter korrekt.
-            </p>
+            <p class="text-sm font-semibold" style="color: #B91C1C; font-family: var(--font-body);">Udfyld venligst alle påkrævede felter korrekt.</p>
           </div>
 
           <button
@@ -257,32 +325,32 @@ const values = [
 </Layout>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  const successMsg = document.getElementById('form-success');
-  const errorMsg = document.getElementById('form-error');
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const successMsg = document.getElementById("form-success");
+  const errorMsg = document.getElementById("form-error");
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 
-  form?.addEventListener('submit', async (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    errorMsg?.classList.add('hidden');
+    errorMsg?.classList.add("hidden");
 
-    const name    = (document.getElementById('name')    as HTMLInputElement)?.value.trim();
-    const email   = (document.getElementById('email')   as HTMLInputElement)?.value.trim();
-    const message = (document.getElementById('message') as HTMLTextAreaElement)?.value.trim();
+    const name = (document.getElementById("name") as HTMLInputElement)?.value.trim();
+    const email = (document.getElementById("email") as HTMLInputElement)?.value.trim();
+    const message = (document.getElementById("message") as HTMLTextAreaElement)?.value.trim();
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     if (!name || !email || !message || !emailOk) {
-      errorMsg?.classList.remove('hidden');
+      errorMsg?.classList.remove("hidden");
       return;
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sender...';
+    submitBtn.textContent = "Sender...";
     await new Promise((r) => setTimeout(r, 1200));
     form.reset();
-    successMsg?.classList.remove('hidden');
+    successMsg?.classList.remove("hidden");
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Send besked';
+    submitBtn.textContent = "Send besked";
     successMsg?.focus();
   });
 </script>
