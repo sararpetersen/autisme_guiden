@@ -124,9 +124,10 @@ html[data-theme="dark"] {
   --color-border:       #2A444A;
   --color-border-strong: #3A5A62;
 
-  /* Primary — slightly brighter teal so it reads on dark bg */
-  --color-primary:      #37CBCA;
-  --color-primary-dark: #9FF0EC;
+  /* Primary — muted teal, visible but not glaring on dark bg */
+  --color-primary:      #2A9EA1;
+  --color-primary-dark: #6BBDBF;
+  --color-primary-light: #3AACAE;
   --color-primary-50:   #162A2E;
   --color-primary-100:  #1E3D44;
 
