@@ -39,7 +39,7 @@ const values = [
 
 <Layout
   title="Om Os – AutismeGuiden"
-  description="Lær om AutismeGuiden, idéen bag platformen, problemstillingen og Sara Petersen, grundlæggeren af konceptet."
+  description="Lær om AutismeGuiden, vores mission, værdier og Sara Petersen, der grundlagde platformen."
 >
   <Hero
     badge="Om projektet"
@@ -49,170 +49,30 @@ const values = [
     size="medium"
   />
 
-  <!-- Founder personal story -->
-  <section
-    class="section"
-    style="background: var(--color-surface-2);"
-    aria-labelledby="founder-heading"
-  >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-
-        <!-- Left: identity card -->
-        <div class="lg:sticky lg:top-28">
-          <p
-            class="text-xs font-bold uppercase tracking-widest mb-4"
-            style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
-          >
-            Grundlæggeren
-          </p>
-          <div class="card p-6 sm:p-8">
-            <!-- Avatar placeholder with brand colors -->
-            <div
-              class="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl mb-5"
-              style="background: var(--color-primary-50);"
-              aria-hidden="true"
-            >
-              🧩
-            </div>
-
-            <h2
-              id="founder-heading"
-              class="font-bold text-2xl mb-1"
-              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
-            >
-              Sara Petersen
-            </h2>
-            <p
-              class="text-sm font-semibold mb-4"
-              style="color: var(--color-primary); font-family: var(--font-body);"
-            >
-              Grundlægger &amp; konceptudvikler
-            </p>
-
-            <div class="space-y-2 mb-6">
-              {[
-                'Multimediedesign-studerende',
-                'Sendiagnosticeret autistisk',
-                'Passion for inkluderende design',
-                'WCAG &amp; tilgængeligheds­fortaler',
-              ].map((item) => (
-                <div class="flex items-center gap-2.5">
-                  <div
-                    class="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                    style="background: var(--color-accent);"
-                    aria-hidden="true"
-                  ></div>
-                  <span class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);" set:html={item}></span>
-                </div>
-              ))}
-            </div>
-
-            <div
-              class="p-4 rounded-xl"
-              style="background: var(--color-primary-50); border-left: 3px solid var(--color-primary);"
-            >
-              <p class="text-xs leading-relaxed font-reading" style="color: var(--color-text);">
-                "God design handler ikke kun om æstetik — det handler om at fjerne barrierer og sikre, at alle er med."
-              </p>
-              <p class="text-xs mt-2 font-semibold" style="color: var(--color-primary); font-family: var(--font-body);">— Sara Petersen</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: story sections -->
-        <div class="space-y-10">
-
-          <!-- Baggrund -->
-          <div>
-            <h3
-              class="font-bold text-xl mb-4"
-              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
-            >
-              Baggrund
-            </h3>
-            <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
-              <p>
-                Jeg har altid elsket at være kreativ. Lige fra en tidlig alder har jeg nydt at tegne, male og lave ting med hænderne — alt, der handler om kreativitet. Jeg vidste dybt inden i mig, at jeg en dag ville gøre det til en karriere.
-              </p>
-              <p>
-                Da jeg blev ældre, begyndte jeg dog også at interessere mig for teknologi. Ønsket om en karriere, der kombinerede begge passioner, var svær at finde. Denne indre konflikt holdt mig søgende — indtil jeg opdagede Multimediedesign og endelig fandt det svar, jeg ledte efter.
-              </p>
-            </div>
-          </div>
-
-          <hr style="border-color: var(--color-border);" />
-
-          <!-- Inspiration -->
-          <div>
-            <h3
-              class="font-bold text-xl mb-4"
-              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
-            >
-              Inspiration
-            </h3>
-            <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
-              <p>
-                Som én der er sendiagnosticeret med autisme og nyligt diagnosticeret med ADD, ved jeg, hvordan det føles at navigere i en verden, der ikke altid er tilgængelig for alle. Denne personlige erfaring har formet mit syn på, hvad digital design kan og bør gøre.
-              </p>
-              <p>
-                Jeg er inspireret af mulighederne i inkluderende design — at skabe rum, hvor alle kan trives. Uanset om det handler om gennemtænkte farvevalg, tydelig navigation eller semantisk HTML, finder jeg mening i at løse tilgængelighedsudfordringer og se, hvordan små designbeslutninger kan have stor betydning for rigtige mennesker.
-              </p>
-            </div>
-          </div>
-
-          <hr style="border-color: var(--color-border);" />
-
-          <!-- Mål -->
-          <div>
-            <h3
-              class="font-bold text-xl mb-4"
-              style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
-            >
-              Mål
-            </h3>
-            <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
-              <p>
-                Mit mål er at skabe digitale oplevelser, der er tilgængelige og inkluderende for alle. Jeg tror på, at godt design ikke kun handler om æstetik — det handler om at fjerne barrierer og sikre, at alle brugere er med.
-              </p>
-              <p>
-                Gennem mit arbejde bestræber jeg mig på at kombinere kreativitet med formål, altid med tilgængelighed og brugeroplevelse i fokus. Jeg ønsker at bruge min passion for inkluderende design til at gøre en reel forskel i, hvordan mennesker interagerer med digitale produkter.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Mission -->
-  <section class="section" aria-labelledby="mission-section-heading">
+  <section class="section" aria-labelledby="mission-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div>
-          <p
-            class="text-xs font-bold uppercase tracking-widest mb-3"
-            style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
-          >
+          <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;">
             Vores formål
           </p>
           <h2
-            id="mission-section-heading"
+            id="mission-heading"
             class="font-bold text-3xl sm:text-4xl tracking-wide leading-tight mb-6"
             style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
           >
             Information der møder dig, som du er
           </h2>
-          <div class="space-y-4 prose-reading" style="color: var(--color-text-muted);">
+          <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
             <p>
-              AutismeGuiden opstod ud af en simpel erkendelse: At information om autisme på dansk er spredt, svær at finde og ofte skrevet ud fra et klinisk, ikke-autistisk perspektiv.
+              Der findes meget information om autisme på internettet — men det kan være svært at navigere i, og der er meget fejlinformation imellem. AutismeGuiden er skabt for at gøre det lettere.
             </p>
             <p>
-              Vi ønskede at skabe noget andet — en platform der sætter autistiske mennesker i centrum, bruger fordomsfrit sprog og prioriterer tilgængelighed frem for alt.
+              Vi ønskede at skabe en platform der sætter autistiske mennesker i centrum, bruger fordomsfrit sprog og prioriterer tilgængelighed frem for alt andet — fordi alle fortjener information der er let at forstå og nem at finde.
             </p>
             <p>
-              Vi tror på, at god information kan ændre liv — ikke ved at "kurere" autisme, men ved at hjælpe autistiske mennesker med at forstå sig selv bedre, og hjælpe deres omgivelser med at støtte dem bedre.
+              Platformen er grundlagt af <strong>Sara Petersen</strong>, multimediedesign-studerende med personlig erfaring med autisme, der ønskede at kombinere sin passion for inkluderende design med et reelt behov.
             </p>
           </div>
         </div>
@@ -264,11 +124,7 @@ const values = [
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {values.map(({ icon, title, desc }) => (
           <article class="card p-6">
-            <div
-              class="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl mb-4"
-              style="background: var(--color-primary-50);"
-              aria-hidden="true"
-            >
+            <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl mb-4" style="background: var(--color-primary-50);" aria-hidden="true">
               {icon}
             </div>
             <h3 class="font-bold text-base mb-2" style="font-family: var(--font-display); color: var(--color-text);">{title}</h3>
@@ -288,16 +144,16 @@ const values = [
         description="Vi stræber efter at overholde WCAG 2.2 niveau AA. Her er vores status og kendte begrænsninger."
         id="access-statement-heading"
       />
-      <div class="card p-6 space-y-1">
+      <div class="card p-6">
         {[
-          { label: 'Tastaturnavigation', status: 'Opfyldt', ok: true },
-          { label: 'Skærmlæser­kompatibilitet', status: 'Opfyldt', ok: true },
-          { label: 'Farvekontrast (AA)', status: 'Opfyldt', ok: true },
-          { label: 'Reduceret bevægelse', status: 'Opfyldt', ok: true },
-          { label: 'Mørkt tema', status: 'Opfyldt', ok: true },
-          { label: 'Justerbar skriftstørrelse', status: 'Opfyldt', ok: true },
-          { label: 'Videotekster', status: 'Ikke relevant (ingen video)', ok: true },
-          { label: 'WCAG 2.2 AAA', status: 'Delvist opfyldt', ok: false },
+          { label: 'Tastaturnavigation',         status: 'Opfyldt',                    ok: true },
+          { label: 'Skærmlæser­kompatibilitet',  status: 'Opfyldt',                    ok: true },
+          { label: 'Farvekontrast (AA)',          status: 'Opfyldt',                    ok: true },
+          { label: 'Reduceret bevægelse',         status: 'Opfyldt',                    ok: true },
+          { label: 'Mørkt tema',                  status: 'Opfyldt',                    ok: true },
+          { label: 'Justerbar skriftstørrelse',   status: 'Opfyldt',                    ok: true },
+          { label: 'Videotekster',                status: 'Ikke relevant (ingen video)', ok: true },
+          { label: 'WCAG 2.2 AAA',               status: 'Delvist opfyldt',            ok: false },
         ].map(({ label, status, ok }) => (
           <div class="flex items-center justify-between py-2.5 border-b last:border-0" style="border-color: var(--color-border);">
             <span class="text-sm font-medium" style="color: var(--color-text); font-family: var(--font-body);">{label}</span>
@@ -327,7 +183,6 @@ const values = [
         description="Vi svarer inden for 3–5 hverdage. For tidsfølsomme henvendelser, angiv det i emnet."
         id="contact-heading"
       />
-
       <div class="card p-6 sm:p-8">
         <form id="contact-form" class="space-y-5" aria-label="Kontaktformular" novalidate>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -422,9 +277,7 @@ const values = [
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sender...';
-
     await new Promise((r) => setTimeout(r, 1200));
-
     form.reset();
     successMsg?.classList.remove('hidden');
     submitBtn.disabled = false;
