@@ -15,14 +15,14 @@ AutismeGuiden er en gratis, åben platform med information om autisme for autist
 
 ## Sider
 
-| Side | URL | Beskrivelse |
-|------|-----|-------------|
-| Hjem | `/` | Forsiden med hero, mission og navigations­kort |
-| Hvad er Autisme? | `/hvad-er-autisme` | Autismespektret, myter vs fakta, FAQ |
-| Tilgængelighed | `/tilgaengelighed` | WCAG 2.2, neurodivergent design­principper |
-| Ressourcer | `/ressourcer` | Søgbart ressourcebibliotek med filtrering |
-| Uddannelse | `/uddannelse` | Vejledning til lærere og pædagoger |
-| Om Os | `/om-os` | Mission, værdier, team og kontaktformular |
+| Side             | URL                | Beskrivelse                                    |
+| ---------------- | ------------------ | ---------------------------------------------- |
+| Hjem             | `/`                | Forsiden med hero, mission og navigations­kort |
+| Hvad er Autisme? | `/hvad-er-autisme` | Autismespektret, myter vs fakta, FAQ           |
+| Tilgængelighed   | `/tilgaengelighed` | WCAG 2.2, neurodivergent design­principper     |
+| Ressourcer       | `/ressourcer`      | Søgbart ressourcebibliotek med filtrering      |
+| Uddannelse       | `/uddannelse`      | Vejledning til lærere og pædagoger             |
+| Om mig           | `/om-os`           | Mission, værdier, kontaktformular              |
 
 ## Tilgængeligheds­funktioner
 
@@ -36,13 +36,13 @@ AutismeGuiden er en gratis, åben platform med information om autisme for autist
 
 ## Farvepalette
 
-| Token | Farve | Hex |
-|-------|-------|-----|
-| Primary | Blå | `#4F7CAC` |
-| Secondary | Grøn | `#7FB069` |
+| Token      | Farve   | Hex       |
+| ---------- | ------- | --------- |
+| Primary    | Blå     | `#4F7CAC` |
+| Secondary  | Grøn    | `#7FB069` |
 | Background | Lys grå | `#F8FAFC` |
-| Surface | Hvid | `#FFFFFF` |
-| Text | Mørk | `#1E293B` |
+| Surface    | Hvid    | `#FFFFFF` |
+| Text       | Mørk    | `#1E293B` |
 
 ## Kom i gang
 

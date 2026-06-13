@@ -6,25 +6,16 @@ interface Props {
   primaryCTA?: { label: string; href: string };
   secondaryCTA?: { label: string; href: string };
   badge?: string;
-  size?: 'large' | 'medium' | 'small';
+  size?: "large" | "medium" | "small";
   centered?: boolean;
 }
 
-const {
-  title,
-  subtitle,
-  description,
-  primaryCTA,
-  secondaryCTA,
-  badge,
-  size = 'large',
-  centered = true,
-} = Astro.props;
+const { title, subtitle, description, primaryCTA, secondaryCTA, badge, size = "large", centered = true } = Astro.props;
 
 const paddingClasses = {
-  large:  'py-20 md:py-28 lg:py-36',
-  medium: 'py-14 md:py-20',
-  small:  'py-10 md:py-14',
+  large: "py-20 md:py-28 lg:py-36",
+  medium: "py-14 md:py-20",
+  small: "py-10 md:py-14",
 };
 ---
 
@@ -36,92 +27,97 @@ const paddingClasses = {
   <!-- Decorative background blobs (aria-hidden, reduced/no animation) -->
   <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
     <!-- Teal blob top-right -->
-    <div
-      class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-25 blur-3xl"
-      style="background: var(--color-teal-200);"
-    ></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-25 blur-3xl" style="background: var(--color-teal-200);"></div>
     <!-- Amber blob bottom-left -->
-    <div
-      class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full opacity-20 blur-3xl"
-      style="background: var(--color-amber-200);"
-    ></div>
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full opacity-20 blur-3xl" style="background: var(--color-amber-200);"></div>
     <!-- Subtle compass hint — center top -->
     <div
       class="absolute top-8 left-1/2 -translate-x-1/2 w-px h-12 opacity-10"
       style="background: linear-gradient(to bottom, var(--color-primary), transparent);"
-    ></div>
+    >
+    </div>
   </div>
 
-  <div class={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${centered ? 'text-center' : ''}`}>
-    <div class={`max-w-4xl ${centered ? 'mx-auto' : ''}`}>
+  <div class={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${centered ? "text-center" : ""}`}>
+    <div class={`max-w-4xl ${centered ? "mx-auto" : ""}`}>
+      {
+        badge && (
+          <div class={`mb-6 ${centered ? "flex justify-center" : ""}`}>
+            <span
+              class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
+              style="background: var(--color-accent-50); color: var(--color-accent-dark); border: 1.5px solid var(--color-accent-100); font-family: var(--font-body); letter-spacing: 0.08em;"
+            >
+              <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background: var(--color-accent);" aria-hidden="true" />
+              {badge}
+            </span>
+          </div>
+        )
+      }
 
-      {badge && (
-        <div class={`mb-6 ${centered ? 'flex justify-center' : ''}`}>
-          <span
-            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
-            style="background: var(--color-accent-50); color: var(--color-accent-dark); border: 1.5px solid var(--color-accent-100); font-family: var(--font-body); letter-spacing: 0.08em;"
+      {
+        subtitle && (
+          <p
+            class="text-sm font-bold uppercase tracking-widest mb-3"
+            style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.1em;"
           >
-            <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background: var(--color-accent);" aria-hidden="true"></span>
-            {badge}
-          </span>
-        </div>
-      )}
-
-      {subtitle && (
-        <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.1em;">
-          {subtitle}
-        </p>
-      )}
+            {subtitle}
+          </p>
+        )
+      }
 
       <h1
         id="hero-heading"
         class="font-bold tracking-wide leading-tight text-balance mb-6"
         style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
         class:list={[
-          size === 'large'  && 'text-5xl sm:text-6xl lg:text-7xl',
-          size === 'medium' && 'text-4xl sm:text-5xl lg:text-6xl',
-          size === 'small'  && 'text-3xl sm:text-4xl',
+          size === "large" && "text-5xl sm:text-6xl lg:text-7xl",
+          size === "medium" && "text-4xl sm:text-5xl lg:text-6xl",
+          size === "small" && "text-3xl sm:text-4xl",
         ]}
       >
         {title}
       </h1>
 
-      {description && (
-        <p
-          class={`text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl ${centered ? 'mx-auto' : ''}`}
-          style="color: var(--color-text-muted); font-family: var(--font-body);"
-        >
-          {description}
-        </p>
-      )}
+      {
+        description && (
+          <p
+            class={`text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl ${centered ? "mx-auto" : ""}`}
+            style="color: var(--color-text-muted); font-family: var(--font-body);"
+          >
+            {description}
+          </p>
+        )
+      }
 
       <slot name="extra" />
 
-      {(primaryCTA || secondaryCTA) && (
-        <div class={`flex flex-wrap gap-3 ${centered ? 'justify-center' : ''}`}>
-          {primaryCTA && (
-            <a
-              href={primaryCTA.href}
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
-              style="background: var(--color-primary); color: white; font-family: var(--font-body); letter-spacing: 0.06em;"
-            >
-              {primaryCTA.label}
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
-          )}
-          {secondaryCTA && (
-            <a
-              href={secondaryCTA.href}
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
-              style="background: transparent; color: var(--color-primary-dark); border: 2px solid var(--color-primary); font-family: var(--font-body); letter-spacing: 0.06em;"
-            >
-              {secondaryCTA.label}
-            </a>
-          )}
-        </div>
-      )}
+      {
+        (primaryCTA || secondaryCTA) && (
+          <div class={`flex flex-wrap gap-3 ${centered ? "justify-center" : ""}`}>
+            {primaryCTA && (
+              <a
+                href={primaryCTA.href}
+                class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
+                style="background: var(--color-primary); color: var(--color-on-primary); font-family: var(--font-body); letter-spacing: 0.06em;"
+              >
+                {primaryCTA.label}
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            )}
+            {secondaryCTA && (
+              <a
+                href={secondaryCTA.href}
+                class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2"
+                style="background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); font-family: var(--font-body); letter-spacing: 0.06em;"
+              >
+                {secondaryCTA.label}
+              </a>
+            )}
+          </div>
+        )
+      }
 
       <slot />
     </div>

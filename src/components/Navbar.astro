@@ -1,11 +1,11 @@
 ---
 const navLinks = [
-  { href: '/', label: 'Hjem' },
-  { href: '/hvad-er-autisme', label: 'Hvad er Autisme?' },
-  { href: '/tilgaengelighed', label: 'Tilgængelighed' },
-  { href: '/ressourcer', label: 'Ressourcer' },
-  { href: '/uddannelse', label: 'Uddannelse' },
-  { href: '/om-os', label: 'Om Os' },
+  { href: "/", label: "Hjem" },
+  { href: "/hvad-er-autisme", label: "Hvad er Autisme?" },
+  { href: "/tilgaengelighed", label: "Tilgængelighed" },
+  { href: "/ressourcer", label: "Ressourcer" },
+  { href: "/uddannelse", label: "Uddannelse" },
+  { href: "/om-os", label: "Om mig" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -19,14 +19,9 @@ const currentPath = Astro.url.pathname;
     aria-label="Primær navigation"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 lg:h-[4.5rem]">
-
+      <div class="flex items-center justify-between h-16 lg:h-18">
         <!-- ─── Logo ─── -->
-        <a
-          href="/"
-          class="flex items-center group flex-shrink-0"
-          aria-label="AutismeGuiden – Gå til forsiden"
-        >
+        <a href="/" class="flex items-center group shrink-0" aria-label="AutismeGuiden – Gå til forsiden">
           <!-- Icon only on mobile, full logo on desktop -->
           <img
             src="/autismeguiden_logo_1-2.png"
@@ -46,31 +41,30 @@ const currentPath = Astro.url.pathname;
 
         <!-- ─── Desktop nav links ─── -->
         <div class="hidden lg:flex items-center gap-0.5" role="list">
-          {navLinks.map(({ href, label }) => {
-            const isActive = href === '/'
-              ? currentPath === '/'
-              : currentPath.startsWith(href);
-            return (
-              <a
-                href={href}
-                class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150"
-                style={
-                  isActive
-                    ? 'background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);'
-                    : 'color: var(--color-text-muted); font-family: var(--font-body);'
-                }
-                aria-current={isActive ? 'page' : undefined}
-                role="listitem"
-              >
-                {label}
-              </a>
-            );
-          })}
+          {
+            navLinks.map(({ href, label }) => {
+              const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+              return (
+                <a
+                  href={href}
+                  class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150"
+                  style={
+                    isActive
+                      ? "background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);"
+                      : "color: var(--color-text-muted); font-family: var(--font-body);"
+                  }
+                  aria-current={isActive ? "page" : undefined}
+                  role="listitem"
+                >
+                  {label}
+                </a>
+              );
+            })
+          }
         </div>
 
         <!-- ─── Right controls ─── -->
         <div class="flex items-center gap-1.5">
-
           <!-- Font size toggle -->
           <button
             id="font-size-toggle"
@@ -91,7 +85,7 @@ const currentPath = Astro.url.pathname;
             title="Slå animationer fra/til"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </button>
 
@@ -104,11 +98,11 @@ const currentPath = Astro.url.pathname;
             title="Skift mellem lyst og mørkt tema"
           >
             <svg id="icon-sun" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="5"/>
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+              <circle cx="12" cy="12" r="5"></circle>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
             </svg>
             <svg id="icon-moon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
             </svg>
           </button>
 
@@ -137,25 +131,25 @@ const currentPath = Astro.url.pathname;
       aria-label="Mobilmenu"
     >
       <div class="px-4 py-3 space-y-1">
-        {navLinks.map(({ href, label }) => {
-          const isActive = href === '/'
-            ? currentPath === '/'
-            : currentPath.startsWith(href);
-          return (
-            <a
-              href={href}
-              class="flex items-center px-3 py-2.5 rounded-lg text-sm font-semibold transition-all"
-              style={
-                isActive
-                  ? 'background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);'
-                  : 'color: var(--color-text-muted); font-family: var(--font-body);'
-              }
-              aria-current={isActive ? 'page' : undefined}
-            >
-              {label}
-            </a>
-          );
-        })}
+        {
+          navLinks.map(({ href, label }) => {
+            const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+            return (
+              <a
+                href={href}
+                class="flex items-center px-3 py-2.5 rounded-lg text-sm font-semibold transition-all"
+                style={
+                  isActive
+                    ? "background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);"
+                    : "color: var(--color-text-muted); font-family: var(--font-body);"
+                }
+                aria-current={isActive ? "page" : undefined}
+              >
+                {label}
+              </a>
+            );
+          })
+        }
 
         <!-- Mobile dark mode -->
         <div class="pt-2 border-t" style="border-color: var(--color-border);">
@@ -165,7 +159,7 @@ const currentPath = Astro.url.pathname;
             style="color: var(--color-text-muted); font-family: var(--font-body);"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
             </svg>
             <span id="theme-label-mobile">Skift til mørkt tema</span>
           </button>
@@ -175,62 +169,62 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <!-- Spacer for fixed navbar -->
-  <div class="h-16 lg:h-[4.5rem]" aria-hidden="true"></div>
+  <div class="h-16 lg:h-18" aria-hidden="true"></div>
 </header>
 
 <script>
   // Mobile menu
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuToggle?.addEventListener('click', () => {
-    const isOpen = !mobileMenu?.classList.contains('hidden');
-    mobileMenu?.classList.toggle('hidden');
-    menuToggle.setAttribute('aria-expanded', String(!isOpen));
-    menuToggle.setAttribute('aria-label', isOpen ? 'Åbn menu' : 'Luk menu');
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = !mobileMenu?.classList.contains("hidden");
+    mobileMenu?.classList.toggle("hidden");
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Åbn menu" : "Luk menu");
   });
 
   // Theme
   function updateThemeIcons() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.getElementById('icon-sun')?.classList.toggle('hidden', !isDark);
-    document.getElementById('icon-moon')?.classList.toggle('hidden', isDark);
-    const mobileLabel = document.getElementById('theme-label-mobile');
-    if (mobileLabel) mobileLabel.textContent = isDark ? 'Skift til lyst tema' : 'Skift til mørkt tema';
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    document.getElementById("icon-sun")?.classList.toggle("hidden", !isDark);
+    document.getElementById("icon-moon")?.classList.toggle("hidden", isDark);
+    const mobileLabel = document.getElementById("theme-label-mobile");
+    if (mobileLabel) mobileLabel.textContent = isDark ? "Skift til lyst tema" : "Skift til mørkt tema";
   }
 
   function toggleTheme() {
-    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('ag-theme', next);
+    const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("ag-theme", next);
     updateThemeIcons();
   }
 
-  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-  document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+  document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
+  document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
   updateThemeIcons();
 
   // Font size toggle — cycles normal → large → xlarge → normal
-  const fontSizes = ['normal', 'large', 'xlarge'];
-  const fontLabels: Record<string, string> = { normal: 'A', large: 'A+', xlarge: 'A++' };
+  const fontSizes = ["normal", "large", "xlarge"];
+  const fontLabels: Record<string, string> = { normal: "A", large: "A+", xlarge: "A++" };
 
   function updateFontSizeBtn() {
-    const current = document.documentElement.getAttribute('data-font-size') ?? 'normal';
-    const label = document.getElementById('font-size-label');
-    const btn = document.getElementById('font-size-toggle');
-    if (label) label.textContent = fontLabels[current] ?? 'A';
-    if (btn) btn.setAttribute('aria-label', `Skriftstørrelse: ${fontLabels[current] ?? 'Normal'}. Klik for at skifte.`);
-    const isChanged = current !== 'normal';
+    const current = document.documentElement.getAttribute("data-font-size") ?? "normal";
+    const label = document.getElementById("font-size-label");
+    const btn = document.getElementById("font-size-toggle");
+    if (label) label.textContent = fontLabels[current] ?? "A";
+    if (btn) btn.setAttribute("aria-label", `Skriftstørrelse: ${fontLabels[current] ?? "Normal"}. Klik for at skifte.`);
+    const isChanged = current !== "normal";
     if (btn) {
-      btn.style.color = isChanged ? 'var(--color-primary)' : 'var(--color-text-muted)';
-      btn.style.borderColor = isChanged ? 'var(--color-primary)' : 'var(--color-border)';
+      btn.style.color = isChanged ? "var(--color-primary)" : "var(--color-text-muted)";
+      btn.style.borderColor = isChanged ? "var(--color-primary)" : "var(--color-border)";
     }
   }
 
-  document.getElementById('font-size-toggle')?.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-font-size') ?? 'normal';
+  document.getElementById("font-size-toggle")?.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-font-size") ?? "normal";
     const next = fontSizes[(fontSizes.indexOf(current) + 1) % fontSizes.length];
-    document.documentElement.setAttribute('data-font-size', next);
-    localStorage.setItem('ag-font-size', next);
+    document.documentElement.setAttribute("data-font-size", next);
+    localStorage.setItem("ag-font-size", next);
     updateFontSizeBtn();
   });
 
@@ -238,33 +232,37 @@ const currentPath = Astro.url.pathname;
 
   // Reduced motion toggle
   function updateMotionBtn() {
-    const enabled = document.documentElement.getAttribute('data-reduced-motion') === 'true';
-    const btn = document.getElementById('motion-toggle-nav');
+    const enabled = document.documentElement.getAttribute("data-reduced-motion") === "true";
+    const btn = document.getElementById("motion-toggle-nav");
     if (btn) {
-      btn.style.color = enabled ? 'var(--color-primary)' : 'var(--color-text-muted)';
-      btn.style.borderColor = enabled ? 'var(--color-primary)' : 'var(--color-border)';
-      btn.setAttribute('aria-label', `Reduceret bevægelse: ${enabled ? 'slået til' : 'slået fra'}`);
+      btn.style.color = enabled ? "var(--color-primary)" : "var(--color-text-muted)";
+      btn.style.borderColor = enabled ? "var(--color-primary)" : "var(--color-border)";
+      btn.setAttribute("aria-label", `Reduceret bevægelse: ${enabled ? "slået til" : "slået fra"}`);
     }
   }
 
-  document.getElementById('motion-toggle-nav')?.addEventListener('click', () => {
-    const enabled = document.documentElement.getAttribute('data-reduced-motion') === 'true';
-    document.documentElement.setAttribute('data-reduced-motion', String(!enabled));
-    localStorage.setItem('ag-reduced-motion', String(!enabled));
+  document.getElementById("motion-toggle-nav")?.addEventListener("click", () => {
+    const enabled = document.documentElement.getAttribute("data-reduced-motion") === "true";
+    document.documentElement.setAttribute("data-reduced-motion", String(!enabled));
+    localStorage.setItem("ag-reduced-motion", String(!enabled));
     updateMotionBtn();
     // Keep toolbar in sync
-    const motionToggle = document.getElementById('reduced-motion-toggle') as HTMLInputElement;
+    const motionToggle = document.getElementById("reduced-motion-toggle") as HTMLInputElement;
     if (motionToggle) {
       motionToggle.checked = !enabled;
-      motionToggle.dispatchEvent(new Event('change'));
+      motionToggle.dispatchEvent(new Event("change"));
     }
   });
 
   updateMotionBtn();
 
   // Scroll shadow
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar?.classList.toggle('shadow-sm', window.scrollY > 10);
-  }, { passive: true });
+  const navbar = document.getElementById("navbar");
+  window.addEventListener(
+    "scroll",
+    () => {
+      navbar?.classList.toggle("shadow-sm", window.scrollY > 10);
+    },
+    { passive: true },
+  );
 </script>

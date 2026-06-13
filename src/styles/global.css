@@ -67,6 +67,10 @@
   --color-accent-50: #fff8eb; /* amber-50  */
   --color-accent-100: #fdeac8; /* amber-100 */
 
+  /* On-primary text color for buttons/controls */
+  --color-on-primary: #ffffff;
+  --color-on-accent: #ffffff;
+
   /* Keep secondary alias pointing to accent for backwards compatibility */
   --color-secondary: #f6a010;
   --color-secondary-dark: #c46e06;
@@ -116,50 +120,53 @@
    ============================================= */
 html[data-theme="dark"] {
   /* Backgrounds */
-  --color-background: #0D1F22;
-  --color-surface:    #1A2D31;
-  --color-surface-2:  #223539;
+  --color-background: #0d1f22;
+  --color-surface: #1a2d31;
+  --color-surface-2: #223539;
 
   /* Text — neutral near-white */
-  --color-text:        #EEF7F8;
-  --color-text-muted:  #B8D0D3;
-  --color-text-subtle: #7AADB2;
+  --color-text: #eef7f8;
+  --color-text-muted: #b8d0d3;
+  --color-text-subtle: #7aadb2;
 
   /* Borders */
-  --color-border:        #2E4A50;
-  --color-border-strong: #5A8088;  /* 3.8:1 on surface — passes UI contrast */
+  --color-border: #2e4a50;
+  --color-border-strong: #5a8088; /* 3.8:1 on surface — passes UI contrast */
 
   /* Primary interactive teal — primary-dark intentionally NOT overridden
      so it stays #17464A and keeps footer/blockquote backgrounds dark */
-  --color-primary:       #2A9EA1;
-  --color-primary-light: #3AACAE;
-  --color-primary-50:    #1A2D31;
-  --color-primary-100:   #1E3A40;
+  --color-primary: #2a9ea1;
+  --color-primary-light: #3aacae;
+  --color-primary-50: #1a2d31;
+  --color-primary-100: #1e3a40;
+  /* Ensure on-colour variables remain readable in dark theme */
+  --color-on-primary: #ffffff;
+  --color-on-accent: #ffffff;
 
   /* Accent amber */
-  --color-accent:        #F6A010;
-  --color-accent-50:     #1F1200;
-  --color-accent-100:    #321D00;
-  --color-secondary-50:  #1F1200;
+  --color-accent: #f6a010;
+  --color-accent-50: #1f1200;
+  --color-accent-100: #321d00;
+  --color-secondary-50: #1f1200;
 
   /* Teal scale — gradients and decorative */
-  --color-teal-50:  #0D1F22;
-  --color-teal-100: #1A2D31;
+  --color-teal-50: #0d1f22;
+  --color-teal-100: #1a2d31;
   --color-teal-200: #223539;
-  --color-teal-300: #2E4A50;
+  --color-teal-300: #2e4a50;
 
   /* Amber scale — gradients */
-  --color-amber-50:  #1F1200;
-  --color-amber-100: #321D00;
-  --color-amber-200: #4F2D00;
-  --color-amber-300: #7A4400;
+  --color-amber-50: #1f1200;
+  --color-amber-100: #321d00;
+  --color-amber-200: #4f2d00;
+  --color-amber-300: #7a4400;
 }
 
 /* Belt-and-braces body override — ensures text is light
    regardless of how Tailwind v4 resolves @theme variables */
 html[data-theme="dark"] body {
-  color: #EEF7F8;
-  background-color: #0D1F22;
+  color: #eef7f8;
+  background-color: #0d1f22;
 }
 
 /* =============================================
@@ -451,7 +458,7 @@ html[data-theme="dark"] .fact-box {
    ============================================= */
 .btn-primary {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   font-family: var(--font-body);
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -462,7 +469,7 @@ html[data-theme="dark"] .fact-box {
 
 .btn-accent {
   background: var(--color-accent);
-  color: white;
+  color: var(--color-on-accent);
   font-family: var(--font-body);
   font-weight: 700;
   letter-spacing: 0.04em;

@@ -17,7 +17,7 @@ const values = [
   {
     icon: "🤝",
     title: "Inkluderende perspektiv",
-    desc: "AutismeGuiden er skrevet med og for autistiske mennesker, pårørende, lærere og fagfolk — aldrig kun om dem.",
+    desc: "AutismeGuiden er skrevet med og for autistiske mennesker, pårørende, lærere og fagfolk— aldrig kun om dem.",
   },
   {
     icon: "🌍",
@@ -37,9 +37,12 @@ const values = [
 ];
 ---
 
-<Layout title="Om Os – AutismeGuiden" description="Lær om AutismeGuiden, min mission og mine værdier — og Sara Ringkow Petersen, der skabte platformen.">
+<Layout
+  title="Om mig – AutismeGuiden"
+  description="Lær om AutismeGuiden, min mission og mine værdier — og Sara Ringkow Petersen, der skabte platformen."
+>
   <Hero
-    badge="Om projektet"
+    badge="Om mig"
     title="En platform skabt med omsorg"
     description="AutismeGuiden er en dansk, non-kommerciel platform dedikeret til at gøre information om autisme mere tilgængelig, fordomsfri og brugbar for alle."
     secondaryCTA={{ label: "Kontakt mig", href: "#kontakt" }}
@@ -74,20 +77,24 @@ const values = [
               for alt andet&mdash; fordi alle fortjener information der er let at forstå og nem at finde.
             </p>
             <p>
-              Mit navn er <strong>Sara Ringkow Petersen</strong>, og jeg er uddannet multimediedesigner fra KEA og læser p.t. Digital Konceptudvikling
-              på Zealand i Køge. Som én med sendiagnosticeret autisme og ADD, ønskede jeg at kombinere min passion for inkluderende design med et
-              reelt behov.
+              Mit navn er <strong>Sara Ringkow Petersen</strong>, jeg er en 24-årig uddannet multimediedesigner fra KEA, og læser lige nu Digital
+              Konceptudvikling på Zealand i Køge. Som grundlægger af platformen og som en person med sendiagnosticeret autisme og ADD ønsker jeg at
+              kombinere min passion for inkluderende design med et reelt behov i samfundet.
             </p>
           </div>
         </div>
 
         <div class="space-y-4">
-          <blockquote class="p-7 rounded-2xl bg-teal-100 border border-l-4 border-teal-500">
-            <p class="text-lg font-semibold leading-snug mb-4" style="color: var(--color-text); font-family: var(--font-display);">
-              "Jeg tror på, at godt design ikke kun handler om æstetik — det handler om at fjerne barrierer og sikre, at alle er med."
+          <div class="w-40 h-40 overflow-hidden rounded-full sm:w-52 sm:h-52">
+            <img src="/pfp2.webp" alt="Sara Ringkow Petersen" class="w-full h-full object-cover object-top" />
+          </div>
+
+          <blockquote class="p-7 rounded-2xl bg-teal-100 border-l-4 border-teal-500">
+            <p class="italic text-lg font-semibold leading-snug mb-4" style="color: var(--color-text); font-family: var(--font-display);">
+              "Jeg tror på, at godt design ikke kun handler om æstetik&mdash; det handler om at fjerne barrierer og sikre, at alle er med."
             </p>
             <footer class="text-sm font-bold" style="color: var(--color-text-muted); font-family: var(--font-body);">
-              — Sara Ringkow Petersen, founder af AutismeGuiden
+              — Sara, grundlægger af AutismeGuiden
             </footer>
           </blockquote>
 
@@ -96,7 +103,7 @@ const values = [
             <ul class="space-y-2.5" role="list">
               {
                 [
-                  "Neurodiversitet er ikke en fejl— det er mangfoldighed",
+                  "Neurodiversitet er ikke en fejl — det er mangfoldighed",
                   "Autistiske stemmer er centrale, ikke perifere",
                   "Intet om os, uden os",
                   "Tilgængelighed er en grundrettighed",
@@ -133,7 +140,7 @@ const values = [
       <SectionHeader
         eyebrow="Værdier"
         title="Hvad jeg tror på"
-        description="Kerneværdierne bag AutismeGuiden— det der guider hvert eneste designvalg og hvert stykke indhold."
+        description="Kerneværdierne bag AutismeGuiden — det der guider hvert eneste designvalg og hvert stykke indhold."
         id="values-heading"
       />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -305,7 +312,7 @@ const values = [
             netlify-forms-recaptcha="true"
             netlify-forms-success="true"
           >
-            <p class="text-sm font-semibold" style="color: var(--color-primary-dark); font-family: var(--font-body);">
+            <p class="text-sm font-semibold" style="color: var(--color-primary); font-family: var(--font-body);">
               ✓ Tak for din besked! Jeg vender tilbage inden for 3-5 hverdage.
             </p>
           </div>
@@ -318,7 +325,7 @@ const values = [
             type="submit"
             id="submit-btn"
             class="w-full py-3.5 px-6 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-offset-2 disabled:opacity-50"
-            style="background: var(--color-primary); color: white; font-family: var(--font-body); letter-spacing: 0.06em;"
+            style="background: var(--color-primary); color: var(--color-on-primary); font-family: var(--font-body); letter-spacing: 0.06em;"
           >
             Send besked
           </button>

@@ -1,91 +1,99 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import FAQAccordion from '../components/FAQAccordion.astro';
-import SectionHeader from '../components/SectionHeader.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import FAQAccordion from "../components/FAQAccordion.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 
 const mythsFacts = [
   {
-    myth: 'Autistiske mennesker har ingen empati.',
-    fact: 'Autistiske personer kan have stærk empati, men udtrykker den ofte på andre måder. Studier viser, at mange autistiske personer faktisk føler dyb empati — de kan bare have svært ved at vise det på de forventede måder.',
+    myth: "Autistiske mennesker har ingen empati.",
+    fact: "Autistiske personer kan have stærk empati, men udtrykker den ofte på andre måder. Studier viser, at mange autistiske personer faktisk føler dyb empati— de kan bare have svært ved at vise det på de forventede måder.",
   },
   {
-    myth: 'Autisme skyldes dårlig opdragelse.',
-    fact: 'Autisme er en neurologisk forskel, der er til stede fra fødslen. Forskning viser, at genetiske og biologiske faktorer spiller en central rolle. Forældre og opdragelse har ingen indflydelse på, om et barn er autistisk.',
+    myth: "Autisme skyldes dårlig opdragelse.",
+    fact: "Autisme er en neurologisk forskel, der er til stede fra fødslen. Forskning viser, at genetiske og biologiske faktorer spiller en central rolle. Forældre og opdragelse har ingen indflydelse på, om et barn er autistisk.",
   },
   {
-    myth: 'Alle autistiske er geniale inden for ét område.',
-    fact: 'Mens nogle autistiske har særlige interesser eller færdigheder, er dette ikke universelt. Autismespektret er meget bredt og forskelligartet — ingen to autistiske er ens.',
+    myth: "Alle autistiske er geniale inden for ét område.",
+    fact: "Mens nogle autistiske har særlige interesser eller færdigheder, er dette ikke universelt. Autismespektret er meget bredt og forskelligartet— ingen to autistiske er ens.",
   },
   {
-    myth: 'Autisme kan helbredes.',
-    fact: 'Autisme er ikke en sygdom, men en neurotype — en måde at være på. Man hverken skal eller kan "helbrede" autisme. Målet er at støtte autistiske mennesker i at trives og leve gode liv på egne betingelser.',
+    myth: "Autisme kan helbredes.",
+    fact: 'Autisme er ikke en sygdom, men en neurotype— en måde at være på. Man hverken skal eller kan "helbrede" autisme. Målet er at støtte autistiske mennesker i at trives og leve gode liv på egne betingelser.',
   },
   {
-    myth: 'Autistiske kan ikke have nære relationer.',
-    fact: 'Mange autistiske har dybe og meningsfulde venskaber, parforhold og familiebånd. De måder, de danner og vedligeholder relationer på, kan se anderledes ud, men de er ikke mindre ægte.',
+    myth: "Autistiske kan ikke have nære relationer.",
+    fact: "Mange autistiske har dybe og meningsfulde venskaber, parforhold og familiebånd. De måder, de danner og vedligeholder relationer på, kan se anderledes ud, men de er ikke mindre ægte.",
   },
   {
-    myth: 'Autisme er kun noget, drenge har.',
-    fact: 'Autisme forekommer hos alle køn, men er historisk set underdiagnosticeret hos piger og kvinder, da de oftere lærer at "maskere" — at efterligne neurotypisk adfærd for at passe ind.',
+    myth: "Autisme er kun noget, drenge har.",
+    fact: 'Autisme forekommer hos alle køn, men er historisk set underdiagnosticeret hos piger og kvinder, da de oftere lærer at "maskere"— at efterligne neurotypisk adfærd for at passe ind.',
   },
 ];
 
 const faqItems = [
   {
-    question: 'Hvad er autisme?',
-    answer: 'Autisme (eller autismespektrumforstyrrelse, ASF) er en neurologisk forskel, der påvirker, hvordan man oplever og interagerer med verden. Det handler om forskelligheder i social kommunikation, sensorisk behandling og adfærdsmønstre. Autisme er et spektrum — ingen to autistiske er ens.',
+    question: "Hvad er autisme?",
+    answer:
+      "Autisme (eller autismespektrumforstyrrelse, ASF) er en neurologisk forskel, der påvirker, hvordan man oplever og interagerer med verden. Det handler om forskelligheder i social kommunikation, sensorisk behandling og adfærdsmønstre. Autisme er et spektrum— ingen to autistiske er ens.",
   },
   {
     question: 'Hvad betyder "autismespektret"?',
-    answer: 'Spektret beskriver den store variation i, hvordan autisme viser sig. Nogle autistiske har brug for meget støtte i dagligdagen, andre er fuldt selvstændige. Udfordringer og styrker varierer enormt fra person til person. Tidligere brugte man betegnelser som Aspergers syndrom og Kanner-autisme, men disse er nu samlet under ét spektrum.',
+    answer:
+      "Spektret beskriver den store variation i, hvordan autisme viser sig. Nogle autistiske har brug for meget støtte i dagligdagen, andre er fuldt selvstændige. Udfordringer og styrker varierer enormt fra person til person. Tidligere brugte man betegnelser som Aspergers syndrom og Kanner-autisme, men disse er nu samlet under ét spektrum.",
   },
   {
-    question: 'Hvornår opdages autisme typisk?',
-    answer: 'Autisme opdages oftest i barndommen, typisk mellem 2-4-årsalderen, men mange — særligt kvinder og ikke-binære — får først en diagnose i voksenalderen. En forsinket eller manglende diagnose kan skyldes "masking" (tilpasning til neurotypiske normer) og historiske bias i diagnosticeringskriterierne.',
+    question: "Hvornår opdages autisme typisk?",
+    answer:
+      'Autisme opdages oftest i barndommen, typisk mellem 2-4-årsalderen, men mange— særligt kvinder og ikke-binære —får først en diagnose i voksenalderen. En forsinket eller manglende diagnose kan skyldes "masking" (tilpasning til neurotypiske normer) og historiske bias i diagnosticeringskriterierne.',
   },
   {
     question: 'Hvad er "masking" eller "camouflering"?',
-    answer: 'Masking eller camouflering er, når autistiske personer bevidst eller ubevidst skjuler autistiske træk for at passe ind socialt. Det kan inkludere at imitere andres sociale adfærd, undertrykke stimming eller tvinge sig selv til øjenkontakt. Masking er mentalt udmattende og forbindes med øget risiko for udbrændthed.',
+    answer:
+      "Masking eller camouflering er, når autistiske personer bevidst eller ubevidst skjuler autistiske træk for at passe ind socialt. Det kan inkludere at imitere andres sociale adfærd, undertrykke stimming eller tvinge sig selv til øjenkontakt. Masking er mentalt udmattende og forbindes med øget risiko for udbrændthed.",
   },
   {
-    question: 'Hvad er sensorisk overbelastning?',
-    answer: 'Mange autistiske oplever sensorisk over- eller under-følsomhed. Sensorisk overbelastning sker, når sanseindtryk — lyd, lys, lugt, berøring — overstiger hjernens kapacitet til at bearbejde dem. Det kan føre til ekstrem ubehag, nedlukning eller meltdowns.',
+    question: "Hvad er sensorisk overbelastning?",
+    answer:
+      "Mange autistiske oplever sensorisk over- eller under-følsomhed. Sensorisk overbelastning sker, når sanseindtryk— lyd, lys, lugt, berøring —overstiger hjernens kapacitet til at bearbejde dem. Det kan føre til ekstrem ubehag, nedlukning eller meltdowns.",
   },
   {
-    question: 'Hvad er stimming?',
-    answer: 'Stimming (selv-stimulerende adfærd) er gentagne bevægelser eller handlinger som at gynge, klappe i hænderne, trippe med fingrene eller nynne. Stimming hjælper mange autistiske med at regulere sanseindtryk og følelser. Det er en naturlig og sund måde at håndtere verden på.',
+    question: "Hvad er stimming?",
+    answer:
+      "Stimming (selv-stimulerende adfærd) er gentagne bevægelser eller handlinger som at gynge, klappe i hænderne, trippe med fingrene eller nynne. Stimming hjælper mange autistiske med at regulere sanseindtryk og følelser. Det er en naturlig og sund måde at håndtere verden på.",
   },
   {
-    question: 'Er autisme og ADHD relaterede?',
-    answer: 'Ja — autisme og ADHD deler overlappende træk og forekommer ofte sammen (co-occurring). Studier tyder på, at op til 50-70% af autistiske også har ADHD. Begge er neurologiske varianter, der påvirker opmærksomhed, impulsivitet og eksekutive funktioner.',
+    question: "Er autisme og ADHD relaterede?",
+    answer:
+      "Ja— autisme og ADHD deler overlappende træk og forekommer ofte sammen (co-occurring). Studier tyder på, at op til 50-70% af autistiske også har ADHD. Begge er neurologiske varianter, der påvirker opmærksomhed, impulsivitet og eksekutive funktioner.",
   },
   {
-    question: 'Hvad kan jeg gøre for at støtte en autistisk person?',
-    answer: 'Det vigtigste er at spørge direkte, hvad de har brug for — alle er forskellige. Generelt hjælper det at kommunikere klart og direkte, respektere behov for pauser og stilhed, undgå at tvinge øjenkontakt eller berøring, og acceptere, at sociale normer kan se anderledes ud. Lad den autistiske selv definere, hvad der virker.',
+    question: "Hvad kan jeg gøre for at støtte en autistisk person?",
+    answer:
+      "Det vigtigste er at spørge direkte, hvad de har brug for— alle er forskellige. Generelt hjælper det at kommunikere klart og direkte, respektere behov for pauser og stilhed, undgå at tvinge øjenkontakt eller berøring, og acceptere, at sociale normer kan se anderledes ud. Lad den autistiske selv definere, hvad der virker.",
   },
 ];
 
 const spectrumAreas = [
   {
-    icon: '💬',
-    title: 'Social kommunikation',
-    desc: 'Forskel i, hvordan man kommunikerer, fortolker sociale signaler og interagerer med andre.',
+    icon: "💬",
+    title: "Social kommunikation",
+    desc: "Forskel i, hvordan man kommunikerer, fortolker sociale signaler og interagerer med andre.",
   },
   {
-    icon: '🔁',
-    title: 'Mønstre og rutiner',
-    desc: 'Stærkt behov for forudsigelighed, rutiner og systematisk tænkning. Intense interesser.',
+    icon: "🔁",
+    title: "Mønstre og rutiner",
+    desc: "Stærkt behov for forudsigelighed, rutiner og systematisk tænkning. Intense interesser.",
   },
   {
-    icon: '🌊',
-    title: 'Sensorisk behandling',
-    desc: 'Over- eller under-følsomhed over for lyd, lys, lugt, smag og berøring.',
+    icon: "🌊",
+    title: "Sensorisk behandling",
+    desc: "Over- eller under-følsomhed over for lyd, lys, lugt, smag og berøring.",
   },
   {
-    icon: '🧠',
-    title: 'Eksekutive funktioner',
-    desc: 'Udfordringer med planlægning, skift af fokus, hukommelse og tidsfornemmelse.',
+    icon: "🧠",
+    title: "Eksekutive funktioner",
+    desc: "Udfordringer med planlægning, skift af fokus, hukommelse og tidsfornemmelse.",
   },
 ];
 ---
@@ -98,8 +106,8 @@ const spectrumAreas = [
     badge="Grundviden"
     title="Hvad er autisme?"
     description="Autisme er ikke en sygdom — det er en neurologisk forskel. Her finder du klar, fordomsfri viden om autismespektret, hverdagen med autisme og meget mere."
-    primaryCTA={{ label: 'Læs om myter og fakta', href: '#myter-og-fakta' }}
-    secondaryCTA={{ label: 'Ofte stillede spørgsmål', href: '#faq' }}
+    primaryCTA={{ label: "Læs om myter og fakta", href: "#myter-og-fakta" }}
+    secondaryCTA={{ label: "Ofte stillede spørgsmål", href: "#faq" }}
     size="medium"
   />
 
@@ -114,39 +122,45 @@ const spectrumAreas = [
           </h2>
           <div class="space-y-4 prose-reading" style="color: var(--color-text-muted);">
             <p>
-              Autismespektrumforstyrrelse (ASF) er en samlet betegnelse for en bred vifte af neurologiske varianter. Ingen to autistiske er ens — spektret er bredt, og mange kombinationer af styrker og udfordringer er mulige.
+              Autismespektrumforstyrrelse (ASF) er en samlet betegnelse for en bred vifte af neurologiske varianter. Ingen to autistiske er ens—
+              spektret er bredt, og mange kombinationer af styrker og udfordringer er mulige.
             </p>
             <p>
-              Den medicinske forståelse af autisme er under konstant udvikling. I dag bruger man ét samlet spektrum i stedet for separate diagnoser som Aspergers syndrom og infantil autisme.
+              Den medicinske forståelse af autisme er under konstant udvikling. I dag bruger man ét samlet spektrum i stedet for separate diagnoser
+              som Aspergers syndrom og infantil autisme.
             </p>
-            <p>
-              Autisme identificeres typisk ved forskelle inden for fire overordnede områder, men husk: det er et spektrum — ikke en checkliste.
-            </p>
+            <p>Autisme identificeres typisk ved forskelle inden for fire overordnede områder, men husk: det er et spektrum— ikke en checkliste.</p>
           </div>
 
           <div class="mt-8 p-5 rounded-2xl" style="background: var(--color-primary-50); border: 1px solid var(--color-primary-100);">
             <p class="text-sm font-semibold mb-2" style="color: var(--color-primary);">Vidste du det?</p>
             <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
-              Anslået 1-2% af alle mennesker er autistiske — svarende til over 700.000 danskere. Mange er endnu ikke diagnosticerede.
+              Anslået 1-2% af alle mennesker er autistiske— svarende til over 700.000 danskere. Mange er endnu ikke diagnosticerede.
             </p>
           </div>
         </div>
 
         <!-- Spectrum areas grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {spectrumAreas.map(({ icon, title, desc }) => (
-            <div class="card p-5">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3"
-                style="background: var(--color-primary-50);"
-                aria-hidden="true"
-              >
-                {icon}
+          {
+            spectrumAreas.map(({ icon, title, desc }) => (
+              <div class="card p-5">
+                <div
+                  class="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3"
+                  style="background: var(--color-primary-50);"
+                  aria-hidden="true"
+                >
+                  {icon}
+                </div>
+                <h3 class="font-semibold text-sm mb-2" style="color: var(--color-text);">
+                  {title}
+                </h3>
+                <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">
+                  {desc}
+                </p>
               </div>
-              <h3 class="font-semibold text-sm mb-2" style="color: var(--color-text);">{title}</h3>
-              <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>
@@ -163,34 +177,42 @@ const spectrumAreas = [
       />
 
       <div class="space-y-6">
-        {mythsFacts.map(({ myth, fact }, i) => (
-          <article class="card overflow-hidden" aria-label={`Myte ${i + 1}: ${myth}`}>
-            <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="myth-box p-5 md:p-6">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                    <svg class="w-3.5 h-3.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                      <path d="M18 6L6 18M6 6l12 12"/>
-                    </svg>
-                  </span>
-                  <span class="text-xs font-bold uppercase tracking-wider text-red-600">Myte</span>
+        {
+          mythsFacts.map(({ myth, fact }, i) => (
+            <article class="card overflow-hidden" aria-label={`Myte ${i + 1}: ${myth}`}>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="myth-box p-5 md:p-6">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center shrink-0" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                      </svg>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-red-600">Myte</span>
+                  </div>
+                  <p class="text-sm leading-relaxed font-medium" style="color: var(--color-text);">
+                    {myth}
+                  </p>
                 </div>
-                <p class="text-sm leading-relaxed font-medium" style="color: var(--color-text);">{myth}</p>
-              </div>
-              <div class="fact-box p-5 md:p-6">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                    <svg class="w-3.5 h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                      <path d="M20 6L9 17l-5-5"/>
-                    </svg>
-                  </span>
-                  <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--color-secondary-dark);">Fakta</span>
+                <div class="fact-box p-5 md:p-6">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--color-secondary-dark);">
+                      Fakta
+                    </span>
+                  </div>
+                  <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
+                    {fact}
+                  </p>
                 </div>
-                <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">{fact}</p>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -205,22 +227,52 @@ const spectrumAreas = [
         id="begreber-heading"
       />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {[
-          { term: 'Neurodiversitet', def: 'Det princip, at neurologiske forskelle er naturlige variationer af den menneskelige hjerne, ikke defekter der skal fikses.' },
-          { term: 'Masking / Camouflering', def: 'Når autistiske bevidst eller ubevidst skjuler autistiske træk for at passe ind socialt. Kan føre til udbrændthed.' },
-          { term: 'Meltdown', def: 'En ufrivillig reaktion på overbelastning — kroppen og sindet mister kontrollen. Ikke en tantrum eller opførsels­problem.' },
-          { term: 'Shutdown', def: 'En reaktion på overbelastning, hvor man trækker sig ind i sig selv og bliver ude af stand til at kommunikere eller handle.' },
-          { term: 'Stimming', def: 'Selvstimulerende adfærd som at gynge, klappe eller nynne. Hjælper med at regulere sanserne og følelser.' },
-          { term: 'Executive Function', def: 'Kognitive evner til planlægning, organisering, skift af opgave og impuls­kontrol. Ofte udfordrende for autistiske.' },
-          { term: 'Sensory Processing', def: 'Hjernens måde at bearbejde sanseindtryk. Mange autistiske er hyper- eller hypo-sensitive over for lyde, lys osv.' },
-          { term: 'AAC', def: 'Augmentative and Alternative Communication — hjælpemidler til kommunikation for ikke-talende eller minimalt talende autistiske.' },
-          { term: 'Spoonies / Spoon Theory', def: 'En metafor for begrænsede energiressourcer hos folk med kroniske tilstande, herunder mange autistiske.' },
-        ].map(({ term, def }) => (
-          <div class="card p-5">
-            <h3 class="font-bold text-sm mb-2" style="color: var(--color-primary);">{term}</h3>
-            <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text-muted);">{def}</p>
-          </div>
-        ))}
+        {
+          [
+            {
+              term: "Neurodiversitet",
+              def: "Det princip, at neurologiske forskelle er naturlige variationer af den menneskelige hjerne, ikke defekter der skal fikses.",
+            },
+            {
+              term: "Masking/camouflering",
+              def: "Når autistiske bevidst eller ubevidst skjuler autistiske træk for at passe ind socialt. Kan føre til udbrændthed.",
+            },
+            {
+              term: "Meltdown",
+              def: "En ufrivillig reaktion på overbelastning— kroppen og sindet mister kontrollen. Ikke en tantrum eller opførselsproblem.",
+            },
+            {
+              term: "Shutdown",
+              def: "En reaktion på overbelastning, hvor man trækker sig ind i sig selv og bliver ude af stand til at kommunikere eller handle.",
+            },
+            { term: "Stimming", def: "Selvstimulerende adfærd som at gynge, klappe eller nynne. Hjælper med at regulere sanserne og følelser." },
+            {
+              term: "Executive Functions",
+              def: "Kognitive evner til planlægning, organisering, skift af opgave og impulskontrol. Ofte udfordrende for autistiske.",
+            },
+            {
+              term: "Sensory Processing",
+              def: "Hjernens måde at bearbejde sanseindtryk. Mange autistiske er hyper- eller hypo-sensitive over for lyde, lys osv.",
+            },
+            {
+              term: "AAC",
+              def: "Augmentative and Alternative Communication— hjælpemidler til kommunikation for ikke-talende eller minimalt talende autistiske.",
+            },
+            {
+              term: "Spoonies/Spoon Theory",
+              def: "En metafor for begrænsede energiressourcer hos folk med kroniske tilstande, herunder mange autistiske.",
+            },
+          ].map(({ term, def }) => (
+            <div class="card p-5">
+              <h3 class="font-bold text-sm mb-2" style="color: var(--color-primary);">
+                {term}
+              </h3>
+              <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text-muted);">
+                {def}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -241,9 +293,7 @@ const spectrumAreas = [
   <!-- CTA -->
   <section class="section" aria-label="Næste skridt">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style="color: var(--color-text);">
-        Klar til at lære mere?
-      </h2>
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style="color: var(--color-text);">Klar til at lære mere?</h2>
       <p class="text-base leading-relaxed mb-8" style="color: var(--color-text-muted);">
         Udforsk ressourcebiblioteket eller læs om, hvordan du kan støtte autistiske elever i uddannelse.
       </p>
@@ -251,14 +301,14 @@ const spectrumAreas = [
         <a
           href="/ressourcer"
           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
-          style="background: var(--color-primary); color: white;"
+          style="background: var(--color-primary); color: var(--color-on-primary);"
         >
           Ressourcebibliotek
         </a>
         <a
           href="/uddannelse"
           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-80"
-          style="background: var(--color-surface); color: var(--color-text); border: 2px solid var(--color-border);"
+          style="background: var(--color-surface); color: var(--color-primary); border: 2px solid var(--color-border-strong);"
         >
           Uddannelsesvejledning
         </a>

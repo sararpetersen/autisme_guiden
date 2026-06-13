@@ -49,7 +49,7 @@ const resources = [
   },
   {
     title: 'Maskering og Camouflering',
-    description: 'Hvad er autistisk maskering, hvad koster det energimæssigt, og hvad kan du gøre for at beskytte din trivsel — herunder risikoen for udbrændthed.',
+    description: 'Hvad er autistisk maskering, hvad koster det energimæssigt, og hvad kan du gøre for at beskytte din trivsel— herunder risikoen for udbrændthed.',
     topic: 'maskering', audience: 'unge',  media: 'artikel',
     icon: '🎭', tags: ['Maskering', 'Udbrændthed'],
   },
@@ -61,7 +61,7 @@ const resources = [
   },
   {
     title: 'AuDHD — Autisme og ADHD sammen',
-    description: 'En guide til de overlappende træk og de unikke udfordringer ved at have både autisme og ADHD — og hvad det betyder for diagnose, støtte og hverdagsliv.',
+    description: 'En guide til de overlappende træk og de unikke udfordringer ved at have både autisme og ADHD— og hvad det betyder for diagnose, støtte og hverdagsliv.',
     topic: 'audhd', audience: 'alle-mål', media: 'artikel',
     icon: '⚡', tags: ['AuDHD', 'ADHD', 'Dobbeltdiagnose'],
   },
@@ -79,7 +79,7 @@ const resources = [
   },
   {
     title: 'Sansebehandling og Sensorisk Overbelastning',
-    description: 'Forstå hyper- og hypo-sensitivitet over for lyd, lys, berøring og lugt — og lær strategier til at forebygge og håndtere sensorisk overbelastning.',
+    description: 'Forstå hyper- og hypo-sensitivitet over for lyd, lys, berøring og lugt— og lær strategier til at forebygge og håndtere sensorisk overbelastning.',
     topic: 'sensorik', audience: 'alle-mål', media: 'artikel',
     icon: '🔊', tags: ['Sensorik', 'Overbelastning'],
   },
@@ -91,7 +91,7 @@ const resources = [
   },
   {
     title: 'At være Søskende til et Autistisk Barn',
-    description: 'Søskende til autistiske børn har særlige behov som ofte overses. En guide til forældre om at støtte hele familien — også dem, der tilsyneladende klarer sig fint.',
+    description: 'Søskende til autistiske børn har særlige behov som ofte overses. En guide til forældre om at støtte hele familien— også dem, der tilsyneladende klarer sig fint.',
     topic: 'søskende', audience: 'forældre', media: 'artikel',
     icon: '👫', tags: ['Søskende', 'Familie'],
   },
@@ -109,13 +109,13 @@ const resources = [
   },
   {
     title: 'Dine Rettigheder i Danmark',
-    description: 'Oversigt over rettigheder for autistiske borgere — i folkeskolen, på arbejdspladsen og i mødet med sundhedssystemet og kommunen.',
+    description: 'Oversigt over rettigheder for autistiske borgere— i folkeskolen, på arbejdspladsen og i mødet med sundhedssystemet og kommunen.',
     topic: 'rettigheder', audience: 'voksne', media: 'artikel',
     icon: '⚖️', tags: ['Rettigheder', 'Lovgivning', 'Danmark'],
   },
   {
     title: 'Søvn og Autisme',
-    description: 'Mange autistiske oplever søvnproblemer. Lær om årsagerne — herunder sensorik og rumination — og evidensbaserede søvnhygiejne­strategier.',
+    description: 'Mange autistiske oplever søvnproblemer. Lær om årsagerne— herunder sensorik og rumination —og evidensbaserede søvnstrategier.',
     topic: 'sundhed', audience: 'alle-mål', media: 'artikel',
     icon: '😴', tags: ['Søvn', 'Sundhed'],
   },
@@ -172,8 +172,8 @@ const resources = [
               data-filter="topic"
               data-value={id}
               aria-pressed={id === 'alle' ? 'true' : 'false'}
-              style={id === 'alle'
-                ? 'background: var(--color-primary); color: white; padding: 0.375rem 0.875rem;'
+                style={id === 'alle'
+                ? 'background: var(--color-primary); color: var(--color-on-primary); padding: 0.375rem 0.875rem;'
                 : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1.5px solid var(--color-border); padding: 0.375rem 0.875rem;'}
             >
               {label}
@@ -194,7 +194,7 @@ const resources = [
                 data-value={id}
                 aria-pressed={id === 'alle-mål' ? 'true' : 'false'}
                 style={id === 'alle-mål'
-                  ? 'background: var(--color-primary); color: white; padding: 0.375rem 0.875rem;'
+                  ? 'background: var(--color-primary); color: var(--color-on-primary); padding: 0.375rem 0.875rem;'
                   : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1.5px solid var(--color-border); padding: 0.375rem 0.875rem;'}
               >
                 {label}
@@ -213,7 +213,7 @@ const resources = [
                 data-value={id}
                 aria-pressed={id === 'alle-medie' ? 'true' : 'false'}
                 style={id === 'alle-medie'
-                  ? 'background: var(--color-primary); color: white; padding: 0.375rem 0.875rem;'
+                  ? 'background: var(--color-primary); color: var(--color-on-primary); padding: 0.375rem 0.875rem;'
                   : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1.5px solid var(--color-border); padding: 0.375rem 0.875rem;'}
               >
                 {label}
@@ -304,7 +304,7 @@ const resources = [
                     </span>
                   )}
                   {r.featured && (
-                    <span class="tag text-xs" style="background: var(--color-accent); color: white;">★ Fremhævet</span>
+                    <span class="tag text-xs" style="background: var(--color-accent); color: var(--color-on-accent);">★ Fremhævet</span>
                   )}
                   {r.tags.map(tag => (
                     <span class="tag text-xs" style="background: var(--color-surface-2); color: var(--color-text-subtle); border: 1px solid var(--color-border);">
@@ -323,7 +323,7 @@ const resources = [
         <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4" style="background: var(--color-surface-2);" aria-hidden="true">🔍</div>
         <h3 class="font-semibold text-lg mb-2" style="color: var(--color-text); font-family: var(--font-display);">Ingen resultater fundet</h3>
         <p class="text-sm mb-4" style="color: var(--color-text-muted);">Prøv en anden kombination af søgning og filtre.</p>
-        <button id="reset-search" class="px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer transition-all hover:opacity-80" style="background: var(--color-primary); color: white; font-family: var(--font-body);">
+        <button id="reset-search" class="px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer transition-all hover:opacity-80" style="background: var(--color-primary); color: var(--color-on-primary); font-family: var(--font-body);">
           Nulstil filtre
         </button>
       </div>
@@ -340,7 +340,7 @@ const resources = [
       <p class="text-base leading-relaxed mb-8" style="color: var(--color-text-muted); font-family: var(--font-body);">
         Jeg opdaterer løbende biblioteket. Har du forslag til ressourcer, eller vil du bidrage med indhold? Skriv til mig.
       </p>
-      <a href="/om-os#kontakt" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest cursor-pointer transition-all hover:opacity-90" style="background: var(--color-primary); color: white; font-family: var(--font-body); letter-spacing: 0.06em;">
+      <a href="/om-os#kontakt" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest cursor-pointer transition-all hover:opacity-90" style="background: var(--color-primary); color: var(--color-on-primary); font-family: var(--font-body); letter-spacing: 0.06em;">
         Foreslå en ressource
       </a>
     </div>
@@ -362,7 +362,7 @@ const resources = [
 
   function activeStyle(btn: HTMLElement) {
     btn.style.background = 'var(--color-primary)';
-    btn.style.color = 'white';
+    btn.style.color = 'var(--color-on-primary)';
     btn.style.borderColor = 'transparent';
     btn.setAttribute('aria-pressed', 'true');
   }
