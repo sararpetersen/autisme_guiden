@@ -24,86 +24,24 @@ const currentPath = Astro.url.pathname;
         <!-- ─── Logo ─── -->
         <a
           href="/"
-          class="flex items-center gap-3 group flex-shrink-0"
+          class="flex items-center group flex-shrink-0"
           aria-label="AutismeGuiden – Gå til forsiden"
         >
-          <!-- Compass + puzzle mark — teal & amber brand colors -->
-          <svg
+          <!-- Icon only on mobile, full logo on desktop -->
+          <img
+            src="/autismeguiden_logo_1-2.png"
+            alt="AutismeGuiden logo"
             width="40"
             height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            class="transition-transform duration-200 group-hover:scale-105"
-          >
-            <!-- Outer compass spike — top (dark teal) -->
-            <polygon points="20,1 23,14 17,14" fill="#17464A"/>
-            <!-- Outer compass spike — bottom (dark teal) -->
-            <polygon points="20,39 17,26 23,26" fill="#17464A"/>
-            <!-- Outer compass spike — left (teal-700) -->
-            <polygon points="1,20 14,17 14,23" fill="#156B70"/>
-            <!-- Outer compass spike — right (teal-700) -->
-            <polygon points="39,20 26,23 26,17" fill="#156B70"/>
-
-            <!-- Background circle -->
-            <circle cx="20" cy="20" r="12" fill="#F7FCFB"/>
-
-            <!-- Top-left puzzle piece (dark teal) -->
-            <path
-              d="M8 20 L8 10 Q8 8 10 8 L20 8 L20 12
-                 Q20 14 18 14 Q16 14 16 16 Q16 18 18 18 Q20 18 20 20
-                 L8 20 Z"
-              fill="#1B898E"
-            />
-            <!-- Top-left puzzle nub right -->
-            <circle cx="20" cy="15" r="2.2" fill="#1B898E"/>
-
-            <!-- Top-right puzzle piece (medium teal) -->
-            <path
-              d="M20 8 L30 8 Q32 8 32 10 L32 20 L28 20
-                 Q26 20 26 18 Q26 16 24 16 Q22 16 22 18 Q22 20 20 20
-                 L20 8 Z"
-              fill="#37CBCA"
-            />
-            <!-- Top-right nub bottom -->
-            <circle cx="25" cy="20" r="2.2" fill="#37CBCA"/>
-
-            <!-- Bottom-right puzzle piece (amber) -->
-            <path
-              d="M32 20 L32 30 Q32 32 30 32 L20 32 L20 28
-                 Q20 26 22 26 Q24 26 24 24 Q24 22 22 22 Q20 22 20 20
-                 L32 20 Z"
-              fill="#F6A010"
-            />
-            <!-- Bottom-right nub left -->
-            <circle cx="20" cy="25" r="2.2" fill="#F6A010"/>
-
-            <!-- Bottom-left puzzle piece (amber-light) -->
-            <path
-              d="M8 20 L20 20 L20 22 Q20 24 18 24 Q16 24 16 26 Q16 28 18 28 Q20 28 20 32
-                 L10 32 Q8 32 8 30 L8 20 Z"
-              fill="#F8BC29"
-            />
-            <!-- Bottom-left nub top -->
-            <circle cx="15" cy="20" r="2.2" fill="#F8BC29"/>
-          </svg>
-
-          <!-- Wordmark — Josefin Sans bold, brand teal -->
-          <div class="flex flex-col leading-none">
-            <span
-              class="font-bold text-lg tracking-widest uppercase"
-              style="font-family: var(--font-display); color: var(--color-primary-dark); letter-spacing: 0.08em;"
-            >
-              Autisme
-            </span>
-            <span
-              class="font-bold text-lg tracking-widest uppercase"
-              style="font-family: var(--font-display); color: var(--color-primary); letter-spacing: 0.08em;"
-            >
-              Guiden
-            </span>
-          </div>
+            class="block lg:hidden h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+          />
+          <img
+            src="/autismeguiden_logo.png"
+            alt="AutismeGuiden"
+            width="180"
+            height="59"
+            class="hidden lg:block h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+          />
         </a>
 
         <!-- ─── Desktop nav links ─── -->
