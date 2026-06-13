@@ -1,250 +1,346 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import ResourceCard from '../components/ResourceCard.astro';
 import SearchBar from '../components/SearchBar.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
-const categories = [
-  { id: 'alle', label: 'Alle ressourcer' },
+const topicCategories = [
+  { id: 'alle', label: 'Alle emner' },
   { id: 'grundviden', label: 'Grundviden' },
-  { id: 'familie', label: 'Familie & Pårørende' },
-  { id: 'sensorik', label: 'Sensorik' },
+  { id: 'maskering', label: 'Maskering' },
+  { id: 'angst', label: 'Angst' },
+  { id: 'audhd', label: 'AuDHD' },
+  { id: 'piger', label: 'Piger med autisme' },
+  { id: 'pubertet', label: 'Pubertet' },
+  { id: 'sensorik', label: 'Sanseforstyrrelser' },
+  { id: 'sendiagnosticeret', label: 'Sendiagnosticeret' },
+  { id: 'søskende', label: 'Søskende' },
   { id: 'kommunikation', label: 'Kommunikation' },
-  { id: 'unge', label: 'Unge & Voksne' },
-  { id: 'sundhed', label: 'Sundhed' },
   { id: 'rettigheder', label: 'Rettigheder' },
+  { id: 'sundhed', label: 'Sundhed' },
 ];
+
+const audienceCategories = [
+  { id: 'alle-mål', label: 'Alle målgrupper' },
+  { id: 'børn', label: 'Børn' },
+  { id: 'unge', label: 'Unge' },
+  { id: 'voksne', label: 'Voksne' },
+  { id: 'forældre', label: 'Forældre' },
+  { id: 'fagpersoner', label: 'Fagpersoner' },
+];
+
+const mediaCategories = [
+  { id: 'alle-medie', label: 'Alle medier' },
+  { id: 'artikel', label: 'Artikel' },
+  { id: 'guide', label: 'Guide' },
+  { id: 'podcast', label: 'Podcast' },
+  { id: 'film', label: 'Film' },
+];
+
+const mediaIcon: Record<string, string> = { artikel: '📄', guide: '📋', podcast: '🎙️', film: '🎬' };
+const mediaLabel: Record<string, string> = { artikel: 'Artikel', guide: 'Guide', podcast: 'Podcast', film: 'Film' };
 
 const resources = [
   {
     title: 'Introduktion til Autismespektret',
-    description: 'En grundlæggende og tilgængelig guide til, hvad autisme er, og hvordan spektret manifesterer sig i hverdagen.',
-    category: 'Grundviden',
-    icon: '🧩',
-    href: '/hvad-er-autisme',
-    tags: ['Autisme', 'Grundviden', 'Begyndere'],
-    featured: true,
-    categoryId: 'grundviden',
+    description: 'En grundlæggende og tilgængelig gennemgang af, hvad autisme er, og hvordan spektret manifesterer sig forskelligt fra person til person.',
+    topic: 'grundviden', audience: 'alle-mål', media: 'artikel',
+    icon: '🧩', tags: ['Spektret', 'Grundviden'], featured: true,
   },
   {
-    title: 'Sansebehandling og Sensorisk Overbelastning',
-    description: 'Forstå hyper- og hypo-sensitivitet, og lær strategier til at håndtere og forebygge sensorisk overbelastning.',
-    category: 'Sensorik',
-    categoryColor: 'var(--color-accent-teal)',
-    icon: '🌊',
-    href: '#',
-    tags: ['Sensorik', 'Overbelastning', 'Strategier'],
-    categoryId: 'sensorik',
-  },
-  {
-    title: 'At fortælle om sin diagnose',
-    description: 'En guide til hvornår, hvordan og til hvem man kan vælge at fortælle om sin autisme­diagnose — i skole, arbejde og privat.',
-    category: 'Unge & Voksne',
-    categoryColor: 'var(--color-secondary)',
-    icon: '🗣️',
-    href: '#',
-    tags: ['Diagnose', 'Disclosure', 'Unge'],
-    categoryId: 'unge',
-  },
-  {
-    title: 'AAC: Alternativ og Augmentativ Kommunikation',
-    description: 'Introduktion til kommunikationshjælpemidler for ikke-talende og minimalt talende autistiske personer.',
-    category: 'Kommunikation',
-    icon: '💬',
-    href: '#',
-    tags: ['AAC', 'Kommunikation', 'Hjælpemidler'],
-    categoryId: 'kommunikation',
-  },
-  {
-    title: 'Støtte til forældre og søskende',
-    description: 'Praktisk vejledning til pårørende: Hvordan støtter man bedst et familiemedlem med autisme uden at tabe sig selv?',
-    category: 'Familie & Pårørende',
-    categoryColor: 'var(--color-accent-amber)',
-    icon: '👨‍👩‍👧',
-    href: '#',
-    tags: ['Familie', 'Pårørende', 'Støtte'],
-    categoryId: 'familie',
+    title: 'Maskering og Camouflering',
+    description: 'Hvad er autistisk maskering, hvad koster det energimæssigt, og hvad kan du gøre for at beskytte din trivsel — herunder risikoen for udbrændthed.',
+    topic: 'maskering', audience: 'unge',  media: 'artikel',
+    icon: '🎭', tags: ['Maskering', 'Udbrændthed'],
   },
   {
     title: 'Autisme og Angst',
-    description: 'Sammenhængen mellem autisme og angst, og evidensbaserede strategier til at håndtere angst i hverdagen.',
-    category: 'Sundhed',
-    categoryColor: '#8B5CF6',
-    icon: '🧠',
-    href: '#',
-    tags: ['Angst', 'Mental sundhed', 'Strategier'],
-    categoryId: 'sundhed',
+    description: 'Sammenhængen mellem autisme og angst er stærk. Lær om årsagerne, de typiske udtryk og evidensbaserede strategier til at håndtere angst i hverdagen.',
+    topic: 'angst', audience: 'alle-mål', media: 'artikel',
+    icon: '🌊', tags: ['Angst', 'Mental sundhed'],
+  },
+  {
+    title: 'AuDHD — Autisme og ADHD sammen',
+    description: 'En guide til de overlappende træk og de unikke udfordringer ved at have både autisme og ADHD — og hvad det betyder for diagnose, støtte og hverdagsliv.',
+    topic: 'audhd', audience: 'alle-mål', media: 'artikel',
+    icon: '⚡', tags: ['AuDHD', 'ADHD', 'Dobbeltdiagnose'],
+  },
+  {
+    title: 'Piger og Kvinder med Autisme',
+    description: 'Autisme ser anderledes ud hos piger og kvinder. Lær om den femininiserede autismeprofil, maskering og den udbredte underdiagnosticering af kvinder.',
+    topic: 'piger', audience: 'forældre', media: 'artikel',
+    icon: '👧', tags: ['Piger', 'Kvinder', 'Underdiagnose'],
+  },
+  {
+    title: 'Sendiagnosticeret — Hvad nu?',
+    description: 'At få en autismediagnose sent i livet kan give en blanding af lettelse og sorg. Denne guide hjælper med at navigere i livet efter diagnosen som voksen.',
+    topic: 'sendiagnosticeret', audience: 'voksne', media: 'guide',
+    icon: '🔍', tags: ['Sendiagnosticeret', 'Voksne', 'Identitet'],
+  },
+  {
+    title: 'Sansebehandling og Sensorisk Overbelastning',
+    description: 'Forstå hyper- og hypo-sensitivitet over for lyd, lys, berøring og lugt — og lær strategier til at forebygge og håndtere sensorisk overbelastning.',
+    topic: 'sensorik', audience: 'alle-mål', media: 'artikel',
+    icon: '🔊', tags: ['Sensorik', 'Overbelastning'],
+  },
+  {
+    title: 'Autisme i Puberteten',
+    description: 'Puberteten kan være særlig udfordrende for autistiske unge. Guide til forældre og unge om kropslige forandringer, sociale krav og identitet.',
+    topic: 'pubertet', audience: 'forældre', media: 'guide',
+    icon: '🌱', tags: ['Pubertet', 'Unge', 'Forældre'],
+  },
+  {
+    title: 'At være Søskende til et Autistisk Barn',
+    description: 'Søskende til autistiske børn har særlige behov som ofte overses. En guide til forældre om at støtte hele familien — også dem, der tilsyneladende klarer sig fint.',
+    topic: 'søskende', audience: 'forældre', media: 'artikel',
+    icon: '👫', tags: ['Søskende', 'Familie'],
+  },
+  {
+    title: 'AAC — Alternativ og Augmentativ Kommunikation',
+    description: 'Introduktion til kommunikationshjælpemidler for ikke-talende og minimalt talende autistiske. Hvad er AAC, hvilke typer findes der, og hvem kan profitere af det?',
+    topic: 'kommunikation', audience: 'fagpersoner', media: 'guide',
+    icon: '💬', tags: ['AAC', 'Kommunikation', 'Hjælpemidler'],
+  },
+  {
+    title: 'Meltdowns og Shutdowns forklaret',
+    description: 'En nøgtern gennemgang af, hvad meltdowns og shutdowns er, hvordan man kan se dem komme, og hvad omgivelserne bedst kan gøre i situationen.',
+    topic: 'grundviden', audience: 'forældre', media: 'artikel',
+    icon: '🌋', tags: ['Meltdown', 'Shutdown', 'Krise'],
   },
   {
     title: 'Dine Rettigheder i Danmark',
-    description: 'Oversigt over rettigheder for autistiske borgere i Danmark — i skolen, på arbejdspladsen og i sundhedssystemet.',
-    category: 'Rettigheder',
-    categoryColor: '#DC2626',
-    icon: '⚖️',
-    href: '#',
-    tags: ['Rettigheder', 'Lovgivning', 'Danmark'],
-    categoryId: 'rettigheder',
-  },
-  {
-    title: 'Masking og Udbrændthed',
-    description: 'Hvad er autistisk masking, hvad koster det, og hvad kan du gøre for at beskytte din energi og trivsel?',
-    category: 'Unge & Voksne',
-    categoryColor: 'var(--color-secondary)',
-    icon: '🎭',
-    href: '#',
-    tags: ['Masking', 'Udbrændthed', 'Trivsel'],
-    categoryId: 'unge',
-  },
-  {
-    title: 'Meltdowns og Shutdowns',
-    description: 'En nøgtern gennemgang af, hvad meltdowns og shutdowns er, og hvad omgivelserne kan gøre i situationen.',
-    category: 'Grundviden',
-    icon: '⚡',
-    href: '#',
-    tags: ['Meltdown', 'Shutdown', 'Krise'],
-    categoryId: 'grundviden',
+    description: 'Oversigt over rettigheder for autistiske borgere — i folkeskolen, på arbejdspladsen og i mødet med sundhedssystemet og kommunen.',
+    topic: 'rettigheder', audience: 'voksne', media: 'artikel',
+    icon: '⚖️', tags: ['Rettigheder', 'Lovgivning', 'Danmark'],
   },
   {
     title: 'Søvn og Autisme',
-    description: 'Mange autistiske oplever søvnproblemer. Lær om årsagerne og evidensbaserede søvnhygiejne­strategier.',
-    category: 'Sundhed',
-    categoryColor: '#8B5CF6',
-    icon: '😴',
-    href: '#',
-    tags: ['Søvn', 'Sundhed', 'Hvile'],
-    categoryId: 'sundhed',
+    description: 'Mange autistiske oplever søvnproblemer. Lær om årsagerne — herunder sensorik og rumination — og evidensbaserede søvnhygiejne­strategier.',
+    topic: 'sundhed', audience: 'alle-mål', media: 'artikel',
+    icon: '😴', tags: ['Søvn', 'Sundhed'],
   },
   {
-    title: 'Autisme og Kærlighed og Relationer',
-    description: 'Autistiske har dybe og meningsfulde relationer — men de kan se anderledes ud. En guide til kærlighed og venskaber.',
-    category: 'Unge & Voksne',
-    categoryColor: 'var(--color-secondary)',
-    icon: '💙',
-    href: '#',
-    tags: ['Relationer', 'Venskab', 'Kærlighed'],
-    categoryId: 'unge',
+    title: 'Podcast: Autisme med egne ord',
+    description: 'Autistiske personer deler deres erfaringer og perspektiver i åbne samtaler om hverdagslivet, diagnoser, arbejde og relationer. På dansk.',
+    topic: 'grundviden', audience: 'alle-mål', media: 'podcast',
+    icon: '🎙️', tags: ['Podcast', 'Livshistorier'],
   },
   {
-    title: 'Kommunikation med fagpersoner',
-    description: 'Strategier til at kommunikere effektivt med læger, psykologer og socialrådgivere som autistisk person eller pårørende.',
-    category: 'Kommunikation',
-    icon: '🤝',
-    href: '#',
-    tags: ['Fagpersoner', 'Kommunikation', 'System'],
-    categoryId: 'kommunikation',
+    title: 'Film: Hvad er Autisme?',
+    description: 'En kort, tilgængelig film der forklarer autismespektret på en inkluderende og neurodivergent-venlig måde. Velegnet til alle aldersgrupper.',
+    topic: 'grundviden', audience: 'børn', media: 'film',
+    icon: '🎬', tags: ['Film', 'Introduktion'],
+  },
+  {
+    title: 'Autisme og Spiseforstyrrelse',
+    description: 'Autistiske har markant forhøjet risiko for spiseforstyrrelser. Lær om sammenhængen, advarselssignaler og vejen til hjælp.',
+    topic: 'sundhed', audience: 'forældre', media: 'artikel',
+    icon: '🍽️', tags: ['Spiseforstyrrelse', 'Sundhed'],
   },
 ];
 ---
 
 <Layout
   title="Ressourcer – AutismeGuiden"
-  description="Et bibliotek med guides, artikler og værktøjer om autisme til autistiske personer, pårørende, lærere og fagfolk."
+  description="Et vidensbibliotek med artikler, guides, podcasts og film om autisme — filtreret på emne, målgruppe og medie."
 >
   <Hero
-    badge="Ressourcebibliotek"
-    title="Guides, artikler og værktøjer"
-    description="Et voksende bibliotek med pålidelige, letforståelige ressourcer om autisme. Brug søgning og filtre til at finde det, du leder efter."
+    badge="Vidensbibliotek"
+    title="Viden om autisme, samlet ét sted"
+    description="Artikler, guides, podcasts og film om autismespektret. Brug søgning og filtre til at finde præcis det, du leder efter."
     size="medium"
   />
 
-  <!-- Search and filters -->
+  <!-- Filters -->
   <section
-    class="py-8 border-b sticky top-16 z-30"
+    class="py-6 border-b sticky top-16 z-30"
     style="background: var(--color-surface); border-color: var(--color-border);"
     aria-label="Søg og filtrer ressourcer"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row gap-4 items-start md:items-center">
-        <SearchBar placeholder="Søg i ressourcer..." id="resources-search" class="w-full md:max-w-sm" />
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
 
-        <!-- Category filters -->
-        <div class="flex flex-wrap gap-2" role="group" aria-label="Kategorier">
-          {categories.map(({ id, label }) => (
+      <!-- Search -->
+      <SearchBar placeholder="Søg i ressourcer..." id="resources-search" />
+
+      <!-- Topic filter -->
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: var(--color-text-subtle); font-family: var(--font-body); letter-spacing: 0.1em;">Emne</p>
+        <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer på emne">
+          {topicCategories.map(({ id, label }) => (
             <button
-              class="category-filter tag text-xs font-semibold transition-all hover:opacity-80 cursor-pointer"
-              data-category={id}
+              class="filter-btn topic-btn tag text-xs font-semibold transition-all cursor-pointer hover:opacity-80"
+              data-filter="topic"
+              data-value={id}
               aria-pressed={id === 'alle' ? 'true' : 'false'}
               style={id === 'alle'
                 ? 'background: var(--color-primary); color: white; padding: 0.375rem 0.875rem;'
-                : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1px solid var(--color-border); padding: 0.375rem 0.875rem;'}
+                : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1.5px solid var(--color-border); padding: 0.375rem 0.875rem;'}
             >
               {label}
             </button>
           ))}
         </div>
       </div>
+
+      <!-- Audience + Media filters in one row -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex-1">
+          <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: var(--color-text-subtle); font-family: var(--font-body); letter-spacing: 0.1em;">Målgruppe</p>
+          <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer på målgruppe">
+            {audienceCategories.map(({ id, label }) => (
+              <button
+                class="filter-btn audience-btn tag text-xs font-semibold transition-all cursor-pointer hover:opacity-80"
+                data-filter="audience"
+                data-value={id}
+                aria-pressed={id === 'alle-mål' ? 'true' : 'false'}
+                style={id === 'alle-mål'
+                  ? 'background: var(--color-primary); color: white; padding: 0.375rem 0.875rem;'
+                  : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1.5px solid var(--color-border); padding: 0.375rem 0.875rem;'}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: var(--color-text-subtle); font-family: var(--font-body); letter-spacing: 0.1em;">Medie</p>
+          <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer på medietype">
+            {mediaCategories.map(({ id, label }) => (
+              <button
+                class="filter-btn media-btn tag text-xs font-semibold transition-all cursor-pointer hover:opacity-80"
+                data-filter="media"
+                data-value={id}
+                aria-pressed={id === 'alle-medie' ? 'true' : 'false'}
+                style={id === 'alle-medie'
+                  ? 'background: var(--color-primary); color: white; padding: 0.375rem 0.875rem;'
+                  : 'background: var(--color-surface-2); color: var(--color-text-muted); border: 1.5px solid var(--color-border); padding: 0.375rem 0.875rem;'}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Resources grid -->
+  <!-- Results -->
   <section class="section" aria-labelledby="resources-list-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between mb-8">
-        <h2 id="resources-list-heading" class="text-lg font-semibold" style="color: var(--color-text);">
+        <h2 id="resources-list-heading" class="text-lg font-semibold" style="color: var(--color-text); font-family: var(--font-display);">
           <span id="resource-count">{resources.length}</span> ressourcer
         </h2>
-        <p class="text-sm" style="color: var(--color-text-muted);">
-          Sorteret efter relevans
-        </p>
+        <button
+          id="reset-filters"
+          class="text-xs font-semibold cursor-pointer transition-all hover:opacity-70 hidden"
+          style="color: var(--color-primary); font-family: var(--font-body);"
+          aria-label="Nulstil alle filtre"
+        >
+          Nulstil filtre
+        </button>
       </div>
 
       <div
         id="resources-grid"
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5"
         aria-live="polite"
         aria-label="Ressourceliste"
       >
-        {resources.map((resource) => (
-          <div class="resource-item" data-category={resource.categoryId} data-title={resource.title.toLowerCase()}>
-            <ResourceCard {...resource} />
-          </div>
-        ))}
+        {resources.map((r) => {
+          const topicLabel = topicCategories.find(t => t.id === r.topic)?.label ?? r.topic;
+          return (
+            <article
+              class="resource-item card card-interactive flex flex-col h-full"
+              data-topic={r.topic}
+              data-audience={r.audience}
+              data-media={r.media}
+              data-title={r.title.toLowerCase()}
+            >
+              <div class="p-5 flex flex-col h-full">
+                <!-- Top row: topic + media type -->
+                <div class="flex items-center justify-between gap-2 mb-4">
+                  <span
+                    class="tag text-xs"
+                    style="background: var(--color-primary-50); color: var(--color-primary);"
+                  >
+                    {topicLabel}
+                  </span>
+                  <span
+                    class="flex items-center gap-1 text-xs font-medium"
+                    style="color: var(--color-text-subtle);"
+                    aria-label={`Medietype: ${mediaLabel[r.media]}`}
+                  >
+                    <span aria-hidden="true">{mediaIcon[r.media]}</span>
+                    {mediaLabel[r.media]}
+                  </span>
+                </div>
+
+                <!-- Icon -->
+                <div
+                  class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-xl"
+                  style="background: var(--color-surface-2);"
+                  aria-hidden="true"
+                >
+                  {r.icon}
+                </div>
+
+                <!-- Title -->
+                <h3 class="font-bold text-base leading-snug mb-2" style="font-family: var(--font-display); color: var(--color-text);">
+                  {r.title}
+                </h3>
+
+                <!-- Description -->
+                <p class="text-sm leading-relaxed flex-1 mb-4" style="color: var(--color-text-muted); font-family: var(--font-body);">
+                  {r.description}
+                </p>
+
+                <!-- Audience + tags -->
+                <div class="flex flex-wrap gap-1.5">
+                  {r.audience !== 'alle-mål' && (
+                    <span class="tag text-xs" style="background: var(--color-accent-50); color: var(--color-accent-dark);">
+                      {audienceCategories.find(a => a.id === r.audience)?.label}
+                    </span>
+                  )}
+                  {r.featured && (
+                    <span class="tag text-xs" style="background: var(--color-accent); color: white;">★ Fremhævet</span>
+                  )}
+                  {r.tags.map(tag => (
+                    <span class="tag text-xs" style="background: var(--color-surface-2); color: var(--color-text-subtle); border: 1px solid var(--color-border);">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       <!-- Empty state -->
       <div id="no-results" class="hidden py-16 text-center" aria-live="polite">
-        <div
-          class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4"
-          style="background: var(--color-surface-2);"
-          aria-hidden="true"
-        >
-          🔍
-        </div>
-        <h3 class="font-semibold text-lg mb-2" style="color: var(--color-text);">Ingen resultater fundet</h3>
-        <p class="text-sm" style="color: var(--color-text-muted);">Prøv en anden søgning eller et andet filter.</p>
-        <button
-          id="reset-search"
-          class="mt-4 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:opacity-80"
-          style="background: var(--color-primary); color: white;"
-        >
-          Nulstil søgning
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4" style="background: var(--color-surface-2);" aria-hidden="true">🔍</div>
+        <h3 class="font-semibold text-lg mb-2" style="color: var(--color-text); font-family: var(--font-display);">Ingen resultater fundet</h3>
+        <p class="text-sm mb-4" style="color: var(--color-text-muted);">Prøv en anden kombination af søgning og filtre.</p>
+        <button id="reset-search" class="px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer transition-all hover:opacity-80" style="background: var(--color-primary); color: white; font-family: var(--font-body);">
+          Nulstil filtre
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Newsletter/contribute CTA -->
+  <!-- CTA -->
   <section class="section" style="background: var(--color-surface-2);" aria-labelledby="contribute-heading">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div
-        class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"
-        style="background: var(--color-primary-50);"
-        aria-hidden="true"
-      >
-        💡
-      </div>
-      <h2 id="contribute-heading" class="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style="color: var(--color-text);">
+      <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6" style="background: var(--color-primary-50);" aria-hidden="true">💡</div>
+      <h2 id="contribute-heading" class="font-bold text-2xl sm:text-3xl mb-4" style="font-family: var(--font-display); color: var(--color-text);">
         Mangler du en ressource?
       </h2>
-      <p class="text-base leading-relaxed mb-8" style="color: var(--color-text-muted);">
+      <p class="text-base leading-relaxed mb-8" style="color: var(--color-text-muted); font-family: var(--font-body);">
         Jeg opdaterer løbende biblioteket. Har du forslag til ressourcer, eller vil du bidrage med indhold? Skriv til mig.
       </p>
-      <a
-        href="/om-os#kontakt"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
-        style="background: var(--color-primary); color: white;"
-      >
+      <a href="/om-os#kontakt" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest cursor-pointer transition-all hover:opacity-90" style="background: var(--color-primary); color: white; font-family: var(--font-body); letter-spacing: 0.06em;">
         Foreslå en ressource
       </a>
     </div>
@@ -252,66 +348,106 @@ const resources = [
 </Layout>
 
 <script>
-  // Filter logic
-  const filterBtns = document.querySelectorAll('.category-filter');
-  const resourceItems = document.querySelectorAll('.resource-item') as NodeListOf<HTMLElement>;
-  const searchInput = document.getElementById('resources-search') as HTMLInputElement;
-  const noResults = document.getElementById('no-results');
-  const resourceCount = document.getElementById('resource-count');
-  const resetBtn = document.getElementById('reset-search');
-
-  let activeCategory = 'alle';
+  let activeTopic = 'alle';
+  let activeAudience = 'alle-mål';
+  let activeMedia = 'alle-medie';
   let searchQuery = '';
 
-  function filterResources() {
+  const items = document.querySelectorAll('.resource-item') as NodeListOf<HTMLElement>;
+  const countEl = document.getElementById('resource-count');
+  const noResults = document.getElementById('no-results');
+  const resetBtns = document.querySelectorAll('#reset-filters, #reset-search');
+  const resetBar = document.getElementById('reset-filters');
+  const searchInput = document.getElementById('resources-search') as HTMLInputElement;
+
+  function activeStyle(btn: HTMLElement) {
+    btn.style.background = 'var(--color-primary)';
+    btn.style.color = 'white';
+    btn.style.borderColor = 'transparent';
+    btn.setAttribute('aria-pressed', 'true');
+  }
+
+  function inactiveStyle(btn: HTMLElement) {
+    btn.style.background = 'var(--color-surface-2)';
+    btn.style.color = 'var(--color-text-muted)';
+    btn.style.borderColor = 'var(--color-border)';
+    btn.setAttribute('aria-pressed', 'false');
+  }
+
+  function filterAll() {
     let visible = 0;
-
-    resourceItems.forEach((item) => {
-      const category = item.dataset.category ?? '';
+    items.forEach((item) => {
+      const topic = item.dataset.topic ?? '';
+      const audience = item.dataset.audience ?? '';
+      const media = item.dataset.media ?? '';
       const title = item.dataset.title ?? '';
-      const matchesCategory = activeCategory === 'alle' || category === activeCategory;
-      const matchesSearch = searchQuery === '' || title.includes(searchQuery.toLowerCase());
-      const show = matchesCategory && matchesSearch;
 
+      const matchTopic    = activeTopic === 'alle' || topic === activeTopic;
+      const matchAudience = activeAudience === 'alle-mål' || audience === activeAudience || audience === 'alle-mål';
+      const matchMedia    = activeMedia === 'alle-medie' || media === activeMedia;
+      const matchSearch   = searchQuery === '' || title.includes(searchQuery.toLowerCase());
+
+      const show = matchTopic && matchAudience && matchMedia && matchSearch;
       item.style.display = show ? '' : 'none';
       if (show) visible++;
     });
 
-    if (resourceCount) resourceCount.textContent = String(visible);
+    if (countEl) countEl.textContent = String(visible);
     noResults?.classList.toggle('hidden', visible > 0);
+
+    const isFiltered = activeTopic !== 'alle' || activeAudience !== 'alle-mål' || activeMedia !== 'alle-medie' || searchQuery !== '';
+    resetBar?.classList.toggle('hidden', !isFiltered);
   }
 
-  filterBtns.forEach((btn) => {
+  // Topic buttons
+  document.querySelectorAll('.topic-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      activeCategory = (btn as HTMLElement).dataset.category ?? 'alle';
-
-      filterBtns.forEach((b) => {
-        const isActive = (b as HTMLElement).dataset.category === activeCategory;
-        b.setAttribute('aria-pressed', String(isActive));
-        (b as HTMLElement).style.background = isActive ? 'var(--color-primary)' : 'var(--color-surface-2)';
-        (b as HTMLElement).style.color = isActive ? 'white' : 'var(--color-text-muted)';
-        (b as HTMLElement).style.borderColor = isActive ? 'transparent' : 'var(--color-border)';
-      });
-
-      filterResources();
+      activeTopic = (btn as HTMLElement).dataset.value ?? 'alle';
+      document.querySelectorAll('.topic-btn').forEach(b => inactiveStyle(b as HTMLElement));
+      activeStyle(btn as HTMLElement);
+      filterAll();
     });
   });
 
+  // Audience buttons
+  document.querySelectorAll('.audience-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeAudience = (btn as HTMLElement).dataset.value ?? 'alle-mål';
+      document.querySelectorAll('.audience-btn').forEach(b => inactiveStyle(b as HTMLElement));
+      activeStyle(btn as HTMLElement);
+      filterAll();
+    });
+  });
+
+  // Media buttons
+  document.querySelectorAll('.media-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeMedia = (btn as HTMLElement).dataset.value ?? 'alle-medie';
+      document.querySelectorAll('.media-btn').forEach(b => inactiveStyle(b as HTMLElement));
+      activeStyle(btn as HTMLElement);
+      filterAll();
+    });
+  });
+
+  // Search
   searchInput?.addEventListener('input', () => {
-    searchQuery = searchInput.value;
-    filterResources();
+    searchQuery = searchInput.value.trim();
+    filterAll();
   });
 
-  resetBtn?.addEventListener('click', () => {
-    if (searchInput) searchInput.value = '';
+  // Reset
+  function resetAll() {
+    activeTopic = 'alle';
+    activeAudience = 'alle-mål';
+    activeMedia = 'alle-medie';
     searchQuery = '';
-    activeCategory = 'alle';
-    filterBtns.forEach((b) => {
-      const isAll = (b as HTMLElement).dataset.category === 'alle';
-      b.setAttribute('aria-pressed', String(isAll));
-      (b as HTMLElement).style.background = isAll ? 'var(--color-primary)' : 'var(--color-surface-2)';
-      (b as HTMLElement).style.color = isAll ? 'white' : 'var(--color-text-muted)';
-    });
-    filterResources();
-  });
+    if (searchInput) searchInput.value = '';
+
+    document.querySelectorAll('.topic-btn').forEach((b, i) => i === 0 ? activeStyle(b as HTMLElement) : inactiveStyle(b as HTMLElement));
+    document.querySelectorAll('.audience-btn').forEach((b, i) => i === 0 ? activeStyle(b as HTMLElement) : inactiveStyle(b as HTMLElement));
+    document.querySelectorAll('.media-btn').forEach((b, i) => i === 0 ? activeStyle(b as HTMLElement) : inactiveStyle(b as HTMLElement));
+    filterAll();
+  }
+
+  resetBtns.forEach(btn => btn.addEventListener('click', resetAll));
 </script>
