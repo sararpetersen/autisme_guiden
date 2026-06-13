@@ -105,34 +105,55 @@
 
 /* =============================================
    DARK MODE OVERRIDES
+   Text is near-white neutral. Teal is only for
+   interactive elements. Surfaces are dark neutral
+   with a very subtle teal undertone.
    ============================================= */
 html[data-theme="dark"] {
-  --color-background: #07272c;
-  --color-surface: #0f3a40;
-  --color-surface-2: #17464a;
-  --color-text: #cffbf4;
-  --color-text-muted: #9ff0ec;
-  --color-text-subtle: #37cbca;
-  --color-border: #1b898e;
-  --color-border-strong: #156b70;
-  --color-primary-50: #0f3a40;
-  --color-primary-100: #17464a;
-  --color-accent-50:   #1a0d00;
-  --color-accent-100:  #2d1500;
-  --color-secondary-50: #1a0d00;
-  --color-surface-2:   #17464a;
+  /* Backgrounds */
+  --color-background: #0D1F22;
+  --color-surface:    #162A2E;
+  --color-surface-2:  #1E373C;
 
-  /* Teal scale — so hero gradient, blobs and cards respond to dark mode */
-  --color-teal-50:  #071a1d;
-  --color-teal-100: #0d2e33;
-  --color-teal-200: #153f45;
-  --color-teal-300: #1b898e;
+  /* Text — neutral light, NOT teal */
+  --color-text:        #F0F9FA;
+  --color-text-muted:  #A8C5C9;
+  --color-text-subtle: #6B9EA4;
 
-  /* Amber scale — so hero gradient and amber-tinted elements respond */
-  --color-amber-50:  #1a0d00;
-  --color-amber-100: #2d1500;
-  --color-amber-200: #4a2200;
-  --color-amber-300: #7a3800;
+  /* Borders — subtle, not bright */
+  --color-border:       #2A444A;
+  --color-border-strong: #3A5A62;
+
+  /* Primary — slightly brighter teal so it reads on dark bg */
+  --color-primary:      #37CBCA;
+  --color-primary-dark: #9FF0EC;
+  --color-primary-50:   #162A2E;
+  --color-primary-100:  #1E3D44;
+
+  /* Accent — keep amber vivid */
+  --color-accent:       #F6A010;
+  --color-accent-50:    #1F1200;
+  --color-accent-100:   #321D00;
+  --color-secondary-50: #1F1200;
+
+  /* Teal scale — for hero gradient and decorative elements */
+  --color-teal-50:  #0D1F22;
+  --color-teal-100: #162A2E;
+  --color-teal-200: #1E373C;
+  --color-teal-300: #2A5560;
+
+  /* Amber scale — for hero gradient */
+  --color-amber-50:  #1F1200;
+  --color-amber-100: #321D00;
+  --color-amber-200: #4F2D00;
+  --color-amber-300: #7A4400;
+}
+
+/* Explicit body override — ensures text is light even if
+   CSS variable cascade is blocked by Tailwind v4's @theme layer */
+html[data-theme="dark"] body {
+  color: #F0F9FA;
+  background-color: #0D1F22;
 }
 
 /* =============================================
