@@ -470,6 +470,19 @@ html[data-colors="faded"][data-theme="dark"] {
   --color-accent-100: #321d00;
 }
 
+/* =============================================
+   CRITICAL UI — always visible regardless of animation state
+   The animation system must never hide fixed controls,
+   the navbar, or the accessibility toolbar.
+   ============================================= */
+#toolbar-open,
+#accessibility-toolbar,
+nav,
+header {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 /* Swap logo sets automatically via CSS — wrappers isolate
    the swap from Tailwind's responsive hidden/block classes */
 .logo-set-faded {

@@ -85,7 +85,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
       (function () {
         const supportsObserver = typeof window !== "undefined" && "IntersectionObserver" in window;
         const prefersReducedMotion = document.documentElement.getAttribute("data-reduced-motion") === "true";
-        const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-animate], .section, .card"));
+        const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-animate], .section, .card"))
+          .filter(el =>
+            getComputedStyle(el).position !== "fixed" &&
+            !el.closest("#accessibility-toolbar") &&
+            !el.closest("nav") &&
+            !el.closest("header")
+          );
 
         function initAnimation(el: HTMLElement) {
           if (!el.dataset.animate) {
