@@ -10,15 +10,17 @@ interface Props {
 const { eyebrow, title, description, centered = true, id } = Astro.props;
 ---
 
-<div class={`mb-12 ${centered ? 'text-center max-w-2xl mx-auto' : 'max-w-2xl'}`}>
-  {eyebrow && (
-    <p
-      class="text-xs font-bold uppercase tracking-widest mb-3"
-      style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
-    >
-      {eyebrow}
-    </p>
-  )}
+<div class={`mb-12 ${centered ? "text-center max-w-2xl mx-auto" : "max-w-2xl"}`} data-animate="animate__fadeInUp" data-delay="150">
+  {
+    eyebrow && (
+      <p
+        class="text-xs font-bold uppercase tracking-widest mb-3"
+        style="color: var(--color-primary); font-family: var(--font-body); letter-spacing: 0.12em;"
+      >
+        {eyebrow}
+      </p>
+    )
+  }
   <h2
     id={id}
     class="font-bold tracking-wide leading-tight text-balance mb-4 text-3xl sm:text-4xl"
@@ -26,9 +28,11 @@ const { eyebrow, title, description, centered = true, id } = Astro.props;
   >
     {title}
   </h2>
-  {description && (
-    <p class="text-lg leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">
-      {description}
-    </p>
-  )}
+  {
+    description && (
+      <p class="text-lg leading-relaxed" style="color: var(--color-text-muted); font-family: var(--font-body);">
+        {description}
+      </p>
+    )
+  }
 </div>

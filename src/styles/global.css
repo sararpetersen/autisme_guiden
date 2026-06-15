@@ -214,6 +214,167 @@ html[data-reduced-motion="true"] *::after {
   scroll-behavior: auto !important;
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes blob-float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(0.75rem, -0.5rem) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+[data-animate] {
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, transform;
+}
+
+[data-animate].animate__animated {
+  visibility: visible;
+}
+
+.animate__animated {
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.animate__fadeInUp {
+  animation-name: fade-in-up;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-out;
+}
+
+.animate__fadeIn {
+  animation-name: fade-in;
+  animation-duration: 0.65s;
+  animation-timing-function: ease-out;
+}
+
+.animate__fadeInLeft {
+  animation-name: fade-in-left;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-out;
+}
+
+.animate__fadeInRight {
+  animation-name: fade-in-right;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-out;
+}
+
+.animate__zoomIn {
+  animation-name: zoom-in;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-out;
+}
+
+.animate__delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate__delay-150 {
+  animation-delay: 150ms;
+}
+
+.animate__delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate__delay-250 {
+  animation-delay: 250ms;
+}
+
+.animate__delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate__delay-350 {
+  animation-delay: 350ms;
+}
+
+.animate__delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate__delay-450 {
+  animation-delay: 450ms;
+}
+
+.animate__delay-500 {
+  animation-delay: 500ms;
+}
+
+.blob {
+  animation: blob-float 18s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.blob-secondary {
+  animation-duration: 22s;
+}
+
+html[data-reduced-motion="true"] .animate__animated,
+html[data-reduced-motion="true"] .blob {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
 /* =============================================
    TYPOGRAPHY — Josefin Sans headings
    ============================================= */

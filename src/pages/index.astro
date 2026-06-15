@@ -87,6 +87,8 @@ const stats = [
 <Layout
   title="AutismeGuiden - Din digitale guide til autisme"
   description="AutismeGuiden er en gratis, tilgængelig platform med information om autisme for autistiske personer, pårørende, lærere og fagfolk."
+  ogtitle="Din guide til autisme | AutismeGuiden"
+  ogdescription="Gratis, tilgængelig information om autisme til autistiske personer, pårørende, lærere og fagfolk."
 >
   <!-- Hero -->
   <Hero
@@ -98,7 +100,13 @@ const stats = [
   />
 
   <!-- Stats bar -->
-  <section class="py-10 border-y" style="border-color: var(--color-border); background: var(--color-surface);" aria-label="Nøgletal">
+  <section
+    class="py-10 border-y"
+    style="border-color: var(--color-border); background: var(--color-surface);"
+    aria-label="Nøgletal"
+    data-animate="animate__fadeInUp"
+    data-delay="150"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <dl class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {
@@ -121,7 +129,7 @@ const stats = [
   </section>
 
   <!-- Mission -->
-  <section class="section" aria-labelledby="mission-heading">
+  <section class="section" aria-labelledby="mission-heading" data-animate="animate__fadeInUp" data-delay="150">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
         <p
@@ -144,7 +152,7 @@ const stats = [
         <blockquote class="highlight-box text-left rounded-xl">
           <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
             <strong
-              >"Autisme er ikke noget, man har — det er en del af, hvem man er. AutismeGuiden er bygget på respekt for neurodiversitet og styrker."</strong
+              >"Autisme er ikke noget, man har— det er en del af, hvem man er. AutismeGuiden er bygget på respekt for neurodiversitet og styrker."</strong
             >
           </p>
         </blockquote>
@@ -153,7 +161,13 @@ const stats = [
   </section>
 
   <!-- Quick nav cards -->
-  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="nav-cards-heading">
+  <section
+    class="section"
+    style="background: var(--color-surface-2);"
+    aria-labelledby="nav-cards-heading"
+    data-animate="animate__fadeInUp"
+    data-delay="150"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="Find det du søger"
@@ -161,7 +175,7 @@ const stats = [
         description="AutismeGuiden er opdelt i fire hovedområder, så du hurtigt finder den information, du har brug for."
         id="nav-cards-heading"
       />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6" data-animate="animate__fadeInUp" data-delay="200">
         {
           quickNavCards.map((card) => (
             <FeatureCard title={card.title} description={card.description} icon={card.icon} href={card.href} color={card.color} />
@@ -172,9 +186,9 @@ const stats = [
   </section>
 
   <!-- Featured resources -->
-  <section class="section" aria-labelledby="resources-heading">
+  <section class="section" aria-labelledby="resources-heading" data-animate="animate__fadeInUp" data-delay="150">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12" data-animate="animate__fadeInUp" data-delay="150">
         <SectionHeader
           eyebrow="Populære ressourcer"
           title="Udvalgte guides og artikler"
@@ -201,9 +215,15 @@ const stats = [
   </section>
 
   <!-- CTA band — dark teal brand strip -->
-  <section class="section" style="background: var(--color-primary-dark);" aria-labelledby="design-teaser-heading">
+  <section
+    class="section"
+    style="background: var(--color-primary-dark);"
+    aria-labelledby="design-teaser-heading"
+    data-animate="animate__fadeInUp"
+    data-delay="150"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
+      <div class="max-w-3xl mx-auto text-center" data-animate="animate__fadeInUp" data-delay="200">
         <p
           class="text-xs font-bold uppercase tracking-widest mb-4 opacity-70"
           style="color: var(--color-teal-200); font-family: var(--font-body); letter-spacing: 0.12em;"
@@ -227,15 +247,15 @@ const stats = [
             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98]"
             style="background: var(--color-accent); color: var(--color-on-accent); font-family: var(--font-body); letter-spacing: 0.06em;"
           >
-            Læs om design­principper
+            Læs om designprincipper
           </a>
           <button
             id="open-toolbar-hero"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-80 border-2"
             style="color: var(--color-teal-200); border-color: var(--color-teal-600); background: transparent; font-family: var(--font-body); letter-spacing: 0.06em;"
-            aria-label="Åbn tilgængeligheds­indstillinger"
+            aria-label="Åbn tilgængelighedsindstillinger"
           >
-            Tilgængeligheds­funktioner
+            Tilgængelighedssfunktioner
           </button>
         </div>
       </div>
@@ -243,7 +263,7 @@ const stats = [
   </section>
 
   <!-- Audiences -->
-  <section class="section" aria-labelledby="audiences-heading">
+  <section class="section" aria-labelledby="audiences-heading" data-animate="animate__fadeInUp" data-delay="150">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="For alle"
@@ -281,7 +301,13 @@ const stats = [
   </section>
 
   <!-- Final CTA -->
-  <section class="section" style="background: var(--color-surface-2);" aria-labelledby="cta-heading">
+  <section
+    class="section"
+    style="background: var(--color-surface-2);"
+    aria-labelledby="cta-heading"
+    data-animate="animate__fadeInUp"
+    data-delay="150"
+  >
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2
         id="cta-heading"

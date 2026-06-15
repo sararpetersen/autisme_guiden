@@ -27,9 +27,13 @@ const paddingClasses = {
   <!-- Decorative background blobs (aria-hidden, reduced/no animation) -->
   <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
     <!-- Teal blob top-right -->
-    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-25 blur-3xl" style="background: var(--color-teal-200);"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-25 blur-3xl blob" style="background: var(--color-teal-200);"></div>
     <!-- Amber blob bottom-left -->
-    <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full opacity-20 blur-3xl" style="background: var(--color-amber-200);"></div>
+    <div
+      class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full opacity-20 blur-3xl blob blob-secondary"
+      style="background: var(--color-amber-200);"
+    >
+    </div>
     <!-- Subtle compass hint — center top -->
     <div
       class="absolute top-8 left-1/2 -translate-x-1/2 w-px h-12 opacity-10"
@@ -38,7 +42,7 @@ const paddingClasses = {
     </div>
   </div>
 
-  <div class={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${centered ? "text-center" : ""}`}>
+  <div class={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${centered ? "text-center" : ""}`} data-animate="animate__fadeInUp" data-delay="150">
     <div class={`max-w-4xl ${centered ? "mx-auto" : ""}`}>
       {
         badge && (
@@ -93,7 +97,7 @@ const paddingClasses = {
 
       {
         (primaryCTA || secondaryCTA) && (
-          <div class={`flex flex-wrap gap-3 ${centered ? "justify-center" : ""}`}>
+          <div class={`flex flex-wrap gap-3 ${centered ? "justify-center" : ""}`} data-animate="animate__fadeInUp" data-delay="350">
             {primaryCTA && (
               <a
                 href={primaryCTA.href}

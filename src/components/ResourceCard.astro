@@ -25,6 +25,8 @@ const categoryBg = catBgMap[categoryColor] ?? "var(--color-surface-2)";
 <article
   class={`card card-interactive flex flex-col h-full ${featured ? "ring-2 ring-offset-1" : ""}`}
   style={featured ? "ring-color: var(--color-accent);" : ""}
+  data-animate={featured ? "animate__zoomIn" : "animate__fadeInUp"}
+  data-delay={featured ? "250" : "200"}
 >
   <div class="p-5 flex flex-col h-full">
     <!-- Top row: category badge + featured badge -->

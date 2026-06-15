@@ -8,12 +8,16 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  ogtitle?: string;
+  ogdescription?: string;
 }
 
 const {
   title,
   description = "AutismeGuiden – Din digitale guide til autisme. Information, ressourcer og støtte til autistiske personer, pårørende, lærere og fagfolk.",
   image = "/images/og-image.png",
+  ogtitle,
+  ogdescription,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeguiden.dk");
@@ -30,14 +34,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={ogtitle ?? title} />
+    <meta property="og:description" content={ogdescription ?? description} />
     <meta property="og:locale" content="da_DK" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={ogtitle ?? title} />
+    <meta name="twitter:description" content={ogdescription ?? description} />
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/png" href="/autismeguiden_logo_1-2.png" />
@@ -74,6 +78,48 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.setAttribute("data-font-size", fontSize);
         document.documentElement.setAttribute("data-reduced-motion", reducedMotion);
+      })();
+
+      (function () {
+        const supportsObserver = typeof window !== "undefined" && "IntersectionObserver" in window;
+        const prefersReducedMotion = document.documentElement.getAttribute("data-reduced-motion") === "true";
+        const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-animate], .section, .card"));
+
+        function initAnimation(el: HTMLElement) {
+          if (!el.dataset.animate) {
+            if (el.classList.contains("card")) {
+              el.dataset.animate = "animate__zoomIn";
+              el.dataset.delay = el.dataset.delay || "200";
+            } else {
+              el.dataset.animate = "animate__fadeInUp";
+              el.dataset.delay = el.dataset.delay || "150";
+            }
+          }
+          el.classList.add("animate__animated");
+          const animation = el.dataset.animate;
+          if (animation) el.classList.add(animation);
+          const delay = el.dataset.delay;
+          if (delay) el.classList.add(`animate__delay-${delay}`);
+        }
+
+        if (!supportsObserver || prefersReducedMotion) {
+          elements.forEach(initAnimation);
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const target = entry.target as HTMLElement;
+              initAnimation(target);
+              obs.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.15 },
+        );
+
+        elements.forEach((el) => observer.observe(el));
       })();
     </script>
   </body>
