@@ -228,12 +228,24 @@ html[data-theme="dark"] body {
   background-color: #0d1f22 !important;
 }
 
-/* Footer stays consistently dark in both themes.
-   In dark mode (#0D1F22 page bg) a slightly lighter footer
-   gives visual separation without jarring contrast. */
-html[data-theme="dark"] footer[role="contentinfo"] {
-  background-color: #0f2830 !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
+/* Footer-specific tokens — swap automatically in dark mode */
+:root {
+  --footer-bg:          #E8F2F4;
+  --footer-border:      rgba(30, 58, 64, 0.15);
+  --footer-heading:     #1E3A40;
+  --footer-text:        #2A5560;
+  --footer-text-faint:  rgba(30, 58, 64, 0.65);
+  --footer-card-bg:     rgba(30, 58, 64, 0.08);
+  --footer-card-border: rgba(30, 58, 64, 0.15);
+}
+html[data-theme="dark"] {
+  --footer-bg:          #17464A;
+  --footer-border:      rgba(255, 255, 255, 0.10);
+  --footer-heading:     #CFFBF4;
+  --footer-text:        #9FF0EC;
+  --footer-text-faint:  rgba(255, 255, 255, 0.55);
+  --footer-card-bg:     rgba(255, 255, 255, 0.07);
+  --footer-card-border: rgba(255, 255, 255, 0.14);
 }
 
 /* =============================================
