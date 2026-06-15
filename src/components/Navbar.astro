@@ -72,11 +72,12 @@ const currentPath = Astro.url.pathname;
           <button
             id="font-size-toggle"
             class="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg transition-all hover:opacity-80"
-            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border); font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; line-height: 1; letter-spacing: 0;"
+            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
             aria-label="Skift skriftstørrelse"
             title="Skift skriftstørrelse"
           >
-            <span id="font-size-label" aria-hidden="true">A</span>
+            <span id="font-size-label" aria-hidden="true"
+              style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; line-height: 1; display: block;">A</span>
           </button>
 
           <!-- Faded colours toggle -->

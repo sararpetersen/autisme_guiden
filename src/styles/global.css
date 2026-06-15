@@ -609,6 +609,40 @@ input[type="button"],
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
+/* ── Visible hover effects ────────────────────────────── */
+
+/* Text links in body content: underline + colour shift */
+a:not([class*="btn"]):not([class*="inline-flex"]):not([class*="tag"]):not([class*="rounded"]):hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  opacity: 0.85;
+}
+
+/* Nav links: show a tinted background on hover */
+nav a:hover,
+.nav-link:hover {
+  background-color: var(--color-primary-50) !important;
+  color: var(--color-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Footer links: underline on hover */
+footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 1 !important;
+}
+
+/* Standalone CTA buttons: subtle lift */
+a[class*="inline-flex"]:hover,
+button[class*="inline-flex"]:hover,
+a[class*="rounded-xl"]:hover,
+button[class*="rounded-xl"]:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
 /* Respect reduced motion */
 html[data-reduced-motion="true"] a,
 html[data-reduced-motion="true"] button,
