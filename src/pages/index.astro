@@ -214,10 +214,10 @@ const stats = [
     </div>
   </section>
 
-  <!-- CTA band — dark teal brand strip -->
+  <!-- CTA band — always-dark section, uses --cta-dark-* tokens -->
   <section
     class="section"
-    style="background: var(--color-primary-dark);"
+    style="background: var(--cta-dark-bg);"
     aria-labelledby="design-teaser-heading"
     data-animate="animate__fadeInUp"
     data-delay="150"
@@ -225,19 +225,19 @@ const stats = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center" data-animate="animate__fadeInUp" data-delay="200">
         <p
-          class="text-xs font-bold uppercase tracking-widest mb-4 opacity-70"
-          style="color: var(--color-teal-200); font-family: var(--font-body); letter-spacing: 0.12em;"
+          class="text-xs font-bold uppercase tracking-widest mb-4"
+          style="color: var(--cta-dark-text); font-family: var(--font-body); letter-spacing: 0.12em;"
         >
           Design med omtanke
         </p>
         <h2
           id="design-teaser-heading"
           class="font-bold tracking-wide leading-tight mb-6 text-3xl sm:text-4xl"
-          style="font-family: var(--font-display); color: var(--color-teal-100); letter-spacing: 0.04em;"
+          style="font-family: var(--font-display); color: var(--cta-dark-heading); letter-spacing: 0.04em;"
         >
           Bygget til neurodivergente brugere
         </h2>
-        <p class="text-lg leading-relaxed mb-8" style="color: var(--color-teal-200); opacity: 0.9; font-family: var(--font-body);">
+        <p class="text-lg leading-relaxed mb-8" style="color: var(--cta-dark-text); font-family: var(--font-body);">
           Denne hjemmeside er designet efter WCAG 2.2-standarderne med mørkt tema, justerbar skriftstørrelse og reduceret bevægelse — fordi alle
           fortjener en god oplevelse.
         </p>
@@ -245,17 +245,17 @@ const stats = [
           <a
             href="/tilgaengelighed"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-90 active:scale-[0.98]"
-            style="background: var(--color-accent); color: var(--color-on-accent); font-family: var(--font-body); letter-spacing: 0.06em;"
+            style="background: var(--color-accent); color: white; font-family: var(--font-body); letter-spacing: 0.06em;"
           >
             Læs om designprincipper
           </a>
           <button
             id="open-toolbar-hero"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:opacity-80 border-2"
-            style="color: var(--color-teal-200); border-color: var(--color-teal-600); background: transparent; font-family: var(--font-body); letter-spacing: 0.06em;"
+            style="color: var(--cta-dark-heading); border-color: var(--cta-dark-border); background: transparent; font-family: var(--font-body); letter-spacing: 0.06em;"
             aria-label="Åbn tilgængelighedsindstillinger"
           >
-            Tilgængelighedssfunktioner
+            Tilgængeligheds­funktioner
           </button>
         </div>
       </div>
