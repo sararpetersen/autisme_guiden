@@ -108,6 +108,54 @@
 }
 
 /* =============================================
+   FADED COLOURS MODE — must come BEFORE dark mode
+   so that dark mode (equal specificity, later in file)
+   always wins when both attributes are set.
+   Desaturated versions from the style tile "Colours (faded)".
+   ============================================= */
+html[data-colors="faded"] {
+  --color-primary:       #6B9EA8;
+  --color-primary-dark:  #4A7580;
+  --color-primary-mid:   #5A8E98;
+  --color-primary-light: #8BBAC4;
+  --color-primary-pale:  #AACCD4;
+  --color-primary-50:    #EEF4F6;
+  --color-primary-100:   #D5E5EA;
+
+  --color-accent:        #C9A87C;
+  --color-accent-dark:   #A8885C;
+  --color-accent-light:  #DCBF9A;
+  --color-accent-50:     #F5F0E8;
+  --color-accent-100:    #EBE2D0;
+
+  --color-secondary:       #C9A87C;
+  --color-secondary-dark:  #A8885C;
+  --color-secondary-light: #DCBF9A;
+  --color-secondary-50:    #F5F0E8;
+
+  --color-background: #F4F6F7;
+  --color-surface:    #FFFFFF;
+  --color-surface-2:  #EEF1F3;
+
+  --color-text:        #2A3840;
+  --color-text-muted:  #546E78;
+  --color-text-subtle: #7A9AA4;
+
+  --color-border:        #D0DDE2;
+  --color-border-strong: #B8CBCF;
+
+  --color-teal-50:  #EEF4F6;
+  --color-teal-100: #D5E5EA;
+  --color-teal-200: #AACCD4;
+  --color-teal-300: #7AADB8;
+
+  --color-amber-50:  #F5F0E8;
+  --color-amber-100: #EBE2D0;
+  --color-amber-200: #DCBF9A;
+  --color-amber-300: #C9A87C;
+}
+
+/* =============================================
    DARK MODE — WCAG AA compliant colour system
    Key verified contrast ratios:
    · text (#EEF7F8) on bg (#0D1F22):        15.8:1 ✓ AAA
@@ -162,11 +210,19 @@ html[data-theme="dark"] {
   --color-amber-300: #7a4400;
 }
 
-/* Belt-and-braces body override — ensures text is light
-   regardless of how Tailwind v4 resolves @theme variables */
+/* Hardcoded body override — never overridden by faded or other modes
+   because dark mode CSS comes AFTER faded in this file */
 html[data-theme="dark"] body {
-  color: #eef7f8;
-  background-color: #0d1f22;
+  color: #EEF7F8 !important;
+  background-color: #0D1F22 !important;
+}
+
+/* Footer stays consistently dark in both themes.
+   In dark mode (#0D1F22 page bg) a slightly lighter footer
+   gives visual separation without jarring contrast. */
+html[data-theme="dark"] footer[role="contentinfo"] {
+  background-color: #0F2830 !important;
+  border-color: rgba(255,255,255,0.08) !important;
 }
 
 /* =============================================
@@ -394,65 +450,6 @@ h6,
 }
 .font-reading {
   font-family: var(--font-reading);
-}
-
-/* =============================================
-   FADED COLOURS MODE
-   Desaturated versions of the brand palette —
-   for users who find saturated colours overwhelming.
-   Mirrors the "Colours (faded)" column from the style tile.
-   ============================================= */
-html[data-colors="faded"] {
-  --color-primary:       #6B9EA8;
-  --color-primary-dark:  #4A7580;
-  --color-primary-mid:   #5A8E98;
-  --color-primary-light: #8BBAC4;
-  --color-primary-pale:  #AACCD4;
-  --color-primary-50:    #EEF4F6;
-  --color-primary-100:   #D5E5EA;
-
-  --color-accent:        #C9A87C;
-  --color-accent-dark:   #A8885C;
-  --color-accent-light:  #DCBF9A;
-  --color-accent-50:     #F5F0E8;
-  --color-accent-100:    #EBE2D0;
-
-  --color-secondary:       #C9A87C;
-  --color-secondary-dark:  #A8885C;
-  --color-secondary-light: #DCBF9A;
-  --color-secondary-50:    #F5F0E8;
-
-  --color-background: #F4F6F7;
-  --color-surface:    #FFFFFF;
-  --color-surface-2:  #EEF1F3;
-
-  --color-text:        #2A3840;
-  --color-text-muted:  #546E78;
-  --color-text-subtle: #7A9AA4;
-
-  --color-border:        #D0DDE2;
-  --color-border-strong: #B8CBCF;
-
-  --color-teal-50:  #EEF4F6;
-  --color-teal-100: #D5E5EA;
-  --color-teal-200: #AACCD4;
-  --color-teal-300: #7AADB8;
-
-  --color-amber-50:  #F5F0E8;
-  --color-amber-100: #EBE2D0;
-  --color-amber-200: #DCBF9A;
-  --color-amber-300: #C9A87C;
-}
-
-/* Faded + dark mode — keep dark surfaces, muted teal for interactive */
-html[data-colors="faded"][data-theme="dark"] {
-  --color-primary:       #6B9EA8;
-  --color-primary-dark:  #4A7580;
-  --color-primary-50:    #1A2D31;
-  --color-primary-100:   #1E3A40;
-  --color-accent:        #C9A87C;
-  --color-accent-50:     #1F1200;
-  --color-accent-100:    #321D00;
 }
 
 /* Swap logo sets automatically via CSS — wrappers isolate

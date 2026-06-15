@@ -282,134 +282,125 @@
     }
   });
 
-  // Theme buttons
-  function updateThemeButtons(theme: string) {
+  // ── UI sync functions (read state → update own UI only) ─────
+  function syncThemeButtons() {
+    const theme = document.documentElement.getAttribute("data-theme") ?? "light";
     document.querySelectorAll('[data-action="theme"]').forEach((btn) => {
       const el = btn as HTMLButtonElement;
-      const isActive = el.dataset.value === theme;
-      el.setAttribute("aria-pressed", String(isActive));
-      el.style.borderColor = isActive ? "var(--color-primary)" : "var(--color-border)";
-      el.style.background = isActive ? "var(--color-primary-50)" : "var(--color-surface-2)";
+      const active = el.dataset.value === theme;
+      el.setAttribute("aria-pressed", String(active));
+      el.style.borderColor = active ? "var(--color-primary)" : "var(--color-border)";
+      el.style.background = active ? "var(--color-primary-50)" : "var(--color-surface-2)";
     });
-    // Also update Navbar icons
-    const iconSun = document.getElementById("icon-sun");
-    const iconMoon = document.getElementById("icon-moon");
-    iconSun?.classList.toggle("hidden", theme !== "dark");
-    iconMoon?.classList.toggle("hidden", theme === "dark");
   }
 
+  function syncFontButtons() {
+    const size = document.documentElement.getAttribute("data-font-size") ?? "normal";
+    document.querySelectorAll('[data-action="font-size"]').forEach((btn) => {
+      const el = btn as HTMLButtonElement;
+      const active = el.dataset.value === size;
+      el.setAttribute("aria-pressed", String(active));
+      el.style.borderColor = active ? "var(--color-primary)" : "var(--color-border)";
+      el.style.background = active ? "var(--color-primary-50)" : "var(--color-surface-2)";
+    });
+  }
+
+  function syncMotionToggle() {
+    const on = document.documentElement.getAttribute("data-reduced-motion") === "true";
+    const toggle = document.getElementById("reduced-motion-toggle") as HTMLInputElement;
+    const track = document.getElementById("toggle-track");
+    const thumb = document.getElementById("toggle-thumb");
+    if (toggle) toggle.checked = on;
+    if (track) track.style.background = on ? "var(--color-primary)" : "var(--color-border-strong)";
+    if (thumb) thumb.style.transform = on ? "translateX(16px)" : "translateX(0)";
+  }
+
+  function syncReadingFont() {
+    const on = document.body.style.fontFamily.includes("Atkinson");
+    const toggle = document.getElementById("reading-font-toggle") as HTMLInputElement;
+    const track = document.getElementById("reading-track");
+    const thumb = document.getElementById("reading-thumb");
+    if (toggle) toggle.checked = on;
+    if (track) track.style.background = on ? "var(--color-primary)" : "var(--color-border-strong)";
+    if (thumb) thumb.style.transform = on ? "translateX(16px)" : "translateX(0)";
+  }
+
+  function syncFadedToggle() {
+    const on = document.documentElement.getAttribute("data-colors") === "faded";
+    const toggle = document.getElementById("faded-colors-toggle") as HTMLInputElement;
+    const track = document.getElementById("faded-track");
+    const thumb = document.getElementById("faded-thumb");
+    if (toggle) toggle.checked = on;
+    if (track) track.style.background = on ? "var(--color-primary)" : "var(--color-border-strong)";
+    if (thumb) thumb.style.transform = on ? "translateX(16px)" : "translateX(0)";
+  }
+
+  // ── MutationObserver — reacts to changes from ANY component ──
+  new MutationObserver(() => {
+    syncThemeButtons();
+    syncFontButtons();
+    syncMotionToggle();
+    syncFadedToggle();
+  }).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme", "data-font-size", "data-reduced-motion", "data-colors"],
+  });
+
+  // ── Event handlers — only set state, observer handles UI ─────
   document.querySelectorAll('[data-action="theme"]').forEach((btn) => {
     btn.addEventListener("click", () => {
       const value = (btn as HTMLElement).dataset.value ?? "light";
       document.documentElement.setAttribute("data-theme", value);
       localStorage.setItem("ag-theme", value);
-      updateThemeButtons(value);
     });
   });
-
-  // Font size buttons
-  function updateFontButtons(size: string) {
-    document.querySelectorAll('[data-action="font-size"]').forEach((btn) => {
-      const el = btn as HTMLButtonElement;
-      const isActive = el.dataset.value === size;
-      el.setAttribute("aria-pressed", String(isActive));
-      el.style.borderColor = isActive ? "var(--color-primary)" : "var(--color-border)";
-      el.style.background = isActive ? "var(--color-primary-50)" : "var(--color-surface-2)";
-    });
-  }
 
   document.querySelectorAll('[data-action="font-size"]').forEach((btn) => {
     btn.addEventListener("click", () => {
       const value = (btn as HTMLElement).dataset.value ?? "normal";
       document.documentElement.setAttribute("data-font-size", value);
       localStorage.setItem("ag-font-size", value);
-      updateFontButtons(value);
     });
   });
 
-  // Reduced motion toggle
   const motionToggle = document.getElementById("reduced-motion-toggle") as HTMLInputElement;
-  const motionTrack = document.getElementById("toggle-track");
-  const motionThumb = document.getElementById("toggle-thumb");
-
-  function updateMotionToggle(enabled: boolean) {
-    if (motionToggle) motionToggle.checked = enabled;
-    if (motionTrack) motionTrack.style.background = enabled ? "var(--color-primary)" : "var(--color-border-strong)";
-    if (motionThumb) motionThumb.style.transform = enabled ? "translateX(16px)" : "translateX(0)";
-  }
-
   motionToggle?.addEventListener("change", () => {
-    const enabled = motionToggle.checked;
-    document.documentElement.setAttribute("data-reduced-motion", String(enabled));
-    localStorage.setItem("ag-reduced-motion", String(enabled));
-    updateMotionToggle(enabled);
+    document.documentElement.setAttribute("data-reduced-motion", String(motionToggle.checked));
+    localStorage.setItem("ag-reduced-motion", String(motionToggle.checked));
   });
 
-  // Reading font toggle
   const readingToggle = document.getElementById("reading-font-toggle") as HTMLInputElement;
-  const readingTrack = document.getElementById("reading-track");
-  const readingThumb = document.getElementById("reading-thumb");
-
-  function updateReadingFont(enabled: boolean) {
-    if (readingToggle) readingToggle.checked = enabled;
-    if (readingTrack) readingTrack.style.background = enabled ? "var(--color-primary)" : "var(--color-border-strong)";
-    if (readingThumb) readingThumb.style.transform = enabled ? "translateX(16px)" : "translateX(0)";
-    document.body.style.fontFamily = enabled ? "var(--font-reading)" : "var(--font-sans)";
-    localStorage.setItem("ag-reading-font", String(enabled));
-  }
-
   readingToggle?.addEventListener("change", () => {
-    updateReadingFont(readingToggle.checked);
+    const on = readingToggle.checked;
+    document.body.style.fontFamily = on ? "var(--font-reading)" : "var(--font-sans)";
+    localStorage.setItem("ag-reading-font", String(on));
+    syncReadingFont();
   });
 
-  // Faded colours toggle
   const fadedToggle = document.getElementById("faded-colors-toggle") as HTMLInputElement;
-  const fadedTrack = document.getElementById("faded-track");
-  const fadedThumb = document.getElementById("faded-thumb");
-
-  function updateFadedColors(enabled: boolean) {
-    if (fadedToggle) fadedToggle.checked = enabled;
-    if (fadedTrack) fadedTrack.style.background = enabled ? "var(--color-primary)" : "var(--color-border-strong)";
-    if (fadedThumb) fadedThumb.style.transform = enabled ? "translateX(16px)" : "translateX(0)";
-    document.documentElement.setAttribute("data-colors", enabled ? "faded" : "normal");
-    localStorage.setItem("ag-faded-colors", String(enabled));
-  }
-
   fadedToggle?.addEventListener("change", () => {
-    updateFadedColors(fadedToggle.checked);
+    document.documentElement.setAttribute("data-colors", fadedToggle.checked ? "faded" : "normal");
+    localStorage.setItem("ag-faded-colors", String(fadedToggle.checked));
   });
 
-  // Reset preferences
+  // ── Reset ────────────────────────────────────────────────────
   document.getElementById("reset-preferences")?.addEventListener("click", () => {
-    localStorage.removeItem("ag-theme");
-    localStorage.removeItem("ag-font-size");
-    localStorage.removeItem("ag-reduced-motion");
-    localStorage.removeItem("ag-reading-font");
-    localStorage.removeItem("ag-faded-colors");
-
+    ["ag-theme","ag-font-size","ag-reduced-motion","ag-reading-font","ag-faded-colors"]
+      .forEach(k => localStorage.removeItem(k));
     document.documentElement.setAttribute("data-theme", "light");
     document.documentElement.setAttribute("data-font-size", "normal");
     document.documentElement.setAttribute("data-reduced-motion", "false");
     document.documentElement.setAttribute("data-colors", "normal");
     document.body.style.fontFamily = "";
-
-    updateThemeButtons("light");
-    updateFontButtons("normal");
-    updateMotionToggle(false);
-    updateReadingFont(false);
-    updateFadedColors(false);
+    syncReadingFont();
   });
 
-  // Initialize from saved prefs
-  const savedTheme = localStorage.getItem("ag-theme") ?? "light";
-  const savedSize = localStorage.getItem("ag-font-size") ?? "normal";
-  const savedMotion = localStorage.getItem("ag-reduced-motion") === "true";
+  // ── Initial sync ─────────────────────────────────────────────
   const savedReading = localStorage.getItem("ag-reading-font") === "true";
-  const savedFaded = localStorage.getItem("ag-faded-colors") === "true";
-
-  updateThemeButtons(savedTheme);
-  updateFontButtons(savedSize);
-  updateMotionToggle(savedMotion);
-  updateReadingFont(savedReading);
-  updateFadedColors(savedFaded);
+  if (savedReading) document.body.style.fontFamily = "var(--font-reading)";
+  syncThemeButtons();
+  syncFontButtons();
+  syncMotionToggle();
+  syncFadedToggle();
+  syncReadingFont();
 </script>

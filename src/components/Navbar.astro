@@ -190,7 +190,7 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  // Mobile menu
+  // ── Mobile menu ──────────────────────────────────────────────
   const menuToggle = document.getElementById("menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   menuToggle?.addEventListener("click", () => {
@@ -200,113 +200,99 @@ const currentPath = Astro.url.pathname;
     menuToggle.setAttribute("aria-label", isOpen ? "Åbn menu" : "Luk menu");
   });
 
-  // Theme
-  function updateThemeIcons() {
+  // ── UI sync functions (read state → update own UI only) ──────
+  const fontSizes = ["normal", "large", "xlarge"];
+  const fontLabels: Record<string, string> = { normal: "A", large: "A+", xlarge: "A++" };
+
+  function syncTheme() {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     document.getElementById("icon-sun")?.classList.toggle("hidden", !isDark);
     document.getElementById("icon-moon")?.classList.toggle("hidden", isDark);
-    const mobileLabel = document.getElementById("theme-label-mobile");
-    if (mobileLabel) mobileLabel.textContent = isDark ? "Skift til lyst tema" : "Skift til mørkt tema";
+    const lbl = document.getElementById("theme-label-mobile");
+    if (lbl) lbl.textContent = isDark ? "Skift til lyst tema" : "Skift til mørkt tema";
   }
 
+  function syncFontSize() {
+    const cur = document.documentElement.getAttribute("data-font-size") ?? "normal";
+    const lbl = document.getElementById("font-size-label");
+    const btn = document.getElementById("font-size-toggle");
+    if (lbl) lbl.textContent = fontLabels[cur] ?? "A";
+    if (btn) {
+      btn.setAttribute("aria-label", `Skriftstørrelse: ${fontLabels[cur] ?? "Normal"}. Klik for at skifte.`);
+      const active = cur !== "normal";
+      btn.style.color = active ? "var(--color-primary)" : "var(--color-text-muted)";
+      btn.style.borderColor = active ? "var(--color-primary)" : "var(--color-border)";
+    }
+  }
+
+  function syncMotion() {
+    const on = document.documentElement.getAttribute("data-reduced-motion") === "true";
+    const btn = document.getElementById("motion-toggle-nav");
+    if (btn) {
+      btn.style.color = on ? "var(--color-primary)" : "var(--color-text-muted)";
+      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border)";
+      btn.setAttribute("aria-label", `Reduceret bevægelse: ${on ? "slået til" : "slået fra"}`);
+    }
+  }
+
+  function syncFaded() {
+    const on = document.documentElement.getAttribute("data-colors") === "faded";
+    const btn = document.getElementById("faded-toggle-nav");
+    if (btn) {
+      btn.style.color = on ? "var(--color-primary)" : "var(--color-text-muted)";
+      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border)";
+      btn.setAttribute("aria-label", `Dæmpede farver: ${on ? "slået til" : "slået fra"}`);
+    }
+  }
+
+  // ── MutationObserver — reacts to changes from ANY component ──
+  new MutationObserver(() => {
+    syncTheme();
+    syncFontSize();
+    syncMotion();
+    syncFaded();
+  }).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme", "data-font-size", "data-reduced-motion", "data-colors"],
+  });
+
+  // ── Click handlers — only set state, observer handles UI ─────
   function toggleTheme() {
     const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("ag-theme", next);
-    updateThemeIcons();
   }
-
   document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
   document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
-  updateThemeIcons();
-
-  // Font size toggle — cycles normal → large → xlarge → normal
-  const fontSizes = ["normal", "large", "xlarge"];
-  const fontLabels: Record<string, string> = { normal: "A", large: "A+", xlarge: "A++" };
-
-  function updateFontSizeBtn() {
-    const current = document.documentElement.getAttribute("data-font-size") ?? "normal";
-    const label = document.getElementById("font-size-label");
-    const btn = document.getElementById("font-size-toggle");
-    if (label) label.textContent = fontLabels[current] ?? "A";
-    if (btn) btn.setAttribute("aria-label", `Skriftstørrelse: ${fontLabels[current] ?? "Normal"}. Klik for at skifte.`);
-    const isChanged = current !== "normal";
-    if (btn) {
-      btn.style.color = isChanged ? "var(--color-primary)" : "var(--color-text-muted)";
-      btn.style.borderColor = isChanged ? "var(--color-primary)" : "var(--color-border)";
-    }
-  }
 
   document.getElementById("font-size-toggle")?.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-font-size") ?? "normal";
-    const next = fontSizes[(fontSizes.indexOf(current) + 1) % fontSizes.length];
+    const cur = document.documentElement.getAttribute("data-font-size") ?? "normal";
+    const next = fontSizes[(fontSizes.indexOf(cur) + 1) % fontSizes.length];
     document.documentElement.setAttribute("data-font-size", next);
     localStorage.setItem("ag-font-size", next);
-    updateFontSizeBtn();
   });
-
-  updateFontSizeBtn();
-
-  // Reduced motion toggle
-  function updateMotionBtn() {
-    const enabled = document.documentElement.getAttribute("data-reduced-motion") === "true";
-    const btn = document.getElementById("motion-toggle-nav");
-    if (btn) {
-      btn.style.color = enabled ? "var(--color-primary)" : "var(--color-text-muted)";
-      btn.style.borderColor = enabled ? "var(--color-primary)" : "var(--color-border)";
-      btn.setAttribute("aria-label", `Reduceret bevægelse: ${enabled ? "slået til" : "slået fra"}`);
-    }
-  }
 
   document.getElementById("motion-toggle-nav")?.addEventListener("click", () => {
-    const enabled = document.documentElement.getAttribute("data-reduced-motion") === "true";
-    document.documentElement.setAttribute("data-reduced-motion", String(!enabled));
-    localStorage.setItem("ag-reduced-motion", String(!enabled));
-    updateMotionBtn();
-    // Keep toolbar in sync
-    const motionToggle = document.getElementById("reduced-motion-toggle") as HTMLInputElement;
-    if (motionToggle) {
-      motionToggle.checked = !enabled;
-      motionToggle.dispatchEvent(new Event("change"));
-    }
+    const on = document.documentElement.getAttribute("data-reduced-motion") === "true";
+    document.documentElement.setAttribute("data-reduced-motion", String(!on));
+    localStorage.setItem("ag-reduced-motion", String(!on));
   });
 
-  updateMotionBtn();
-
-  // Faded colours toggle
-  function updateFadedBtn() {
-    const enabled = document.documentElement.getAttribute('data-colors') === 'faded';
-    const btn = document.getElementById('faded-toggle-nav');
-    if (btn) {
-      btn.style.color = enabled ? 'var(--color-primary)' : 'var(--color-text-muted)';
-      btn.style.borderColor = enabled ? 'var(--color-primary)' : 'var(--color-border)';
-      btn.setAttribute('aria-label', `Dæmpede farver: ${enabled ? 'slået til' : 'slået fra'}`);
-    }
-    // Keep toolbar toggle in sync
-    const toolbarToggle = document.getElementById('faded-colors-toggle') as HTMLInputElement | null;
-    if (toolbarToggle) toolbarToggle.checked = enabled;
-    const track = document.getElementById('faded-track');
-    const thumb = document.getElementById('faded-thumb');
-    if (track) track.style.background = enabled ? 'var(--color-primary)' : 'var(--color-border-strong)';
-    if (thumb) thumb.style.transform = enabled ? 'translateX(16px)' : 'translateX(0)';
-  }
-
-  document.getElementById('faded-toggle-nav')?.addEventListener('click', () => {
-    const enabled = document.documentElement.getAttribute('data-colors') === 'faded';
-    document.documentElement.setAttribute('data-colors', enabled ? 'normal' : 'faded');
-    localStorage.setItem('ag-faded-colors', String(!enabled));
-    updateFadedBtn();
+  document.getElementById("faded-toggle-nav")?.addEventListener("click", () => {
+    const on = document.documentElement.getAttribute("data-colors") === "faded";
+    document.documentElement.setAttribute("data-colors", on ? "normal" : "faded");
+    localStorage.setItem("ag-faded-colors", String(!on));
   });
 
-  updateFadedBtn();
+  // ── Initial sync ─────────────────────────────────────────────
+  syncTheme();
+  syncFontSize();
+  syncMotion();
+  syncFaded();
 
-  // Scroll shadow
+  // ── Scroll shadow ────────────────────────────────────────────
   const navbar = document.getElementById("navbar");
-  window.addEventListener(
-    "scroll",
-    () => {
-      navbar?.classList.toggle("shadow-sm", window.scrollY > 10);
-    },
-    { passive: true },
-  );
+  window.addEventListener("scroll", () => {
+    navbar?.classList.toggle("shadow-sm", window.scrollY > 10);
+  }, { passive: true });
 </script>
