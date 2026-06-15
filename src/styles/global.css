@@ -586,6 +586,35 @@ select {
   cursor: pointer;
 }
 
+/* Smooth hover transitions for all interactive elements */
+a,
+button,
+[role="button"],
+[role="tab"],
+input[type="submit"],
+input[type="button"] {
+  transition:
+    opacity          0.2s ease,
+    background-color 0.2s ease,
+    color            0.2s ease,
+    border-color     0.2s ease,
+    box-shadow       0.2s ease,
+    transform        0.15s ease,
+    outline-color    0.15s ease;
+}
+
+html[data-reduced-motion="true"] a,
+html[data-reduced-motion="true"] button,
+html[data-reduced-motion="true"] [role="button"] {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a, button, [role="button"] {
+    transition: none !important;
+  }
+}
+
 /* =============================================
    FOCUS & NAVIGATION
    ============================================= */
