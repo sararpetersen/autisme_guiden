@@ -154,6 +154,13 @@ html[data-theme="dark"] {
   --color-teal-100: #1a2d31;
   --color-teal-200: #223539;
   --color-teal-300: #2e4a50;
+  --color-teal-400: #5a8088;
+  --color-teal-500: #7aadb2;
+  --color-teal-600: #9fcad1;
+  --color-teal-700: #b8d0d3;
+  --color-teal-800: #d5e5ea;
+  --color-teal-900: #eef7f8;
+  --color-teal-950: #f7fcfb;
 
   /* Amber scale — gradients */
   --color-amber-50: #1f1200;
@@ -403,63 +410,101 @@ h6,
    Mirrors the "Colours (faded)" column from the style tile.
    ============================================= */
 html[data-colors="faded"] {
-  --color-primary:       #6B9EA8;
-  --color-primary-dark:  #4A7580;
-  --color-primary-mid:   #5A8E98;
-  --color-primary-light: #8BBAC4;
-  --color-primary-pale:  #AACCD4;
-  --color-primary-50:    #EEF4F6;
-  --color-primary-100:   #D5E5EA;
+  --color-primary: #6b9ea8;
+  --color-primary-dark: #4a7580;
+  --color-primary-mid: #5a8e98;
+  --color-primary-light: #8bbac4;
+  --color-primary-pale: #aaccd4;
+  --color-primary-50: #eef4f6;
+  --color-primary-100: #d5e5ea;
 
-  --color-accent:        #C9A87C;
-  --color-accent-dark:   #A8885C;
-  --color-accent-light:  #DCBF9A;
-  --color-accent-50:     #F5F0E8;
-  --color-accent-100:    #EBE2D0;
+  --color-accent: #c9a87c;
+  --color-accent-dark: #a8885c;
+  --color-accent-light: #dcbf9a;
+  --color-accent-50: #f5f0e8;
+  --color-accent-100: #ebe2d0;
 
-  --color-secondary:       #C9A87C;
-  --color-secondary-dark:  #A8885C;
-  --color-secondary-light: #DCBF9A;
-  --color-secondary-50:    #F5F0E8;
+  --color-secondary: #c9a87c;
+  --color-secondary-dark: #a8885c;
+  --color-secondary-light: #dcbf9a;
+  --color-secondary-50: #f5f0e8;
 
-  --color-background: #F4F6F7;
-  --color-surface:    #FFFFFF;
-  --color-surface-2:  #EEF1F3;
+  --color-background: #f4f6f7;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef1f3;
 
-  --color-text:        #2A3840;
-  --color-text-muted:  #546E78;
-  --color-text-subtle: #7A9AA4;
+  --color-text: #2a3840;
+  --color-text-muted: #546e78;
+  --color-text-subtle: #7a9aa4;
 
-  --color-border:        #D0DDE2;
-  --color-border-strong: #B8CBCF;
+  --color-border: #d0dde2;
+  --color-border-strong: #b8cbcf;
 
-  --color-teal-50:  #EEF4F6;
-  --color-teal-100: #D5E5EA;
-  --color-teal-200: #AACCD4;
-  --color-teal-300: #7AADB8;
+  --color-teal-50: #eef4f6;
+  --color-teal-100: #d5e5ea;
+  --color-teal-200: #aaccd4;
+  --color-teal-300: #7aadb8;
 
-  --color-amber-50:  #F5F0E8;
-  --color-amber-100: #EBE2D0;
-  --color-amber-200: #DCBF9A;
-  --color-amber-300: #C9A87C;
+  --color-amber-50: #f5f0e8;
+  --color-amber-100: #ebe2d0;
+  --color-amber-200: #dcbf9a;
+  --color-amber-300: #c9a87c;
 }
 
 /* Faded + dark mode — keep dark surfaces, muted teal for interactive */
 html[data-colors="faded"][data-theme="dark"] {
-  --color-primary:       #6B9EA8;
-  --color-primary-dark:  #4A7580;
-  --color-primary-50:    #1A2D31;
-  --color-primary-100:   #1E3A40;
-  --color-accent:        #C9A87C;
-  --color-accent-50:     #1F1200;
-  --color-accent-100:    #321D00;
+  --color-primary: #6b9ea8;
+  --color-primary-dark: #4a7580;
+  --color-primary-50: #1a2d31;
+  --color-primary-100: #1e3a40;
+  --color-accent: #c9a87c;
+  --color-accent-50: #1f1200;
+  --color-accent-100: #321d00;
 }
 
 /* Swap logo sets automatically via CSS — wrappers isolate
    the swap from Tailwind's responsive hidden/block classes */
-.logo-set-faded { display: none; }
-html[data-colors="faded"] .logo-set-normal { display: none; }
-html[data-colors="faded"] .logo-set-faded  { display: contents; }
+.logo-set-faded {
+  display: none;
+}
+html[data-colors="faded"] .logo-set-normal {
+  display: none;
+}
+html[data-colors="faded"] .logo-set-faded {
+  display: contents;
+}
+
+/* Faded mode colors for Gratis tag */
+html[data-colors="faded"] .tag-gratis {
+  background: #c9a87c !important;
+  color: #1f1200 !important;
+}
+
+/* Dark mode footer — switch to dark background with light text */
+html[data-theme="dark"] footer.footer-themed {
+  background: #17464a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #9ff0ec !important;
+}
+
+html[data-theme="dark"] footer.footer-themed h3 {
+  color: #cffbf4 !important;
+}
+
+html[data-theme="dark"] footer.footer-themed a {
+  color: #9ff0ec !important;
+}
+
+html[data-theme="dark"] footer.footer-themed .tag {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #9ff0ec !important;
+}
+
+html[data-theme="dark"] footer.footer-themed .tag-gratis {
+  background: #f6a010 !important;
+  color: white !important;
+}
 
 /* =============================================
    CURSOR

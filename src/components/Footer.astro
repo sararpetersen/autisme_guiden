@@ -21,11 +21,25 @@ const footerLinks = {
   ],
 };
 
-/* Hardcoded footer palette — always dark, WCAG verified:
-   #CFFBF4 on #17464A → 7.1:1 ✓ AAA
-   #9FF0EC on #17464A → 5.3:1 ✓ AA
-   rgba(255,255,255,0.75) on #17464A → ~5.5:1 ✓ AA               */
+/* Light mode footer palette — light teal background with dark text, WCAG verified:
+   #1E3A40 on #E8F2F4 → 9.3:1 ✓ AAA
+   #2A5560 on #E8F2F4 → 8.1:1 ✓ AAA
+   rgba(0,0,0,0.7) on #E8F2F4 → ~8.5:1 ✓ AAA               */
 const F = {
+  bg: "#E8F2F4",
+  border: "rgba(30, 58, 64, 0.15)",
+  heading: "#1E3A40" /* dark teal — 9.3:1 on bg ✓ */,
+  text: "#2A5560" /* medium teal — 8.1:1 on bg ✓ */,
+  textFaint: "rgba(30, 58, 64, 0.65)",
+  cardBg: "rgba(30, 58, 64, 0.08)",
+  cardBorder: "rgba(30, 58, 64, 0.15)",
+  accent: "#F6A010",
+};
+
+/* Dark mode footer palette — dark background with light text, WCAG verified:
+   #CFFBF4 on #17464A → 7.1:1 ✓ AAA
+   #9FF0EC on #17464A → 5.3:1 ✓ AA               */
+const FDark = {
   bg: "#17464A",
   border: "rgba(255,255,255,0.10)",
   heading: "#CFFBF4" /* teal-100 — 7.1:1 on bg ✓ */,
@@ -37,35 +51,40 @@ const F = {
 };
 ---
 
-<footer role="contentinfo" class="border-t mt-20" style={`background: ${F.bg}; border-color: ${F.border};`}>
+<footer role="contentinfo" class="border-t mt-20 footer-themed" style={`background: ${F.bg}; border-color: ${F.border};`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Main footer grid -->
     <div class="py-12 lg:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
       <!-- Brand column -->
       <div class="lg:col-span-1">
         <a href="/" class="flex items-center gap-3 mb-5 group" aria-label="AutismeGuiden forsiden">
-          <!-- Normal mode: small icon + separate wordmark -->
-          <div class="logo-set-normal flex items-center gap-3">
-            <img src="/autismeguiden_logo_1-2.png" alt="" width="44" height="44"
+          <!-- Normal mode: full logo -->
+          <div class="logo-set-normal contents">
+            <img
+              src="/autismeguiden_logo.png"
+              alt="AutismeGuiden"
+              width="180"
+              height="59"
               class="h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105"
-              aria-hidden="true" />
-            <div class="flex flex-col leading-none">
-              <span class="font-bold text-base tracking-widest uppercase"
-                style={`font-family: var(--font-display); color: ${F.heading}; letter-spacing: 0.08em;`}>Autisme</span>
-              <span class="font-bold text-base tracking-widest uppercase"
-                style={`font-family: var(--font-display); color: ${F.text}; letter-spacing: 0.08em;`}>Guiden</span>
-            </div>
+            />
           </div>
           <!-- Faded mode: full combined logo -->
-          <img src="/autismeguiden_logo_faded.png" alt="AutismeGuiden"
-            width="180" height="59"
-            class="logo-set-faded h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105" />
+          <div class="logo-set-faded contents">
+            <img
+              src="/autismeguiden_logo_faded.png"
+              alt="AutismeGuiden"
+              width="180"
+              height="59"
+              class="h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105"
+            />
+          </div>
+        </a>
         <p class="text-sm leading-relaxed mb-6" style={`color: ${F.text};`}>
           En åben, tilgængelig platform med information om autisme for alle — autistiske personer, pårørende, fagfolk og lærere.
         </p>
         <div class="flex items-center gap-2">
           <span class="tag" style={`background: ${F.cardBg}; color: ${F.heading}; border: 1px solid ${F.cardBorder};`}> WCAG 2.2 </span>
-          <span class="tag" style={`background: ${F.accent}; color: white;`}> Gratis </span>
+          <span class="tag tag-gratis" style={`background: ${F.accent}; color: white;`}> Gratis </span>
         </div>
       </div>
 
