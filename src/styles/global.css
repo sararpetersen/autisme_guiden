@@ -256,7 +256,7 @@ html[data-colors="faded"] {
   --footer-card-border: rgba(30, 58, 64, 0.15);
 }
 html[data-theme="dark"] {
-  --footer-bg:          #17464A;
+  --footer-bg:          #1A2D31; /* matches var(--color-surface) — same as navbar */
   --footer-border:      rgba(255, 255, 255, 0.10);
   --footer-heading:     #CFFBF4;
   --footer-text:        #9FF0EC;
