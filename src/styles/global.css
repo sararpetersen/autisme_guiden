@@ -364,15 +364,19 @@ html[data-reduced-motion="true"] *::after {
 }
 
 @keyframes blob-float {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(0.75rem, -0.5rem) scale(1.03);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
+  0%   { transform: translate(0,      0)       scale(1);    opacity: 0.25; }
+  25%  { transform: translate(1.5rem, -1rem)   scale(1.06); opacity: 0.35; }
+  50%  { transform: translate(0.5rem, 1.5rem)  scale(0.96); opacity: 0.15; }
+  75%  { transform: translate(-1rem,  0.5rem)  scale(1.04); opacity: 0.30; }
+  100% { transform: translate(0,      0)       scale(1);    opacity: 0.25; }
+}
+
+@keyframes blob-float-secondary {
+  0%   { transform: translate(0,      0)       scale(1);    opacity: 0.20; }
+  25%  { transform: translate(-1rem,  1rem)    scale(0.94); opacity: 0.10; }
+  50%  { transform: translate(1rem,  -1.5rem)  scale(1.06); opacity: 0.28; }
+  75%  { transform: translate(0.5rem, 0.5rem)  scale(0.98); opacity: 0.14; }
+  100% { transform: translate(0,      0)       scale(1);    opacity: 0.20; }
 }
 
 [data-animate] {
@@ -459,16 +463,25 @@ html[data-reduced-motion="true"] *::after {
 .blob {
   animation: blob-float 18s ease-in-out infinite;
   transform-origin: center;
+  will-change: transform, opacity;
 }
 
 .blob-secondary {
-  animation-duration: 22s;
+  animation-name: blob-float-secondary;
+  animation-duration: 24s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
+/* Respect OS-level preference */
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none !important; }
+}
+
+/* Respect site-level toggle */
 html[data-reduced-motion="true"] .animate__animated,
 html[data-reduced-motion="true"] .blob {
   animation: none !important;
-  opacity: 1 !important;
 }
 
 /* =============================================
@@ -750,6 +763,23 @@ html[data-theme="dark"] .myth-box {
 }
 html[data-theme="dark"] .fact-box {
   background: var(--color-primary-100);
+}
+
+/* Form alert boxes */
+html[data-theme="dark"] .form-error-box {
+  background: #2d1010 !important;
+  border-color: #7f2020 !important;
+}
+html[data-theme="dark"] .form-error-box p {
+  color: #FF8080 !important;
+}
+
+/* Myth/fact badge icon circles */
+html[data-theme="dark"] .badge-red-circle {
+  background: rgba(239, 68, 68, 0.2) !important;
+}
+html[data-theme="dark"] .badge-green-circle {
+  background: rgba(34, 197, 94, 0.15) !important;
 }
 
 /* =============================================
