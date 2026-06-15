@@ -44,28 +44,22 @@ const F = {
       <!-- Brand column -->
       <div class="lg:col-span-1">
         <a href="/" class="flex items-center gap-3 mb-5 group" aria-label="AutismeGuiden forsiden">
-          <img
-            src="/autismeguiden_logo_1-2.png"
-            alt=""
-            width="44"
-            height="44"
-            class="logo-set-normal h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105"
-            aria-hidden="true"
-          />
-          <img src="/autismeguiden_logo_1.png" alt="" width="44" height="44"
-            class="logo-set-faded h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105"
-            aria-hidden="true" />
-          <div class="flex flex-col leading-none">
-            <span
-              class="font-bold text-base tracking-widest uppercase"
-              style={`font-family: var(--font-display); color: ${F.heading}; letter-spacing: 0.08em;`}>Autisme</span
-            >
-            <span
-              class="font-bold text-base tracking-widest uppercase"
-              style={`font-family: var(--font-display); color: ${F.text}; letter-spacing: 0.08em;`}>Guiden</span
-            >
+          <!-- Normal mode: small icon + separate wordmark -->
+          <div class="logo-set-normal flex items-center gap-3">
+            <img src="/autismeguiden_logo_1-2.png" alt="" width="44" height="44"
+              class="h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105"
+              aria-hidden="true" />
+            <div class="flex flex-col leading-none">
+              <span class="font-bold text-base tracking-widest uppercase"
+                style={`font-family: var(--font-display); color: ${F.heading}; letter-spacing: 0.08em;`}>Autisme</span>
+              <span class="font-bold text-base tracking-widest uppercase"
+                style={`font-family: var(--font-display); color: ${F.text}; letter-spacing: 0.08em;`}>Guiden</span>
+            </div>
           </div>
-        </a>
+          <!-- Faded mode: full combined logo -->
+          <img src="/autismeguiden_logo_faded.png" alt="AutismeGuiden"
+            width="180" height="59"
+            class="logo-set-faded h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105" />
         <p class="text-sm leading-relaxed mb-6" style={`color: ${F.text};`}>
           En åben, tilgængelig platform med information om autisme for alle — autistiske personer, pårørende, fagfolk og lærere.
         </p>
