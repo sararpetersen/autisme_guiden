@@ -154,6 +154,22 @@
       </div>
     </section>
 
+    <!-- Faded colours -->
+    <section aria-labelledby="faded-heading">
+      <h3 id="faded-heading" class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: var(--color-text-subtle);">Farver</h3>
+      <label class="flex items-center justify-between cursor-pointer p-3 rounded-xl transition-all" style="background: var(--color-surface-2);">
+        <div>
+          <span class="text-sm font-medium block" style="color: var(--color-text);">Dæmpede farver</span>
+          <span class="text-xs" style="color: var(--color-text-muted);">Mindre mættet farvepalette</span>
+        </div>
+        <div class="relative shrink-0 ml-4">
+          <input type="checkbox" id="faded-colors-toggle" class="sr-only" aria-label="Dæmpede farver" />
+          <div id="faded-track" class="w-10 h-6 rounded-full transition-colors duration-200" style="background: var(--color-border-strong);" aria-hidden="true"></div>
+          <div id="faded-thumb" class="absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform duration-200 shadow-sm" aria-hidden="true"></div>
+        </div>
+      </label>
+    </section>
+
     <!-- Reduced motion -->
     <section aria-labelledby="motion-heading">
       <h3 id="motion-heading" class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: var(--color-text-subtle);">Bevægelse</h3>
@@ -346,22 +362,42 @@
     updateReadingFont(readingToggle.checked);
   });
 
+  // Faded colours toggle
+  const fadedToggle = document.getElementById("faded-colors-toggle") as HTMLInputElement;
+  const fadedTrack = document.getElementById("faded-track");
+  const fadedThumb = document.getElementById("faded-thumb");
+
+  function updateFadedColors(enabled: boolean) {
+    if (fadedToggle) fadedToggle.checked = enabled;
+    if (fadedTrack) fadedTrack.style.background = enabled ? "var(--color-primary)" : "var(--color-border-strong)";
+    if (fadedThumb) fadedThumb.style.transform = enabled ? "translateX(16px)" : "translateX(0)";
+    document.documentElement.setAttribute("data-colors", enabled ? "faded" : "normal");
+    localStorage.setItem("ag-faded-colors", String(enabled));
+  }
+
+  fadedToggle?.addEventListener("change", () => {
+    updateFadedColors(fadedToggle.checked);
+  });
+
   // Reset preferences
   document.getElementById("reset-preferences")?.addEventListener("click", () => {
     localStorage.removeItem("ag-theme");
     localStorage.removeItem("ag-font-size");
     localStorage.removeItem("ag-reduced-motion");
     localStorage.removeItem("ag-reading-font");
+    localStorage.removeItem("ag-faded-colors");
 
     document.documentElement.setAttribute("data-theme", "light");
     document.documentElement.setAttribute("data-font-size", "normal");
     document.documentElement.setAttribute("data-reduced-motion", "false");
+    document.documentElement.setAttribute("data-colors", "normal");
     document.body.style.fontFamily = "";
 
     updateThemeButtons("light");
     updateFontButtons("normal");
     updateMotionToggle(false);
     updateReadingFont(false);
+    updateFadedColors(false);
   });
 
   // Initialize from saved prefs
@@ -369,9 +405,11 @@
   const savedSize = localStorage.getItem("ag-font-size") ?? "normal";
   const savedMotion = localStorage.getItem("ag-reduced-motion") === "true";
   const savedReading = localStorage.getItem("ag-reading-font") === "true";
+  const savedFaded = localStorage.getItem("ag-faded-colors") === "true";
 
   updateThemeButtons(savedTheme);
   updateFontButtons(savedSize);
   updateMotionToggle(savedMotion);
   updateReadingFont(savedReading);
+  updateFadedColors(savedFaded);
 </script>

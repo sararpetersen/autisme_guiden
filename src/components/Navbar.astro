@@ -22,20 +22,31 @@ const currentPath = Astro.url.pathname;
       <div class="flex items-center justify-between h-16 lg:h-18">
         <!-- ─── Logo ─── -->
         <a href="/" class="flex items-center group shrink-0" aria-label="AutismeGuiden – Gå til forsiden">
-          <!-- Icon only on mobile, full logo on desktop -->
+          <!-- Mobile: icon only -->
           <img
             src="/autismeguiden_logo_1-2.png"
             alt="AutismeGuiden logo"
-            width="40"
-            height="40"
-            class="block lg:hidden h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+            width="40" height="40"
+            class="logo-normal block lg:hidden h-10 w-auto transition-transform duration-200 group-hover:scale-105"
           />
+          <img
+            src="/autismeguiden_logo_1.png"
+            alt="AutismeGuiden logo"
+            width="40" height="40"
+            class="logo-faded block lg:hidden h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+          />
+          <!-- Desktop: full logo with text -->
           <img
             src="/autismeguiden_logo.png"
             alt="AutismeGuiden"
-            width="180"
-            height="59"
-            class="hidden lg:block h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+            width="180" height="59"
+            class="logo-normal hidden lg:block h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+          />
+          <img
+            src="/autismeguiden_logo_faded.png"
+            alt="AutismeGuiden"
+            width="180" height="59"
+            class="logo-faded hidden lg:block h-10 w-auto transition-transform duration-200 group-hover:scale-105"
           />
         </a>
 

@@ -24,7 +24,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
 ---
 
 <!doctype html>
-<html lang="da" data-theme="light" data-font-size="normal" data-reduced-motion="false">
+<html lang="da" data-theme="light" data-font-size="normal" data-reduced-motion="false" data-colors="normal">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,10 +74,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
         const theme = localStorage.getItem("ag-theme") ?? "light";
         const fontSize = localStorage.getItem("ag-font-size") ?? "normal";
         const reducedMotion = localStorage.getItem("ag-reduced-motion") ?? "false";
+        const fadedColors = localStorage.getItem("ag-faded-colors") === "true" ? "faded" : "normal";
 
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.setAttribute("data-font-size", fontSize);
         document.documentElement.setAttribute("data-reduced-motion", reducedMotion);
+        document.documentElement.setAttribute("data-colors", fadedColors);
       })();
 
       (function () {
