@@ -108,6 +108,54 @@
 }
 
 /* =============================================
+   FADED COLOURS MODE — must come BEFORE dark mode
+   so that dark mode (equal specificity, later in file)
+   always wins when both attributes are set.
+   Desaturated versions from the style tile "Colours (faded)".
+   ============================================= */
+html[data-colors="faded"] {
+  --color-primary: #6b9ea8;
+  --color-primary-dark: #4a7580;
+  --color-primary-mid: #5a8e98;
+  --color-primary-light: #8bbac4;
+  --color-primary-pale: #aaccd4;
+  --color-primary-50: #eef4f6;
+  --color-primary-100: #d5e5ea;
+
+  --color-accent: #c9a87c;
+  --color-accent-dark: #a8885c;
+  --color-accent-light: #dcbf9a;
+  --color-accent-50: #f5f0e8;
+  --color-accent-100: #ebe2d0;
+
+  --color-secondary: #c9a87c;
+  --color-secondary-dark: #a8885c;
+  --color-secondary-light: #dcbf9a;
+  --color-secondary-50: #f5f0e8;
+
+  --color-background: #f4f6f7;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef1f3;
+
+  --color-text: #2a3840;
+  --color-text-muted: #546e78;
+  --color-text-subtle: #7a9aa4;
+
+  --color-border: #d0dde2;
+  --color-border-strong: #b8cbcf;
+
+  --color-teal-50: #eef4f6;
+  --color-teal-100: #d5e5ea;
+  --color-teal-200: #aaccd4;
+  --color-teal-300: #7aadb8;
+
+  --color-amber-50: #f5f0e8;
+  --color-amber-100: #ebe2d0;
+  --color-amber-200: #dcbf9a;
+  --color-amber-300: #c9a87c;
+}
+
+/* =============================================
    DARK MODE — WCAG AA compliant colour system
    Key verified contrast ratios:
    · text (#EEF7F8) on bg (#0D1F22):        15.8:1 ✓ AAA
@@ -169,11 +217,19 @@ html[data-theme="dark"] {
   --color-amber-300: #7a4400;
 }
 
-/* Belt-and-braces body override — ensures text is light
-   regardless of how Tailwind v4 resolves @theme variables */
+/* Hardcoded body override — never overridden by faded or other modes
+   because dark mode CSS comes AFTER faded in this file */
 html[data-theme="dark"] body {
-  color: #eef7f8;
-  background-color: #0d1f22;
+  color: #eef7f8 !important;
+  background-color: #0d1f22 !important;
+}
+
+/* Footer stays consistently dark in both themes.
+   In dark mode (#0D1F22 page bg) a slightly lighter footer
+   gives visual separation without jarring contrast. */
+html[data-theme="dark"] footer[role="contentinfo"] {
+  background-color: #0f2830 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 /* =============================================
