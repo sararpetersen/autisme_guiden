@@ -197,11 +197,12 @@ html[data-theme="dark"] {
   --color-accent-100: #321d00;
   --color-secondary-50: #1f1200;
 
-  /* Teal scale — gradients and decorative */
-  --color-teal-50: #0d1f22;
-  --color-teal-100: #1a2d31;
-  --color-teal-200: #223539;
-  --color-teal-300: #2e4a50;
+  /* Teal scale — only teal-50 needs to be dark (hero gradient).
+     teal-100/200/300 stay LIGHT so they work as text on dark-bg sections */
+  --color-teal-50:  #0d1f22;
+  --color-teal-100: #cffbf4;
+  --color-teal-200: #9ff0ec;
+  --color-teal-300: #37cbca;
   --color-teal-400: #5a8088;
   --color-teal-500: #7aadb2;
   --color-teal-600: #9fcad1;
@@ -210,9 +211,12 @@ html[data-theme="dark"] {
   --color-teal-900: #eef7f8;
   --color-teal-950: #f7fcfb;
 
-  /* Amber scale — gradients */
-  --color-amber-50: #1f1200;
-  --color-amber-100: #321d00;
+  /* Amber scale — only amber-50 needs to be dark (hero gradient).
+     Higher values restored for accent text/decorative use */
+  --color-amber-50:  #1f1200;
+  --color-amber-100: #fdeac8;
+  --color-amber-200: #fbd244;
+  --color-amber-300: #f8bc29;
   --color-amber-200: #4f2d00;
   --color-amber-300: #7a4400;
 }
