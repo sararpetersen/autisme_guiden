@@ -455,10 +455,11 @@ html[data-colors="faded"][data-theme="dark"] {
   --color-accent-100:    #321D00;
 }
 
-/* Swap logo automatically via CSS */
-.logo-faded { display: none; }
-html[data-colors="faded"] .logo-normal { display: none; }
-html[data-colors="faded"] .logo-faded  { display: block; }
+/* Swap logo sets automatically via CSS — wrappers isolate
+   the swap from Tailwind's responsive hidden/block classes */
+.logo-set-faded { display: none; }
+html[data-colors="faded"] .logo-set-normal { display: none; }
+html[data-colors="faded"] .logo-set-faded  { display: contents; }
 
 /* =============================================
    CURSOR
