@@ -868,6 +868,11 @@ html[data-theme="dark"] .fact-box {
   background: var(--color-primary-100);
 }
 
+/* Conformance level cards (A / AA / AAA) — same surface in dark mode */
+html[data-theme="dark"] .conformance-card {
+  background: var(--color-surface) !important;
+}
+
 /* Form alert boxes */
 html[data-theme="dark"] .form-error-box {
   background: #2d1010 !important;

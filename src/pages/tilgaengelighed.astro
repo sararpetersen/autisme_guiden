@@ -233,11 +233,11 @@ const neurodivergentPrinciples = [
         <h3 class="font-bold text-lg mb-4" style="color: var(--color-text);">Konformitetsniveauer</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { level: 'A', label: 'Niveau A', desc: 'Minimum krav. Basisniveau der fjerner de mest alvorlige barrierer.', color: 'var(--color-accent-amber)', bg: '#FEF3C7' },
+            { level: 'A', label: 'Niveau A', desc: 'Minimum krav. Basisniveau der fjerner de mest alvorlige barrierer.', color: 'var(--color-accent)', bg: 'var(--color-accent-50)' },
             { level: 'AA', label: 'Niveau AA', desc: 'Standarden for de fleste offentlige og kommercielle websites. AutismeGuiden sigter mod AA.', color: 'var(--color-secondary)', bg: 'var(--color-secondary-50)' },
             { level: 'AAA', label: 'Niveau AAA', desc: 'Det højeste niveau. Ikke krævet for hele sider, men anbefales where muligt.', color: 'var(--color-primary)', bg: 'var(--color-primary-50)' },
           ].map(({ level, label, desc, color, bg }) => (
-            <div class="rounded-xl p-4" style={`background: ${bg};`}>
+            <div class="conformance-card rounded-xl p-4" style={`background: ${bg};`}>
               <div class="flex items-center gap-2 mb-2">
                 <span class="font-bold text-xl" style={`color: ${color};`}>{level}</span>
                 <span class="font-semibold text-sm" style="color: var(--color-text);">{label}</span>
