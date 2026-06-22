@@ -185,8 +185,9 @@ html[data-theme="dark"] {
      so it stays #17464A and keeps footer/blockquote backgrounds dark */
   --color-primary: #2a9ea1;
   --color-primary-light: #3aacae;
-  --color-primary-50: #1a2d31;
-  --color-primary-100: #1e3a40;
+  /* rgba tints so highlighted backgrounds are visible against surface (#1a2d31) */
+  --color-primary-50:  rgba(42, 158, 161, 0.12);
+  --color-primary-100: rgba(42, 158, 161, 0.22);
   /* Ensure on-colour variables remain readable in dark theme */
   --color-on-primary: #ffffff;
   --color-on-accent: #ffffff;
@@ -379,6 +380,15 @@ html[data-reduced-motion="true"] *::after {
   100% { transform: translate(0,      0)       scale(1);    opacity: 0.20; }
 }
 
+/* Pre-hide sections/cards before IntersectionObserver fires.
+   js-anim is added by an inline <head> script before first paint,
+   so these are never visible without their entrance animation.
+   The existing !important rules on nav/header/#toolbar-open override this. */
+html.js-anim .section,
+html.js-anim .card {
+  opacity: 0;
+}
+
 [data-animate] {
   opacity: 0;
   visibility: hidden;
@@ -387,6 +397,15 @@ html[data-reduced-motion="true"] *::after {
 
 [data-animate].animate__animated {
   visibility: visible;
+}
+
+/* Horizontal-scroll filter pills — hide the scrollbar track */
+.filter-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.filter-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .animate__animated {
@@ -625,6 +644,19 @@ nav a:hover,
   background-color: var(--color-primary-50) !important;
   color: var(--color-primary) !important;
   opacity: 1 !important;
+}
+
+/* Burger-menu button hover — teal border + icon colour */
+#menu-toggle:hover {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background: var(--color-primary-50) !important;
+}
+
+/* Mobile accessibility grid buttons hover */
+#mobile-menu .grid button:hover {
+  color: var(--color-primary) !important;
+  background: var(--color-primary-100) !important;
 }
 
 /* Footer links: underline on hover */

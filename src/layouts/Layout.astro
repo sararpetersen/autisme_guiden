@@ -49,6 +49,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
 
     <title>{title}</title>
 
+    <!-- Prevent animation flicker: hide .section/.card before first paint so they
+         never flash visible before IntersectionObserver triggers their entrance. -->
+    <script>document.documentElement.classList.add('js-anim');</script>
+
     <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

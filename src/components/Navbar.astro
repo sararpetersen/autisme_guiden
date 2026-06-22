@@ -127,15 +127,15 @@ const currentPath = Astro.url.pathname;
           <!-- Mobile hamburger -->
           <button
             id="menu-toggle"
-            class="lg:hidden flex flex-col items-center justify-center w-9 h-9 rounded-lg gap-1.5 transition-all"
+            class="lg:hidden flex flex-col items-center justify-center w-9 h-9 rounded-lg gap-1 transition-all"
             style="color: var(--color-text); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
             aria-label="Åbn menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
           >
-            <span class="block w-5 h-0.5" style="background: currentColor;" id="bar1"></span>
-            <span class="block w-5 h-0.5" style="background: currentColor;" id="bar2"></span>
-            <span class="block w-4 h-0.5" style="background: currentColor;" id="bar3"></span>
+            <span class="block w-3 h-0.5" style="background: currentColor;" id="bar1"></span>
+            <span class="block w-3 h-0.5" style="background: currentColor;" id="bar2"></span>
+            <span class="block w-2.5 h-0.5" style="background: currentColor;" id="bar3"></span>
           </button>
         </div>
       </div>
@@ -159,7 +159,7 @@ const currentPath = Astro.url.pathname;
                 style={
                   isActive
                     ? "background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);"
-                    : "color: var(--color-text-muted); font-family: var(--font-body);"
+                    : "color: var(--color-text-subtle); font-family: var(--font-body);"
                 }
                 aria-current={isActive ? "page" : undefined}
               >
@@ -169,18 +169,62 @@ const currentPath = Astro.url.pathname;
           })
         }
 
-        <!-- Mobile dark mode -->
+        <!-- Mobile accessibility controls -->
         <div class="pt-2 border-t" style="border-color: var(--color-border);">
-          <button
-            id="theme-toggle-mobile"
-            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold w-full transition-all hover:opacity-80"
-            style="color: var(--color-text-muted); font-family: var(--font-body);"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-            </svg>
-            <span id="theme-label-mobile">Skift til mørkt tema</span>
-          </button>
+          <p class="px-3 pt-2 pb-1.5 text-xs font-semibold uppercase tracking-wider" style="color: var(--color-text-subtle); font-family: var(--font-body);">Tilgængelighed</p>
+          <div class="grid grid-cols-2 gap-1.5 px-3 pb-3">
+            <!-- Font size -->
+            <button
+              id="font-size-toggle-mobile"
+              class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-semibold transition-all"
+              style="color: var(--color-text-subtle); font-family: var(--font-body); background: var(--color-surface-2);"
+              aria-label="Skriftstørrelse: Normal. Klik for at skifte."
+            >
+              <span id="font-size-label-mobile" aria-hidden="true" style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; line-height: 1; display: block;">A</span>
+              Skriftstørrelse
+            </button>
+            <!-- Faded colors -->
+            <button
+              id="faded-toggle-mobile"
+              class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-semibold transition-all"
+              style="color: var(--color-text-subtle); font-family: var(--font-body); background: var(--color-surface-2);"
+              aria-label="Dæmpede farver: slået fra"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a10 10 0 010 20V2z" fill="currentColor" stroke="none" opacity="0.4"/>
+              </svg>
+              Dæmpede farver
+            </button>
+            <!-- Reduced motion -->
+            <button
+              id="motion-toggle-mobile"
+              class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-semibold transition-all"
+              style="color: var(--color-text-subtle); font-family: var(--font-body); background: var(--color-surface-2);"
+              aria-label="Reduceret bevægelse: slået fra"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Reducér bevægelse
+            </button>
+            <!-- Dark/light theme -->
+            <button
+              id="theme-toggle-mobile"
+              class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-semibold transition-all"
+              style="color: var(--color-text-subtle); font-family: var(--font-body); background: var(--color-surface-2);"
+              aria-label="Skift til mørkt tema"
+            >
+              <svg id="icon-moon-mobile" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+              </svg>
+              <svg id="icon-sun-mobile" class="w-4 h-4 shrink-0 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+              </svg>
+              <span id="theme-label-mobile">Mørkt tema</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -207,42 +251,79 @@ const currentPath = Astro.url.pathname;
 
   function syncTheme() {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    // Desktop icons
     document.getElementById("icon-sun")?.classList.toggle("hidden", !isDark);
     document.getElementById("icon-moon")?.classList.toggle("hidden", isDark);
+    // Mobile icons
+    document.getElementById("icon-sun-mobile")?.classList.toggle("hidden", !isDark);
+    document.getElementById("icon-moon-mobile")?.classList.toggle("hidden", isDark);
+    // Mobile button active state
+    const mobileThemeBtn = document.getElementById("theme-toggle-mobile");
+    if (mobileThemeBtn) {
+      mobileThemeBtn.setAttribute("aria-label", isDark ? "Skift til lyst tema" : "Skift til mørkt tema");
+      mobileThemeBtn.style.color = isDark ? "var(--color-primary)" : "var(--color-text-subtle)";
+      mobileThemeBtn.style.background = isDark ? "var(--color-primary-100)" : "var(--color-surface-2)";
+    }
     const lbl = document.getElementById("theme-label-mobile");
-    if (lbl) lbl.textContent = isDark ? "Skift til lyst tema" : "Skift til mørkt tema";
+    if (lbl) lbl.textContent = isDark ? "Lyst tema" : "Mørkt tema";
   }
 
   function syncFontSize() {
     const cur = document.documentElement.getAttribute("data-font-size") ?? "normal";
+    const active = cur !== "normal";
+    // Desktop
     const lbl = document.getElementById("font-size-label");
     const btn = document.getElementById("font-size-toggle");
     if (lbl) lbl.textContent = fontLabels[cur] ?? "A";
     if (btn) {
       btn.setAttribute("aria-label", `Skriftstørrelse: ${fontLabels[cur] ?? "Normal"}. Klik for at skifte.`);
-      const active = cur !== "normal";
       btn.style.color = active ? "var(--color-primary)" : "var(--color-text-muted)";
       btn.style.borderColor = active ? "var(--color-primary)" : "var(--color-border)";
+    }
+    // Mobile
+    const mobileLbl = document.getElementById("font-size-label-mobile");
+    const mobileBtn = document.getElementById("font-size-toggle-mobile");
+    if (mobileLbl) mobileLbl.textContent = fontLabels[cur] ?? "A";
+    if (mobileBtn) {
+      mobileBtn.setAttribute("aria-label", `Skriftstørrelse: ${fontLabels[cur] ?? "Normal"}. Klik for at skifte.`);
+      mobileBtn.style.color = active ? "var(--color-primary)" : "var(--color-text-subtle)";
+      mobileBtn.style.background = active ? "var(--color-primary-100)" : "var(--color-surface-2)";
     }
   }
 
   function syncMotion() {
     const on = document.documentElement.getAttribute("data-reduced-motion") === "true";
+    // Desktop
     const btn = document.getElementById("motion-toggle-nav");
     if (btn) {
       btn.style.color = on ? "var(--color-primary)" : "var(--color-text-muted)";
       btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border)";
       btn.setAttribute("aria-label", `Reduceret bevægelse: ${on ? "slået til" : "slået fra"}`);
     }
+    // Mobile
+    const mobileBtn = document.getElementById("motion-toggle-mobile");
+    if (mobileBtn) {
+      mobileBtn.style.color = on ? "var(--color-primary)" : "var(--color-text-subtle)";
+      mobileBtn.style.background = on ? "var(--color-primary-100)" : "var(--color-surface-2)";
+      mobileBtn.setAttribute("aria-label", `Reduceret bevægelse: ${on ? "slået til" : "slået fra"}`);
+    }
   }
 
   function syncFaded() {
     const on = document.documentElement.getAttribute("data-colors") === "faded";
+    // Desktop
     const btn = document.getElementById("faded-toggle-nav");
     if (btn) {
       btn.style.color = on ? "var(--color-primary)" : "var(--color-text-muted)";
       btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border)";
       btn.setAttribute("aria-label", `Dæmpede farver: ${on ? "slået til" : "slået fra"}`);
+    }
+    // Mobile
+    const mobileBtn = document.getElementById("faded-toggle-mobile");
+    if (mobileBtn) {
+      mobileBtn.style.color = on ? "var(--color-primary)" : "var(--color-text-subtle)";
+      mobileBtn.style.background = on ? "var(--color-primary-100)" : "var(--color-surface-2)";
+      mobileBtn.setAttribute("aria-label", `Dæmpede farver: ${on ? "slået til" : "slået fra"}`);
     }
   }
 
@@ -266,24 +347,31 @@ const currentPath = Astro.url.pathname;
   document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
   document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
 
-  document.getElementById("font-size-toggle")?.addEventListener("click", () => {
+  function cycleFontSize() {
     const cur = document.documentElement.getAttribute("data-font-size") ?? "normal";
     const next = fontSizes[(fontSizes.indexOf(cur) + 1) % fontSizes.length];
     document.documentElement.setAttribute("data-font-size", next);
     localStorage.setItem("ag-font-size", next);
-  });
-
-  document.getElementById("motion-toggle-nav")?.addEventListener("click", () => {
+  }
+  function toggleMotion() {
     const on = document.documentElement.getAttribute("data-reduced-motion") === "true";
     document.documentElement.setAttribute("data-reduced-motion", String(!on));
     localStorage.setItem("ag-reduced-motion", String(!on));
-  });
-
-  document.getElementById("faded-toggle-nav")?.addEventListener("click", () => {
+  }
+  function toggleFaded() {
     const on = document.documentElement.getAttribute("data-colors") === "faded";
     document.documentElement.setAttribute("data-colors", on ? "normal" : "faded");
     localStorage.setItem("ag-faded-colors", String(!on));
-  });
+  }
+
+  document.getElementById("font-size-toggle")?.addEventListener("click", cycleFontSize);
+  document.getElementById("font-size-toggle-mobile")?.addEventListener("click", cycleFontSize);
+
+  document.getElementById("motion-toggle-nav")?.addEventListener("click", toggleMotion);
+  document.getElementById("motion-toggle-mobile")?.addEventListener("click", toggleMotion);
+
+  document.getElementById("faded-toggle-nav")?.addEventListener("click", toggleFaded);
+  document.getElementById("faded-toggle-mobile")?.addEventListener("click", toggleFaded);
 
   // ── Initial sync ─────────────────────────────────────────────
   syncTheme();

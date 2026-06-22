@@ -155,11 +155,11 @@ const resources = [
 
   <!-- Filters -->
   <section
-    class="py-6 border-b sticky top-16 z-30"
+    class="py-3 sm:py-6 border-b sticky top-16 z-30"
     style="background: var(--color-surface); border-color: var(--color-border);"
     aria-label="Søg og filtrer ressourcer"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
 
       <!-- Search -->
       <SearchBar placeholder="Søg i ressourcer..." id="resources-search" />
@@ -167,7 +167,7 @@ const resources = [
       <!-- Topic filter -->
       <div>
         <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: var(--color-text-subtle); font-family: var(--font-body); letter-spacing: 0.1em;">Emne</p>
-        <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer på emne">
+        <div class="filter-scroll flex gap-1.5 overflow-x-auto pb-0.5 sm:flex-wrap sm:overflow-visible" role="group" aria-label="Filtrer på emne">
           {topicCategories.map(({ id, label }) => (
             <button
               class="filter-btn topic-btn tag text-xs font-semibold transition-all cursor-pointer hover:opacity-80"
@@ -188,7 +188,7 @@ const resources = [
       <div class="flex flex-col sm:flex-row gap-4">
         <div class="flex-1">
           <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: var(--color-text-subtle); font-family: var(--font-body); letter-spacing: 0.1em;">Målgruppe</p>
-          <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer på målgruppe">
+          <div class="filter-scroll flex gap-1.5 overflow-x-auto pb-0.5 sm:flex-wrap sm:overflow-visible" role="group" aria-label="Filtrer på målgruppe">
             {audienceCategories.map(({ id, label }) => (
               <button
                 class="filter-btn audience-btn tag text-xs font-semibold transition-all cursor-pointer hover:opacity-80"
@@ -207,7 +207,7 @@ const resources = [
 
         <div>
           <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: var(--color-text-subtle); font-family: var(--font-body); letter-spacing: 0.1em;">Medie</p>
-          <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer på medietype">
+          <div class="filter-scroll flex gap-1.5 overflow-x-auto pb-0.5 sm:flex-wrap sm:overflow-visible" role="group" aria-label="Filtrer på medietype">
             {mediaCategories.map(({ id, label }) => (
               <button
                 class="filter-btn media-btn tag text-xs font-semibold transition-all cursor-pointer hover:opacity-80"

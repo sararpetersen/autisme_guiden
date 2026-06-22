@@ -24,7 +24,7 @@ const { eyebrow, title, description, centered = true, id } = Astro.props;
   <h2
     id={id}
     class="font-bold tracking-wide leading-tight text-balance mb-4 text-3xl sm:text-4xl"
-    style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em;"
+    style="font-family: var(--font-display); color: var(--color-text); letter-spacing: 0.04em; overflow-wrap: break-word; word-break: break-word; hyphens: auto;"
   >
     {title}
   </h2>
