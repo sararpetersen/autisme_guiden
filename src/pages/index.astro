@@ -22,7 +22,7 @@ const quickNavCards = [
   },
   {
     title: "Ressourcer",
-    description: "Et bibliotek med guides, artikler og værktøjer til autistiske personer og pårørende.",
+    description: "Et bibliotek med guides, artikler og værktøjer til neurodivergente og pårørende.",
     icon: "📚",
     href: "/ressourcer",
     color: "accent" as const,
@@ -85,16 +85,16 @@ const stats = [
 ---
 
 <Layout
-  title="AutismeGuiden - Din digitale guide til autisme"
-  description="AutismeGuiden er en gratis, tilgængelig platform med information om autisme for autistiske personer, pårørende, lærere og fagfolk."
-  ogtitle="Din guide til autisme | AutismeGuiden"
-  ogdescription="Gratis, tilgængelig information om autisme til autistiske personer, pårørende, lærere og fagfolk."
+  title="AutismeGuiden – Din guide til autisme og neurodiversitet"
+  description="AutismeGuiden er en gratis, tilgængelig platform med information om autisme og neurodiversitet for neurodivergente, pårørende, lærere og fagfolk."
+  ogtitle="Din guide til autisme og neurodiversitet | AutismeGuiden"
+  ogdescription="Gratis, tilgængelig information om autisme og neurodiversitet til neurodivergente, pårørende, lærere og fagfolk."
 >
   <!-- Hero -->
   <Hero
-    badge="Gratis og tilgængelig for alle"
-    title="Din guide til autisme"
-    description="AutismeGuiden giver klar, pålidelig og neurodivergent-venlig information om autisme — til autistiske personer, pårørende, lærere og fagfolk."
+    badge="Autisme og neurodiversitet"
+    title="Din guide til autisme og neurodiversitet"
+    description="AutismeGuiden giver klar, pålidelig og tilgængelig information om autisme og neurodiversitet – til neurodivergente, pårørende, lærere og fagfolk."
     primaryCTA={{ label: "Udforsk guiden", href: "/hvad-er-autisme" }}
     secondaryCTA={{ label: "Se ressourcer", href: "/ressourcer" }}
   />
@@ -146,13 +146,14 @@ const stats = [
           Information der møder dig, hvor du er
         </h2>
         <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text-muted); font-family: var(--font-body);">
-          Jeg tror på, at alle fortjener adgang til præcis, fordomsfri og letforståelig information om autisme. AutismeGuiden er skabt med
-          tilgængelighed i centrum — for autistiske brugere, pårørende og fagfolk.
+          Jeg tror på, at alle fortjener adgang til præcis, fordomsfri og letforståelig information. AutismeGuiden har autisme som primær fokus, men
+          rummer ressourcer for hele det neurodivergente fællesskab – autistiske, ADHD'ere, ordblinde og deres pårørende.
         </p>
         <blockquote class="highlight-box text-left rounded-xl">
           <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
             <strong class="italic" style="color: var(--color-primary);"
-              >"Autisme er ikke noget, man har— det er en del af, hvem man er. AutismeGuiden er bygget på respekt for neurodiversitet og styrker."</strong
+              >"At tænke og opleve verden anderledes er ikke en fejl, der skal rettes. Det er en del af hvem du er. AutismeGuiden er bygget på respekt
+              for neurodiversitet og styrken ved at være forskellig."</strong
             >
           </p>
         </blockquote>
@@ -192,7 +193,7 @@ const stats = [
         <SectionHeader
           eyebrow="Populære ressourcer"
           title="Udvalgte guides og artikler"
-          description="Start her — det mest besøgte indhold om autisme."
+          description="Det mest besøgte indhold på AutismeGuiden."
           centered={false}
           id="resources-heading"
         />
@@ -238,7 +239,7 @@ const stats = [
           Bygget til neurodivergente brugere
         </h2>
         <p class="text-lg leading-relaxed mb-8" style="color: var(--cta-dark-text); font-family: var(--font-body);">
-          Denne hjemmeside er designet efter WCAG 2.2-standarderne med mørkt tema, justerbar skriftstørrelse og reduceret bevægelse — fordi alle
+          Denne hjemmeside er designet efter WCAG 2.2-standarderne med mørkt tema, justerbar skriftstørrelse og reduceret bevægelse&mdash; fordi alle
           fortjener en god oplevelse.
         </p>
         <div class="flex flex-wrap gap-3 justify-center">
@@ -274,7 +275,12 @@ const stats = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {
           [
-            { icon: "🧩", title: "Autistiske personer", desc: "Information om dine rettigheder, ressourcer og støtte.", href: "/ressourcer" },
+            {
+              icon: "🧩",
+              title: "Neurodivergente",
+              desc: "Autisme, ADHD, ordblindhed, mm. – information, ressourcer og støtte til dig.",
+              href: "/ressourcer",
+            },
             { icon: "👨‍👩‍👧", title: "Pårørende", desc: "Forstå og støt dine nærmeste på den bedste måde.", href: "/hvad-er-autisme" },
             { icon: "🏫", title: "Lærere", desc: "Skab et inkluderende læringsmiljø for alle elever.", href: "/uddannelse" },
             { icon: "🏥", title: "Fagfolk", desc: "Faglig viden, vejledninger og evidensbaserede ressourcer.", href: "/ressourcer" },

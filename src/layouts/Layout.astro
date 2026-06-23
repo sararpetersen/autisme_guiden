@@ -14,7 +14,7 @@ interface Props {
 
 const {
   title,
-  description = "AutismeGuiden – Din digitale guide til autisme. Information, ressourcer og støtte til autistiske personer, pårørende, lærere og fagfolk.",
+  description = "AutismeGuiden – Din digitale guide til autisme og neurodiversitet. Information, ressourcer og støtte til neurodivergente, pårørende, lærere og fagfolk.",
   image = "/images/og-image.png",
   ogtitle,
   ogdescription,
@@ -36,12 +36,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={ogtitle ?? title} />
     <meta property="og:description" content={ogdescription ?? description} />
+    <meta property="og:image" content={new URL(image, canonicalURL).href} />
     <meta property="og:locale" content="da_DK" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={ogtitle ?? title} />
     <meta name="twitter:description" content={ogdescription ?? description} />
+    <meta name="twitter:image" content={new URL(image, canonicalURL).href} />
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/png" href="/autismeguiden_logo_1-2.png" />
@@ -49,9 +51,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
 
     <title>{title}</title>
 
-    <!-- Prevent animation flicker: hide .section/.card before first paint so they
-         never flash visible before IntersectionObserver triggers their entrance. -->
-    <script>document.documentElement.classList.add('js-anim');</script>
+    <!-- Prevent FOUC and animation flicker: restore user preferences and hide
+         animatable elements before first paint. is:inline keeps these synchronous. -->
+    <script is:inline>
+      (function () {
+        var theme = localStorage.getItem("ag-theme") ?? "light";
+        var fontSize = localStorage.getItem("ag-font-size") ?? "normal";
+        var reducedMotion = localStorage.getItem("ag-reduced-motion") ?? "false";
+        var fadedColors = localStorage.getItem("ag-faded-colors") === "true" ? "faded" : "normal";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.setAttribute("data-font-size", fontSize);
+        document.documentElement.setAttribute("data-reduced-motion", reducedMotion);
+        document.documentElement.setAttribute("data-colors", fadedColors);
+        document.documentElement.classList.add("js-anim");
+      })();
+    </script>
 
     <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,19 +87,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
     <Footer />
 
     <script>
-      // Restore user preferences from localStorage
-      (function () {
-        const theme = localStorage.getItem("ag-theme") ?? "light";
-        const fontSize = localStorage.getItem("ag-font-size") ?? "normal";
-        const reducedMotion = localStorage.getItem("ag-reduced-motion") ?? "false";
-        const fadedColors = localStorage.getItem("ag-faded-colors") === "true" ? "faded" : "normal";
-
-        document.documentElement.setAttribute("data-theme", theme);
-        document.documentElement.setAttribute("data-font-size", fontSize);
-        document.documentElement.setAttribute("data-reduced-motion", reducedMotion);
-        document.documentElement.setAttribute("data-colors", fadedColors);
-      })();
-
       (function () {
         const supportsObserver = typeof window !== "undefined" && "IntersectionObserver" in window;
         const prefersReducedMotion = document.documentElement.getAttribute("data-reduced-motion") === "true";

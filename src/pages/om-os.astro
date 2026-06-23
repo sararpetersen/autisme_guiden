@@ -7,7 +7,7 @@ const values = [
   {
     icon: "🧩",
     title: "Neurodiversitet er en styrke",
-    desc: "Autisme er en naturlig del af menneskelig variation— ikke en fejl der skal rettes.",
+    desc: "Autisme er en naturlig del af menneskelig variation, og ikke en fejl der skal rettes.",
   },
   {
     icon: "🔍",
@@ -17,7 +17,7 @@ const values = [
   {
     icon: "🤝",
     title: "Inkluderende perspektiv",
-    desc: "AutismeGuiden er skrevet med og for autistiske mennesker, pårørende, lærere og fagfolk— aldrig kun om dem.",
+    desc: "AutismeGuiden er skrevet med og for autistiske mennesker, pårørende, lærere og fagfolk – aldrig kun om dem.",
   },
   {
     icon: "🌍",
@@ -38,8 +38,8 @@ const values = [
 ---
 
 <Layout
-  title="Om mig - AutismeGuiden"
-  description="Lær om AutismeGuiden, min mission og mine værdier — og om Sara, der skabte platformen."
+  title="Om mig – AutismeGuiden"
+  description="Lær om AutismeGuiden, min mission og mine værdier – og om Sara, der skabte platformen."
   ogtitle="Om AutismeGuiden og skaberen | AutismeGuiden"
   ogdescription="Lær om missionen, værdierne og personen bag AutismeGuiden."
 >
@@ -71,7 +71,7 @@ const values = [
           </h2>
           <div class="prose-reading space-y-4" style="color: var(--color-text-muted);">
             <p>
-              Der findes meget information om autisme på internettet&mdash; men det kan være svært at navigere i, og der er meget fejlinformation
+              Der findes meget information omkring autisme på internettet, men det kan være svært at navigere i, og der er meget fejlinformation
               imellem. AutismeGuiden er skabt for at gøre det lettere.
             </p>
             <p>
@@ -79,8 +79,8 @@ const values = [
               for alt andet&mdash; fordi alle fortjener information der er let at forstå og nem at finde.
             </p>
             <p>
-              Mit navn er <strong>Sara Ringkow Petersen</strong>, jeg er en 24-årig uddannet multimediedesigner fra KEA, og læser lige nu Digital
-              Konceptudvikling på Zealand i Køge. Som grundlægger af platformen og som en person med sendiagnosticeret autisme og ADD ønsker jeg at
+              Mit navn er <strong>Sara Ringkow Petersen</strong>, jeg er en 24-årig uddannet multimediedesigner fra KEA, og læser lige nu Digital
+              Konceptudvikling på Zealand i Køge. Som udvikler af platformen og som en person med sendiagnosticeret autisme og ADD ønsker jeg at
               kombinere min passion for inkluderende design med et reelt behov i samfundet.
             </p>
           </div>
@@ -96,7 +96,7 @@ const values = [
               "Jeg tror på, at godt design ikke kun handler om æstetik&mdash; det handler om at fjerne barrierer og sikre, at alle er med."
             </p>
             <footer class="text-sm font-bold" style="color: var(--color-text-muted); font-family: var(--font-body);">
-              — Sara, grundlægger af AutismeGuiden
+              – Sara, grundlægger af AutismeGuiden
             </footer>
           </blockquote>
 
@@ -105,7 +105,7 @@ const values = [
             <ul class="space-y-2.5" role="list">
               {
                 [
-                  "Neurodiversitet er ikke en fejl — det er mangfoldighed",
+                  "Neurodiversitet er ikke en fejl – det er mangfoldighed",
                   "Autistiske stemmer er centrale, ikke perifere",
                   "Intet om os, uden os",
                   "Tilgængelighed er en grundrettighed",
@@ -142,7 +142,7 @@ const values = [
       <SectionHeader
         eyebrow="Værdier"
         title="Hvad jeg tror på"
-        description="Kerneværdierne bag AutismeGuiden — det der guider hvert eneste designvalg og hvert stykke indhold."
+        description="Kerneværdierne bag AutismeGuiden – det der guider hvert eneste designvalg og hvert stykke indhold."
         id="values-heading"
       />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -182,7 +182,7 @@ const values = [
         {
           [
             { label: "Tastaturnavigation", status: "Opfyldt", ok: true },
-            { label: "Skærmlæser­kompatibilitet", status: "Opfyldt", ok: true },
+            { label: "Skærmlæserrkompatibilitet", status: "Opfyldt", ok: true },
             { label: "Farvekontrast (AA)", status: "Opfyldt", ok: true },
             { label: "Reduceret bevægelse", status: "Opfyldt", ok: true },
             { label: "Mørkt tema", status: "Opfyldt", ok: true },
@@ -225,7 +225,15 @@ const values = [
         id="contact-heading"
       />
       <div class="card p-6 sm:p-8">
-        <form id="contact-form" name="contact" class="space-y-5" aria-label="Kontaktformular" novalidate data-netlify="true" netlify-honeypot="bot-field">
+        <form
+          id="contact-form"
+          name="contact"
+          class="space-y-5"
+          aria-label="Kontaktformular"
+          novalidate
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
           <!-- Required by Netlify Forms -->
           <input type="hidden" name="form-name" value="contact" />
           <!-- Honeypot spam trap — must stay hidden -->
@@ -269,15 +277,23 @@ const values = [
             <label for="subject" class="block text-sm font-semibold mb-1.5" style="color: var(--color-text); font-family: var(--font-body);"
               >Emne</label
             >
-            <select id="subject" name="subject" class="w-full px-4 py-3 text-sm">
-              <option value="">Vælg et emne...</option>
-              <option value="spørgsmål">Generelt spørgsmål</option>
-              <option value="ressource">Foreslå en ressource</option>
-              <option value="fejl">Rapporter en fejl</option>
-              <option value="tilgængelighed">Tilgængelighedsproblem</option>
-              <option value="samarbejde">Samarbejde</option>
-              <option value="andet">Andet</option>
-            </select>
+            <div class="relative">
+              <select id="subject" name="subject" class="w-full pl-4 pr-10 py-3 text-sm appearance-none">
+                <option value="">Vælg et emne...</option>
+                <option value="spørgsmål">Generelt spørgsmål</option>
+                <option value="demo">Anmod om en fremvisning</option>
+                <option value="ressource">Foreslå en ressource</option>
+                <option value="fejl">Rapporter en fejl</option>
+                <option value="tilgængelighed">Tilgængelighedsproblem</option>
+                <option value="samarbejde">Samarbejde</option>
+                <option value="andet">Andet</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center" aria-hidden="true">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: var(--color-text-muted);">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </div>
+            </div>
           </div>
 
           <div>
@@ -325,7 +341,13 @@ const values = [
             </p>
           </div>
 
-          <div id="form-error" class="form-error-box hidden p-4 rounded-xl" style="background: #FFF4F4; border: 1px solid #FECDD3;" role="alert" aria-live="polite">
+          <div
+            id="form-error"
+            class="form-error-box hidden p-4 rounded-xl"
+            style="background: #FFF4F4; border: 1px solid #FECDD3;"
+            role="alert"
+            aria-live="polite"
+          >
             <p class="text-sm font-semibold" style="color: #B91C1C; font-family: var(--font-body);">Udfyld venligst alle påkrævede felter korrekt.</p>
           </div>
 

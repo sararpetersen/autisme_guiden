@@ -43,28 +43,29 @@ const currentPath = Astro.url.pathname;
         </a>
 
         <!-- ─── Desktop nav links ─── -->
-        <div class="hidden lg:flex items-center gap-0.5" role="list">
+        <ul class="hidden lg:flex items-center gap-0.5" role="list">
           {
             navLinks.map(({ href, label }) => {
               const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
               return (
-                <a
-                  href={href}
-                  class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150"
-                  style={
-                    isActive
-                      ? "background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);"
-                      : "color: var(--color-text-muted); font-family: var(--font-body);"
-                  }
-                  aria-current={isActive ? "page" : undefined}
-                  role="listitem"
-                >
-                  {label}
-                </a>
+                <li>
+                  <a
+                    href={href}
+                    class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150"
+                    style={
+                      isActive
+                        ? "background: var(--color-primary-50); color: var(--color-primary); font-family: var(--font-body);"
+                        : "color: var(--color-text-muted); font-family: var(--font-body);"
+                    }
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {label}
+                  </a>
+                </li>
               );
             })
           }
-        </div>
+        </ul>
 
         <!-- ─── Right controls ─── -->
         <div class="flex items-center gap-1.5">

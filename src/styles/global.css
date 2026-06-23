@@ -501,6 +501,18 @@ html.js-anim .card {
 html[data-reduced-motion="true"] .animate__animated,
 html[data-reduced-motion="true"] .blob {
   animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Also reveal elements hidden by js-anim or [data-animate] that haven't
+   animated yet when reduced motion is toggled on mid-session. */
+html[data-reduced-motion="true"].js-anim .section,
+html[data-reduced-motion="true"].js-anim .card,
+html[data-reduced-motion="true"] [data-animate] {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* =============================================

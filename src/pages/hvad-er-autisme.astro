@@ -7,7 +7,7 @@ import SectionHeader from "../components/SectionHeader.astro";
 const mythsFacts = [
   {
     myth: "Autistiske mennesker har ingen empati.",
-    fact: "Autistiske personer kan have stærk empati, men udtrykker den ofte på andre måder. Studier viser, at mange autistiske personer faktisk føler dyb empati— de kan bare have svært ved at vise det på de forventede måder.",
+    fact: "Autistiske personer kan have stærk empati, men udtrykker den ofte på andre måder. Studier viser, at mange autistiske personer faktisk føler dyb empati, men de kan bare have svært ved at vise det på de forventede måder.",
   },
   {
     myth: "Autisme skyldes dårlig opdragelse.",
@@ -15,7 +15,7 @@ const mythsFacts = [
   },
   {
     myth: "Alle autistiske er geniale inden for ét område.",
-    fact: "Mens nogle autistiske har særlige interesser eller færdigheder, er dette ikke universelt. Autismespektret er meget bredt og forskelligartet— ingen to autistiske er ens.",
+    fact: "Mens nogle autistiske har særlige interesser eller færdigheder, er dette ikke universelt. Autismespektret er meget bredt og forskelligartet, og ingen to autistiske er ens.",
   },
   {
     myth: "Autisme kan helbredes.",
@@ -27,7 +27,11 @@ const mythsFacts = [
   },
   {
     myth: "Autisme er kun noget, drenge har.",
-    fact: 'Autisme forekommer hos alle køn, men er historisk set underdiagnosticeret hos piger og kvinder, da de oftere lærer at "maskere"— at efterligne neurotypisk adfærd for at passe ind.',
+    fact: 'Autisme forekommer hos alle køn, men er historisk set underdiagnosticeret hos piger og kvinder, da de oftere lærer at "maskere", altså at efterligne neurotypisk adfærd for at passe ind.',
+  },
+  {
+    myth: 'Autistiske mennesker skal "fikses".',
+    fact: "Autisme er ikke en fejl, der skal rettes— det er en naturlig variation i menneskelig kognition. Målet bør være støtte, tilgængelighed og inklusion, ikke normalisering. Autistiske mennesker behøver ikke at ændre sig for at passe ind i verden; omgivelserne skal tilpasse sig dem.",
   },
 ];
 
@@ -45,7 +49,7 @@ const faqItems = [
   {
     question: "Hvornår opdages autisme typisk?",
     answer:
-      'Autisme opdages oftest i barndommen, typisk mellem 2-4-årsalderen, men mange— særligt kvinder og ikke-binære —får først en diagnose i voksenalderen. En forsinket eller manglende diagnose kan skyldes "masking" (tilpasning til neurotypiske normer) og historiske bias i diagnosticeringskriterierne.',
+      'Autisme opdages oftest i barndommen, typisk mellem 2-4-årsalderen, men mange— særligt kvinder og non-binære —får først en diagnose i voksenalderen. En forsinket eller manglende diagnose kan skyldes "masking" (tilpasning til neurotypiske normer) og historiske bias i diagnosticeringskriterierne.',
   },
   {
     question: 'Hvad er "masking" eller "camouflering"?',
@@ -65,7 +69,7 @@ const faqItems = [
   {
     question: "Er autisme og ADHD relaterede?",
     answer:
-      "Ja— autisme og ADHD deler overlappende træk og forekommer ofte sammen (co-occurring). Studier tyder på, at op til 50-70% af autistiske også har ADHD. Begge er neurologiske varianter, der påvirker opmærksomhed, impulsivitet og eksekutive funktioner.",
+      "Ja, autisme og ADHD deler overlappende træk og forekommer ofte sammen (co-occurring). Studier tyder på, at op til 50-70% af autistiske også har ADHD. Begge er neurologiske varianter, der påvirker opmærksomhed, impulsivitet og eksekutive funktioner.",
   },
   {
     question: "Hvad kan jeg gøre for at støtte en autistisk person?",
@@ -99,7 +103,7 @@ const spectrumAreas = [
 ---
 
 <Layout
-  title="Hvad er Autisme? - AutismeGuiden"
+  title="Hvad er Autisme? – AutismeGuiden"
   description="Lær om autismespektret, myter og fakta, og få svar på de mest stillede spørgsmål om autisme på en tilgængelig og fordomsfri måde."
   ogtitle="Hvad er autisme? Kort intro | AutismeGuiden"
   ogdescription="En kort, tilgængelig introduktion til autismespektret, myter og vigtige fakta."
@@ -107,7 +111,7 @@ const spectrumAreas = [
   <Hero
     badge="Grundviden"
     title="Hvad er autisme?"
-    description="Autisme er ikke en sygdom — det er en neurologisk forskel. Her finder du klar, fordomsfri viden om autismespektret, hverdagen med autisme og meget mere."
+    description="Autisme er ikke en sygdom, det er en neurologisk forskel. Her finder du klar, fordomsfri viden om autismespektret, hverdagen med autisme og meget mere."
     primaryCTA={{ label: "Læs om myter og fakta", href: "#myter-og-fakta" }}
     secondaryCTA={{ label: "Ofte stillede spørgsmål", href: "#faq" }}
     size="medium"
@@ -124,20 +128,21 @@ const spectrumAreas = [
           </h2>
           <div class="space-y-4 prose-reading" style="color: var(--color-text-muted);">
             <p>
-              Autismespektrumforstyrrelse (ASF) er en samlet betegnelse for en bred vifte af neurologiske varianter. Ingen to autistiske er ens—
+              Autismespektrumforstyrrelse (ASF) er en samlet betegnelse for en bred vifte af neurologiske varianter. Ingen to autistiske er ens&mdash;
               spektret er bredt, og mange kombinationer af styrker og udfordringer er mulige.
             </p>
             <p>
               Den medicinske forståelse af autisme er under konstant udvikling. I dag bruger man ét samlet spektrum i stedet for separate diagnoser
               som Aspergers syndrom og infantil autisme.
             </p>
-            <p>Autisme identificeres typisk ved forskelle inden for fire overordnede områder, men husk: det er et spektrum— ikke en checkliste.</p>
+            <p>Autisme identificeres typisk ved forskelle inden for fire overordnede områder, men husk: det er et spektrum, ikke en checkliste.</p>
           </div>
 
           <div class="mt-8 p-5 rounded-2xl" style="background: var(--color-primary-50); border: 1px solid var(--color-primary-100);">
             <p class="text-sm font-semibold mb-2" style="color: var(--color-primary);">Vidste du det?</p>
             <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
-              Anslået 1-2% af alle mennesker er autistiske— svarende til over 700.000 danskere. Mange er endnu ikke diagnosticerede.
+              Anslået 1-2% af alle mennesker er autistiske, og det er svarende til over 700.000 danskere i hele landet. Mange er dog endnu ikke
+              diagnosticerede.
             </p>
           </div>
         </div>
@@ -181,7 +186,7 @@ const spectrumAreas = [
       <div class="space-y-6">
         {
           mythsFacts.map(({ myth, fact }, i) => (
-            <article class="card overflow-hidden" aria-label={`Myte ${i + 1}: ${myth}`}>
+            <article class="card overflow-hidden" aria-label={`Myte ${i + 1}`}>
               <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="myth-box p-5 md:p-6">
                   <div class="flex items-center gap-2 mb-3">
@@ -240,38 +245,53 @@ const spectrumAreas = [
               def: "Når autistiske bevidst eller ubevidst skjuler autistiske træk for at passe ind socialt. Kan føre til udbrændthed.",
             },
             {
-              term: "Meltdown",
-              def: "En ufrivillig reaktion på overbelastning— kroppen og sindet mister kontrollen. Ikke en tantrum eller opførselsproblem.",
+              term: "Nedsmeltning/meltdown",
+              def: "En ufrivillig reaktion på overbelastning, hvor kroppen og sindet mister kontrollen. Ikke en tantrum eller opførselsproblem.",
             },
             {
-              term: "Shutdown",
+              term: "Nedlukning/shutdown",
               def: "En reaktion på overbelastning, hvor man trækker sig ind i sig selv og bliver ude af stand til at kommunikere eller handle.",
             },
             { term: "Stimming", def: "Selvstimulerende adfærd som at gynge, klappe eller nynne. Hjælper med at regulere sanserne og følelser." },
             {
-              term: "Executive Functions",
+              term: "Executive functions/eksekutive funktioner",
               def: "Kognitive evner til planlægning, organisering, skift af opgave og impulskontrol. Ofte udfordrende for autistiske.",
             },
             {
-              term: "Sensory Processing",
+              term: "Sensory processing/sensorisk bearbejdning",
               def: "Hjernens måde at bearbejde sanseindtryk. Mange autistiske er hyper- eller hypo-sensitive over for lyde, lys osv.",
             },
             {
-              term: "AAC",
-              def: "Augmentative and Alternative Communication— hjælpemidler til kommunikation for ikke-talende eller minimalt talende autistiske.",
+              term: "AAC/AAK",
+              def: "<em>Augmentativ og Alternativ Kommunikation:</em><br /> hjælpemidler til kommunikation for ikke-talende eller minimalt talende autistiske.",
+              link: { href: "https://dk.tobiidynavox.com/pages/what-is-aac", label: "Hvad er AAC?" },
             },
             {
               term: "Spoonies/Spoon Theory",
               def: "En metafor for begrænsede energiressourcer hos folk med kroniske tilstande, herunder mange autistiske.",
+              link: { href: "https://hdsunflower.com/dk/insights/post/spoon-theory", label: "Spoon Theory" },
             },
-          ].map(({ term, def }) => (
+          ].map(({ term, def, link }) => (
             <div class="card p-5">
               <h3 class="font-bold text-sm mb-2" style="color: var(--color-primary);">
                 {term}
               </h3>
-              <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text-muted);">
-                {def}
-              </p>
+              <p class="text-sm leading-relaxed font-reading mb-2" set:html={def} style="color: var(--color-text-muted);" />
+              {link && (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 mt-2 text-xs font-semibold"
+                  style="color: var(--color-primary);"
+                >
+                  {link.label}
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span class="sr-only">(åbner i nyt faneblad)</span>
+                </a>
+              )}
             </div>
           ))
         }

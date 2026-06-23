@@ -6,48 +6,48 @@ import SectionHeader from '../components/SectionHeader.astro';
 const principles = [
   {
     icon: '👁️',
-    title: 'Opfatteligt (Perceivable)',
+    title: 'Opfatteligt (<em>Perceivable</em>)',
     wcag: 'Princip 1',
     items: [
-      'Tekstalternativer til alt ikke-tekstindhold (billeder, ikoner, grafik)',
-      'Tydelig farvekontrast — minimum 4,5:1 for brødtekst',
+      'Tekstalternativer til alt ikke-tekstindhold <em>(billeder, ikoner, grafik)</em>',
+      'Tydelig farvekontrast – minimum 4,5:1 for brødtekst',
       'Indhold præsenteres ikke kun via farve alene',
       'Videoundertekster og lydbeskrivelser',
     ],
   },
   {
     icon: '⌨️',
-    title: 'Betjenbart (Operable)',
+    title: 'Betjenbart (<em>Operable</em>)',
     wcag: 'Princip 2',
     items: [
       'Al funktionalitet er tilgængelig via tastatur',
-      'Ingen tastaturfælder — brugere kan altid navigere videre',
+      'Ingen tastaturfælder – brugere kan altid navigere videre',
       'Spring-til-indhold link øverst på siden',
       'Fokus-indikatorer er synlige og tydelige',
-      'Ingen blinkende indhold over 3 Hz (risiko for epilepsi)',
+      'Ingen blinkende indhold over 3 Hz <em>(risiko for epilepsi)</em>',
     ],
   },
   {
     icon: '🗣️',
-    title: 'Forståeligt (Understandable)',
+    title: 'Forståeligt (<em>Understandable</em>)',
     wcag: 'Princip 3',
     items: [
-      'Sproget er angivet på siden (lang="da")',
+      'Sproget er angivet på siden <em>(lang="da")</em>',
       'Fejlmeddelelser er beskrivende og hjælpsomme',
       'Navigation er konsistent på tværs af sider',
-      'Klart og enkelt sprog — undgå jargon',
+      'Klart og enkelt sprog – undgå jargon',
       'Forudsigelig adfærd ved interaktioner',
     ],
   },
   {
     icon: '🔧',
-    title: 'Robust (Robust)',
+    title: 'Robust (<em>Robust</em>)',
     wcag: 'Princip 4',
     items: [
       'Semantisk korrekt HTML-markup',
       'ARIA-etiketter og roller anvendt korrekt',
       'Kompatibel med skærmlæsere og hjælpeteknologier',
-      'Fremtidssikret — virker i nye og ældre browsere',
+      'Fremtidssikret – virker i nye og ældre browsere',
     ],
   },
 ];
@@ -62,19 +62,19 @@ const goodBadExamples = [
   {
     type: 'bad',
     title: 'Dårlig praksis: Fjernede fokus-indikatorer',
-    description: 'At skrive `outline: none` eller `outline: 0` fjerner tastaturnavigation for brugere der er afhængige af det.',
+    description: 'At fjerne fokusrammen via CSS <em>(outline: none)</em> fjerner tastaturnavigation for brugere der er afhængige af det.',
     example: 'Dette element har ingen synlig fokusring',
   },
   {
     type: 'good',
     title: 'God praksis: Beskrivende links',
-    description: 'Links forklarer tydeligt, hvad der sker ved klik — uanset kontekst.',
+    description: 'Links forklarer tydeligt, hvad der sker ved klik – uanset kontekst.',
     example: 'Læs om autismespektret på AutismeGuiden',
   },
   {
     type: 'bad',
     title: 'Dårlig praksis: Uklare links',
-    description: '"Klik her" eller "Læs mere" giver ingen mening uden kontekst — især for skærmlæserbrugere.',
+    description: '<em>"Klik her"</em> eller <em>"Læs mere"</em> giver ingen mening uden kontekst – især for skærmlæserbrugere.',
     example: 'Klik her',
   },
   {
@@ -86,7 +86,7 @@ const goodBadExamples = [
   {
     type: 'bad',
     title: 'Dårlig praksis: Lav kontrast',
-    description: 'Lysegrå tekst på hvid baggrund er svær at læse for alle — og umulig for mange med syns­nedsættelse.',
+    description: 'Lysegrå tekst på hvid baggrund er svær at læse for alle – og umulig for mange med syns­nedsættelse.',
     example: 'Svær at læse',
   },
 ];
@@ -136,7 +136,7 @@ const neurodivergentPrinciples = [
 ---
 
 <Layout
-  title="Tilgængelighed - AutismeGuiden"
+  title="Tilgængelighed – AutismeGuiden"
   description="Lær om WCAG 2.2, neurodivergent-venligt design og principper for tilgængelighed i digitale løsninger."
   ogtitle="Tilgængelighed & WCAG 2.2 | AutismeGuiden"
   ogdescription="Principper og praktiske råd om digital tilgængelighed og neurodivergent-venligt design."
@@ -144,7 +144,7 @@ const neurodivergentPrinciples = [
   <Hero
     badge="WCAG 2.2 Tilgængelighed"
     title="Design der virker for alle"
-    description="Tilgængelighed er ikke en funktion — det er fundamentet. Her finder du principper, vejledninger og eksempler på inkluderende digitalt design."
+    description="Tilgængelighed er ikke en funktion, det er fundamentet. Her finder du principper, vejledninger og eksempler på inkluderende digitalt design."
     primaryCTA={{ label: 'WCAG principper', href: '#wcag' }}
     secondaryCTA={{ label: 'Neurodivergent design', href: '#neurodivergent' }}
     size="medium"
@@ -159,11 +159,11 @@ const neurodivergentPrinciples = [
         description="Jeg har implementeret disse funktioner for at gøre din oplevelse bedre."
         id="features-heading"
       />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {[
           { icon: '🌙', title: 'Mørkt tema', desc: 'Reducer belastning af øjnene med et fuldt understøttet mørkt farvetema.' },
           { icon: 'A', title: 'Justerbar skriftstørrelse', desc: 'Vælg mellem normal, stor og ekstra stor tekst efter dine behov.' },
-          { icon: '⚡', title: 'Reduceret bevægelse', desc: 'Slå animationer fra med ét klik — alle bevægelser forsvinder.' },
+          { icon: '⚡', title: 'Reduceret bevægelse', desc: 'Slå animationer fra med ét klik – alle bevægelser forsvinder.' },
           { icon: '⌨️', title: 'Tastaturnavigation', desc: 'Komplet tastaturnavigation med synlige fokusringe på alle elementer.' },
           { icon: '🔗', title: 'Spring-til-indhold', desc: 'Et skjult link øverst på siden til at springe direkte til indhold.' },
           { icon: '🏷️', title: 'Semantisk HTML', desc: 'Korrekt brug af HTML5-semantik og ARIA for skærmlæsere.' },
@@ -195,7 +195,7 @@ const neurodivergentPrinciples = [
       <SectionHeader
         eyebrow="WCAG 2.2"
         title="De fire WCAG-principper"
-        description="Web Content Accessibility Guidelines (WCAG) 2.2 er den internationale standard for tilgængelighed på nettet. Den bygger på fire principper."
+        description="<em>Web Content Accessibility Guidelines (WCAG) 2.2</em>  er den internationale standard for tilgængelighed på nettet. Den bygger på fire principper."
         id="wcag-heading"
       />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -211,7 +211,7 @@ const neurodivergentPrinciples = [
               </div>
               <div>
                 <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-primary);">{wcag}</p>
-                <h3 class="font-bold text-base" style="color: var(--color-text);">{title}</h3>
+                <h3 class="font-bold text-base" set:html={title} style="color: var(--color-text);" />
               </div>
             </div>
             <ul class="space-y-2" role="list">
@@ -220,7 +220,7 @@ const neurodivergentPrinciples = [
                   <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: var(--color-secondary);" aria-hidden="true">
                     <path d="M20 6L9 17l-5-5"/>
                   </svg>
-                  <span class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{item}</span>
+                  <span class="text-sm leading-relaxed" set:html={item} style="color: var(--color-text-muted);" />
                 </li>
               ))}
             </ul>
@@ -233,16 +233,16 @@ const neurodivergentPrinciples = [
         <h3 class="font-bold text-lg mb-4" style="color: var(--color-text);">Konformitetsniveauer</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { level: 'A', label: 'Niveau A', desc: 'Minimum krav. Basisniveau der fjerner de mest alvorlige barrierer.', color: 'var(--color-accent)', bg: 'var(--color-accent-50)' },
-            { level: 'AA', label: 'Niveau AA', desc: 'Standarden for de fleste offentlige og kommercielle websites. AutismeGuiden sigter mod AA.', color: 'var(--color-secondary)', bg: 'var(--color-secondary-50)' },
-            { level: 'AAA', label: 'Niveau AAA', desc: 'Det højeste niveau. Ikke krævet for hele sider, men anbefales where muligt.', color: 'var(--color-primary)', bg: 'var(--color-primary-50)' },
+            { level: 'A', label: 'Niveau A', desc: 'Minimum krav. Basisniveau der fjerner de mest alvorlige barrierer.', color: 'var(--color-accent)', bg: 'var(--color-accent-100)' },
+            { level: 'AA', label: 'Niveau AA', desc: 'Standarden for de fleste offentlige og kommercielle websites. AutismeGuiden sigter mod AA.', color: 'var(--color-primary)', bg: 'var(--color-primary-100)' },
+            { level: 'AAA', label: 'Niveau AAA', desc: 'Det højeste niveau. Ikke krævet for hele sider, men anbefales hvor det er muligt.', color: 'var(--color-primary-mid)', bg: 'var(--color-primary-pale)' },
           ].map(({ level, label, desc, color, bg }) => (
             <div class="conformance-card rounded-xl p-4" style={`background: ${bg};`}>
               <div class="flex items-center gap-2 mb-2">
                 <span class="font-bold text-xl" style={`color: ${color};`}>{level}</span>
                 <span class="font-semibold text-sm" style="color: var(--color-text);">{label}</span>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+              <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
             </div>
           ))}
         </div>
@@ -255,8 +255,8 @@ const neurodivergentPrinciples = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="Neurodivergent-venligt design"
-        title="Design principper for alle neurotyper"
-        description="Ud over WCAG er der ekstra overvejelser for at skabe bruger­oplevelser der er rare for autistiske og andre neurodivergente brugere."
+        title="Design-principper for alle neurotyper"
+        description="Udover WCAG er der ekstra overvejelser for at skabe brugeroplevelser der er rare for autistiske og andre neurodivergente brugere."
         id="neuro-heading"
       />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -270,7 +270,7 @@ const neurodivergentPrinciples = [
               {icon}
             </div>
             <h3 class="font-semibold text-sm mb-2" style="color: var(--color-text);">{title}</h3>
-            <p class="text-xs leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{desc}</p>
           </div>
         ))}
       </div>
@@ -290,7 +290,6 @@ const neurodivergentPrinciples = [
         {goodBadExamples.map(({ type, title, description, example }) => (
           <article
             class={`card overflow-hidden ${type === 'good' ? 'fact-box' : 'myth-box'}`}
-            aria-label={title}
           >
             <div class="p-5">
               <div class="flex items-center gap-2 mb-3">
@@ -311,7 +310,7 @@ const neurodivergentPrinciples = [
                 )}
               </div>
               <h3 class="font-semibold text-base mb-2" style="color: var(--color-text);">{title}</h3>
-              <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text-muted);">{description}</p>
+              <p class="text-sm leading-relaxed mb-4" set:html={description} style="color: var(--color-text-muted);" />
               <!-- Visual example -->
               <div
                 class="rounded-lg p-3 text-sm font-medium"
