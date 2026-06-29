@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import AccessibilityToolbar from "../components/AccessibilityToolbar.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
 
 interface Props {
   title: string;
@@ -24,7 +25,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
 ---
 
 <!doctype html>
-<html lang="da" data-theme="light" data-font-size="normal" data-reduced-motion="false" data-colors="normal">
+<html lang="da" data-theme="light" data-font-size="normal" data-reduced-motion="false" data-colors="normal" data-clutter-free="false" data-reading-font="normal">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,10 +60,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
         var fontSize = localStorage.getItem("ag-font-size") ?? "normal";
         var reducedMotion = localStorage.getItem("ag-reduced-motion") ?? "false";
         var fadedColors = localStorage.getItem("ag-faded-colors") === "true" ? "faded" : "normal";
+        var clutterFree = localStorage.getItem("ag-clutter-free") === "true" ? "true" : "false";
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.setAttribute("data-font-size", fontSize);
         document.documentElement.setAttribute("data-reduced-motion", reducedMotion);
         document.documentElement.setAttribute("data-colors", fadedColors);
+        document.documentElement.setAttribute("data-clutter-free", clutterFree);
+        var savedFont = localStorage.getItem("ag-reading-font") === "atkinson" ? "atkinson" : "normal";
+        document.documentElement.setAttribute("data-reading-font", savedFont);
         document.documentElement.classList.add("js-anim");
       })();
     </script>
@@ -79,6 +84,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
 
     <Navbar />
     <AccessibilityToolbar />
+
+    <!-- Scroll to top -->
+    <button id="scroll-top" aria-label="Rul til toppen" title="Rul til toppen">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M5 15l7-7 7 7"></path>
+      </svg>
+    </button>
 
     <main id="main-content" tabindex="-1">
       <slot />
@@ -130,6 +142,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
 
         elements.forEach((el) => observer.observe(el));
       })();
+    </script>
+
+    <script>
+      const scrollBtn = document.getElementById("scroll-top");
+      window.addEventListener(
+        "scroll",
+        () => {
+          scrollBtn?.classList.toggle("visible", window.scrollY > 380);
+        },
+        { passive: true },
+      );
+      scrollBtn?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     </script>
   </body>
 </html>

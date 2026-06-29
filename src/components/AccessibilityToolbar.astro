@@ -5,10 +5,10 @@
 <!-- Floating accessibility button -->
 <button
   id="toolbar-open"
-  class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 focus-visible:ring-4"
+  class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full flex items-center justify-center shadow-xl focus-visible:ring-4 has-tooltip tooltip-up"
   style="background: var(--color-primary); color: var(--color-on-primary); box-shadow: var(--shadow-elevated);"
   aria-label="Åbn tilgængeligheds­værktøjer"
-  title="Tilgængeligheds­indstillinger"
+  title="Tilgængelighed"
 >
   <svg
     class="w-5 h-5"
@@ -29,13 +29,16 @@
 <!-- Toolbar panel (slide-in from right) -->
 <div
   id="accessibility-toolbar"
-  class="fixed top-0 right-0 bottom-0 z-50 w-80 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto"
+  class="fixed top-0 right-0 bottom-0 z-50 w-80 transform translate-x-full transition-transform duration-300 ease-in-out"
   style="background: var(--color-surface); border-left: 1px solid var(--color-border); box-shadow: var(--shadow-elevated);"
   role="dialog"
   aria-label="Tilgængeligheds­indstillinger"
   aria-modal="true"
   aria-hidden="true"
 >
+  <!-- Inner scroll container, inset from the panel's right edge so its
+       scrollbar doesn't sit flush against the page's own scrollbar -->
+  <div class="h-full overflow-y-auto overflow-x-hidden" style="width: calc(100% - 6px);">
   <!-- Toolbar header -->
   <div
     class="flex items-center justify-between p-4 border-b sticky top-0 z-10"
@@ -62,9 +65,10 @@
     </div>
     <button
       id="toolbar-close"
-      class="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:opacity-80"
+      class="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:opacity-80 has-tooltip"
       style="color: var(--color-text-muted); background: var(--color-surface-2);"
       aria-label="Luk tilgængeligheds­panel"
+      title="Luk panel"
     >
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M18 6L6 18M6 6l12 12"></path>
@@ -164,8 +168,19 @@
         </div>
         <div class="relative shrink-0 ml-4">
           <input type="checkbox" id="faded-colors-toggle" class="sr-only" aria-label="Dæmpede farver" />
-          <div id="faded-track" class="w-10 h-6 rounded-full transition-colors duration-200" style="background: var(--color-border-strong);" aria-hidden="true"></div>
-          <div id="faded-thumb" class="absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform duration-200 shadow-sm" aria-hidden="true"></div>
+          <div
+            id="faded-track"
+            class="w-10 h-6 rounded-full transition-colors duration-200"
+            style="background: var(--color-border-strong);"
+            aria-hidden="true"
+          >
+          </div>
+          <div
+            id="faded-thumb"
+            class="absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform duration-200 shadow-sm"
+            aria-hidden="true"
+          >
+          </div>
         </div>
       </label>
     </section>
@@ -202,22 +217,57 @@
       <h3 id="reading-font-heading" class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: var(--color-text-subtle);">
         Læseskrift
       </h3>
+      <div class="grid grid-cols-2 gap-2">
+        {
+          [
+            { value: "normal",   label: "Standard", preview: "Aa" },
+            { value: "atkinson", label: "Atkinson",  preview: "Aa" },
+          ].map(({ value, label, preview }) => (
+            <button
+              class="reading-font-btn flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all"
+              data-font={value}
+              aria-pressed={value === "normal" ? "true" : "false"}
+              style={
+                value === "normal"
+                  ? "border-color: var(--color-primary); background: var(--color-primary-50);"
+                  : "border-color: var(--color-border); background: var(--color-surface-2);"
+              }
+            >
+              <span
+                class="font-semibold leading-none text-base font-preview"
+                style={`color: var(--color-text); font-family: ${value === "atkinson" ? "var(--font-reading)" : "var(--font-body)"};`}
+                aria-hidden="true"
+              >
+                {preview}
+              </span>
+              <span class="text-xs text-center leading-tight" style="color: var(--color-text-muted);">
+                {label}
+              </span>
+            </button>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Clutter-free / fokus-tilstand -->
+    <section aria-labelledby="clutter-heading">
+      <h3 id="clutter-heading" class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: var(--color-text-subtle);">Layout</h3>
       <label class="flex items-center justify-between cursor-pointer p-3 rounded-xl transition-all" style="background: var(--color-surface-2);">
         <div>
-          <span class="text-sm font-medium block" style="color: var(--color-text);">Atkinson Hyperlegible</span>
-          <span class="text-xs" style="color: var(--color-text-muted);">Optimeret til læsbarhed</span>
+          <span class="text-sm font-medium block" style="color: var(--color-text);">Fokustilstand</span>
+          <span class="text-xs" style="color: var(--color-text-muted);">Fjern dekorative ekstra sektioner</span>
         </div>
         <div class="relative shrink-0 ml-4">
-          <input type="checkbox" id="reading-font-toggle" class="sr-only" aria-label="Brug læseskrift" />
+          <input type="checkbox" id="clutter-free-toggle" class="sr-only" aria-label="Fokustilstand – fjern ekstra sektioner" />
           <div
-            id="reading-track"
+            id="clutter-track"
             class="w-10 h-6 rounded-full transition-colors duration-200"
             style="background: var(--color-border-strong);"
             aria-hidden="true"
           >
           </div>
           <div
-            id="reading-thumb"
+            id="clutter-thumb"
             class="absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform duration-200 shadow-sm"
             aria-hidden="true"
           >
@@ -243,6 +293,7 @@
       </p>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- Backdrop -->
@@ -260,7 +311,6 @@
     toolbar?.setAttribute("aria-hidden", "false");
     backdrop?.classList.remove("hidden");
     closeBtn?.focus();
-    document.body.style.overflow = "hidden";
   }
 
   function closeToolbar() {
@@ -268,7 +318,6 @@
     toolbar?.classList.remove("translate-x-0");
     toolbar?.setAttribute("aria-hidden", "true");
     backdrop?.classList.add("hidden");
-    document.body.style.overflow = "";
     openBtn?.focus();
   }
 
@@ -316,13 +365,19 @@
   }
 
   function syncReadingFont() {
-    const on = document.body.style.fontFamily.includes("Atkinson");
-    const toggle = document.getElementById("reading-font-toggle") as HTMLInputElement;
-    const track = document.getElementById("reading-track");
-    const thumb = document.getElementById("reading-thumb");
-    if (toggle) toggle.checked = on;
-    if (track) track.style.background = on ? "var(--color-primary)" : "var(--color-border-strong)";
-    if (thumb) thumb.style.transform = on ? "translateX(16px)" : "translateX(0)";
+    const current = document.documentElement.getAttribute("data-reading-font") ?? "normal";
+    document.querySelectorAll(".reading-font-btn").forEach((btn) => {
+      const el = btn as HTMLButtonElement;
+      const active = el.dataset.font === current;
+      el.setAttribute("aria-pressed", String(active));
+      el.style.borderColor = active ? "var(--color-primary)" : "var(--color-border)";
+      el.style.background = active ? "var(--color-primary-50)" : "var(--color-surface-2)";
+    });
+  }
+
+  function applyReadingFont(value: string) {
+    document.documentElement.setAttribute("data-reading-font", value);
+    localStorage.setItem("ag-reading-font", value);
   }
 
   function syncFadedToggle() {
@@ -335,15 +390,27 @@
     if (thumb) thumb.style.transform = on ? "translateX(16px)" : "translateX(0)";
   }
 
+  function syncClutterFreeToggle() {
+    const on = document.documentElement.getAttribute("data-clutter-free") === "true";
+    const toggle = document.getElementById("clutter-free-toggle") as HTMLInputElement;
+    const track = document.getElementById("clutter-track");
+    const thumb = document.getElementById("clutter-thumb");
+    if (toggle) toggle.checked = on;
+    if (track) track.style.background = on ? "var(--color-primary)" : "var(--color-border-strong)";
+    if (thumb) thumb.style.transform = on ? "translateX(16px)" : "translateX(0)";
+  }
+
   // ── MutationObserver — reacts to changes from ANY component ──
   new MutationObserver(() => {
     syncThemeButtons();
     syncFontButtons();
     syncMotionToggle();
     syncFadedToggle();
+    syncClutterFreeToggle();
+    syncReadingFont();
   }).observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ["data-theme", "data-font-size", "data-reduced-motion", "data-colors"],
+    attributeFilter: ["data-theme", "data-font-size", "data-reduced-motion", "data-colors", "data-clutter-free", "data-reading-font"],
   });
 
   // ── Event handlers — only set state, observer handles UI ─────
@@ -369,12 +436,11 @@
     localStorage.setItem("ag-reduced-motion", String(motionToggle.checked));
   });
 
-  const readingToggle = document.getElementById("reading-font-toggle") as HTMLInputElement;
-  readingToggle?.addEventListener("change", () => {
-    const on = readingToggle.checked;
-    document.body.style.fontFamily = on ? "var(--font-reading)" : "var(--font-sans)";
-    localStorage.setItem("ag-reading-font", String(on));
-    syncReadingFont();
+  document.querySelectorAll(".reading-font-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const value = (btn as HTMLElement).dataset.font ?? "normal";
+      applyReadingFont(value);
+    });
   });
 
   const fadedToggle = document.getElementById("faded-colors-toggle") as HTMLInputElement;
@@ -383,24 +449,31 @@
     localStorage.setItem("ag-faded-colors", String(fadedToggle.checked));
   });
 
+  const clutterToggle = document.getElementById("clutter-free-toggle") as HTMLInputElement;
+  clutterToggle?.addEventListener("change", () => {
+    document.documentElement.setAttribute("data-clutter-free", String(clutterToggle.checked));
+    localStorage.setItem("ag-clutter-free", String(clutterToggle.checked));
+  });
+
   // ── Reset ────────────────────────────────────────────────────
   document.getElementById("reset-preferences")?.addEventListener("click", () => {
-    ["ag-theme","ag-font-size","ag-reduced-motion","ag-reading-font","ag-faded-colors"]
-      .forEach(k => localStorage.removeItem(k));
+    ["ag-theme", "ag-font-size", "ag-reduced-motion", "ag-reading-font", "ag-faded-colors", "ag-clutter-free"].forEach((k) =>
+      localStorage.removeItem(k),
+    );
     document.documentElement.setAttribute("data-theme", "light");
     document.documentElement.setAttribute("data-font-size", "normal");
     document.documentElement.setAttribute("data-reduced-motion", "false");
     document.documentElement.setAttribute("data-colors", "normal");
-    document.body.style.fontFamily = "";
-    syncReadingFont();
+    document.documentElement.setAttribute("data-clutter-free", "false");
+    document.documentElement.setAttribute("data-reading-font", "normal");
   });
 
   // ── Initial sync ─────────────────────────────────────────────
-  const savedReading = localStorage.getItem("ag-reading-font") === "true";
-  if (savedReading) document.body.style.fontFamily = "var(--font-reading)";
+  const savedClutterFree = localStorage.getItem("ag-clutter-free") === "true";
+  if (savedClutterFree) document.documentElement.setAttribute("data-clutter-free", "true");
   syncThemeButtons();
   syncFontButtons();
   syncMotionToggle();
   syncFadedToggle();
-  syncReadingFont();
+  syncClutterFreeToggle();
 </script>

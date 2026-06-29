@@ -25,7 +25,7 @@ const paddingClasses = {
   aria-labelledby="hero-heading"
 >
   <!-- Decorative background blobs (aria-hidden, reduced/no animation) -->
-  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true" data-clutter>
     <!-- Teal blob top-right -->
     <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-25 blur-3xl blob" style="background: var(--color-teal-200);"></div>
     <!-- Amber blob bottom-left -->
@@ -46,7 +46,7 @@ const paddingClasses = {
     <div class={`max-w-4xl ${centered ? "mx-auto" : ""}`}>
       {
         badge && (
-          <div class={`mb-6 ${centered ? "flex justify-center" : ""}`}>
+          <div class={`mb-6 ${centered ? "flex justify-center" : ""}`} data-clutter>
             <span
               class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
               style="background: var(--color-accent-50); color: var(--color-accent-dark); border: 1.5px solid var(--color-accent-100); font-family: var(--font-body); letter-spacing: 0.08em;"

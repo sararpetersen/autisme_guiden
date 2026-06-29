@@ -78,7 +78,7 @@
   --color-secondary-50: #fff8eb;
 
   --color-background: #f7fcfb; /* teal-50 — warm, very light teal wash */
-  --color-surface: #ffffff;
+  --color-surface: #f0fafa; /* gentle teal-tinted surface */
   --color-surface-2: #f0fafa; /* gentle teal-tinted surface */
 
   --color-text: #07272c; /* teal-950 — near-black with teal undertone */
@@ -134,9 +134,8 @@ html[data-colors="faded"] {
   --color-secondary-50: #f5f0e8;
 
   --color-background: #f4f6f7;
-  --color-surface: #ffffff;
+  --color-surface: #93b8c1;
   --color-surface-2: #eef1f3;
-
   --color-text: #2a3840;
   --color-text-muted: #546e78;
   --color-text-subtle: #7a9aa4;
@@ -186,7 +185,7 @@ html[data-theme="dark"] {
   --color-primary: #2a9ea1;
   --color-primary-light: #3aacae;
   /* rgba tints so highlighted backgrounds are visible against surface (#1a2d31) */
-  --color-primary-50:  rgba(42, 158, 161, 0.12);
+  --color-primary-50: rgba(42, 158, 161, 0.12);
   --color-primary-100: rgba(42, 158, 161, 0.22);
   /* Ensure on-colour variables remain readable in dark theme */
   --color-on-primary: #ffffff;
@@ -200,7 +199,7 @@ html[data-theme="dark"] {
 
   /* Teal scale — only teal-50 needs to be dark (hero gradient).
      teal-100/200/300 stay LIGHT so they work as text on dark-bg sections */
-  --color-teal-50:  #0d1f22;
+  --color-teal-50: #0d1f22;
   --color-teal-100: #cffbf4;
   --color-teal-200: #9ff0ec;
   --color-teal-300: #37cbca;
@@ -214,7 +213,7 @@ html[data-theme="dark"] {
 
   /* Amber scale — only amber-50 needs to be dark (hero gradient).
      Higher values restored for accent text/decorative use */
-  --color-amber-50:  #1f1200;
+  --color-amber-50: #1f1200;
   --color-amber-100: #fdeac8;
   --color-amber-200: #fbd244;
   --color-amber-300: #f8bc29;
@@ -234,35 +233,35 @@ html[data-theme="dark"] body {
    Light mode + dark mode: vivid teal on deep dark.
    Faded mode: muted teal-gray on the same deep dark.             */
 :root {
-  --cta-dark-bg:      #17464A;
-  --cta-dark-heading: #CFFBF4;
-  --cta-dark-text:    rgba(207, 251, 244, 0.85);
-  --cta-dark-border:  rgba(255, 255, 255, 0.25);
+  --cta-dark-bg: #17464a;
+  --cta-dark-heading: #cffbf4;
+  --cta-dark-text: rgba(207, 251, 244, 0.85);
+  --cta-dark-border: rgba(255, 255, 255, 0.25);
 }
 html[data-colors="faded"] {
-  --cta-dark-bg:      #2A4A4F;
-  --cta-dark-heading: #C8DDE0;
-  --cta-dark-text:    rgba(180, 210, 215, 0.85);
-  --cta-dark-border:  rgba(255, 255, 255, 0.20);
+  --cta-dark-bg: #2a4a4f;
+  --cta-dark-heading: #c8dde0;
+  --cta-dark-text: rgba(180, 210, 215, 0.85);
+  --cta-dark-border: rgba(255, 255, 255, 0.2);
 }
 
 /* Footer-specific tokens — swap automatically in dark mode */
 :root {
-  --footer-bg:          #E8F2F4;
-  --footer-border:      rgba(30, 58, 64, 0.15);
-  --footer-heading:     #1E3A40;
-  --footer-text:        #2A5560;
-  --footer-text-faint:  rgba(30, 58, 64, 0.65);
-  --footer-card-bg:     rgba(30, 58, 64, 0.08);
+  --footer-bg: #e8f2f4;
+  --footer-border: rgba(30, 58, 64, 0.15);
+  --footer-heading: #1e3a40;
+  --footer-text: #2a5560;
+  --footer-text-faint: rgba(30, 58, 64, 0.65);
+  --footer-card-bg: rgba(30, 58, 64, 0.08);
   --footer-card-border: rgba(30, 58, 64, 0.15);
 }
 html[data-theme="dark"] {
-  --footer-bg:          #1A2D31; /* matches var(--color-surface) — same as navbar */
-  --footer-border:      rgba(255, 255, 255, 0.10);
-  --footer-heading:     #CFFBF4;
-  --footer-text:        #9FF0EC;
-  --footer-text-faint:  rgba(255, 255, 255, 0.55);
-  --footer-card-bg:     rgba(255, 255, 255, 0.07);
+  --footer-bg: #1a2d31; /* matches var(--color-surface) — same as navbar */
+  --footer-border: rgba(255, 255, 255, 0.1);
+  --footer-heading: #cffbf4;
+  --footer-text: #9ff0ec;
+  --footer-text-faint: rgba(255, 255, 255, 0.55);
+  --footer-card-bg: rgba(255, 255, 255, 0.07);
   --footer-card-border: rgba(255, 255, 255, 0.14);
 }
 
@@ -278,6 +277,11 @@ html[data-theme="dark"] {
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  transition: font-size 280ms cubic-bezier(0.34, 0.55, 0.45, 1);
+}
+
+html[data-reduced-motion="true"] {
+  transition: none !important;
 }
 
 html[data-font-size="large"] {
@@ -299,6 +303,78 @@ body {
 html[data-theme="dark"] body {
   background-color: var(--color-background);
   color: var(--color-text);
+}
+
+/* Reading font — overrides all inline font-family styles site-wide.
+   .font-preview spans in the toolbar are excluded so each button
+   still previews its own font regardless of the active choice. */
+html[data-reading-font="atkinson"] body *:not(.font-preview) {
+  font-family: var(--font-reading) !important;
+}
+/* Restore correct preview font for each button */
+.reading-font-btn[data-font="normal"] .font-preview   { font-family: var(--font-body)    !important; }
+.reading-font-btn[data-font="atkinson"] .font-preview { font-family: var(--font-reading) !important; }
+
+/* Clutter-free / fokus-tilstand
+   data-extra-section  = whole optional sections (stats bar, audiences, final CTAs)
+   data-clutter        = decorative elements within sections (badges, tags, blobs, secondary CTAs) */
+html[data-clutter-free="true"] [data-extra-section],
+html[data-clutter-free="true"] [data-clutter] {
+  display: none !important;
+}
+
+/* ── Accessibility toolbar floating button ───────────────── */
+#toolbar-open {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+#toolbar-open:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow:
+    0 0 0 4px rgba(30, 171, 174, 0.22),
+    0 16px 40px rgba(30, 171, 174, 0.3),
+    0 6px 16px rgba(30, 171, 174, 0.18) !important;
+}
+
+/* ── Scroll-to-top button — mirrors toolbar-open size/position ── */
+#scroll-top {
+  position: fixed;
+  bottom: 1.5rem; /* same as bottom-6 on toolbar-open */
+  left: 1.5rem; /* mirrored: toolbar is right-6 */
+  z-index: 40;
+  width: 3rem; /* w-12, same as toolbar-open */
+  height: 3rem; /* h-12 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border: none;
+  box-shadow: var(--shadow-elevated);
+  opacity: 0;
+  transform: translateY(10px) scale(0.88);
+  pointer-events: none;
+  transition:
+    opacity 220ms cubic-bezier(0.34, 0.55, 0.45, 1),
+    transform 220ms cubic-bezier(0.34, 0.55, 0.45, 1),
+    box-shadow 200ms ease,
+    border-color 200ms ease !important;
+}
+#scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+#scroll-top:hover {
+  box-shadow:
+    0 0 0 4px rgba(246, 160, 16, 0.25),
+    0 16px 40px rgba(246, 160, 16, 0.3),
+    0 6px 16px rgba(246, 160, 16, 0.18) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+}
+html[data-reduced-motion="true"] #scroll-top,
+html[data-reduced-motion="true"] #toolbar-open {
+  transition: none !important;
 }
 
 /* Reduced motion */
@@ -365,19 +441,49 @@ html[data-reduced-motion="true"] *::after {
 }
 
 @keyframes blob-float {
-  0%   { transform: translate(0,      0)       scale(1);    opacity: 0.25; }
-  25%  { transform: translate(1.5rem, -1rem)   scale(1.06); opacity: 0.35; }
-  50%  { transform: translate(0.5rem, 1.5rem)  scale(0.96); opacity: 0.15; }
-  75%  { transform: translate(-1rem,  0.5rem)  scale(1.04); opacity: 0.30; }
-  100% { transform: translate(0,      0)       scale(1);    opacity: 0.25; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.25;
+  }
+  25% {
+    transform: translate(1.5rem, -1rem) scale(1.06);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(0.5rem, 1.5rem) scale(0.96);
+    opacity: 0.15;
+  }
+  75% {
+    transform: translate(-1rem, 0.5rem) scale(1.04);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.25;
+  }
 }
 
 @keyframes blob-float-secondary {
-  0%   { transform: translate(0,      0)       scale(1);    opacity: 0.20; }
-  25%  { transform: translate(-1rem,  1rem)    scale(0.94); opacity: 0.10; }
-  50%  { transform: translate(1rem,  -1.5rem)  scale(1.06); opacity: 0.28; }
-  75%  { transform: translate(0.5rem, 0.5rem)  scale(0.98); opacity: 0.14; }
-  100% { transform: translate(0,      0)       scale(1);    opacity: 0.20; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translate(-1rem, 1rem) scale(0.94);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate(1rem, -1.5rem) scale(1.06);
+    opacity: 0.28;
+  }
+  75% {
+    transform: translate(0.5rem, 0.5rem) scale(0.98);
+    opacity: 0.14;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
 }
 
 /* Pre-hide sections/cards before IntersectionObserver fires.
@@ -494,7 +600,9 @@ html.js-anim .card {
 
 /* Respect OS-level preference */
 @media (prefers-reduced-motion: reduce) {
-  .blob { animation: none !important; }
+  .blob {
+    animation: none !important;
+  }
 }
 
 /* Respect site-level toggle */
@@ -627,30 +735,120 @@ input[type="submit"],
 input[type="button"],
 .nav-link,
 .card-interactive {
-  transition-property: color, background-color, border-color,
-                       opacity, box-shadow, transform, text-decoration-color !important;
-  transition-duration: 250ms !important;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition-property: color, background-color, border-color, opacity, box-shadow, transform, text-decoration-color, filter !important;
+  transition-duration: 200ms !important;
+  transition-timing-function: cubic-bezier(0.34, 0.55, 0.45, 1) !important;
 }
 
 /* Cards and interactive containers */
 .card {
   transition-property: box-shadow, transform, border-color, background-color !important;
-  transition-duration: 250ms !important;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition-duration: 220ms !important;
+  transition-timing-function: cubic-bezier(0.34, 0.55, 0.45, 1) !important;
 }
 
 /* ── Visible hover effects ────────────────────────────── */
+
+/* ── Tooltip system ──────────────────────────────────────────
+   Reads tooltip text from the title attribute.
+   Default: tooltip appears below the element (for top-of-screen buttons).
+   .tooltip-up: tooltip appears above (for bottom-of-screen buttons).
+   ─────────────────────────────────────────────────────────── */
+.has-tooltip {
+  position: relative;
+}
+
+/* Fixed floating buttons must keep their position: fixed regardless of .has-tooltip */
+#toolbar-open,
+#scroll-top {
+  position: fixed !important;
+}
+
+/* Tooltip box */
+.has-tooltip::after {
+  content: attr(title);
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  background: var(--color-text);
+  color: var(--color-surface);
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.4rem;
+  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9999;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+/* Arrow (pointing up toward button, tooltip below) */
+.has-tooltip::before {
+  content: "";
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  border: 5px solid transparent;
+  border-bottom-color: var(--color-text);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9999;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.has-tooltip:hover::after,
+.has-tooltip:hover::before,
+.has-tooltip:focus-visible::after,
+.has-tooltip:focus-visible::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Tooltip above (for bottom-of-screen buttons) */
+.tooltip-up::after {
+  top: auto;
+  bottom: calc(100% + 9px);
+  transform: translateX(-50%) translateY(5px);
+}
+.tooltip-up::before {
+  top: auto;
+  bottom: calc(100% + 4px);
+  border-bottom-color: transparent;
+  border-top-color: var(--color-text);
+  transform: translateX(-50%) translateY(5px);
+}
+.tooltip-up:hover::after,
+.tooltip-up:hover::before,
+.tooltip-up:focus-visible::after,
+.tooltip-up:focus-visible::before {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Suppress animation in reduced-motion */
+html[data-reduced-motion="true"] .has-tooltip::after,
+html[data-reduced-motion="true"] .has-tooltip::before {
+  transition: none !important;
+}
 
 /* Text links in body content: underline + colour shift */
 a:not([class*="btn"]):not([class*="inline-flex"]):not([class*="tag"]):not([class*="rounded"]):hover {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
-  opacity: 0.85;
+  color: var(--color-primary);
+  opacity: 1;
 }
 
-/* Nav links: show a tinted background on hover */
+/* Nav links: tinted background + primary colour */
 nav a:hover,
 .nav-link:hover {
   background-color: var(--color-primary-50) !important;
@@ -658,7 +856,19 @@ nav a:hover,
   opacity: 1 !important;
 }
 
-/* Burger-menu button hover — teal border + icon colour */
+/* Navbar icon buttons (font size, motion, theme, clutter, faded) */
+nav header button:not(#menu-toggle):hover,
+#font-size-toggle:hover,
+#faded-toggle-nav:hover,
+#motion-toggle-nav:hover,
+#theme-toggle:hover,
+#clutter-toggle-nav:hover {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background: var(--color-primary-50) !important;
+}
+
+/* Burger-menu button hover */
 #menu-toggle:hover {
   color: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
@@ -671,20 +881,29 @@ nav a:hover,
   background: var(--color-primary-100) !important;
 }
 
-/* Footer links: underline on hover */
+/* Footer links: underline + colour on hover */
 footer a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
+  color: var(--color-primary) !important;
   opacity: 1 !important;
 }
 
-/* Standalone CTA buttons: subtle lift */
-a[class*="inline-flex"]:hover,
-button[class*="inline-flex"]:hover,
+/* Standalone CTA buttons: lift + glow */
 a[class*="rounded-xl"]:hover,
 button[class*="rounded-xl"]:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-card-hover);
+}
+
+/* Card-internal arrow links: colour shift on hover */
+.card a[class*="inline-flex"]:hover {
+  opacity: 0.75;
+}
+
+/* Tag pills: subtle brightness on hover */
+.tag:hover {
+  filter: brightness(0.94);
 }
 
 /* Respect reduced motion */
@@ -696,7 +915,10 @@ html[data-reduced-motion="true"] .card {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  a, button, [role="button"], .card {
+  a,
+  button,
+  [role="button"],
+  .card {
     transition: none !important;
   }
 }
@@ -751,18 +973,18 @@ footer,
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease,
-    border-color 0.2s ease;
+    box-shadow 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.22s ease;
 }
 
 .card:hover {
   box-shadow: var(--shadow-card-hover);
-  border-color: var(--color-primary-pale);
+  border-color: var(--color-primary-light);
 }
 
 .card-interactive:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 /* =============================================
@@ -891,7 +1113,7 @@ html[data-theme="dark"] .form-error-box {
   border-color: #7f2020 !important;
 }
 html[data-theme="dark"] .form-error-box p {
-  color: #FF8080 !important;
+  color: #ff8080 !important;
 }
 
 /* Myth/fact badge icon circles */
