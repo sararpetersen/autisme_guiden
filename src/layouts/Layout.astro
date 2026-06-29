@@ -14,7 +14,7 @@ interface Props {
 
 const {
   title,
-  description = "AutismeGuiden – Din digitale guide til autisme og neurodiversitet. Information, ressourcer og støtte til neurodivergente, pårørende, lærere og fagfolk.",
+  description = "AutismeGuiden – Din digitale guide til autisme og neurodivergens. Information, ressourcer og støtte til neurodivergente, pårørende, lærere og fagfolk.",
   image = "/images/og-image.png",
   ogtitle,
   ogdescription,
@@ -90,13 +90,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
       (function () {
         const supportsObserver = typeof window !== "undefined" && "IntersectionObserver" in window;
         const prefersReducedMotion = document.documentElement.getAttribute("data-reduced-motion") === "true";
-        const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-animate], .section, .card"))
-          .filter(el =>
-            getComputedStyle(el).position !== "fixed" &&
-            !el.closest("#accessibility-toolbar") &&
-            !el.closest("nav") &&
-            !el.closest("header")
-          );
+        const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-animate], .section, .card")).filter(
+          (el) => getComputedStyle(el).position !== "fixed" && !el.closest("#accessibility-toolbar") && !el.closest("nav") && !el.closest("header"),
+        );
 
         function initAnimation(el: HTMLElement) {
           if (!el.dataset.animate) {
