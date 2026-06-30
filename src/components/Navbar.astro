@@ -436,6 +436,10 @@ const currentPath = Astro.url.pathname;
   // ── Scroll shadow ────────────────────────────────────────────
   const navbar = document.getElementById("navbar");
   window.addEventListener("scroll", () => {
-    navbar?.classList.toggle("shadow-sm", window.scrollY > 10);
+    if (window.scrollY > 10) {
+      navbar?.style.setProperty("box-shadow", "0 2px 12px 0 rgb(7 39 44 / 0.07)");
+    } else {
+      navbar?.style.removeProperty("box-shadow");
+    }
   }, { passive: true });
 </script>

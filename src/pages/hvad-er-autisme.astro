@@ -39,10 +39,10 @@ const faqItems = [
   {
     question: "Hvad er autisme?",
     answer:
-      "Autisme (eller autismespektrumforstyrrelse, ASF) er en neurologisk forskel, der påvirker, hvordan man oplever og interagerer med verden. Det handler om forskelligheder i social kommunikation, sensorisk behandling og adfærdsmønstre. Autisme er et spektrum, og ingen to autistiske er ens.",
+      "Autisme <em>(eller autismespektrumforstyrrelse, ASF)</em> er en neurologisk forskel, der påvirker, hvordan man oplever og interagerer med verden. Det handler om forskelligheder i social kommunikation, sensorisk behandling og adfærdsmønstre. Autisme er et spektrum, og ingen to autistiske er ens.",
   },
   {
-    question: 'Hvad betyder "autismespektret"?',
+    question: 'Hvad betyder <em>"autismespektret"</em>?',
     answer:
       "Spektret beskriver den store variation i, hvordan autisme viser sig. Nogle autistiske har brug for meget støtte i dagligdagen, andre er fuldt selvstændige. Udfordringer og styrker varierer enormt fra person til person. Tidligere brugte man betegnelser som Asperger's syndrom og infantil autisme, men disse er nu samlet under ét spektrum.",
   },
@@ -52,7 +52,7 @@ const faqItems = [
       "En autismediagnose stilles af specialiserede fagfolk— typisk psykologer eller psykiatere —gennem samtaler, observationer og standardiserede tests. Der er ingen blodprøve eller scanning, der kan påvise autisme. Mange får først en diagnose i voksenalderen, særligt kvinder og non-binære, fordi diagnosticeringskriterierne historisk har taget udgangspunkt i drenge.",
   },
   {
-    question: 'Hvad er "masking" eller "camouflering"?',
+    question: 'Hvad er <em>"masking"</em> eller <em>"camouflering"</em>?',
     answer:
       "Masking eller camouflering er, når autistiske personer bevidst eller ubevidst skjuler autistiske træk for at passe ind socialt. Det kan inkludere at imitere andres sociale adfærd, undertrykke stimming eller tvinge sig selv til øjenkontakt. Masking er mentalt udmattende og forbindes med øget risiko for autistisk udbrændthed.",
   },
@@ -138,7 +138,7 @@ const spectrumAreas = [
             <p>Autisme identificeres typisk ved forskelle inden for fire overordnede områder, men husk: det er et spektrum, ikke en checkliste.</p>
           </div>
 
-          <div class="mt-8 p-5 rounded-2xl" style="background: var(--color-primary-50); border: 1px solid var(--color-primary-100);">
+          <div class="mt-8 p-5 rounded-2xl" style="background: var(--color-primary-100);">
             <p class="text-sm font-semibold mb-2" style="color: var(--color-primary);">Vidste du det?</p>
             <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
               Anslået 1-2% af alle mennesker, svarende til over 700.000+ danskere, har en neurodivergent profil. Mange er dog endnu ikke
@@ -242,15 +242,19 @@ const spectrumAreas = [
             },
             {
               term: "Neurodiversitet",
-              def: "Den naturlige variation i neurologiske typer hos mennesker som helhed. Begrebet fremhæver, at neurologisk mangfoldighed er en styrke for samfundet— ikke en fejl der skal rettes.",
+              def: "Den naturlige variation i neurologiske typer hos mennesker som helhed. Begrebet fremhæver, at neurologisk mangfoldighed er en styrke for samfundet, og ikke en fejl der skal rettes.",
             },
             {
               term: "Neurodivers",
               def: "Adjektiv der beskriver fællesskaber, miljøer eller grupper, som indeholder og anerkender mange neurologiske varianter. Et neurodivers samfund giver plads til alle neurotyper.",
             },
             {
+              term: "Sær-interesser",
+              def: 'Et emne eller en aktivitet som en neurodivergent person er intenst og dybt optaget af. Sær-interesser er en kilde til glæde, identitet og ekspertviden— ikke blot en "hobby".',
+            },
+            {
               term: "Masking/camouflering",
-              def: "Når autistiske bevidst eller ubevidst skjuler autistiske træk for at passe ind socialt. Kan føre til udbrændthed.",
+              def: "Når neurodivergente bevidst eller ubevidst skjuler deres træk for at passe ind socialt. Kan føre til udbrændthed.",
             },
             {
               term: "Nedsmeltning/meltdown",
@@ -263,27 +267,25 @@ const spectrumAreas = [
             { term: "Stimming", def: "Selvstimulerende adfærd som at gynge, klappe eller nynne. Hjælper med at regulere sanserne og følelser." },
             {
               term: "Executive functions/eksekutive funktioner",
-              def: "Kognitive evner til planlægning, organisering, skift af opgave og impulskontrol. Ofte udfordrende for autistiske.",
+              def: "Kognitive evner til planlægning, organisering, skift af opgave og impulskontrol. Ofte udfordrende for neurodivergente.",
             },
             {
               term: "Sensory processing/sensorisk bearbejdning",
-              def: "Hjernens måde at bearbejde sanseindtryk. Mange autistiske er hyper- eller hypo-sensitive over for lyde, lys osv.",
+              def: "Hjernens måde at bearbejde sanseindtryk. Mange neurodivergente er hyper- eller hypo-sensitive over for lyde, lys osv.",
             },
             {
-              term: "AAC/AAK",
-              def: "<em>Augmentativ og Alternativ Kommunikation:</em><br /> hjælpemidler til kommunikation for ikke-talende eller minimalt talende autistiske.",
+              term: "AAK <em>(Augmentativ og Alternativ Kommunikation)</em>",
+              def: "Hjælpemidler til kommunikation for ikke-talende eller minimalt talende folk med neurologiske problemer.",
               link: { href: "https://dk.tobiidynavox.com/pages/what-is-aac", label: "Hvad er AAC?" },
             },
             {
               term: "Spoonies/Spoon Theory",
-              def: "En metafor for begrænsede energiressourcer hos folk med kroniske tilstande, herunder mange autistiske.",
+              def: "En metafor for begrænsede energiressourcer hos folk med kroniske tilstande, herunder mange neurodivergente.",
               link: { href: "https://hdsunflower.com/dk/insights/post/spoon-theory", label: "Spoon Theory" },
             },
           ].map(({ term, def, link }) => (
             <div class="card p-5">
-              <h3 class="font-bold text-sm mb-2" style="color: var(--color-primary);">
-                {term}
-              </h3>
+              <h3 class="font-bold text-sm mb-2" style="color: var(--color-primary);" set:html={term} />
               <p class="text-sm leading-relaxed font-reading mb-2" set:html={def} style="color: var(--color-text-muted);" />
               {link && (
                 <a
