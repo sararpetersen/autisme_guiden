@@ -59,7 +59,7 @@ const accommodations = [
 const educationResources = [
   {
     title: "Inklusion i folkeskolen",
-    description: "En praktisk guide til at skabe et inkluderende læringsmiljø i folkeskolen med fokus på autistiske elever.",
+    description: "En praktisk guide til at skabe et inkluderende læringsmiljø i folkeskolen med fokus på neurodivergente elever.",
     category: "Folkeskole",
     categoryColor: "var(--color-primary)",
     icon: "🏫",
@@ -67,7 +67,7 @@ const educationResources = [
   },
   {
     title: "<em>Individuel Uddannelsesplan (IUP)</em>",
-    description: "Hvad er en <em>IUP</em>, hvem har ret til det, og hvordan udformes en god plan for autistiske elever?",
+    description: "Hvad er en <em>IUP</em>, hvem har ret til det, og hvordan udformes en god plan for neurodivergente elever?",
     category: "Rettigheder",
     categoryColor: "#DC2626",
     icon: "📋",
@@ -75,7 +75,7 @@ const educationResources = [
   },
   {
     title: "Samarbejde med forældre",
-    description: "Vejledning til lærere om at opbygge et produktivt samarbejde med forældre til autistiske elever.",
+    description: "Vejledning til lærere om at opbygge et produktivt samarbejde med forældre til neurodivergente elever.",
     category: "Samarbejde",
     categoryColor: "var(--color-secondary)",
     icon: "🤝",
@@ -91,7 +91,7 @@ const educationResources = [
   },
   {
     title: "Digitale undervisningsværktøjer",
-    description: "Apps og digitale løsninger der understøtter autistiske elevers læring og kommunikation.",
+    description: "Apps og digitale løsninger der understøtter neurodivergente elevers læring og kommunikation.",
     category: "Teknologi",
     categoryColor: "var(--color-accent-teal)",
     icon: "💻",
@@ -99,7 +99,7 @@ const educationResources = [
   },
   {
     title: "Gymnasiet og videregående Uddannelse",
-    description: "Autistiske i gymnasiet og på universiteter – rettigheder, støttemuligheder og råd til studerende og undervisere.",
+    description: "Neurodivergente i gymnasiet og på universiteter – rettigheder, støttemuligheder og råd til studerende og undervisere.",
     category: "Videregående",
     categoryColor: "#8B5CF6",
     icon: "🎓",
@@ -109,9 +109,9 @@ const educationResources = [
 
 const faqItems = [
   {
-    question: "Hvad er min pligt som lærer over for autistiske elever?",
+    question: "Hvad er min pligt som lærer over for neurodivergente elever?",
     answer:
-      "Som lærer i Danmark er du forpligtet til at understøtte inklusion og give alle elever ligelig mulighed for at deltage i undervisningen. Det inkluderer at tilpasse undervisningsmetoder og miljø efter elevernes individuelle behov. Folkeskoleloven og serviceloven sikrer autistiske børns ret til støtte og tilpasning.",
+      "Som lærer i Danmark er du forpligtet til at understøtte inklusion og give alle elever ligelig mulighed for at deltage i undervisningen. Det inkluderer at tilpasse undervisningsmetoder og miljø efter elevernes individuelle behov. Folkeskoleloven og serviceloven sikrer neurodivergente børns ret til støtte og tilpasning.",
   },
   {
     question: "Hvad er forskellen på et <em>meltdown</em> og en <em>tantrum</em>?",
@@ -119,9 +119,9 @@ const faqItems = [
       "En <em>tantrum</em> er en bevidst adfærd for at opnå noget. Et <em>meltdown</em> er en ufrivillig reaktion på overbelastning, hvor eleven er ikke i kontrol. Under et <em>meltdown</em>: giv plads, undgå direkte konfrontation, reducer sansestimuli, tal roligt og lavmælt. Eleven har ikke valgt denne reaktion og kan typisk ikke stoppe den ved viljestyrke.",
   },
   {
-    question: "Hvad gør jeg, hvis jeg mistænker, at en elev er autistisk?",
+    question: "Hvad gør jeg, hvis jeg mistænker, at en elev er neurodivergent?",
     answer:
-      "Tal med skolens <em>PPR (Pædagogisk Psykologisk Rådgivning)</em> og involver forældrene. Undgå at stille diagnosen selv. Fokuser i mellemtiden på at skabe et støttende miljø for eleven. Mange af de tilpasninger der hjælper autistiske elever, gavner alle elever.",
+      "Tal med skolens <em>PPR (Pædagogisk Psykologisk Rådgivning)</em> og involver forældrene. Undgå at stille diagnosen selv. Fokuser i mellemtiden på at skabe et støttende miljø for eleven. Mange af de tilpasninger der hjælper neurodivergente elever, gavner alle elever.",
   },
   {
     question: "Hvordan håndterer jeg overgange <em>(skift i aktivitet)</em>?",
@@ -144,16 +144,20 @@ const strategies = [
   },
   { icon: "⏱️", title: "Bearbejdningstid", desc: "Giv 10-20 sekunder efter du har stillet et spørgsmål. Tving ikke svar. Lad tankerne sætte sig." },
   { icon: "🤫", title: "Rolige korrektioner", desc: "Korriger diskret og privat. Aldrig foran klassen. Undgå sarkasme og offentlig eksponering." },
-  { icon: "💪", title: "Styrkebaseret tilgang", desc: "Find og byg på elevens interesser og styrker. Autistiske elever har ofte dybe ekspertiser." },
+  {
+    icon: "💪",
+    title: "Styrkebaseret tilgang",
+    desc: "Find og byg på elevens interesser og styrker. Neurodivergente elever har ofte dybe ekspertiser.",
+  },
   { icon: "🔔", title: "Konsistent håndhævelse", desc: "Regler gælder ens for alle, altid. Uforudsigelighed er angstprovokerende." },
 ];
 ---
 
 <Layout
   title="Uddannelse – AutismeGuiden"
-  description="Ressourcer, vejledninger og bedste praksis for lærere og pædagoger om inklusion af autistiske elever."
+  description="Ressourcer, vejledninger og bedste praksis for lærere og pædagoger om inklusion af neurodivergente elever."
   ogtitle="Uddannelse og inklusion | AutismeGuiden"
-  ogdescription="Vejledninger og praksis til lærere og pædagoger for at inkludere autistiske elever."
+  ogdescription="Vejledninger og praksis til lærere og pædagoger for at inkludere neurodivergente elever."
 >
   <Hero
     badge="For lærere og pædagoger"
@@ -179,8 +183,8 @@ const strategies = [
               neurodivergente elever er forskellige, ligesom alle andre elever.
             </p>
             <p>
-              De tilpasninger der hjælper autistiske og neurodivergente elever, har en tendens til at gavne <em>alle</em> elever: Klarhed, forudsigelighed, reduceret sensorisk
-              støj og direkte kommunikation er godt for alle. Neurodiversitet i klasseværelset er en styrke, ikke en udfordring.
+              De tilpasninger der hjælper autistiske og neurodivergente elever, har en tendens til at gavne <em>alle</em> elever: Klarhed, forudsigelighed,
+              reduceret sensorisk støj og direkte kommunikation er godt for alle. Neurodiversitet i klasseværelset er en styrke, ikke en udfordring.
             </p>
           </div>
         </div>
@@ -188,9 +192,9 @@ const strategies = [
         <div class="grid grid-cols-2 gap-3">
           {
             [
-              { value: "~1-2%", label: "af alle skoleelever er autistiske" },
-              { value: "40%", label: "af autistiske har oplevet mobning i skolen" },
-              { value: "70%", label: "af autistiske unge rapporterer skolevægring" },
+              { value: "15-20%", label: "af alle skoleelever har en neurodivergent profil" },
+              { value: "op til 40%", label: "af neurodivergente har oplevet mobning i skolen" },
+              { value: "op til 60%", label: "af neurodivergente unge rapporterer skolevægring" },
               { value: "3x", label: "højere trivsel med målrettet støtte" },
             ].map(({ value, label }) => (
               <div class="card p-4 text-center">
@@ -214,7 +218,7 @@ const strategies = [
       <SectionHeader
         eyebrow="Bedste praksis"
         title="6 strategier der virker"
-        description="Evidensbaserede tilgange til at støtte autistiske elever i klasseværelset."
+        description="Evidensbaserede tilgange til at støtte neurodivergente elever i klasseværelset."
         id="strategies-heading"
       />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -295,7 +299,7 @@ const strategies = [
         <p class="text-sm font-semibold mb-1" style="color: var(--color-primary);">Vigtig huskeregel</p>
         <p class="text-sm leading-relaxed font-reading" style="color: var(--color-text);">
           Tilpasninger er ikke <em>"at give nogen en fordel"</em>&mdash; det er at sikre, at alle elever har <strong>ligelig adgang til læring</strong
-          >. En elev i kørestol behøver en rampe; en autistisk elev behøver forudsigelighed og lavt sensorisk input.
+          >. En elev i kørestol behøver en rampe; en neurodivergent elev behøver forudsigelighed og lavt sensorisk input.
         </p>
       </div>
     </div>
@@ -322,7 +326,7 @@ const strategies = [
       <SectionHeader
         eyebrow="FAQ"
         title="Spørgsmål fra lærere"
-        description="De mest stillede spørgsmål fra lærere og pædagoger om at arbejde med autistiske elever."
+        description="De mest stillede spørgsmål fra lærere og pædagoger om at arbejde med neurodivergente elever."
         id="edu-faq-heading"
       />
       <FAQAccordion items={faqItems} id="edu-faq" />

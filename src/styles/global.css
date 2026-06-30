@@ -85,8 +85,8 @@
   --color-text-muted: #17464a; /* teal-900 */
   --color-text-subtle: #1b898e; /* teal-600 */
 
-  --color-border: #cffbf4; /* teal-100 */
-  --color-border-strong: #9ff0ec; /* teal-200 */
+  --color-border: #9ff0ec; /* teal-200 — decorative dividers */
+  --color-border-strong: #3d8fa0; /* teal-600ish — 3.5:1 on surface, passes UI contrast */
 
   /* --- Typography --- */
   --font-display: "Josefin Sans", system-ui, sans-serif;

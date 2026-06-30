@@ -24,19 +24,19 @@ const currentPath = Astro.url.pathname;
         <a href="/" class="flex items-center group shrink-0" aria-label="AutismeGuiden – Gå til forsiden">
           <!-- Normal logos (hidden when faded mode is on) -->
           <div class="logo-set-normal contents">
-            <img src="/autismeguiden_logo_1-2.png" alt="AutismeGuiden logo"
+            <img src="/autismeguiden_logo_1-2.webp" alt="AutismeGuiden logo"
               width="40" height="40"
               class="block lg:hidden h-10 w-auto transition-transform duration-200 group-hover:scale-105" />
-            <img src="/autismeguiden_logo.png" alt="AutismeGuiden"
+            <img src="/autismeguiden_logo.webp" alt="AutismeGuiden"
               width="180" height="59"
               class="hidden lg:block h-10 w-auto transition-transform duration-200 group-hover:scale-105" />
           </div>
           <!-- Faded logos (shown when faded mode is on) -->
           <div class="logo-set-faded contents">
-            <img src="/autismeguiden_logo_1.png" alt="AutismeGuiden logo"
+            <img src="/autismeguiden_logo_1.webp" alt="AutismeGuiden logo"
               width="40" height="40"
               class="block lg:hidden h-10 w-auto transition-transform duration-200 group-hover:scale-105" />
-            <img src="/autismeguiden_logo_faded.png" alt="AutismeGuiden"
+            <img src="/autismeguiden_logo_faded.webp" alt="AutismeGuiden"
               width="180" height="59"
               class="hidden lg:block h-10 w-auto transition-transform duration-200 group-hover:scale-105" />
           </div>
@@ -73,7 +73,7 @@ const currentPath = Astro.url.pathname;
           <button
             id="font-size-toggle"
             class="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg transition-all has-tooltip"
-            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
+            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border-strong);"
             aria-label="Skift skriftstørrelse"
             title="Skriftstørrelse"
           >
@@ -85,7 +85,7 @@ const currentPath = Astro.url.pathname;
           <button
             id="faded-toggle-nav"
             class="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg transition-all has-tooltip"
-            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
+            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border-strong);"
             aria-label="Dæmpede farver: slået fra"
             title="Dæmpede farver"
           >
@@ -99,7 +99,7 @@ const currentPath = Astro.url.pathname;
           <button
             id="motion-toggle-nav"
             class="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg transition-all has-tooltip"
-            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
+            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border-strong);"
             aria-label="Reduceret bevægelse: slået fra"
             title="Reducér bevægelse"
           >
@@ -112,7 +112,7 @@ const currentPath = Astro.url.pathname;
           <button
             id="clutter-toggle-nav"
             class="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg transition-all has-tooltip"
-            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
+            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border-strong);"
             aria-label="Fokustilstand: slået fra"
             title="Fokustilstand"
           >
@@ -125,7 +125,7 @@ const currentPath = Astro.url.pathname;
           <button
             id="theme-toggle"
             class="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg transition-all has-tooltip"
-            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
+            style="color: var(--color-text-muted); background: var(--color-surface-2); border: 1.5px solid var(--color-border-strong);"
             aria-label="Skift tema"
             title="Skift tema"
           >
@@ -142,7 +142,7 @@ const currentPath = Astro.url.pathname;
           <button
             id="menu-toggle"
             class="lg:hidden flex flex-col items-center justify-center w-9 h-9 rounded-lg gap-1 transition-all"
-            style="color: var(--color-text); background: var(--color-surface-2); border: 1.5px solid var(--color-border);"
+            style="color: var(--color-text); background: var(--color-surface-2); border: 1.5px solid var(--color-border-strong);"
             aria-label="Åbn menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
