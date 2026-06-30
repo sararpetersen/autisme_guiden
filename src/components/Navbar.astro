@@ -14,8 +14,8 @@ const currentPath = Astro.url.pathname;
 <header role="banner">
   <nav
     id="navbar"
-    class="fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300"
-    style="background: var(--color-surface); border-color: var(--color-border);"
+    class="fixed top-0 left-0 right-0 z-50 border-b"
+    style="background: var(--color-surface); border-color: var(--color-border); transition: box-shadow 300ms ease;"
     aria-label="Primær navigation"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -257,7 +257,7 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <!-- Spacer for fixed navbar -->
-  <div class="h-16 lg:h-18" aria-hidden="true"></div>
+  <div class="h-16" aria-hidden="true"></div>
 </header>
 
 <script>

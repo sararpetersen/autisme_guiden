@@ -312,8 +312,12 @@ html[data-reading-font="atkinson"] body *:not(.font-preview) {
   font-family: var(--font-reading) !important;
 }
 /* Restore correct preview font for each button */
-.reading-font-btn[data-font="normal"] .font-preview   { font-family: var(--font-body)    !important; }
-.reading-font-btn[data-font="atkinson"] .font-preview { font-family: var(--font-reading) !important; }
+.reading-font-btn[data-font="normal"] .font-preview {
+  font-family: var(--font-body) !important;
+}
+.reading-font-btn[data-font="atkinson"] .font-preview {
+  font-family: var(--font-reading) !important;
+}
 
 /* Clutter-free / fokus-tilstand
    data-extra-section  = whole optional sections (stats bar, audiences, final CTAs)
@@ -325,7 +329,9 @@ html[data-clutter-free="true"] [data-clutter] {
 
 /* ── Accessibility toolbar floating button ───────────────── */
 #toolbar-open {
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
 }
 #toolbar-open:hover {
   transform: translateY(-2px) scale(1.05) !important;
@@ -1087,12 +1093,26 @@ select:focus {
 
 /* Myth / Fact boxes — use brand teal and amber */
 .myth-box {
+  border: 1px solid #e05a5a;
   border-left: 4px solid #e05a5a;
   background: #fff4f4;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.myth-box:hover {
+  border-color: #c43f3f;
+  border-left-color: #c43f3f;
+  box-shadow: 0 4px 16px rgb(224 90 90 / 0.15);
 }
 .fact-box {
+  border: 1px solid var(--color-primary);
   border-left: 4px solid var(--color-primary);
   background: var(--color-primary-50);
+}
+.card .myth-box,
+.card .fact-box {
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 html[data-theme="dark"] .myth-box {

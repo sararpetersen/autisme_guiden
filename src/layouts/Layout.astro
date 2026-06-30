@@ -56,19 +56,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://autismeg
          animatable elements before first paint. is:inline keeps these synchronous. -->
     <script is:inline>
       (function () {
+        var d = document.documentElement;
+        d.style.transition = "none";
         var theme = localStorage.getItem("ag-theme") ?? "light";
         var fontSize = localStorage.getItem("ag-font-size") ?? "normal";
         var reducedMotion = localStorage.getItem("ag-reduced-motion") ?? "false";
         var fadedColors = localStorage.getItem("ag-faded-colors") === "true" ? "faded" : "normal";
         var clutterFree = localStorage.getItem("ag-clutter-free") === "true" ? "true" : "false";
-        document.documentElement.setAttribute("data-theme", theme);
-        document.documentElement.setAttribute("data-font-size", fontSize);
-        document.documentElement.setAttribute("data-reduced-motion", reducedMotion);
-        document.documentElement.setAttribute("data-colors", fadedColors);
-        document.documentElement.setAttribute("data-clutter-free", clutterFree);
         var savedFont = localStorage.getItem("ag-reading-font") === "atkinson" ? "atkinson" : "normal";
-        document.documentElement.setAttribute("data-reading-font", savedFont);
-        document.documentElement.classList.add("js-anim");
+        d.setAttribute("data-theme", theme);
+        d.setAttribute("data-font-size", fontSize);
+        d.setAttribute("data-reduced-motion", reducedMotion);
+        d.setAttribute("data-colors", fadedColors);
+        d.setAttribute("data-clutter-free", clutterFree);
+        d.setAttribute("data-reading-font", savedFont);
+        d.classList.add("js-anim");
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            d.style.transition = "";
+          });
+        });
       })();
     </script>
 

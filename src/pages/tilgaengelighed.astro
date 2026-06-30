@@ -62,19 +62,19 @@ const goodBadExamples = [
   {
     type: 'bad',
     title: 'Dårlig praksis: Fjernede fokus-indikatorer',
-    description: 'At fjerne fokusrammen via CSS <em>(outline: none)</em> fjerner tastaturnavigation for brugere der er afhængige af det.',
+    description: 'At fjerne fokusrammen via CSS <em><code class="language-css">(outline: none)</code></em> fjerner tastaturnavigation for brugere der er afhængige af det.',
     example: 'Dette element har ingen synlig fokusring',
   },
   {
     type: 'good',
     title: 'God praksis: Beskrivende links',
-    description: 'Links forklarer tydeligt, hvad der sker ved klik – uanset kontekst.',
+    description: 'Links forklarer tydeligt, hvad der sker ved klik— uanset kontekst.',
     example: 'Læs om autismespektret på AutismeGuiden',
   },
   {
     type: 'bad',
     title: 'Dårlig praksis: Uklare links',
-    description: '<em>"Klik her"</em> eller <em>"Læs mere"</em> giver ingen mening uden kontekst – især for skærmlæserbrugere.',
+    description: '<em>"Klik her"</em> eller <em>"Læs mere"</em> giver ingen mening uden kontekst, især for skærmlæserbrugere.',
     example: 'Klik her',
   },
   {
@@ -86,7 +86,7 @@ const goodBadExamples = [
   {
     type: 'bad',
     title: 'Dårlig praksis: Lav kontrast',
-    description: 'Lysegrå tekst på hvid baggrund er svær at læse for alle – og umulig for mange med syns­nedsættelse.',
+    description: 'Lysegrå tekst på hvid baggrund er svær at læse for alle, og umulig for mange med synsnedsættelse.',
     example: 'Svær at læse',
   },
 ];
@@ -295,17 +295,17 @@ const neurodivergentPrinciples = [
               <div class="flex items-center gap-2 mb-3">
                 {type === 'good' ? (
                   <span class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="color: var(--color-primary);">
                       <path d="M20 6L9 17l-5-5"/>
                     </svg>
-                    <span class="text-xs font-bold uppercase tracking-wider text-green-700">God praksis</span>
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--color-primary);">God praksis</span>
                   </span>
                 ) : (
                   <span class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="color: #e05a5a;">
                       <path d="M18 6L6 18M6 6l12 12"/>
                     </svg>
-                    <span class="text-xs font-bold uppercase tracking-wider text-red-600">Dårlig praksis</span>
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color: #e05a5a;">Dårlig praksis</span>
                   </span>
                 )}
               </div>
@@ -355,3 +355,10 @@ const neurodivergentPrinciples = [
     </div>
   </section>
 </Layout>
+
+<style>
+
+  .language-css code {
+    font-size: 14px;
+    font-family: var(--font-mono);
+  }
