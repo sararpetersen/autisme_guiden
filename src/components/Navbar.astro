@@ -304,7 +304,7 @@ const currentPath = Astro.url.pathname;
     if (btn) {
       btn.setAttribute("aria-label", `Skriftstørrelse: ${fontLabels[cur] ?? "Normal"}. Klik for at skifte.`);
       btn.style.color = active ? "var(--color-primary)" : "var(--color-text-muted)";
-      btn.style.borderColor = active ? "var(--color-primary)" : "var(--color-border)";
+      btn.style.borderColor = active ? "var(--color-primary)" : "var(--color-border-strong)";
     }
     // Mobile
     const mobileLbl = document.getElementById("font-size-label-mobile");
@@ -323,7 +323,7 @@ const currentPath = Astro.url.pathname;
     const btn = document.getElementById("motion-toggle-nav");
     if (btn) {
       btn.style.color = on ? "var(--color-primary)" : "var(--color-text-muted)";
-      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border)";
+      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border-strong)";
       btn.setAttribute("aria-label", `Reduceret bevægelse: ${on ? "slået til" : "slået fra"}`);
     }
     // Mobile
@@ -341,7 +341,7 @@ const currentPath = Astro.url.pathname;
     const btn = document.getElementById("faded-toggle-nav");
     if (btn) {
       btn.style.color = on ? "var(--color-primary)" : "var(--color-text-muted)";
-      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border)";
+      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border-strong)";
       btn.setAttribute("aria-label", `Dæmpede farver: ${on ? "slået til" : "slået fra"}`);
     }
     // Mobile
@@ -359,7 +359,7 @@ const currentPath = Astro.url.pathname;
     const btn = document.getElementById("clutter-toggle-nav");
     if (btn) {
       btn.style.color = on ? "var(--color-primary)" : "var(--color-text-muted)";
-      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border)";
+      btn.style.borderColor = on ? "var(--color-primary)" : "var(--color-border-strong)";
       btn.setAttribute("aria-label", `Fokustilstand: ${on ? "slået til" : "slået fra"}`);
     }
     // Mobile
