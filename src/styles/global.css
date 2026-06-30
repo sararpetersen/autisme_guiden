@@ -134,14 +134,14 @@ html[data-colors="faded"] {
   --color-secondary-50: #f5f0e8;
 
   --color-background: #f4f6f7;
-  --color-surface: #93b8c1;
+  --color-surface: #f0f4f5;
   --color-surface-2: #eef1f3;
   --color-text: #2a3840;
   --color-text-muted: #546e78;
   --color-text-subtle: #7a9aa4;
 
-  --color-border: #d0dde2;
-  --color-border-strong: #b8cbcf;
+  --color-border: #c8d8dc;
+  --color-border-strong: #7a9aa4;
 
   --color-teal-50: #eef4f6;
   --color-teal-100: #d5e5ea;
